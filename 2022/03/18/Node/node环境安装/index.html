@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>node环境安装 | xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Node/node环境安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      node环境安装
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-17T16:00:00.000Z" itemprop="datePublished">2022年03月18日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/03/18/Node/node%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>node-v8.9.3-x64</p>
+<p>1.安装路径D:\Program Files\nodejs\</p>
+<p>2.选Add to PATH 默认添加环境变量</p>
+<p>3.cmd 查看环境变量</p>
+<pre class="line-numbers language-none"><code class="language-none">echo %PATH%   &#x2F;&#x2F;其中的D:\Program Files\nodejs\ 就是了
+node -v 查看版本 v8.9.3
+npm -v  5.5.1  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>4.C:\Users\Administrator\AppData\Roaming    npm  npm-cache</p>
+<p>再看看另外2个目录，npm的本地仓库跑在系统盘c盘的用户目录了(没见到npm-cache是因为没有用过，一使用缓存目录就生成了)，我们准备把这2个目录移动回到D:\nodejs</p>
+<p>5.先在D:\nodejs 添加node_cache  node_global文件夹  ：-g全局  cache：缓存文件</p>
+<p>6.然后运行以下2条命令</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config set prefix &quot;D:\Program Files\nodejs\node_global&quot;
+npm config set cache &quot;D:\Program Files\nodejs\node_cache&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>7.npm list -global 检查目录改变了没</p>
+<ol start="8">
+<li>配置镜像站</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">npm config set registry&#x3D;http:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>9.npm config list 查看配置信息 配置文件c盘中会有3条</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>10.检查镜像站</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config get registry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>11.能否获得vue的信息</p>
+<pre class="line-numbers language-none"><code class="language-none">npm info vue<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>12.增加环境变量NODE_PATH 系统变量</p>
+<p>直接运行npm install等命令会报错</p>
+<pre class="line-numbers language-none"><code class="language-none">NODE_PATH  D:\Program Files\nodejs\node_global\node_modules<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>需要重新打开CMD让上面的环境变量生效</p>
+<p>13.更新npm</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install npm -g  &#x2F;&#x2F;npm -v 会看到最新版<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>14.配置path系统环境变量</p>
+<pre class="line-numbers language-none"><code class="language-none">D:\Program Files\nodejs\node_global
+D:\Program Files\nodejs\<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>15.查看有什么模块</p>
+<pre class="line-numbers language-none"><code class="language-none">npm list -global<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此时报错大概是node.js版本太低，去官网下最新版安装覆盖原版</p>
+<p>16.安装vue.js</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>去global文件下看看node_mo&#x2F;vue下有没有dist</p>
+<p>17.安装vue-router</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue-router -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>18.安装vue脚手架</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue-cli -g      这是2版本<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>npm uninstall -g vue-cli<br>  npm install -g @vue&#x2F;cli		这是3版本</p>
+<p>19.检查</p>
+<pre class="line-numbers language-none"><code class="language-none">vue -V   大写， 报错检查14步<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这是低版本，创建项目是vue init webpack 项目名 npm run dev 启动，好配置</p>
+<h5 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h5><pre class="line-numbers language-none"><code class="language-none">npm install yarn -g
+# 全局安装目录
+yarn config set global-folder &quot;D:\Program Files\Yarn\yarn_global&quot;
+# 缓存目录
+yarn config set cache-folder &quot;D:\Program Files\Yarn\yarn_cache&quot;
+# 查看当前源
+yarn config get registry
+# 修改为淘宝镜像源
+yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org
+如果你遇到了yarn命令无法执行的情况，可以试着删掉这个文件再重新配置 .yarnrc
+yarn list -global查看配置信息
+#  改变yarn全局安装位置
+yarn config  set global-folder &quot;D:\Program Files\nodejs&quot;
+# 改变yarn全局缓存位置
+yarn config set cache-folder &quot;D:\Program Files\nodejs&quot;
+检查当前yarn 的 bin的 位置
+yarn global bin
+检查当前 yarn 的 全局安装位置
+yarn global dir
+配置变量
+通过node找到cmd文件，通过cmd脚本执行对应的文件bin，bin执行.arnrc配置信息，将包下载到对应的文件夹。
+在没有配置好快捷命令前 yarn global add 包  yarn global remove 包
+yarn全局基本不使用 有npm npm管理全局包 yarn用来管理项目包 直接add remove 操作init过的目录,也就是package<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>loader:936  node node_cache损坏需要重新装</p>
+<pre class="line-numbers language-none"><code class="language-none">npm缺陷：很多依赖不会指定版本号，默认会安装最新的版本 如果新的版本无法兼容你的项目，你的程序可能就会出BUG
+yarn :  yarn为了解决这个问题推出了yarn.lock的机制，项目中的yarn.lock文件
+		启动项目安装依赖时把这个yarn.lock拷贝到相应的环境项目下再安装
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>快速删除node_module  秒删</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install rimraf -g
+rimraf node_modules
+rimraf &quot;ruoy - 副本&quot;  &#x2F;&#x2F;任何文件，文件名分离就用引号包裹<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#yarn"><span class="toc-text">yarn</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/03/17/%E5%85%B6%E4%BB%96/Git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          Git 笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/18/Node/node%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          node如何搭建服务
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

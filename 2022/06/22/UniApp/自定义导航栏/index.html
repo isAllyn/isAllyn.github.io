@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>自定义导航栏 | xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-UniApp/自定义导航栏" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      自定义导航栏
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-21T16:00:00.000Z" itemprop="datePublished">2022年06月22日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/uniapp/">uniapp</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/06/22/UniApp/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%88%AA%E6%A0%8F/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>在我眼里自定义导航分2类: 原生基础上 ||  非原生基础上</code><br>总结:项目当中能原生就原生,提高性能<br><code>区别</code></p>
+<pre class="line-numbers language-none"><code class="language-none">uni-app 自带原生导航栏，在pages.json里配置。
+原生导航的体验更好，渲染新页面时，原生导航栏的渲染无需等待新页面dom加载，可以在新页面进入动画开始时就渲染。
+
+原生导航还可以避免滚动条通顶，并方便的控制原生下拉刷新。
+通过pages.json的配置，可以简单的、跨端的、高性能的开发业务。
+
+但原生导航栏的扩展能力有限的。尤其是微信下，没有提供太多导航栏的配置。
+在App下，pages.json里每个页面的app-plus下可以设置titleNView等更多参数，可以得到比微信小程序更丰富的扩展性。
+另外，开发者也可以在必要时取消原生导航栏，使用view自行绘制导航栏。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h1 id="原生基础上"><a href="#原生基础上" class="headerlink" title="原生基础上"></a>原生基础上</h1><ul>
+<li><p>通过app-plus属性对自定义导航扩展<br><code>https://uniapp.dcloud.io/collocation/pages?id=app-plus </code></p>
+<pre class="line-numbers language-none"><code class="language-none">文档描述:
+1.原生导航能解决业务需求的情况下，尽量使用原生导航,甚至有时需要牺牲一些不是很重要的需求。
+2.在App和H5下，uni-app提供了灵活的处理方案：&#96;titleNView、subNVue&#96;、或整页使用nvue。
+3.但在小程序下，因为其自身的限制，没有太好的方案。有必要的话，也可以用条件编译分端处理。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>所以主要是使用app-plus的titleNView(导航栏)、subNVue(子窗口)属性</code></p>
+</li>
+<li><p>titleNView(导航栏) 以下都是在titleNView属性下操作<br><code>https://uniapp.dcloud.io/collocation/pages?id=app-titlenview</code></p>
+<pre class="line-numbers language-none"><code class="language-none">常用的是按钮属性:https:&#x2F;&#x2F;uniapp.dcloud.io&#x2F;collocation&#x2F;pages?id&#x3D;app-titlenview-buttons<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>titleNView.buttons.type</code><br>除了type文档还有其它属性</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;buttons&quot;: [&#123;&quot;type&quot;: &quot;menu&quot;&#125;,&#123;&quot;type&quot;: &quot;favorite&quot;&#125;]
+其它类型
+&quot;forward&quot;：前进按钮      &quot;back&quot;：后退按钮
+&quot;share&quot;：分享按钮        &quot;favorite&quot;：收藏按钮
+&quot;home&quot;：主页按钮          &quot;menu&quot;：菜单按钮
+&quot;close&quot;：关闭按钮         &quot;none&quot;：无样式，不显示图标<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>自定义返回按钮</code><br>titleNView.backButton</p>
+<pre class="line-numbers language-none"><code class="language-none">用法跟button一样,但需需要在autoBackButton设置为true时生效
+https:&#x2F;&#x2F;uniapp.dcloud.io&#x2F;collocation&#x2F;pages?id&#x3D;app-titlenview-backbuttonstyles<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>titleNView.&lt;其它属性&gt;</code><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/collocation/pages?id=app-titlenview">https://uniapp.dcloud.io/collocation/pages?id=app-titlenview</a></p>
+<pre class="line-numbers language-none"><code class="language-none">出了按钮跟返回按钮 还有其它属性比如
+searchInput 原生导航栏上的搜索框配置
+homeButton  标题栏控件是否显示Home按钮
+backgroundImage 背景图片路径 等等<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>这些按钮的生命周期</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;其中事件参数e.index值为点击按钮在buttons数组的索引值，从0开始
+onNavigationBarButtonTap(e) 该生命周期监听按钮的点击事件
+&#x2F;&#x2F;设有搜索框时搜索框的生命周期
+onNavigationBarSearchInputChanged()&#x2F;&#x2F;搜索框内容变化
+onNavigationBarSearchInputConfirmed()&#x2F;&#x2F;搜索事件也是手机的回车事件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>更改这些按钮的方法</code><br>webView对象文档及其它方法<a target="_blank" rel="noopener" href="https://www.html5plus.org/doc/zh_cn/webview.html#">https://www.html5plus.org/doc/zh_cn/webview.html#</a><br>搜索WebviewObject关键字第47个处</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; #ifdef APP-PLUS  
+var webView &#x3D; this.$mp.page.$getAppWebview(); &#x2F;&#x2F;必须先获取webview对象
+webview.showTitleNViewButtonRedDot()&#x2F;&#x2F;调用方法显示红点
+webview.showTitleNViewButtonRedDot()&#x2F;&#x2F;调用方法隐藏红点
+webview.setTitleNViewButtonBadge()&#x2F;&#x2F;修改红点角标
+webview.setTitleNViewButtonStyle()&#x2F;&#x2F;修改按钮
+&#x2F;&#x2F; #endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这些是原生基础上app-plus的titleNView(导航栏),还有个subNVue(子窗口)属性</p>
+</li>
+<li><p>subNVue(子窗口)属性 以下都是在subNVue(子窗口)属性下操作<br>配置<br>subNVue.style<br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/collocation/pages?id=app-subnvuesstyle">https://uniapp.dcloud.io/collocation/pages?id=app-subnvuesstyle</a></p>
+<pre class="line-numbers language-none"><code class="language-none">subNVue是 vue 页面的子窗体，它不是全屏页面，就是用于解决 vue 页面中的层级覆盖和原生界面自定义用的。它也不是组件，就是一个原生子窗体<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">nvue快速上手
+https:&#x2F;&#x2F;uniapp.dcloud.io&#x2F;nvue-outline?id&#x3D;_1%e6%96%b0%e5%bb%banvue%e9%a1%b5%e9%9d%a2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>方法</code></p>
+<pre class="line-numbers language-none"><code class="language-none">const subNVue &#x3D; uni.getSubNVueById(&#39;原生子窗体的 ID&#39;);获取子窗口对象
+用于开发弹窗与导航
+subNVue对象的方法
+https:&#x2F;&#x2F;uniapp.dcloud.io&#x2F;api&#x2F;window&#x2F;subNVues?id&#x3D;app-getsubnvuebyid
+nvue 跟 vue 的通讯
+https:&#x2F;&#x2F;ask.dcloud.net.cn&#x2F;article&#x2F;36010<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h1 id="非原生基础上"><a href="#非原生基础上" class="headerlink" title="非原生基础上"></a>非原生基础上</h1><p><code>全局取消原生导航栏&quot;navigationStyle&quot;:&quot;custom&quot;  </code></p>
+<ul>
+<li>1.取消原生导航栏<pre class="line-numbers language-none"><code class="language-none">&quot;navigationStyle&quot;:&quot;custom&quot;
+带来的问题:有些新组件已经解决了这个问题. 状态栏(显示电量的那一栏,不是导航栏),导航栏直接陷进去了.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>2.处理状态栏问题<br>App因为默认为沉浸式，去除导航栏后，页面顶部会直通到状态栏的区域<br>uni-app 提供内置 CSS 变量解决<br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/frame?id=css%E5%8F%98%E9%87%8F">https://uniapp.dcloud.io/frame?id=css%E5%8F%98%E9%87%8F</a><br>写成代码后直接解决了我这个问题<pre class="line-numbers language-none"><code class="language-none">&lt;!-- #ifdef APP-PLUS --&gt;  
+&lt;view class&#x3D;&quot;status_bar&quot;&gt;  
+    &lt;view class&#x3D;&quot;top_view&quot;&gt;&lt;&#x2F;view&gt;  
+&lt;&#x2F;view&gt;  
+&lt;!-- #endif --&gt;
+	&#x2F;*
+	* !!!然后在这下面放自己的导航组件就行
+	* https:&#x2F;&#x2F;ext.dcloud.net.cn&#x2F;plugin?id&#x3D;52(这个我感觉就可以了)
+	*&#x2F;
+&#x2F;&#x2F;css部分
+.status_bar &#123;  
+    height: var(--status-bar-height);  
+    width: 100%;  
+    background-color: #F8F8F8;  
+&#125;  
+.top_view &#123;  
+    height: var(--status-bar-height);  
+    width: 100%;  
+    position: fixed;  
+    background-color: #F8F8F8;  
+    top: 0;  
+    z-index: 999;  
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>3.H5、小程序、App端状态栏都不一样，需要重新计算处理,下面是别人处理好的代码<br>直接使用，在App.vue里面设置即可<pre class="line-numbers language-none"><code class="language-none">onLaunch: function() &#123;
+    uni.getSystemInfo(&#123;
+        success:function(e)&#123;
+            Vue.prototype.statusBar &#x3D; e.statusBarHeight
+            &#x2F;&#x2F; #ifndef MP
+            if(e.platform &#x3D;&#x3D; &#39;android&#39;) &#123;
+                Vue.prototype.customBar &#x3D; e.statusBarHeight + 50
+            &#125;else &#123;
+                Vue.prototype.customBar &#x3D; e.statusBarHeight + 45
+            &#125;
+            &#x2F;&#x2F; #endif
+            
+            &#x2F;&#x2F; #ifdef MP-WEIXIN
+            let custom &#x3D; wx.getMenuButtonBoundingClientRect()
+            Vue.prototype.customBar &#x3D; custom.bottom + custom.top - e.statusBarHeight
+            &#x2F;&#x2F; #endif
+            
+            &#x2F;&#x2F; #ifdef MP-ALIPAY
+            Vue.prototype.customBar &#x3D; e.statusBarHeight + e.titleBarHeight
+            &#x2F;&#x2F; #endif
+        &#125;
+    &#125;)
+&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<code>禁用原生导航后 还是可以通过接口改变样式的</code><br><a target="_blank" rel="noopener" href="https://www.html5plus.org/doc/zh_cn/navigator.html#plus.navigator.setStatusBarStyle">https://www.html5plus.org/doc/zh_cn/navigator.html#plus.navigator.setStatusBarStyle</a><pre class="line-numbers language-none"><code class="language-none">页面禁用原生导航栏后,仍可设置页面的 navigationBarTextStyle 属性
+注意部分低端Android手机（4.4）自身不支持设置状态栏前景色。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E5%9F%BA%E7%A1%80%E4%B8%8A"><span class="toc-text">原生基础上</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E5%8E%9F%E7%94%9F%E5%9F%BA%E7%A1%80%E4%B8%8A"><span class="toc-text">非原生基础上</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/06/21/UniApp/uview%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AAhttp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          uview 封装一个http
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/22/UniApp/nvue%E5%BC%80%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          nvue开发注意事项
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

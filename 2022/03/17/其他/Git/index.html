@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Git 笔记 | xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-其他/Git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Git 笔记
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-16T16:00:00.000Z" itemprop="datePublished">2022年03月17日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/03/17/%E5%85%B6%E4%BB%96/Git/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="01-理论点"><a href="#01-理论点" class="headerlink" title="01-理论点"></a><a href="">01-理论点</a></h1><blockquote>
+<p>.git文件 &#x3D;&#x3D;&#x3D; 版本库：存储版本号、提交时间等信息</p>
+<p>git fetch &#x3D;&#x3D;&#x3D; 拉取版本库</p>
+<p>git merge &#x3D;&#x3D;&#x3D; 同步到工作区</p>
+<p>git pull &#x3D;&#x3D;&#x3D; git fetch+git merge</p>
+<p>git init –bare name1.git &#x3D;&#x3D;&#x3D; 创建一个name1.git的裸库(公共库)</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<h3 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a><strong>文件状态</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">></span>untracked 未跟踪： 最初状态，不参与版本控制
+<span class="token operator">></span>unmodify 未修改 ： commit入库后状态
+<span class="token operator">></span>modifled  已修改： 跟踪后文件被修改
+<span class="token operator">></span>staged    暂存  ： add后的状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="commit-提交规范"><a href="#commit-提交规范" class="headerlink" title="commit 提交规范"></a>commit 提交规范</h3><pre class="line-numbers language-none"><code class="language-none">type
+用于说明 commit 的类别，只允许使用下面7个标识。
+feat：新功能（feature）
+fix：修补bug
+docs：文档（documentation）
+style： 格式（不影响代码运行的变动）
+refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+test：增加测试
+chore：构建过程或辅助工具的变动
+如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>git commit -m &quot;feat:新增a.java&quot;</code></p>
+<h3 id="修改状态"><a href="#修改状态" class="headerlink" title="修改状态"></a><strong>修改状态</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">add       进入staged
+rm        将库中文件移除，然后文件就会从unmodify到untracked
+checkout  从库中取出文件覆盖当前文件，最后状态unmodify
+reset <span class="token constant">HEAD</span> filename  取消暂存，最后状态modefled
+总结
+<span class="token literal-property property">rm</span><span class="token operator">:</span>撤销提交commit
+checkout <span class="token operator">--</span> <span class="token operator">&lt;</span>file<span class="token operator">></span><span class="token operator">:</span>撤销修改
+<span class="token literal-property property">reset</span><span class="token operator">:</span>撤销跟踪<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="02-裸库"><a href="#02-裸库" class="headerlink" title="02-裸库"></a><a href="">02-裸库</a></h1><blockquote>
+<p>git init –bare name1.git &#x3D;&#x3D;&#x3D; 存放记录，共享记录，不存放文件，不能进行工作区的操作：push checkout..。<br>用”git init”初始化的版本库用户也可以在该目录下执行所有git方面的操作。但别的用户在将更新push上来的时候容易出现冲突。因此在多人开发时就使用裸库，一个人就不存在自己提交时远程仓库处于工作状态<br>区别 <a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_34349564/article/details/52487860">https://blog.csdn.net/sinat_34349564/article/details/52487860</a></p>
+</blockquote>
+<blockquote>
+<p>使用：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013541707/article/details/107482045">https://blog.csdn.net/u013541707/article/details/107482045</a></p>
+</blockquote>
+<p>config文件中</p>
+<ul>
+<li>直接 <code>git init</code> 创建的仓库:</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">[core]
+    repositoryformatversion &#x3D; 0
+    filemode &#x3D; true
+    bare &#x3D; false
+    logallrefupdates &#x3D; true
+    ignorecase &#x3D; true
+    precomposeunicode &#x3D; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>加了 <code>--bare</code> 创建的裸仓库:</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">[core]
+    repositoryformatversion &#x3D; 0
+    filemode &#x3D; true
+    bare &#x3D; true
+    ignorecase &#x3D; true
+    precomposeunicode &#x3D; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>区别</code></p>
+<p><code>logallrefupdates = true git的一道防线 不能向工作中的分支上提交信息,如果在工作状态就把服务器上切换到另一个分支</code></p>
+<p><code>裸库就是没有这道防线，比如码云上创建一个创库，可以直接push</code></p>
+<h1 id="02-1-标签"><a href="#02-1-标签" class="headerlink" title="02.1-标签"></a><a href="">02.1-标签</a></h1><p>相当于不能修改的分支,先提交再打标签</p>
+<p>查看标签</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git tag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>创建标签<code>版本号知识：a.b.c   a大版本大改变b添加修改了功能c修改了一下bug</code></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git tag <span class="token operator">-</span>a <span class="token function">版本</span><span class="token punctuation">(</span>比如<span class="token operator">:</span>v1<span class="token punctuation">.</span><span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token operator">-</span>m <span class="token string">"备注"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>删除标签</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git tag <span class="token operator">-</span>d tagname<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>提交标签</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git push <span class="token operator">--</span>tags<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h1 id="03-配置部分"><a href="#03-配置部分" class="headerlink" title="03-配置部分"></a><a href="">03-配置部分</a></h1><h3 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a><strong>全局配置</strong></h3><blockquote>
+<p>用户&#x2F;.gitconfig文件</p>
+</blockquote>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git config <span class="token operator">--</span>global <span class="token operator">--</span>list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a><strong>系统配置</strong></h3><blockquote>
+<p>系统：etc&#x2F;.gitconfig文件</p>
+</blockquote>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git config <span class="token operator">--</span>system <span class="token operator">--</span>list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a><strong>.gitignore</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">*</span><span class="token punctuation">.</span>txt   所有txt
+<span class="token operator">!</span>a<span class="token punctuation">.</span>txt  排除a<span class="token punctuation">.</span>txt，也就是a要提交
+b<span class="token comment">/*txt  b文件夹下所有txt文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="gitkeep"><a href="#gitkeep" class="headerlink" title=".gitkeep"></a><strong>.gitkeep</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">占位文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="ssh公钥免密登录"><a href="#ssh公钥免密登录" class="headerlink" title="ssh公钥免密登录"></a><strong>ssh公钥免密登录</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">1</span><span class="token punctuation">.</span>ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>t rsa 生产公钥，生成后第三行会有<span class="token punctuation">.</span>ssh文件存放地址
+<span class="token number">2</span><span class="token punctuation">.</span>pub里内容粘贴到码云公钥下
+
+https ssh区别 
+<span class="token literal-property property">https</span><span class="token operator">:</span>通过url克隆每次都需要输入一个账号密码
+<span class="token literal-property property">ssh</span><span class="token operator">:</span>只能通过拥有者的公钥克隆<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="04-命令"><a href="#04-命令" class="headerlink" title="04-命令"></a><a href="">04-命令</a></h1><h3 id="工作区对比"><a href="#工作区对比" class="headerlink" title="工作区对比"></a><strong>工作区对比</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git diff ： <span class="token function">对比工作区</span><span class="token punctuation">(</span>未 git add<span class="token punctuation">)</span><span class="token function">和暂存区</span><span class="token punctuation">(</span>git add 之后<span class="token punctuation">)</span> 
+
+git diff <span class="token operator">--</span>cached<span class="token operator">:</span> <span class="token function">对比暂存区</span><span class="token punctuation">(</span>git add 之后<span class="token punctuation">)</span><span class="token function">和版本库</span><span class="token punctuation">(</span>git commit 之后<span class="token punctuation">)</span> 
+
+git diff <span class="token constant">HEAD</span><span class="token operator">:</span> <span class="token function">对比工作区</span><span class="token punctuation">(</span>未 git add<span class="token punctuation">)</span><span class="token function">和版本库</span><span class="token punctuation">(</span>git commit 之后<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="查看fetch过来的信息"><a href="#查看fetch过来的信息" class="headerlink" title="查看fetch过来的信息"></a><strong>查看fetch过来的信息</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git log <span class="token operator">-</span>p <span class="token constant">FETCH_HEAD</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看到提交过的信息"><a href="#查看到提交过的信息" class="headerlink" title="查看到提交过的信息"></a><strong>查看到提交过的信息</strong></h3><p>能看到回退后的版本</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git reflog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="强制推送"><a href="#强制推送" class="headerlink" title="强制推送"></a><strong>强制推送</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git push <span class="token operator">-</span>f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="退出输入模式"><a href="#退出输入模式" class="headerlink" title="退出输入模式"></a><strong>退出输入模式</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a><strong>创建文件夹</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">mkdir FileName<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a><strong>创建文件</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">touch FileName<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="查看文本信息"><a href="#查看文本信息" class="headerlink" title="查看文本信息"></a><strong>查看文本信息</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">cat FileName<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a><strong>回退版本</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git reset <span class="token operator">--</span>hard fa770f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看某一个版本的信息"><a href="#查看某一个版本的信息" class="headerlink" title="查看某一个版本的信息"></a><strong>查看某一个版本的信息</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git show  fa770f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看提交日志信息"><a href="#查看提交日志信息" class="headerlink" title="查看提交日志信息"></a><strong>查看提交日志信息</strong></h3><p>看不了回退后的版本</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git log 
+
+git log <span class="token operator">--</span>pretty <span class="token operator">=</span> online 显示简略信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a><strong>提交</strong></h3><p>指定origin主机为默认主机 并且提交 ，往后提交就可以直接push省略主机</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git push <span class="token operator">-</span>u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="05-merge-rebase的区别"><a href="#05-merge-rebase的区别" class="headerlink" title="05-merge rebase的区别"></a><a href="">05-merge rebase的区别</a></h1><blockquote>
+<p>merge:从共同节点开始(包括)，将两者最新节点融合成一个新节点_适用在公共分支merge 其它子分支(因为会保留公共分支的祖先记录)</p>
+</blockquote>
+<blockquote>
+<p>rebase:a git rebase b,a:变基分支 b：基分支，变基分支相同节点(不包括)往后的每次提交形成新的commitid叠加到基节点后面(适用拉取最新公共代码时)</p>
+</blockquote>
+<blockquote>
+<p>不在公共库用rebase是因为在对方pull后，存在有未pull到的提交(如果rebase这<br>些提交就会消失，总之顺序会出问题)</p>
+</blockquote>
+<blockquote>
+<p>merge B+a+a.1+b.1+b&#x3D;Bc<br>rebase B+a+a.1+b.1+b&#x3D;Baa.1c.1c</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7026724793047220254">https://juejin.cn/post/7026724793047220254</a></p>
+</blockquote>
+<h1 id="06-整套"><a href="#06-整套" class="headerlink" title="06-整套"></a><a href="">06-整套</a></h1><h3 id="fetch拉取远程"><a href="#fetch拉取远程" class="headerlink" title="fetch拉取远程"></a><strong>fetch拉取远程</strong></h3><p><code>注意语法</code></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git fetch origin <span class="token operator">&lt;</span>brach<span class="token operator">></span> 
+git log <span class="token operator">-</span>p <span class="token constant">FETCH_HEAD</span> 查看fetch信息
+git merge origin<span class="token operator">/</span>branch 最后合并
+
+or
+git pull origin 远程：本地分支
+
+or
+git fetch origin <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token operator">&lt;</span>branch<span class="token operator">></span><span class="token operator">:</span>远程分支
+git log <span class="token operator">-</span>p <span class="token constant">FETCH_HEAD</span> 查看是否是自己要的内容
+git checkout <span class="token operator">-</span>b newBranch origin<span class="token operator">/</span><span class="token operator">&lt;</span>远程分支<span class="token operator">></span>
+git log 查看是否成功
+git checkout <span class="token operator">-</span>b master
+git branch <span class="token operator">-</span>d newBranch
+git log 查看是否成功<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="回退"><a href="#回退" class="headerlink" title="回退"></a><strong>回退</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">先拉取到远程的代码
+然后
+git reset <span class="token operator">--</span>hard 版本号
+git push <span class="token operator">-</span>f <span class="token operator">-</span>u origin<span class="token operator">:</span>branch 强制提交<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01-%E7%90%86%E8%AE%BA%E7%82%B9"><span class="toc-text">01-理论点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="toc-text">文件状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#commit-%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83"><span class="toc-text">commit 提交规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%8A%B6%E6%80%81"><span class="toc-text">修改状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02-%E8%A3%B8%E5%BA%93"><span class="toc-text">02-裸库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02-1-%E6%A0%87%E7%AD%BE"><span class="toc-text">02.1-标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-%E9%85%8D%E7%BD%AE%E9%83%A8%E5%88%86"><span class="toc-text">03-配置部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">全局配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="toc-text">系统配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitignore"><span class="toc-text">.gitignore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitkeep"><span class="toc-text">.gitkeep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh%E5%85%AC%E9%92%A5%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-text">ssh公钥免密登录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04-%E5%91%BD%E4%BB%A4"><span class="toc-text">04-命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%AF%B9%E6%AF%94"><span class="toc-text">工作区对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bfetch%E8%BF%87%E6%9D%A5%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">查看fetch过来的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%B0%E6%8F%90%E4%BA%A4%E8%BF%87%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">查看到提交过的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E6%8E%A8%E9%80%81"><span class="toc-text">强制推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">退出输入模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">创建文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-text">查看文本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E9%80%80%E7%89%88%E6%9C%AC"><span class="toc-text">回退版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%80%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">查看某一个版本的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF"><span class="toc-text">查看提交日志信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4"><span class="toc-text">提交</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05-merge-rebase%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">05-merge rebase的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#06-%E6%95%B4%E5%A5%97"><span class="toc-text">06-整套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B"><span class="toc-text">fetch拉取远程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E9%80%80"><span class="toc-text">回退</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/03/16/%E5%85%B6%E4%BB%96/flexible%20rem%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          rem自动生成
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/18/Node/node%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          node环境安装
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  <article id="post-Ditu/openlayer封装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/Ditu/openlayer%E5%B0%81%E8%A3%85/">openlayer封装</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-10T16:00:00.000Z" itemprop="datePublished">2022年03月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a>
+  </div>
+
+      
+      
+<a href="/2022/03/11/Ditu/openlayer%E5%B0%81%E8%A3%85/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="v1-1-0优化"><a href="#v1-1-0优化" class="headerlink" title="v1.1.0优化"></a><code>v1.1.0优化</code></h3><p>已处理</p>
+<ul>
+<li>只传ip跟中心点地图不显示问题</li>
+<li>marKerDots不支持动图效果</li>
+<li>marKerDots单词错误导致报错</li>
+</ul>
+<p>添加</p>
+<ul>
+<li>对marKerDots新添加了一个必传属性isGif:Boolean;用来实现动态图标效果<blockquote>
+<p>如果为false则不做任何动画操作,如果为true,则需要再传一个gifImg属性,这个属性跟img一样,图标动图实现方法就是在img 跟gifImg两张图来回切换<br><code>图片大小最好保持一直</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="v1-2-0-优化"><a href="#v1-2-0-优化" class="headerlink" title="v1.2.0 优化"></a><code>v1.2.0</code> 优化</h3><p>已处理</p>
+<ul>
+<li>传入参数但是没有点位数据导致报错等问题</li>
+<li>画布右侧有空白区问题</li>
+</ul>
+<p>添加</p>
+<ul>
+<li><p>gifSuDu:Number属性，默认500<br>对动态图标扇动速度的控制</p>
+</li>
+<li><p>propspopup:Object 属性<br>对弹窗样式的控制</p>
+</li>
+<li><p>v-slot:popup&#x3D;’obj’ 具名作用域插槽<br>可自己制作一些简单标签的弹窗</p>
+</li>
+<li><p>在传入标点数据marKerDots时参入了一个标识的值到dot里面,也就是经纬度值后面可以跟一个标识<br>标识可在插槽当中的obj.popupInfo中获取</p>
+<pre class="line-numbers language-none"><code class="language-none">marKerDots[0].dots[0]&#x3D;[经度,纬度,标识] &#x2F;&#x2F;这种形式<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p>使用</p>
+<ul>
+<li>弹窗使用<br>1.开启弹窗功能<pre class="line-numbers language-none"><code class="language-none">:isOpenMarkerMove&#x3D;&#39;true&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+2.使用具名作用域插槽<pre class="line-numbers language-none"><code class="language-none">&lt;mapTemplate :mapSourceIP&#x3D;&#39;mapSourceIP&#39; :centerDot&#x3D;&#39;centerDot&#39;
+              :isOpenMarkerMove&#x3D;&#39;true&#39; :marKerDots&#x3D;&#39;marKerDots&#39;
+              :zoom&#x3D;&quot;zoom&quot;&gt;
+	            &lt;template v-slot:popup&#x3D;&#39;obj&#39;&gt;
+	              &lt;div class&#x3D;&quot;popupClassName&quot;&gt;
+	                &#123;&#123;obj.popupInfo&#125;&#125;
+	              &lt;&#x2F;div&gt;
+	            &lt;&#x2F;template&gt;
+&lt;&#x2F;mapTemplate&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>obj.popupInfo里面有需要的内容</p>
+</blockquote>
+</li>
+</ul>
+<p>3.传入弹窗的参数</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;mapTemplate :propspopup&#x3D;&#39;propspopup&#39;&gt; &lt;&#x2F;mapTemplate&gt;
+propspopup&#x3D;&#123;
+	domName:&#39;popupClassName&#39;,
+	styles:&#123;
+          position: absolute,
+          top: 0,
+          width: &quot;200px&quot;,
+          height: &quot;100px&quot;,
+          color: &quot;white&quot;,
+          border: &quot;1px solid #00b4d8&quot;,
+          backgroundColor: &quot;#377299&quot;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="v1-2-1-优化"><a href="#v1-2-1-优化" class="headerlink" title="v1.2.1 优化"></a><code>v1.2.1</code> 优化</h3><p>已解决</p>
+<ul>
+<li>id为0时浮窗不显示问题</li>
+<li>浮动导致的图标移位问题</li>
+</ul>
+<p>添加</p>
+<ul>
+<li>对区域填充的颜色的自定义和线的宽度<br>AreaGeoColor:String AreaGeoLinWith:Number</li>
+<li>边界区域显示隐藏的控件添加开关<br>isShowControlBianJian:Boolean 默认false</li>
+</ul>
+<h3 id="v1-3-0-优化"><a href="#v1-3-0-优化" class="headerlink" title="v1.3.0 优化"></a><code>v1.3.0</code> 优化</h3><p>添加</p>
+<ul>
+<li>添加对百度地图瓦片的加载,如果瓦片源是百度地图的,需要传一个isBaiduDots:Boolean属性,并设置为true</li>
+</ul>
+<p>解决</p>
+<ul>
+<li>(openlayer只支持3857跟4326坐标系转换):解决百度地图瓦片BD-09坐标在openlayer上偏移的问题<br>Bug</li>
+<li>依旧存在偏移,所以要做百度地图离线,还是使用百度地图的离线接口</li>
+</ul>
+<h3 id="最终参数"><a href="#最终参数" class="headerlink" title="最终参数"></a>最终参数</h3><pre class="line-numbers language-none"><code class="language-none"> &#x2F;**
+* @Tip: 使用所传递相关的参数, 所有坐标以EPSG:4326为准
+* centerDot:Array&lt;parseFloat&gt;地图中心点        
+* mapSourceIP:String 地图资源ip地址
+* marKerDots:Array&lt;Object&lt;img:String,dots:Array&lt;经,纬,标识&gt;,isGif:Boolean,gifImg:String&gt;&gt;地图marker点位与相应的图片,isGif:是否想要动态效果,这个参数必须传,如果开启,就必须传gifImg属性
+* zoom:Number 地图默认级别   
+* MaxMinZoom:Array&lt;Number&gt;地图最大最小缩放级别 默认28-0
+* isShowArea:Boolean 是否添加边界  
+* AreaGeo:Array&lt;JSON&gt; 边界json数据
+* isShowControlBianJian:Boolean 是否添加边界区域显示影藏的控件
+* AreaGeoLinColor:String 设置边界时,边界线的颜色
+* AreaGeoLinWith:Number 边界线的宽度
+* AreaGeoColor:String 区域颜色
+* tControl:Array&lt;Object&lt;dom:Dom,style:Style&lt;Object&gt;,isevent&lt;Boolean&gt;,eventType:String,event&lt;事件名&gt;&gt;&gt; 控件,需要创建好dom后再传值isevent:是否绑定事件,如果为true请先确定好有没有像正常传事件(@eventName)传入事件并且名称前面的event&lt;事件名&gt;参数一致
+* isOpenMarkerMove:Boolean 是否启用图标的鼠标移入事件
+* propspopup:Object&lt;domName:String&gt; 如果启用了图标的鼠标移入事件，就需要传递相关的参数,并且查看html部分的插槽信息
+* propspopup下：domName:弹窗(插槽)标签类名,类名必须唯一
+* propspopup下：styles:Object 弹窗的样式
+* nowMapClass:String 这是图层的类名,如果自己设置样式可将类名传过来(需要在外部组件穿透样式,可参考默认的ol-layer样式名)
+* 图层样式类名参考 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;shiyangxt&#x2F;archive&#x2F;2008&#x2F;11&#x2F;16&#x2F;1334633.html
+* gifSuDu:Number 动态图片的闪动速度,默认500
+* isBaiduDots:Boolean 瓦片源是否为百度地图
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Ditu/openlayer功能" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/Ditu/openlayer%E5%8A%9F%E8%83%BD/">openlayer部分功能</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-10T16:00:00.000Z" itemprop="datePublished">2022年03月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a>
+  </div>
+
+      
+      
+<a href="/2022/03/11/Ditu/openlayer%E5%8A%9F%E8%83%BD/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="geoJson地图数据"><a href="#geoJson地图数据" class="headerlink" title="geoJson地图数据"></a><code>geoJson地图数据</code></h3><p>下载下来的坐标数据好像就是EPSG:4326类型不需要转化<br><a target="_blank" rel="noopener" href="http://datav.aliyun.com/portal/school/atlas/area_selector">http://datav.aliyun.com/portal/school/atlas/area_selector</a></p>
+<h3 id="图层层级层级问题"><a href="#图层层级层级问题" class="headerlink" title="图层层级层级问题"></a><code>图层层级层级问题</code></h3><ul>
+<li>一定要建号图层并添加到地图后再用setZIndex()方法来修改层级</li>
+</ul>
+<h3 id="做一些遮罩效果"><a href="#做一些遮罩效果" class="headerlink" title="做一些遮罩效果"></a><code>做一些遮罩效果</code></h3><ul>
+<li>ol-ext插件</li>
+</ul>
+<h3 id="气泡弹窗类"><a href="#气泡弹窗类" class="headerlink" title="气泡弹窗类"></a><code>气泡弹窗类</code></h3><ul>
+<li>ol.overlay</li>
+</ul>
+<h3 id="海量图标事件监听"><a href="#海量图标事件监听" class="headerlink" title="海量图标事件监听"></a><code>海量图标事件监听</code></h3><ul>
+<li>ol.Feature.on大部分事件不能监听只能通过 map的on来监听再判断</li>
+<li>通过forEachFeatureAtPixel函数过滤掉没有Feature对象的地方,必须要有返回值 不能在函数里面操作,返回boolean,在进行判断</li>
+<li>然后再通过Feature的setId赋予单独的id,事件触发时获取id来判断是否要进行下一步操作,赋予id时一定不能相同,否则会被覆盖</li>
+<li>操作中on的事件回调e里面有部分可用的数据,比如窗口位置跟坐标数据</li>
+</ul>
+<h3 id="瓦片样式"><a href="#瓦片样式" class="headerlink" title="瓦片样式"></a><code>瓦片样式</code></h3><p><code>瓦片的样式是不能改变的</code></p>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Ditu/地图控件与弹窗+全屏" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/Ditu/%E5%9C%B0%E5%9B%BE%E6%8E%A7%E4%BB%B6%E4%B8%8E%E5%BC%B9%E7%AA%97+%E5%85%A8%E5%B1%8F/">百度地图控件+弹窗+全屏+去除弹窗样式</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-10T16:00:00.000Z" itemprop="datePublished">2022年03月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a>
+  </div>
+
+      
+      
+<a href="/2022/03/11/Ditu/%E5%9C%B0%E5%9B%BE%E6%8E%A7%E4%BB%B6%E4%B8%8E%E5%BC%B9%E7%AA%97+%E5%85%A8%E5%B1%8F/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h3><pre class="line-numbers language-none"><code class="language-none">  &#x2F;**
+ * @event: 控件
+ * @params &#123;*&#125;
+ * @Tip: 
+ *&#x2F;
+createFullCrennControl() &#123;
+  function ZoomControl() &#123;
+    this.defaultAnchor &#x3D; BMAP_ANCHOR_BOTTOM_RIGHT;
+    this.defaultOffset &#x3D; new BMap.Size(10, 10);
+  &#125;
+  let that &#x3D; this
+  ZoomControl.prototype &#x3D; new BMap.Control();
+  ZoomControl.prototype.initialize &#x3D; function (map) &#123;
+    var div &#x3D; document.createElement(&#39;div&#39;);
+    div.classList.add(&#39;GoMapCenterDot&#39;)
+    div.innerText &#x3D; &#39;切到中心点&#39;
+    div.onclick &#x3D; function (e) &#123;
+      console.log(&#39;dianji&#39;)
+    &#125;
+    map.getContainer().appendChild(div);
+    return div;
+  &#125;
+  var myZoomCtrl &#x3D; new ZoomControl();
+  this.map_.addControl(myZoomCtrl);
+&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="依赖插件"><a href="#依赖插件" class="headerlink" title="依赖插件"></a>依赖插件</h3><p>import { beFull, isFull, exitFull } from ‘be-full’;</p>
+<h3 id="添加全屏控件"><a href="#添加全屏控件" class="headerlink" title="添加全屏控件"></a>添加全屏控件</h3><p><code>监听控件的点击事件</code></p>
+<blockquote>
+<p>进入全屏后开启计时器判断,直到监听到地图已经全屏后调用地图的checkResize方法重新铺图</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">let isFullFlag &#x3D; isFull(document.getElementById(&#39;Bmap-container&#39;))
+         let timerFn &#x3D; (Flag) &#x3D;&gt; &#123;
+           let timer &#x3D; setTimeout(() &#x3D;&gt; &#123;
+             let isFullFlag &#x3D; isFull(document.getElementById(&#39;Bmap-container&#39;))
+             if (isFullFlag &#x3D;&#x3D;&#x3D; Flag) &#123;
+               that.map_.checkResize()
+               clearTimeout(timer)
+               timer &#x3D; null
+             &#125; else &#123;
+               timerFn()
+               that.map_.checkResize()
+             &#125;
+           &#125;, 500);
+         &#125;
+         if (isFullFlag) &#123;
+           exitFull()
+            timerFn(false)
+         &#125; else &#123;
+           beFull(document.getElementById(&#39;Bmap-container&#39;))
+           timerFn(true)
+         &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-示例" data-language="示例"><code class="language-示例">&#x2F;**
+    * @event: 创建一个全屏控件
+    * @params &#123;*&#125;
+    * @Tip: 
+    *&#x2F;
+   createFullCrennControl() &#123;
+     function ZoomControl() &#123;
+       this.defaultAnchor &#x3D; BMAP_ANCHOR_BOTTOM_RIGHT;
+       this.defaultOffset &#x3D; new BMap.Size(10, 10);
+     &#125;
+     let that &#x3D; this
+     ZoomControl.prototype &#x3D; new BMap.Control();
+     ZoomControl.prototype.initialize &#x3D; function (map) &#123;
+       var div &#x3D; document.createElement(&#39;div&#39;);
+       div.classList.add(&#39;FullCrennControlButton&#39;)
+       div.innerText &#x3D; &#39;全屏&#x2F;退出&#39;
+       div.onclick &#x3D; function (e) &#123;
+         let isFullFlag &#x3D; isFull(document.getElementById(&#39;Bmap-container&#39;))
+         let timerFn &#x3D; (Flag) &#x3D;&gt; &#123;
+           let timer &#x3D; setTimeout(() &#x3D;&gt; &#123;
+             let isFullFlag &#x3D; isFull(document.getElementById(&#39;Bmap-container&#39;))
+             if (isFullFlag &#x3D;&#x3D;&#x3D; Flag) &#123;
+               that.map_.checkResize()
+               clearTimeout(timer)
+               timer &#x3D; null
+             &#125; else &#123;
+               timerFn()
+               that.map_.checkResize()
+             &#125;
+           &#125;, 500);
+         &#125;
+         if (isFullFlag) &#123;
+           exitFull()
+           timerFn(false)
+         &#125; else &#123;
+           beFull(document.getElementById(&#39;Bmap-container&#39;))
+           timerFn(true)
+         &#125;
+       &#125;
+       map.getContainer().appendChild(div);
+       return div;
+     &#125;
+     var myZoomCtrl &#x3D; new ZoomControl();
+     this.map_.addControl(myZoomCtrl);
+   &#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="地图弹窗使用"><a href="#地图弹窗使用" class="headerlink" title="地图弹窗使用"></a>地图弹窗使用</h1><pre class="line-numbers language-none"><code class="language-none">let MapWindowInfo &#x3D; new BMap.InfoWindow(&#39;&#39;, &#123;
+  width: 200,     &#x2F;&#x2F; 信息窗口宽度
+  height: 100,     &#x2F;&#x2F; 信息窗口高度
+  title: &quot;故宫博物院&quot;, &#x2F;&#x2F; 信息窗口标题
+  message: &quot;这里是故宫&quot;
+&#125;)&#x2F;&#x2F;创建一个信息窗口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-使用" data-language="使用"><code class="language-使用">that.map_.openInfoWindow(MapWindowInfo, 这是经纬度);
+ that.map_.closeInfoWindow(MapWindowInfo)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-修改CSS" data-language="修改CSS"><code class="language-修改CSS">&#x2F;*地图标题*&#x2F;
+::v-deep .BMap_bubble_title &#123;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid gray;
+  background-color: #0066b3;
+&#125;
+&#x2F;* 消息内容 *&#x2F;
+::v-deep .BMap_bubble_content &#123;
+&#125;
+&#x2F;* 内容 *&#x2F;
+::v-deep .BMap_pop div:nth-child(9) &#123;
+  top: 35px !important;
+  border-radius: 7px;
+  background-color: red;
+&#125;
+&#x2F;* 左上角删除按键 与底部箭头图片 *&#x2F;
+::v-deep .BMap_pop img &#123;
+  display: none;
+&#125;
+&#x2F;* 上边框 *&#x2F;
+::v-deep .BMap_top &#123;
+  display: none;
+&#125;
+&#x2F;* 下边框 *&#x2F;
+::v-deep .BMap_bottom &#123;
+  display: none;
+&#125;
+&#x2F;* 中心内容底框 *&#x2F;
+::v-deep .BMap_center &#123;
+  display: none;
+&#125;
+&#x2F;* 左上角 *&#x2F;
+::v-deep .BMap_pop div:nth-child(1) div &#123;
+  display: none;
+&#125;
+&#x2F;* 左下角 *&#x2F;
+::v-deep .BMap_pop div:nth-child(5) div &#123;
+  display: none;
+&#125;
+&#x2F;* 右上角 *&#x2F;
+::v-deep .BMap_pop div:nth-child(3) &#123;
+  display: none;
+&#125;
+&#x2F;* 右下角 *&#x2F;
+::v-deep .BMap_pop div:nth-child(7) &#123;
+  display: none;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p><code>百度地图的弹窗并不好用,便可以通过标签来代替,内容时支持html的</code></p>
+<ul>
+<li>创建<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;设置好 偏移 不允许使用clearOverlays方法清除
+let LabelInfo &#x3D; new BMap.Label(&#39;&#39;, &#123;
+  offset: new BMap.Size(0, -30),
+  enableMassClear: false
+&#125;)
+&#x2F;&#x2F;设置好层级
+LabelInfo.setZIndex(99)
+let styles &#x3D; &#123;
+  color: &#39;white&#39;,
+  fontSize: &#39;13px&#39;,
+  backgroundColor: &quot;rgba(0, 180, 216,.6)&quot;,
+  border: &#39;2px solid #00b4d8&#39;,
+  opacity: 0
+&#125;
+&#x2F;&#x2F;设置好样式,默认透明度为0
+LabelInfo.setStyle(styles)
+&#x2F;&#x2F;添加到地图
+this.map_.addOverlay(LabelInfo);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>使用<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;在标注的事件中使用,修改好内容修改位置,修改透明度显示
+tyles.opacity &#x3D; 1
+LabelInfo.setStyle(styles)
+LabelInfo.setContent(ev.target.data.name)
+LabelInfo.setPosition(ev.target.data.position)
+&#x2F;&#x2F;隐藏,修改透明度使其隐藏,内容改为空,是为了不占位
+styles.opacity &#x3D; 0
+LabelInfo.setContent(&#39;&#39;)
+LabelInfo.setStyle(styles)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BMap/" rel="tag">BMap</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-原生/Js文件下载上传" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/%E5%8E%9F%E7%94%9F/Js%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8A%E4%BC%A0/">js 文件下载上传</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-10T16:00:00.000Z" itemprop="datePublished">2022年03月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a>
+  </div>
+
+      
+      
+<a href="/2022/03/11/%E5%8E%9F%E7%94%9F/Js%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E4%B8%8A%E4%BC%A0/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <pre class="line-numbers language-封装的接口" data-language="封装的接口"><code class="language-封装的接口">export function getModuleDown() &#123;
+  return request(&#123;
+    url: &quot;&#x2F;downloadTemp&quot;,
+    method: &quot;get&quot;,
+    responseType: &quot;blob&quot;&#x2F;&#x2F;重点
+  &#125;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-使用" data-language="使用"><code class="language-使用">getModuleDown().then(res &#x3D;&gt; &#123;
+            &#x2F;&#x2F; console.log(res);
+            &#x2F;&#x2F;下载文件操作
+            const link &#x3D; document.createElement(&quot;a&quot;);
+            let blob &#x3D; new Blob([res], &#123; type: &quot;application&#x2F;vnd.ms-excel&quot; &#125;); &#x2F;&#x2F;生成blob对象
+            console.log(blob);
+            link.style.display &#x3D; &quot;none&quot;;
+            link.href &#x3D; URL.createObjectURL(blob);
+            link.setAttribute(&quot;download&quot;, &quot;模板&quot; + &quot;.xls&quot;); &#x2F;&#x2F;下载的文件名以及文件格式
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          &#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+  * 下载blob格式的文件
+  * @param &#123;Blob&#125; blob blob数据
+  * @param &#123;String&#125; fileName 下载的文件名，不写后缀名则默认为原文件类型
+  *&#x2F;
+ function downloadBlobFile(blob, fileName) &#123;
+   try &#123;
+     const objUrl &#x3D; window.URL.createObjectURL(blob);
+     const link &#x3D; window.document.createElement(&quot;a&quot;);
+     link.download &#x3D; fileName;
+     link.href &#x3D; objUrl;
+     link.click();
+     URL.revokeObjectURL(objUrl);
+   &#125; catch (error) &#123;
+     console.error(error);
+   &#125;
+ &#125;
+
+ &#x2F;**
+  * 通过文件url地址下载
+  * @param &#123;String&#125; fileUrl url文件地址
+  * @param &#123;String&#125; fileName 下载的文件名，不写后缀名则默认为原文件类型
+  *&#x2F;
+ function downloadFileUrl(fileUrl, fileName) &#123;
+   try &#123;
+     const link &#x3D; window.document.createElement(&quot;a&quot;);
+     link.download &#x3D; fileName;
+     link.href &#x3D; fileUrl;
+     &#x2F;&#x2F; 生成节点点击
+     window.document.body.appendChild(link);
+     link.click();
+     &#x2F;&#x2F; 点击后移除节点
+     window.document.body.removeChild(link);
+   &#125; catch (error) &#123;
+     console.error(error);
+   &#125;
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-原生/Js滚动条相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/%E5%8E%9F%E7%94%9F/Js%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%9B%B8%E5%85%B3/">js 滚动条相关</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-10T16:00:00.000Z" itemprop="datePublished">2022年03月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a>
+  </div>
+
+      
+      
+<a href="/2022/03/11/%E5%8E%9F%E7%94%9F/Js%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%9B%B8%E5%85%B3/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>https://blog.csdn.net/Jack_zengzhen/article/details/79013841</code></p>
+<ul>
+<li>offset<br><code>带边框</code></li>
+<li>clint<br><code>不带边框,边框以内时间内容</code></li>
+<li>document.body.scrollTop<br><code>谷歌:滚动条距离顶部的距离</code></li>
+<li>document.documentElement.scrollTop<br><code>IE:滚动条距离顶部的距离</code></li>
+<li>window.screen.height<br><code>电脑屏的高度</code></li>
+<li>document.body.scrollHeight<br><code>谷歌&amp;IE: 浏览器所有内容的高度</code></li>
+<li>document.documentElement.clientHeight<br><code>谷歌&amp;IE: 可视区的高度</code></li>
+</ul>
+<h3 id="监听触底"><a href="#监听触底" class="headerlink" title="监听触底"></a>监听触底</h3><p><code>必须将方法绑在this上否则无法移除</code></p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">mounted() &#123;
+    window.addEventListener(&#39;scroll&#39;, this.listenerScroll)
+  &#125;,
+beforeDestroy() &#123;
+    window.removeEventListener(&#39;scroll&#39;, this.listenerScroll)
+  &#125;,
+methods:&#123;
+    &#x2F;**
+ * @event: 监听滚轮触底
+ * @params &#123;*&#125;
+ * @Tip: https:&#x2F;&#x2F;blog.csdn.net&#x2F;Jack_zengzhen&#x2F;article&#x2F;details&#x2F;79013841
+ * scrollTop   距离顶部的距离,做兼容处理
+ * bodyHeight  浏览器所有内容的高度
+ * clientHeight 可视区高
+ * 每次截取新的长度给需要渲染的数据,知道需要渲染的数据不小与所有数据
+ *&#x2F;
+    listenerScroll() &#123;
+      let scrollTop &#x3D; window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      let bodyHeight &#x3D; document.body.scrollHeight
+      let clientHeight &#x3D; document.documentElement.clientHeight
+      if (clientHeight + scrollTop + 50 &gt;&#x3D; bodyHeight) &#123;&#x2F;&#x2F;加50防止滚动条一直呆在底部
+        let loadList &#x3D; this.stationList
+        if (loadList.length &lt; nowDataList.length) &#123;
+          this.loading&#x3D;true
+          let endNum &#x3D; loadList.length + numList
+          loadList &#x3D; [...loadList, ...nowDataList.slice(loadList.length, endNum)]
+          this.stationList &#x3D; loadList
+          this.$nextTick(()&#x3D;&gt;&#123;this.loading&#x3D;false&#125;)
+        &#125;
+      &#125;
+    &#125;,
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-原生/Js时间相关功能" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/07/%E5%8E%9F%E7%94%9F/Js%E6%97%B6%E9%97%B4%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD/">js 时间相关功能</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-06T16:00:00.000Z" itemprop="datePublished">2022年03月07日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a>
+  </div>
+
+      
+      
+<a href="/2022/03/07/%E5%8E%9F%E7%94%9F/Js%E6%97%B6%E9%97%B4%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="new-Date-对象"><a href="#new-Date-对象" class="headerlink" title="new Date()对象"></a>new Date()对象</h3><pre class="line-numbers language-none"><code class="language-none">var date &#x3D; new Date();
+	date.getYear();        &#x2F;&#x2F;获取年份(2位)
+	date.getFullYear();    &#x2F;&#x2F;获取完整的年份(4位,1970-)
+	date.getMonth();       &#x2F;&#x2F;获取月份(0-11,0代表1月，所以在显示当前时间的时候需要date.getMonth() + 1）
+	date.getDate();        &#x2F;&#x2F;获取日(1-31)
+	date.getDay();         &#x2F;&#x2F;获取星期?(0-6,0代表星期天)
+	date.getTime();        &#x2F;&#x2F;获取时间(从1970.1.1开始的毫秒数)
+	date.getHours();       &#x2F;&#x2F;获取小时数(0-23)
+	date.getMinutes();     &#x2F;&#x2F;获取分钟数(0-59)
+	date.getSeconds();     &#x2F;&#x2F;获取秒数(0-59)
+	date.getMilliseconds();    &#x2F;&#x2F;获取毫秒数(0-999)
+	date.toLocaleString();        &#x2F;&#x2F;获取日期与时间 2020&#x2F;8&#x2F;9 上午11:20:28
+  date.toLocaleDateString();        &#x2F;&#x2F;2020&#x2F;8&#x2F;9
+  date.toLocaleTimeString();        &#x2F;&#x2F;上午11:20:28<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="判断当天是否为最后一天"><a href="#判断当天是否为最后一天" class="headerlink" title="判断当天是否为最后一天"></a>判断当天是否为最后一天</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+ * @event: 判断当天是否为当月最后一天
+ *&#x2F;
+export const isLastDay &#x3D; () &#x3D;&gt; &#123;
+  let flag &#x3D; false;
+  let date &#x3D; new Date();
+  let year &#x3D; date.getFullYear();
+  let month &#x3D; date.getMonth() + 1;
+  let today &#x3D; date.getDate();
+  let new_year &#x3D; year; &#x2F;&#x2F;取当前的年份
+  let new_month &#x3D; month++; &#x2F;&#x2F;取下一个月的第一天，方便计算（最后一天不固定）
+  if (month &gt; 12) &#123;
+    &#x2F;&#x2F;如果当前大于12月，则年份转到下一年
+    new_month -&#x3D; 12; &#x2F;&#x2F;月份减
+    new_year++; &#x2F;&#x2F;年份增
+  &#125;
+  let new_date &#x3D; new Date(new_year, new_month, 1); &#x2F;&#x2F;取当年当月中的第一天
+  var month_last_day &#x3D; new Date(
+    new_date.getTime() - 1000 * 60 * 60 * 24
+  ).getDate();
+  if (today &#x3D;&#x3D; month_last_day) &#123;
+    flag &#x3D; true;
+  &#125;
+  return flag;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="固定时间不操作重新登录"><a href="#固定时间不操作重新登录" class="headerlink" title="固定时间不操作重新登录"></a>固定时间不操作重新登录</h3><pre class="line-numbers language-none"><code class="language-none">;(function () &#123;
+  &#x2F;**
+   * @Tip:
+   * FenZhon:Number 设置超时时间(分钟)
+   * timeoutJianCha:时间戳 多久检查一次
+   * lastTime:时间戳 最后一次操作的时间
+   * currentTime:时间戳 当前操作的时间
+   * timer:计时器
+   *&#x2F;
+  let FenZhon &#x3D; 0.1
+  let lastTime &#x3D; new Date().getTime()
+  let currentTime &#x3D; new Date().getTime()
+  let timeout &#x3D; FenZhon * 60 * 1000
+  let timer &#x3D; null
+  let timeoutJianCha &#x3D; 1000
+  
+  &#x2F;**
+   * @event: 监听鼠标按下事件并更新最后一次操作的时间
+   * @Tip:
+   *&#x2F;
+  window.onload &#x3D; function () &#123;
+    window.document.onmousedown &#x3D; function () &#123;
+      localStorage.setItem(&#39;yemiandingshiqi&#39;, new Date().getTime())
+    &#125;
+  &#125;
+
+  &#x2F;**
+   * @event: 检查是否超时,并且设置每隔多久检查一次
+   *&#x2F;
+  function checkTimeout() &#123;
+    currentTime &#x3D; new Date().getTime()
+    lastTime &#x3D; localStorage.getItem(&#39;yemiandingshiqi&#39;)
+    if (currentTime - lastTime &gt; timeout) &#123;
+      console.log(&#96;你已经有$&#123;FenZhon&#125;分钟没有操作了&#96;)
+    &#125;
+  &#125;
+  timer &#x3D; setInterval(checkTimeout, timeoutJianCha)
+&#125;)()
+
+### vue项目中
+
+在登录之后,调用方法
+&#x2F;**
+ * @event: 如果长时间不操作退出登录
+ * @params &#123;*&#125;
+ * @Tip:
+ *&#x2F;
+export const refreshPage &#x3D; () &#x3D;&gt; &#123;
+  window.localStorage.setItem(&quot;yemiandingshiqi&quot;, new Date().getTime()); &#x2F;&#x2F;首次开启需要更新数据
+  &#x2F;**
+   * @Tip:
+   * FenZhon:Number 设置超时时间(分钟)
+   * timeoutJianCha:时间戳 多久检查一次
+   * lastTime:时间戳 最后一次操作的时间
+   * currentTime:时间戳 当前操作的时间
+   * timer:计时器
+   *&#x2F;
+  let FenZhon &#x3D; 1;
+  let lastTime &#x3D; new Date().getTime();
+  let currentTime &#x3D; new Date().getTime();
+  let timeout &#x3D; FenZhon * 60 * 1000;
+  let timer &#x3D; null;
+  let timeoutJianCha &#x3D; 60000;
+
+  &#x2F;**
+   * @event: 监听鼠标按下事件并更新最后一次操作的时间
+   * @Tip:
+   *&#x2F;
+  window.onload &#x3D; function() &#123;
+    window.document.onmousedown &#x3D; function() &#123;
+      window.localStorage.setItem(&quot;yemiandingshiqi&quot;, new Date().getTime());
+    &#125;;
+  &#125;;
+  &#x2F;**
+   * @event: 检查是否超时,并且设置每隔多久检查一次
+   *&#x2F;
+  function checkTimeout() &#123;
+    currentTime &#x3D; new Date().getTime();
+    lastTime &#x3D; window.localStorage.getItem(&quot;yemiandingshiqi&quot;);
+    if (currentTime - lastTime &gt; timeout) &#123;
+      Message.error(&#96;$&#123;FenZhon&#125;分钟为操作,已退出登录&#96;);
+      store.dispatch(&quot;LogOut&quot;);
+      router.push(&quot;&#x2F;login&quot;);
+    &#125;
+  &#125;
+  timer &#x3D; setInterval(checkTimeout, timeoutJianCha);
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-原生/Css常用点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/02/27/%E5%8E%9F%E7%94%9F/Css%E5%B8%B8%E7%94%A8%E7%82%B9/">css开发常用</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-02-26T16:00:00.000Z" itemprop="datePublished">2022年02月27日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a>
+  </div>
+
+      
+      
+<a href="/2022/02/27/%E5%8E%9F%E7%94%9F/Css%E5%B8%B8%E7%94%A8%E7%82%B9/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="禁止用户复制文本"><a href="#禁止用户复制文本" class="headerlink" title="禁止用户复制文本"></a>禁止用户复制文本</h3><pre class="line-numbers language-none"><code class="language-none">.box&#123;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="文字间距"><a href="#文字间距" class="headerlink" title="文字间距"></a>文字间距</h3><pre class="line-numbers language-none"><code class="language-none">letter-spacing: 10px;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="滚动条"><a href="#滚动条" class="headerlink" title="滚动条"></a>滚动条</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;* 整体,width:横向宽 height:竖向宽 *&#x2F;
+::-webkit-scrollbar &#123;
+  width: 16px;
+  height: 16px;
+&#125;
+&#x2F;* 滚动条的轨道（里面装有Thumb） *&#x2F;
+::-webkit-scrollbar-track &#123;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+&#125;
+&#x2F;* 滚动条里面的小方块，能向上向下移动 *&#x2F;
+::-webkit-scrollbar-thumb &#123;
+  background-color: red;
+&#125;
+&#x2F;* 滚动条的轨道的两端按钮 *&#x2F;
+::-webkit-scrollbar-button &#123;
+  background-color: gray;
+&#125;
+&#x2F;* 边角，即两个滚动条的交汇处 *&#x2F;
+::-webkit-scrollbar-corner &#123;
+  background-color: black;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-原生/Js难点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/02/27/%E5%8E%9F%E7%94%9F/Js%E9%9A%BE%E7%82%B9/">js开发难点</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-02-26T16:00:00.000Z" itemprop="datePublished">2022年02月27日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a>
+  </div>
+
+      
+      
+<a href="/2022/02/27/%E5%8E%9F%E7%94%9F/Js%E9%9A%BE%E7%82%B9/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="js-util包"><a href="#js-util包" class="headerlink" title="js util包"></a>js util包</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;*!
+ * @lime-util&#x2F;util 
+ * Version: v3.0.10
+ *
+ * Copyright 2021-2022, Gaoshiwei &lt;575792372@qq.com&gt;
+ * Licensed under the MIT License.
+ * http:&#x2F;&#x2F;www.opensource.org&#x2F;licenses&#x2F;mit-license
+ * 
+ *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="select-标签"><a href="#select-标签" class="headerlink" title="select 标签"></a>select 标签</h3><blockquote>
+<p>通过js选中指定某一项</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">let dom_value &#x3D; document.getElementById(&#39;select_id&#39;)
+let tag_dom &#x3D; dom_value.getElementsByTagName(&#39;option&#39;)
+for (let item of tag_dom) &#123;
+	if (load_value &#x3D;&#x3D;&#x3D; item.value) &#123;
+		item.selected &#x3D; true
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="非空验证"><a href="#非空验证" class="headerlink" title="非空验证"></a>非空验证</h3><pre class="line-numbers language-none"><code class="language-none">export const isNull&#x3D;(date)&#x3D;&gt;&#123;
+	if (date &#x3D;&#x3D;&#x3D; 0) return false;
+	if(!date)return true;
+	if (JSON.stringify(date) &#x3D;&#x3D;&#x3D; &#39;&#123;&#125;&#39;) return true;
+    if (JSON.stringify(date) &#x3D;&#x3D;&#x3D; &#39;[]&#39;) return true;
+ 	&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="截取字符串"><a href="#截取字符串" class="headerlink" title="截取字符串"></a>截取字符串</h3><pre class="line-numbers language-none"><code class="language-none">let str&#x3D;&#39;abcdkfss&#39;
+str.lastIndexOf(&#39;a&#39;) &#x2F;&#x2F; 0 查看该字符最后出现的位置
+str.substr(-2) &#x2F;&#x2F;ss 截取倒数第一位往后,包括倒数第一位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="js-修改样式-可修改伪类"><a href="#js-修改样式-可修改伪类" class="headerlink" title="js 修改样式(可修改伪类)"></a>js 修改样式(可修改伪类)</h3><pre class="line-numbers language-none"><code class="language-none"> function addCSSRule(sheet, selector, rules, index) &#123;
+   try &#123;
+     if (&quot;insertRule&quot; in sheet) &#123;
+       sheet.insertRule(selector + &quot;&#123;&quot; + rules + &quot;&#125;&quot;, index);
+     &#125; else if (&quot;addRule&quot; in sheet) &#123;
+       sheet.addRule(selector, rules, index);
+     &#125;
+   &#125; catch (error) &#123;
+     console.log(error);
+   &#125;
+ &#125;
+  &#x2F;&#x2F; 使用方式
+addCSSRule(
+  document.styleSheets[0],&#x2F;&#x2F;不需要动
+  &quot;.BoxLayout:hover&quot;,
+  &quot;background-color:teal!important;&quot;
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+
+    <nav id="page-nav">
+
+<a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+</nav>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>项目中eslint配置 | xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Vscode/项目中eslint配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      项目中eslint配置
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/vscode/">vscode</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/04/02/Vscode/%E9%A1%B9%E7%9B%AE%E4%B8%ADeslint%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Install-Vscode-Plugins"><a href="#Install-Vscode-Plugins" class="headerlink" title="Install Vscode Plugins"></a>Install Vscode Plugins</h3><ol>
+<li>eslint</li>
+<li>prettier</li>
+<li>csscomb</li>
+</ol>
+<h3 id="Install-Project-Plugins"><a href="#Install-Project-Plugins" class="headerlink" title="Install Project Plugins"></a>Install Project Plugins</h3><ol>
+<li>npm i -g eslint</li>
+<li>npm i prettier -D</li>
+</ol>
+<h3 id="Config-File"><a href="#Config-File" class="headerlink" title="Config File"></a>Config File</h3><ol>
+<li>npx eslint –init</li>
+</ol>
+<h3 id="Docs"><a href="#Docs" class="headerlink" title="Docs"></a>Docs</h3><ol>
+<li>Eslint<pre class="line-numbers language-none"><code class="language-none">忽略整个文件
+&#x2F;*eslint-disable*&#x2F;
+忽略下一行
+&#x2F;* eslint-disable-next-line *&#x2F;
+忽略文件
+.eslintignore<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h3 id="me"><a href="#me" class="headerlink" title="me"></a>me</h3><p>1.Vscode settings.json</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+    &quot;editor.formatOnType&quot;: true,
+    &quot;editor.formatOnSave&quot;: true,
+    &quot;eslint.codeAction.showDocumentation&quot;: &#123;
+        &quot;enable&quot;: true
+    &#125;,
+    &quot;editor.codeActionsOnSave&quot;: &#123;
+        &quot;source.fixAll.eslint&quot;: true
+    &#125;,
+    &quot;csscomb.formatOnSave&quot;: true,
+    &quot;csscomb.preset&quot;: &#123;&#125;,
+    &quot;eslint.validate&quot;: [&quot;javascript&quot;, &quot;javascriptreact&quot;, &quot;html&quot;, &quot;vue&quot;],
+    &quot;[vue]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+    &#125;,
+    &quot;[javascript]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+    &#125;,
+    &quot;[json]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+    &#125;,
+    &quot;[jsonc]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+    &#125;,
+    &quot;[css]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+    &#125;,
+    &quot;[typescript]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+    &#125;,
+    &quot;[html]&quot;: &#123;
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li><p>.eslintrc.js</p>
+<pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
+    env: &#123;
+        browser: true,
+        es2021: true,
+        node: true
+    &#125;,
+    extends: [&quot;eslint:recommended&quot;, &quot;plugin:vue&#x2F;essential&quot;],
+    parserOptions: &#123;
+        ecmaVersion: 12,
+        sourceType: &quot;module&quot;
+    &#125;,
+    plugins: [&quot;vue&quot;],
+    rules: &#123;
+        semi: [2, &quot;always&quot;],
+        &quot;no-console&quot;: 0
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>.prettierrc.js</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* DOCS https:&#x2F;&#x2F;prettier.io&#x2F;docs&#x2F;en&#x2F;options.html *&#x2F;
+module.exports &#x3D; &#123;
+    printWidth: 120, &#x2F;&#x2F; 一行最多 120 字符
+    tabWidth: 4, &#x2F;&#x2F;指定每个缩进级别的空格数。
+    useTabs: false, &#x2F;&#x2F;是否使用制表符来缩进
+    singleQuote: false, &#x2F;&#x2F; 使用单引号
+    semi: true, &#x2F;&#x2F; 行尾需要有分号
+    trailingComma: &quot;none&quot;, &#x2F;&#x2F; 末尾不需要逗号
+    bracketSpacing: true, &#x2F;&#x2F; 大括号内的首尾需要空格
+    jsxBracketSameLine: false, &#x2F;&#x2F; jsx 标签的反尖括号需要换行
+    arrowParens: &quot;avoid&quot;, &#x2F;&#x2F;箭头函数参数周围可以不用括号
+    endOfLine: &quot;auto&quot;, &#x2F;&#x2F;换行符的使用
+    quoteProps: &quot;as-needed&quot;, &#x2F;&#x2F; 对象的 key 仅在必要时用引号
+    jsxSingleQuote: false, &#x2F;&#x2F; jsx 不使用单引号，而使用双引号
+    rangeStart: 0, &#x2F;&#x2F; 每个文件格式化的范围是文件的全部内容
+    requirePragma: false, &#x2F;&#x2F; 不需要写文件开头的 @prettier
+    insertPragma: false, &#x2F;&#x2F; 不需要自动在文件开头插入 @prettier
+    &#x2F;&#x2F; proseWrap: &#39;always&#39;, &#x2F;&#x2F; 根据打印宽度决定是否折行 printWidth
+    htmlWhitespaceSensitivity: &quot;css&quot; &#x2F;&#x2F; 根据显示样式决定 html 要不要折行
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>.csscomb.json</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+    &quot;exclude&quot;: [&quot;.git&#x2F;**&quot;, &quot;node_modules&#x2F;**&quot;, &quot;bower_components&#x2F;**&quot;],
+    &quot;always-semicolon&quot;: true,
+    &quot;block-indent&quot;: &quot;  &quot;,
+    &quot;color-case&quot;: &quot;lower&quot;,
+    &quot;color-shorthand&quot;: true,
+    &quot;element-case&quot;: &quot;lower&quot;,
+    &quot;eof-newline&quot;: true,
+    &quot;leading-zero&quot;: false,
+    &quot;quotes&quot;: &quot;single&quot;,
+    &quot;remove-empty-rulesets&quot;: true,
+    &quot;space-after-colon&quot;: &quot; &quot;,
+    &quot;lines-between-rulesets&quot;: 1,
+    &quot;space-after-combinator&quot;: &quot; &quot;,
+    &quot;space-after-opening-brace&quot;: &quot;\n&quot;,
+    &quot;space-after-selector-delimiter&quot;: &quot;\n&quot;,
+    &quot;space-before-closing-brace&quot;: &quot;\n&quot;,
+    &quot;space-before-colon&quot;: &quot;&quot;,
+    &quot;space-before-combinator&quot;: &quot; &quot;,
+    &quot;space-before-opening-brace&quot;: &quot; &quot;,
+    &quot;space-before-selector-delimiter&quot;: &quot;&quot;,
+    &quot;space-between-declarations&quot;: &quot;\n&quot;,
+    &quot;strip-spaces&quot;: true,
+    &quot;unitless-zero&quot;: true,
+    &quot;vendor-prefix-align&quot;: true,
+    &quot;sort-order&quot;: [
+        [
+            &quot;font&quot;,
+            &quot;font-family&quot;,
+            &quot;font-size&quot;,
+            &quot;font-weight&quot;,
+            &quot;font-style&quot;,
+            &quot;font-variant&quot;,
+            &quot;font-size-adjust&quot;,
+            &quot;font-stretch&quot;,
+            &quot;font-effect&quot;,
+            &quot;font-emphasize&quot;,
+            &quot;font-emphasize-position&quot;,
+            &quot;font-emphasize-style&quot;,
+            &quot;font-smooth&quot;,
+            &quot;line-height&quot;,
+            &quot;position&quot;,
+            &quot;z-index&quot;,
+            &quot;top&quot;,
+            &quot;right&quot;,
+            &quot;bottom&quot;,
+            &quot;left&quot;,
+            &quot;display&quot;,
+            &quot;visibility&quot;,
+            &quot;float&quot;,
+            &quot;clear&quot;,
+            &quot;overflow&quot;,
+            &quot;overflow-x&quot;,
+            &quot;overflow-y&quot;,
+            &quot;-ms-overflow-x&quot;,
+            &quot;-ms-overflow-y&quot;,
+            &quot;clip&quot;,
+            &quot;zoom&quot;,
+            &quot;-webkit-align-content&quot;,
+            &quot;-ms-flex-line-pack&quot;,
+            &quot;align-content&quot;,
+            &quot;-webkit-box-align&quot;,
+            &quot;-moz-box-align&quot;,
+            &quot;-webkit-align-items&quot;,
+            &quot;align-items&quot;,
+            &quot;-ms-flex-align&quot;,
+            &quot;-webkit-align-self&quot;,
+            &quot;-ms-flex-item-align&quot;,
+            &quot;-ms-grid-row-align&quot;,
+            &quot;align-self&quot;,
+            &quot;-webkit-box-flex&quot;,
+            &quot;-webkit-flex&quot;,
+            &quot;-moz-box-flex&quot;,
+            &quot;-ms-flex&quot;,
+            &quot;flex&quot;,
+            &quot;-webkit-flex-flow&quot;,
+            &quot;-ms-flex-flow&quot;,
+            &quot;flex-flow&quot;,
+            &quot;-webkit-flex-basis&quot;,
+            &quot;-ms-flex-preferred-size&quot;,
+            &quot;flex-basis&quot;,
+            &quot;-webkit-box-orient&quot;,
+            &quot;-webkit-box-direction&quot;,
+            &quot;-webkit-flex-direction&quot;,
+            &quot;-moz-box-orient&quot;,
+            &quot;-moz-box-direction&quot;,
+            &quot;-ms-flex-direction&quot;,
+            &quot;flex-direction&quot;,
+            &quot;-webkit-flex-grow&quot;,
+            &quot;-ms-flex-positive&quot;,
+            &quot;flex-grow&quot;,
+            &quot;-webkit-flex-shrink&quot;,
+            &quot;-ms-flex-negative&quot;,
+            &quot;flex-shrink&quot;,
+            &quot;-webkit-flex-wrap&quot;,
+            &quot;-ms-flex-wrap&quot;,
+            &quot;flex-wrap&quot;,
+            &quot;-webkit-box-pack&quot;,
+            &quot;-moz-box-pack&quot;,
+            &quot;-ms-flex-pack&quot;,
+            &quot;-webkit-justify-content&quot;,
+            &quot;justify-content&quot;,
+            &quot;-webkit-box-ordinal-group&quot;,
+            &quot;-webkit-order&quot;,
+            &quot;-moz-box-ordinal-group&quot;,
+            &quot;-ms-flex-order&quot;,
+            &quot;order&quot;,
+            &quot;-webkit-box-sizing&quot;,
+            &quot;-moz-box-sizing&quot;,
+            &quot;box-sizing&quot;,
+            &quot;width&quot;,
+            &quot;min-width&quot;,
+            &quot;max-width&quot;,
+            &quot;height&quot;,
+            &quot;min-height&quot;,
+            &quot;max-height&quot;,
+            &quot;margin&quot;,
+            &quot;margin-top&quot;,
+            &quot;margin-right&quot;,
+            &quot;margin-bottom&quot;,
+            &quot;margin-left&quot;,
+            &quot;padding&quot;,
+            &quot;padding-top&quot;,
+            &quot;padding-right&quot;,
+            &quot;padding-bottom&quot;,
+            &quot;padding-left&quot;,
+            &quot;table-layout&quot;,
+            &quot;empty-cells&quot;,
+            &quot;caption-side&quot;,
+            &quot;border-spacing&quot;,
+            &quot;border-collapse&quot;,
+            &quot;list-style&quot;,
+            &quot;list-style-position&quot;,
+            &quot;list-style-type&quot;,
+            &quot;list-style-image&quot;,
+            &quot;content&quot;,
+            &quot;quotes&quot;,
+            &quot;counter-reset&quot;,
+            &quot;counter-increment&quot;,
+            &quot;resize&quot;,
+            &quot;cursor&quot;,
+            &quot;-webkit-user-select&quot;,
+            &quot;-moz-user-select&quot;,
+            &quot;-ms-user-select&quot;,
+            &quot;user-select&quot;,
+            &quot;nav-index&quot;,
+            &quot;nav-up&quot;,
+            &quot;nav-right&quot;,
+            &quot;nav-down&quot;,
+            &quot;nav-left&quot;,
+            &quot;-webkit-transition&quot;,
+            &quot;-moz-transition&quot;,
+            &quot;-ms-transition&quot;,
+            &quot;-o-transition&quot;,
+            &quot;transition&quot;,
+            &quot;-webkit-transition-delay&quot;,
+            &quot;-moz-transition-delay&quot;,
+            &quot;-ms-transition-delay&quot;,
+            &quot;-o-transition-delay&quot;,
+            &quot;transition-delay&quot;,
+            &quot;-webkit-transition-timing-function&quot;,
+            &quot;-moz-transition-timing-function&quot;,
+            &quot;-ms-transition-timing-function&quot;,
+            &quot;-o-transition-timing-function&quot;,
+            &quot;transition-timing-function&quot;,
+            &quot;-webkit-transition-duration&quot;,
+            &quot;-moz-transition-duration&quot;,
+            &quot;-ms-transition-duration&quot;,
+            &quot;-o-transition-duration&quot;,
+            &quot;transition-duration&quot;,
+            &quot;-webkit-transition-property&quot;,
+            &quot;-moz-transition-property&quot;,
+            &quot;-ms-transition-property&quot;,
+            &quot;-o-transition-property&quot;,
+            &quot;transition-property&quot;,
+            &quot;-webkit-transform&quot;,
+            &quot;-moz-transform&quot;,
+            &quot;-ms-transform&quot;,
+            &quot;-o-transform&quot;,
+            &quot;transform&quot;,
+            &quot;-webkit-transform-origin&quot;,
+            &quot;-moz-transform-origin&quot;,
+            &quot;-ms-transform-origin&quot;,
+            &quot;-o-transform-origin&quot;,
+            &quot;transform-origin&quot;,
+            &quot;-webkit-animation&quot;,
+            &quot;-moz-animation&quot;,
+            &quot;-ms-animation&quot;,
+            &quot;-o-animation&quot;,
+            &quot;animation&quot;,
+            &quot;-webkit-animation-name&quot;,
+            &quot;-moz-animation-name&quot;,
+            &quot;-ms-animation-name&quot;,
+            &quot;-o-animation-name&quot;,
+            &quot;animation-name&quot;,
+            &quot;-webkit-animation-duration&quot;,
+            &quot;-moz-animation-duration&quot;,
+            &quot;-ms-animation-duration&quot;,
+            &quot;-o-animation-duration&quot;,
+            &quot;animation-duration&quot;,
+            &quot;-webkit-animation-play-state&quot;,
+            &quot;-moz-animation-play-state&quot;,
+            &quot;-ms-animation-play-state&quot;,
+            &quot;-o-animation-play-state&quot;,
+            &quot;animation-play-state&quot;,
+            &quot;-webkit-animation-timing-function&quot;,
+            &quot;-moz-animation-timing-function&quot;,
+            &quot;-ms-animation-timing-function&quot;,
+            &quot;-o-animation-timing-function&quot;,
+            &quot;animation-timing-function&quot;,
+            &quot;-webkit-animation-delay&quot;,
+            &quot;-moz-animation-delay&quot;,
+            &quot;-ms-animation-delay&quot;,
+            &quot;-o-animation-delay&quot;,
+            &quot;animation-delay&quot;,
+            &quot;-webkit-animation-iteration-count&quot;,
+            &quot;-moz-animation-iteration-count&quot;,
+            &quot;-ms-animation-iteration-count&quot;,
+            &quot;-o-animation-iteration-count&quot;,
+            &quot;animation-iteration-count&quot;,
+            &quot;-webkit-animation-direction&quot;,
+            &quot;-moz-animation-direction&quot;,
+            &quot;-ms-animation-direction&quot;,
+            &quot;-o-animation-direction&quot;,
+            &quot;animation-direction&quot;,
+            &quot;text-align&quot;,
+            &quot;-webkit-text-align-last&quot;,
+            &quot;-moz-text-align-last&quot;,
+            &quot;-ms-text-align-last&quot;,
+            &quot;text-align-last&quot;,
+            &quot;vertical-align&quot;,
+            &quot;white-space&quot;,
+            &quot;text-decoration&quot;,
+            &quot;text-emphasis&quot;,
+            &quot;text-emphasis-color&quot;,
+            &quot;text-emphasis-style&quot;,
+            &quot;text-emphasis-position&quot;,
+            &quot;text-indent&quot;,
+            &quot;-ms-text-justify&quot;,
+            &quot;text-justify&quot;,
+            &quot;letter-spacing&quot;,
+            &quot;word-spacing&quot;,
+            &quot;-ms-writing-mode&quot;,
+            &quot;text-outline&quot;,
+            &quot;text-transform&quot;,
+            &quot;text-wrap&quot;,
+            &quot;text-overflow&quot;,
+            &quot;-ms-text-overflow&quot;,
+            &quot;text-overflow-ellipsis&quot;,
+            &quot;text-overflow-mode&quot;,
+            &quot;-ms-word-wrap&quot;,
+            &quot;word-wrap&quot;,
+            &quot;word-break&quot;,
+            &quot;-ms-word-break&quot;,
+            &quot;-moz-tab-size&quot;,
+            &quot;-o-tab-size&quot;,
+            &quot;tab-size&quot;,
+            &quot;-webkit-hyphens&quot;,
+            &quot;-moz-hyphens&quot;,
+            &quot;hyphens&quot;,
+            &quot;pointer-events&quot;,
+            &quot;opacity&quot;,
+            &quot;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity&quot;,
+            &quot;-ms-filter:\\&#39;progid:DXImageTransform.Microsoft.Alpha&quot;,
+            &quot;-ms-interpolation-mode&quot;,
+            &quot;color&quot;,
+            &quot;border&quot;,
+            &quot;border-width&quot;,
+            &quot;border-style&quot;,
+            &quot;border-color&quot;,
+            &quot;border-top&quot;,
+            &quot;border-top-width&quot;,
+            &quot;border-top-style&quot;,
+            &quot;border-top-color&quot;,
+            &quot;border-right&quot;,
+            &quot;border-right-width&quot;,
+            &quot;border-right-style&quot;,
+            &quot;border-right-color&quot;,
+            &quot;border-bottom&quot;,
+            &quot;border-bottom-width&quot;,
+            &quot;border-bottom-style&quot;,
+            &quot;border-bottom-color&quot;,
+            &quot;border-left&quot;,
+            &quot;border-left-width&quot;,
+            &quot;border-left-style&quot;,
+            &quot;border-left-color&quot;,
+            &quot;-webkit-border-radius&quot;,
+            &quot;-moz-border-radius&quot;,
+            &quot;border-radius&quot;,
+            &quot;-webkit-border-top-left-radius&quot;,
+            &quot;-moz-border-radius-topleft&quot;,
+            &quot;border-top-left-radius&quot;,
+            &quot;-webkit-border-top-right-radius&quot;,
+            &quot;-moz-border-radius-topright&quot;,
+            &quot;border-top-right-radius&quot;,
+            &quot;-webkit-border-bottom-right-radius&quot;,
+            &quot;-moz-border-radius-bottomright&quot;,
+            &quot;border-bottom-right-radius&quot;,
+            &quot;-webkit-border-bottom-left-radius&quot;,
+            &quot;-moz-border-radius-bottomleft&quot;,
+            &quot;border-bottom-left-radius&quot;,
+            &quot;-webkit-border-image&quot;,
+            &quot;-moz-border-image&quot;,
+            &quot;-o-border-image&quot;,
+            &quot;border-image&quot;,
+            &quot;-webkit-border-image-source&quot;,
+            &quot;-moz-border-image-source&quot;,
+            &quot;-o-border-image-source&quot;,
+            &quot;border-image-source&quot;,
+            &quot;-webkit-border-image-slice&quot;,
+            &quot;-moz-border-image-slice&quot;,
+            &quot;-o-border-image-slice&quot;,
+            &quot;border-image-slice&quot;,
+            &quot;-webkit-border-image-width&quot;,
+            &quot;-moz-border-image-width&quot;,
+            &quot;-o-border-image-width&quot;,
+            &quot;border-image-width&quot;,
+            &quot;-webkit-border-image-outset&quot;,
+            &quot;-moz-border-image-outset&quot;,
+            &quot;-o-border-image-outset&quot;,
+            &quot;border-image-outset&quot;,
+            &quot;-webkit-border-image-repeat&quot;,
+            &quot;-moz-border-image-repeat&quot;,
+            &quot;-o-border-image-repeat&quot;,
+            &quot;border-image-repeat&quot;,
+            &quot;outline&quot;,
+            &quot;outline-width&quot;,
+            &quot;outline-style&quot;,
+            &quot;outline-color&quot;,
+            &quot;outline-offset&quot;,
+            &quot;background&quot;,
+            &quot;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader&quot;,
+            &quot;background-color&quot;,
+            &quot;background-image&quot;,
+            &quot;background-repeat&quot;,
+            &quot;background-attachment&quot;,
+            &quot;background-position&quot;,
+            &quot;background-position-x&quot;,
+            &quot;-ms-background-position-x&quot;,
+            &quot;background-position-y&quot;,
+            &quot;-ms-background-position-y&quot;,
+            &quot;-webkit-background-clip&quot;,
+            &quot;-moz-background-clip&quot;,
+            &quot;background-clip&quot;,
+            &quot;background-origin&quot;,
+            &quot;-webkit-background-size&quot;,
+            &quot;-moz-background-size&quot;,
+            &quot;-o-background-size&quot;,
+            &quot;background-size&quot;,
+            &quot;box-decoration-break&quot;,
+            &quot;-webkit-box-shadow&quot;,
+            &quot;-moz-box-shadow&quot;,
+            &quot;box-shadow&quot;,
+            &quot;filter:progid:DXImageTransform.Microsoft.gradient&quot;,
+            &quot;-ms-filter:\\&#39;progid:DXImageTransform.Microsoft.gradient&quot;,
+            &quot;text-shadow&quot;
+        ]
+    ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Vscode-Plugins"><span class="toc-text">Install Vscode Plugins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Project-Plugins"><span class="toc-text">Install Project Plugins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Config-File"><span class="toc-text">Config File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docs"><span class="toc-text">Docs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#me"><span class="toc-text">me</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/04/02/%E5%85%B6%E4%BB%96/webpack4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          webpack4学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/04/02/Vscode/%E6%88%91%E7%9A%84jsconfig.json/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          我的jsconfig.json
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

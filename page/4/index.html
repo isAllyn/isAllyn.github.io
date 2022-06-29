@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  <article id="post-其他/webpack4学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/02/%E5%85%B6%E4%BB%96/webpack4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">webpack4学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/04/02/%E5%85%B6%E4%BB%96/webpack4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="HMR-热模块替换-一个模块发生变化-只会重新打包这一个模块而不是所有模块"><a href="#HMR-热模块替换-一个模块发生变化-只会重新打包这一个模块而不是所有模块" class="headerlink" title="HMR :热模块替换,一个模块发生变化,只会重新打包这一个模块而不是所有模块"></a>HMR :热模块替换,一个模块发生变化,只会重新打包这一个模块而不是所有模块</h4><p>提高构建速度<br>js,html 文件没有这个功能</p>
+<h4 id="source-map-调试优化"><a href="#source-map-调试优化" class="headerlink" title="source-map :调试优化"></a>source-map :调试优化</h4><p>通过 devtool 配置</p>
+<h4 id="oneOf-loader-优化"><a href="#oneOf-loader-优化" class="headerlink" title="oneOf loader 优化"></a>oneOf loader 优化</h4><h4 id="代码分割-不让-js-打包在一个-js-文件中"><a href="#代码分割-不让-js-打包在一个-js-文件中" class="headerlink" title="代码分割 不让 js 打包在一个 js 文件中"></a>代码分割 不让 js 打包在一个 js 文件中</h4><p>问题:会重复被下载</p>
+<ol>
+<li>多入口(不推荐)</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">entry: &#123;
+  main: &#39;.&#x2F;src&#x2F;index.js&#39;,
+  test: &#39;.&#x2F;src&#x2F;js&#x2F;index.js&#39;
+&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>配置 加 动态导入语法 (推荐)</li>
+</ol>
+<ul>
+<li>让 node_module 的文件单独打包,并解决同一文件重复打包(前提是 node_module 下的文件)<blockquote>
+<p>缺点:所有用过的 node_module 包都会打包成一个文件 解决:配合下面的 dll 技术</p>
+</blockquote>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">optimization: &#123;
+  splitChunks: &#123;
+    chunks: &#39;all&#39; &#x2F;&#x2F; 解决重复打包
+  &#125;
+&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>让其它文件单独打包<blockquote>
+<p>ccc 问自定义的 id 也会被打包出口解析成文件名</p>
+</blockquote>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import(&#x2F;* webpackChunkName: &quot;ccc&quot; *&#x2F;&#39;.&#x2F;js3&#x2F;index.js&#39;).then(res &#x3D;&gt; &#123;
+
+&#125;).catch(() &#x3D;&gt; &#123;
+  console.log(&#39;文件加载失败&#39;);
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h4><ul>
+<li>通过某种事件触发加载,不会跟随页面加载 tip:(不会重复加载)<br>优点:提高速度</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">div.onclick&#x3D;()&#x3D;&gt;&#123;
+import(&#x2F;* webpackChunkName: &quot;ccc&quot; *&#x2F;&#39;.&#x2F;js3&#x2F;index.js&#39;).then(res &#x3D;&gt; &#123;
+ fn()
+&#125;).catch(() &#x3D;&gt; &#123;
+  console.log(&#39;文件加载失败&#39;);
+&#125;)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h4><ul>
+<li>在懒加载中添加一个 webpackPrefetch:true (浏览器其它资源加载完再偷偷加载)(推荐)<br>区别:预加载提前加载但是不运行</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">div.onclick&#x3D;()&#x3D;&gt;&#123;
+import(&#x2F;* webpackChunkName: &quot;ccc&quot;, webpackPrefetch:true *&#x2F;&#39;.&#x2F;js3&#x2F;index.js&#39;).then(res &#x3D;&gt; &#123;
+ fn()
+&#125;).catch(() &#x3D;&gt; &#123;
+  console.log(&#39;文件加载失败&#39;);
+&#125;)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="忽略打包"><a href="#忽略打包" class="headerlink" title="忽略打包"></a>忽略打包</h4><ul>
+<li>当已经使用了 cdn 引入的包后,在打包的时候可以防止 webpack 再次进行打包</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">externals:&#123;
+  &#x2F;&#x2F;拒绝打包jQuery  库名:npm包名
+  jquery:&#39;jQuery&#39;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="dll-技术"><a href="#dll-技术" class="headerlink" title="dll 技术"></a>dll 技术</h4><ul>
+<li>让某些库单独打包<br>新建 webpack.dll.js<br>主要作用:单独打包 entry 对应的包,并且生成 json 文件,内容是每个包对应的包名跟所在目录<br>tip:将这个内容提供给 webpack.config,让其知道这几个包不需要再打包了,(dll.js)运行一次后不需要再运行<br>tip:但是不打包最后就没法用这个包的方法,然后就需要使用到<a href="mailto:&#97;&#x64;&#100;&#x2d;&#x61;&#x73;&#x73;&#x65;&#116;&#45;&#104;&#x74;&#x6d;&#108;&#x2d;&#x77;&#x65;&#98;&#x70;&#x61;&#x63;&#x6b;&#x2d;&#x70;&#x6c;&#x75;&#103;&#x69;&#110;&#64;&#51;&#46;&#49;&#46;&#x33;">&#97;&#x64;&#100;&#x2d;&#x61;&#x73;&#x73;&#x65;&#116;&#45;&#104;&#x74;&#x6d;&#108;&#x2d;&#x77;&#x65;&#98;&#x70;&#x61;&#x63;&#x6b;&#x2d;&#x70;&#x6c;&#x75;&#103;&#x69;&#110;&#64;&#51;&#46;&#49;&#46;&#x33;</a>插件<br>tip:这个插件就是将之前忽略的包再自动引入到 html 文件</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">const &#123;resolve&#125;&#x3D;require(&#39;path&#39;)
+const webpack&#x3D;require(&#39;webpack&#39;)
+module.exports&#x3D;&#123;
+  entry:&#123;
+    dll:[&#39;jqeury&#39;] &#x2F;&#x2F; 最终打包后生成的[name]:需要打包的库的库名
+  &#125;,
+  output:&#123;
+    filename:&#39;[name].js&#39;, &#x2F;&#x2F; [name]&#x3D;&#x3D;&#x3D;dll
+    path:resolve(__dirname,&#39;dll&#39;) &#x2F;&#x2F;这些单独打包的库文件都放入dll文件夹下
+    library:&#39;[name]_[hash:6]&#39;,&#x2F;&#x2F;这是打包后库里面暴露出去的名字
+  &#125;,
+  plugins:[
+    new webpack.DllPlugin(&#123;&#x2F;&#x2F; 生成一个映射关系文件告诉webpack这些内容不用打包
+      name:&#39;[name]_[hash:6]&#39;,&#x2F;&#x2F;映射库暴露的内容
+      path:resolve(__dirname,&#39;dll&#x2F;manifest.json&#39;) &#x2F;&#x2F;映射库暴露的内容保存到这个路径
+    &#125;)
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行一次 webpack –config webpack.dll.js<br>然后再配置 webpack.config.js<br>下载插件<code>add-asset-html-webpack-plugin@3.1.3</code></p>
+<pre class="line-numbers language-none"><code class="language-none">plugins:[
+  new webpack.DllReferencePlugin(&#123;&#x2F;&#x2F;根据这个文件告诉webpack哪些库不参与打包,并且修改库暴露的名称
+    manifest:resolve(__dirname,&#39;dll&#x2F;manifest.json&#39;)
+  &#125;),
+  new AddAssetHtmlWebpackPlugin(&#123;
+    filepath:resolve(__dirname,&#39;dll&#x2F;dll.js&#39;)
+  &#125;)
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="使用ts"><a href="#使用ts" class="headerlink" title="使用ts"></a>使用ts</h4><p><code>yarn add -D typescript</code><br><code>yarn add -D ts-loader@8.0.11</code></p>
+<pre class="line-numbers language-none"><code class="language-none">rules:[
+       &#123;
+         test: &#x2F;\.ts$&#x2F;i,
+         loader: &#39;ts-loader&#39;,
+       &#125;,
+    ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Npm/一些库的对应版本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/25/Npm/%E4%B8%80%E4%BA%9B%E5%BA%93%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/">一些常用库的指定版本 版本对应问题</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/npm/">npm</a>
+  </div>
+
+      
+      
+<a href="/2022/03/25/Npm/%E4%B8%80%E4%BA%9B%E5%BA%93%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="vue2脚手架安装sass"><a href="#vue2脚手架安装sass" class="headerlink" title="vue2脚手架安装sass"></a>vue2脚手架安装sass</h3><ul>
+<li>如果在搭建脚手架时没有选择sass编译器就需要下载sass版本<pre class="line-numbers language-none"><code class="language-none">yarn add sass sass-loader@10.0.0 -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>其中sass版本为 “sass”: “^1.53.0”</li>
+</ul>
+<h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><p>vue2</p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add vue-router@3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><p>vue2</p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add vuex@3.6.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="ant-design-vue"><a href="#ant-design-vue" class="headerlink" title="ant-design-vue"></a>ant-design-vue</h3><p>vue2</p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add ant-design-vue@1.7.8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Npm/发布npm包" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/25/Npm/%E5%8F%91%E5%B8%83npm%E5%8C%85/">npm发布包</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/npm/">npm</a>
+  </div>
+
+      
+      
+<a href="/2022/03/25/Npm/%E5%8F%91%E5%B8%83npm%E5%8C%85/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>参照:<a target="_blank" rel="noopener" href="https://blog.csdn.net/taoerchun/article/details/82531549">https://blog.csdn.net/taoerchun/article/details/82531549</a></p>
+<h3 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h3><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a></p>
+<h3 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h3><ul>
+<li>npm init<pre class="line-numbers language-none"><code class="language-none">依次按提示填入包名、版本、描述、github地址、关键字、license等
+这步完成之后会生成一个package.json文件，上面输入的这些信息可以在该文件中修改<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<code>注意：如果你的包引用了第三方包，则需要在package.json文件种增加dependencies节点，写入依赖的包及版本</code></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&quot;dependencies&quot;: &#123;
+    &quot;colors&quot;: &quot;^1.3.2&quot;,
+    &quot;on-finished&quot;: &quot;^2.3.0&quot;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><ul>
+<li>npm login</li>
+<li>npm publish –access public<br><code>发布为公开包</code></li>
+</ul>
+<h3 id="修改版本"><a href="#修改版本" class="headerlink" title="修改版本"></a>修改版本</h3><ul>
+<li>npm login<br><code>npm version patch</code></li>
+<li>npm publish –access public</li>
+</ul>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Ts/ts学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/25/Ts/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Ts 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/ts/">ts</a>
+  </div>
+
+      
+      
+<a href="/2022/03/25/Ts/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>官网<br><a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/release-notes/typescript-3.1.html">https://www.tslang.cn/docs/release-notes/typescript-3.1.html</a></p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li><p>1.ts由微软开发</p>
+</li>
+<li><p>2.ts是js的超集</p>
+<blockquote>
+<p>es2017往后统称es7,ts包含所有版本的js语法<br>浏览器能够识别ts编译后的js语法,但不识别ts语法<br>js是动态类型 ts是静态类型(定义类型后不可赋值其它类型)</p>
+</blockquote>
+</li>
+<li><p>3.ts提供丰富的语法提示,比如一些变量的方法</p>
+</li>
+<li><p>4.ts提供丰富的错误提示,在编写阶段能够检查错误</p>
+</li>
+</ul>
+<h3 id="安装-amp-编译"><a href="#安装-amp-编译" class="headerlink" title="安装&amp;编译"></a>安装&amp;编译</h3><blockquote>
+<p>npm install typescript -g<br>tsc helloworld.ts</p>
+</blockquote>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><code>ts包含所有js数据类型,ts对引用类型进一步区分,下面是类型关键字</code><br><code>首字母小写</code></p>
+<ul>
+<li><p>js<br>  原始数据类型:boolean string number null array undefined es6:symbol<br>  引用数据类型:object typeof:function</p>
+</li>
+<li><p>ts<br>  基础数据类型:js中的原始类型<br>  +:any:任意数据类型 never没有类型 void无<br>  联合类型:一个变量可能有多个类型,<code>如:let num:number | string;</code><br>  对象类型:interface接口关键字<br>  数组类型:number[] string[] 泛型的写法:Array<number> 用于构造函数<br>  函数类型:定义参数的类型 function(argument:number),定义返回值 function():number{}</p>
+</li>
+<li><p>类型的说法</p>
+<blockquote>
+<p>类型注解:就是给变量定义一个类型,简单能推断出类型的时候没必要注解<br>类型推断:就是在未定义类型时,ts会根据所赋予的值推断出变量的类型</p>
+</blockquote>
+</li>
+<li><p>注解</p>
+<blockquote>
+<p>数字类型注解,字符串注解,对象类型接口方式注解,联合类型注解,数组注解</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p><code>就是在数据后面注解相关的类型</code></p>
+<ol>
+<li>布尔注解</li>
+</ol>
+<ul>
+<li>let flag: boolean &#x3D; false;</li>
+</ul>
+<ol start="2">
+<li>数字注解</li>
+</ol>
+<ul>
+<li>let price: number &#x3D; 12;</li>
+</ul>
+<ol start="3">
+<li>any注解</li>
+</ol>
+<ul>
+<li>这个能不用则不用</li>
+<li>未声明类型的变量</li>
+<li>可以任意赋值,使用任意方法</li>
+<li>Object:任意赋值,只能使用对应的方法<pre class="line-numbers language-none"><code class="language-none">let myIsAny:any&#x3D;6
+myIsAny&#x3D;&quot;text&quot; &#x2F;&#x2F; no problem
+myIsAny&#x3D;[1] &#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<ol start="4">
+<li><p>对象注解</p>
+<pre class="line-numbers language-none"><code class="language-none">let obj:&#123;
+	num:string,
+	toString:()&#x3D;&gt;void &#x2F;&#x2F;无返回值
+&#125;&#x3D;&#123;
+	num:&quot;12&quot;,
+	toString:()&#x3D;&gt;&#123;&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>interface接口关键字使用</p>
+<blockquote>
+<p>为了方便多次使用,定义对象类型的形状<br>定义后的变量默认不可多不可少,需要?:可有可无,[propName:string]:any;任意属性,任意类型<br><code>使用接口定义对象形状</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">interface Obj&#123;
+	num:string,
+	toString:()&#x3D;&gt;void
+&#125;
+let obj:Obj&#x3D;&#123;
+	num:&quot;12&quot;,
+	toString:()&#x3D;&gt;&#123;&#125;
+&#125;
+console.log(obj) &#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>属性可多可少/任意属性</code></p>
+<pre class="line-numbers language-none"><code class="language-none">interface Person&#123;
+	num:number,
+	age?:number,&#x2F;&#x2F;这个属性可有可无
+	[propName:string]:any, &#x2F;&#x2F;可以添加其它的任意属性
+&#125;
+let obj: Person &#x3D; &#123;
+  num: 12,
+  age: 12,
+  others:&quot;12&quot;&#x2F;&#x2F;no problem
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>只读属性</code></p>
+<pre class="line-numbers language-none"><code class="language-none">interface Person&#123;
+	readonly id:number
+&#125;
+let obj:Person&#123;
+	id:12
+&#125;
+obj.id&#x3D;1212 &#x2F;&#x2F;at question Because:只读不可更改的属性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>null &amp; undefined</p>
+</li>
+</ol>
+<ul>
+<li>null跟undefined是所有类型的子类型</li>
+<li>但是如果给某类型赋值 null 跟 undefined 需要配置 strictNullChecks 为false</li>
+</ul>
+<ol start="7">
+<li>联合类型使用</li>
+</ol>
+<ul>
+<li>注意:<pre class="line-numbers language-none"><code class="language-none">function test(a: number | string)&#123;
+	return a.toString() &#x2F;&#x2F;no problem:共有方法
+	or
+	return a.split() &#x2F;&#x2F;at question:number没有这个方法
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<ol start="8">
+<li>数组的注解</li>
+</ol>
+<ul>
+<li>方式<blockquote>
+<ol>
+<li>类型[]&#x2F;&#x2F;numer[] 2.Array[类型] &#x2F;&#x2F;Array[number] 3.interface 方式;<br>Array<number>等效 定义一个接口<br><code>联合类型的写法</code></li>
+</ol>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">let test_array: (number | string)[] &#x3D; [112, &#39;text&#39;]
+test_array.push(&#123;&#125;) &#x2F;&#x2F;at question Because:只能填入相关类型
+test_array.push(&#39;text&#39;)&#x2F;&#x2F;no problem
+test_array.push(12)&#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>等效Array&lt;number&gt;的Test接口</code></p>
+<pre class="line-numbers language-none"><code class="language-none">let test_array: Array&lt;number&gt; &#x3D; [1, 32, 324] &#x2F;&#x2F;Array内置对象
+
+interface Test &#123;
+  [index: number]: number | string &#x2F;&#x2F;任意数字类型键,值为数字类型
+&#125;
+
+&#x2F;&#x2F; let result_array: Test &#x3D; &#123;
+&#x2F;&#x2F;    name:12 &#x2F;&#x2F;at question Because 键必须是string类型
+&#x2F;&#x2F; &#125;
+
+&#x2F;&#x2F; let result_array:Test &#x3D;[1,23,32,&#123;&#125;] &#x2F;&#x2F;at question Because 值必须是 number 跟 string 类型
+
+let result_array: Test &#x3D; [12, 23, 342] &#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>函数里面的arguments类数组</code></p>
+<pre class="line-numbers language-none"><code class="language-none">function fn() &#123;
+  let a: IArguments &#x3D; arguments &#x2F;&#x2F;任意类型的 arguments, IArguments 内置对象
+&#125;
+
+fn()&#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<ol start="9">
+<li>函数注解</li>
+</ol>
+<ul>
+<li>1.函数声明 <blockquote>
+<p>函数声明:普通的给参数和返回值注解<br>如果函数抛出错误,返回值需要赋值never类型<br><code>这样注解参数多传少传不报错</code><br><code>表达式注解并且函数内部抛出错误</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">let fn: (a: number, b: string) &#x3D;&gt; never &#x3D; (a, b) &#x3D;&gt; &#123; 
+  throw new Error()
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>参数可有可无</code></p>
+<pre class="line-numbers language-none"><code class="language-none">function fn(a: number, b &#x3D; &#39;text&#39;) &#123;&#125; &#x2F;&#x2F;same as b?:string
+fn(1,&quot;1&quot;,2) &#x2F;&#x2F; at question Because 参数不能更多
+fn(1,&quot;1&quot;)&#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>可以有更多的参数</code></p>
+<pre class="line-numbers language-none"><code class="language-none">function fn(a: number, b?: number, ...others: any[]): void &#123; &#125;
+
+fn(1, 2, &quot;3&quot;, 23, &#123;&#125;, [])&#x2F;&#x2F; no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>函数的重载</code></p>
+<blockquote>
+<p>当参数是字符或数字类型,返回值就必须是相对应类型时</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">function fn(arg: string): string
+function fn(arg: number): number
+function fn(arg: string | number) &#123;
+  if (typeof arg &#x3D;&#x3D;&#x3D; &#39;string&#39;) &#123;
+    return arg &#x2F;&#x2F;no problem
+    &#x2F;&#x2F; return Number(arg) &#x2F;&#x2F;at question Because 返回值必须字符类型
+    &#x2F;&#x2F; return &quot;string&quot; &#x2F;&#x2F;at question Because 不能直接返回固定值
+  &#125;
+  if (typeof arg &#x3D;&#x3D;&#x3D; &#39;number&#39;) &#123;
+    return Number(arg)
+  &#125;
+&#125;
+console.log(fn(12))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<ol start="10">
+<li>类的注解<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+ * @Tip: 类的注解
+ * 类的属性如果声明,不初始化或者使用是会报错的,需要配置strictPropertyInitialization为false
+ *&#x2F;
+;(function () &#123;
+  class Father &#123;
+    &#x2F;* 属性 *&#x2F;
+    name: string
+    &#x2F;* 构造函数本身 *&#x2F;
+    constructor(name: string) &#123;
+      this.name &#x3D; name
+      console.log(&#96;这是我的名字:$&#123;this.name&#125;&#96;)
+    &#125;
+    &#x2F;* 方法 *&#x2F;
+    hobby(name: string) &#123;
+      console.log(this.name)
+    &#125;
+  &#125;
+  class Son extends Father &#123;
+    constructor(father_name: string) &#123;
+      &#x2F;* 在子类构造中可以通过super调用父类的构造,并且继承后super必须调用一次 *&#x2F;
+      super(father_name)
+    &#125;
+    hobby(name: string): void &#123;
+      super.hobby(&#39;&#39;)
+      &#x2F;* 子类构造外部可以通过super调用父类的一些属性 *&#x2F;
+      &#x2F;* Tip:super.name为undefined,父级原属性不能被调用,只能通过super调用父类方法,或者直接使用this调用 *&#x2F;
+      console.log(&#96;my name is $&#123;name&#125;,and father is $&#123;super.name&#125;&#96;)
+    &#125;
+  &#125;
+  let new_obj &#x3D; new Son(&#39;张三&#39;)
+  new_obj.hobby(&#39;阿三&#39;)
+  console.log(new_obj.name) &#x2F;&#x2F;no problem
+&#125;)()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<code>一种简写</code><pre class="line-numbers language-none"><code class="language-none">&#x2F;* Tip:另一种简写 *&#x2F;
+class Father &#123;
+  constructor(public name: string, public age: number &#x3D; 12) &#123;
+    this.name &#x3D; name
+    this.age &#x3D; age
+  &#125;
+  show_attribute() &#123;
+    console.log(this.name)
+    console.log(this.age)
+  &#125;
+&#125;
+let new_father &#x3D; new Father(&#39;张三&#39;)
+&#x2F;* no problem *&#x2F;
+new_father.show_attribute() &#x2F;&#x2F;张三 12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h3 id="新语法特性"><a href="#新语法特性" class="headerlink" title="新语法特性"></a>新语法特性</h3><ol>
+<li>as 断言</li>
+<li>class(oop 面向对象三大特性):封装,继承,多态<blockquote>
+<p>封装:比如修饰符<br>继承:比如类的 extends 继承父类<br>多态:多种生态,相同的方法实现不同的功能,比如不同子类可以使用相同父类的方法</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>修饰符的使用<blockquote>
+<p>public 公共的:自身调用,子类可以调用,实例调用<br>private 仅自身调用<br>protected 自身调用,子类调用,实例不能调用<br>readonly 只读不可写,必须写在其它修饰符后面,并且只能出现在属性中<br>abstract 抽象类，声明之后必须使用<br>get  set:获取属性会调用get,修改赋值会执行set,get set最好同时出现<br>类中使用接口 implements(实现), 接口继承接口，类实现接口</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">class Top &#123;
+  public name: string
+  private age: number
+  constructor() &#123;
+    this.name &#x3D; &#39;张三&#39;
+    this.age &#x3D; 12
+  &#125;
+  protected move() &#123;
+    console.log(&#39;methods!&#39;)
+  &#125;
+&#125;
+class Bottom extends Top &#123;
+  constructor() &#123;
+    super()
+  &#125;
+  bottom_move() &#123;
+    &#x2F;* no problem *&#x2F;
+    this.name
+    &#x2F;* At Question Because: age 是private私有属性不能调用 *&#x2F;
+    &#x2F;&#x2F; this.age
+    &#x2F;* no problem *&#x2F;
+    this.move()
+  &#125;
+&#125;
+let new_obj &#x3D; new Bottom()
+&#x2F;* At Question Because: 父类方法 move 是受保护,只有子类跟自身可以调用 *&#x2F;
+&#x2F;&#x2F; new_obj.move()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><ul>
+<li>常用的断言，在给初始值时使用<blockquote>
+<p>let new_obj&#x3D;{} as 类型接口;</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
+<li>泛型2种用法:fn<T>(arg:T):T{}<blockquote>
+<p>1.fn(1)&#x2F;&#x2F;传什么类型就是什么类型，推荐的写法<br>2.fn<number>(1)&#x2F;&#x2F;固定是number类型 </p>
+</blockquote>
+</li>
+<li>泛型的约束<blockquote>
+<p>泛型约束:fn&lt;T extends 接口&gt;()T，这样T就会包含接口的类型</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h3><blockquote>
+<p>let price:[string,…number[]]<br>fn(…arg[number,string])</p>
+</blockquote>
+<h3 id="库"><a href="#库" class="headerlink" title="库"></a>库</h3><blockquote>
+<p>库的分类:全局库:暴露一个全局变量，除此就是模块化库<br>模块化库:在某环境中运行的库 UMD模块:模块化+全局</p>
+</blockquote>
+<h3 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h3><ul>
+<li>全局变量<blockquote>
+<p>index.d.ts  定义全局变量declare let num<br>namespase命名空间</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>生成配置文件<br><code>如果爆红,则是配置出错</code></li>
+</ol>
+<ul>
+<li>tsc –init</li>
+<li>路径都是基于config.json文件位置等同于.&#x2F;<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &lt;!-- 将编译后的js文件放入dist文件夹下 --&gt;
+	&quot;outDir&quot;:&quot;.&#x2F;dist&quot;,
+  &lt;!-- ts文件所在位置 --&gt;
+	&quot;rootDir&quot;:&quot;.&#x2F;src&quot;,
+  &lt;!-- 允许赋值为 null 跟 undefined,不建议关闭 --&gt;
+	&quot;strictNullChecks&quot;:true,
+  &lt;!-- 全局声明文件所在路径 --&gt;
+  &quot;baseUrl&quot;: &quot;.&#x2F;&quot;, 
+  &lt;!-- 支持commonJs方式导入 --&gt;
+  &quot;esmoduleinterop&quot;:ture
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ts/" rel="tag">ts</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Ts/ts常用bug解决方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/25/Ts/ts%E5%B8%B8%E7%94%A8bug%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">Ts 常用bug解决方法</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/ts/">ts</a>
+  </div>
+
+      
+      
+<a href="/2022/03/25/Ts/ts%E5%B8%B8%E7%94%A8bug%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="引入图片报错"><a href="#引入图片报错" class="headerlink" title="引入图片报错"></a>引入图片报错</h3><pre class="line-numbers language-none"><code class="language-none">declare module &#39;*.svg&#39;
+declare module &#39;*.png&#39;
+declare module &#39;*.jpg&#39;
+declare module &#39;*.jpeg&#39;
+declare module &#39;*.gif&#39;
+declare module &#39;*.bmp&#39;
+declare module &#39;*.tiff&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ts/" rel="tag">ts</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Node/node搭建服务" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/Node/node%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/">node如何搭建服务</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-17T16:00:00.000Z" itemprop="datePublished">2022年03月18日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </div>
+
+      
+      
+<a href="/2022/03/18/Node/node%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h3><p>操作文件<br>fs.readFile(path[,options],callback(err,dataStr)) 读取指定文件的内容<br>fs.writeFile(file,data[,options],callback(err)) 向指定文件写入内容</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+ * 读取text.txt 文件的内容
+ * 读取成功err 为null
+ * 读取失败 err &#x3D;&gt; 错误对象   dataStr &#x3D;&gt;  undefined
+ *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><p>路径模块<br>path.join() 将多个路径拼接成一个字符串<br>path.basename(path[,ext]) 获取路径中的文件名</p>
+<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>web 服务<br>http.createServer()<br>server.on(‘request’,(req,res)&#x3D;&gt;{}) 为服务器实例绑定 request 事件,监听客户端发送过来的请求<br>server.listen(port,callback()) 启动服务器</p>
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a>express</h3><p>极简框架(创建 web 服务器)</p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add express@4.17.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>use</p>
+<pre class="line-numbers language-none"><code class="language-none">const express&#x3D;require(&#39;express&#39;) &#x2F;&#x2F; 导包
+const app&#x3D;express() &#x2F;&#x2F; 创建实例
+app.listen(888,()&#x3D;&gt;&#123; &#x2F;&#x2F; 启动服务
+  console.log(&#39;server ok!&#39;)
+&#125;)
+app.post(url,callback(req,res)) &#x2F;&#x2F; 监听不同url的post请求
+app.get(url,callback(req,res)) &#x2F;&#x2F;监听不同url的get请求
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>req.query 获取客户端发送的查询参数<br>req.params 获取客户端发送的 params 参数</p>
+</blockquote>
+<ul>
+<li>中间件</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 全局中间件
+const mw&#x3D;function(req,res,next)&#123;next()&#125;
+const err&#x3D;function(err,req,res,next)&#123;res.send(err.message)&#125;
+app.use(mw)
+app.use(err) &#x2F;&#x2F;错误级必须在最后<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>&#x2F;&#x2F; 第三方中间件<br><code>yarn add body-parser@1.19.0</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;防止跨域
+app.all(&#39;*&#39;, function (req, res, next) &#123;
+  console.log(&#39;处理中...&#39;)
+  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+  res.header(&quot;Content-Type&quot;, &quot;application&#x2F;json;charset&#x3D;utf-8&quot;);
+  res.header(&quot;Content-Type&quot;, &quot;application&#x2F;x-www-form-urlencoded;charset&#x3D;utf-8&quot;);
+  res.header(&#39;Access-Control-Allow-Methods&#39;, &#39;PUT, POST, GET, DELETE, OPTIONS&#39;);
+  res.header(&#39;Access-Control-Allow-Headers&#39;, &#39;Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild&#39;);
+  if (req.method.toLowerCase() &#x3D;&#x3D; &#39;options&#39;) &#123;
+    res.send(200); &#x2F;&#x2F;让options尝试请求快速结束
+  &#125; else &#123;
+    next();
+  &#125;
+&#125;);
+app.use(bodyParser.urlencoded(&#123;
+  extended: false
+&#125;))
+app.use(bodyParser.json())
+app.use(testRouter)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>express.static()<br>静态资源托管</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">app.use(express.static(&#39;public&#39;))&#x2F;&#x2F;开发public目录下的资源
+&#x2F;&#x2F; 现public下有img文件夹
+***&#x2F;img&#x2F;*.png  &#x2F;&#x2F;访问静态文件
+app.use(&#39;&#x2F;img&#39;,express.static(&#39;.&#x2F;img&#39;)) &#x2F;&#x2F;前缀,只放问当前目录
+***&#x2F;img&#x2F;*.png  &#x2F;&#x2F;访问静态文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>express.Router()<br>路由实例</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+ * 路由模块
+ *&#x2F;
+const express &#x3D; require(&#39;express&#39;);
+const testRouter &#x3D; express.Router()
+
+testRouter.get(&#39;&#x2F;test&#39;, (req, res) &#x3D;&gt; &#123;
+  console.log(&#39;有请求&#39;);
+  res.send(JSON.stringify(&#123;
+    name: &#39;还给你&#39;
+  &#125;))
+&#125;)
+
+module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Node/node环境安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/Node/node%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">node环境安装</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-17T16:00:00.000Z" itemprop="datePublished">2022年03月18日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </div>
+
+      
+      
+<a href="/2022/03/18/Node/node%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>node-v8.9.3-x64</p>
+<p>1.安装路径D:\Program Files\nodejs\</p>
+<p>2.选Add to PATH 默认添加环境变量</p>
+<p>3.cmd 查看环境变量</p>
+<pre class="line-numbers language-none"><code class="language-none">echo %PATH%   &#x2F;&#x2F;其中的D:\Program Files\nodejs\ 就是了
+node -v 查看版本 v8.9.3
+npm -v  5.5.1  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>4.C:\Users\Administrator\AppData\Roaming    npm  npm-cache</p>
+<p>再看看另外2个目录，npm的本地仓库跑在系统盘c盘的用户目录了(没见到npm-cache是因为没有用过，一使用缓存目录就生成了)，我们准备把这2个目录移动回到D:\nodejs</p>
+<p>5.先在D:\nodejs 添加node_cache  node_global文件夹  ：-g全局  cache：缓存文件</p>
+<p>6.然后运行以下2条命令</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config set prefix &quot;D:\Program Files\nodejs\node_global&quot;
+npm config set cache &quot;D:\Program Files\nodejs\node_cache&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>7.npm list -global 检查目录改变了没</p>
+<ol start="8">
+<li>配置镜像站</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">npm config set registry&#x3D;http:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>9.npm config list 查看配置信息 配置文件c盘中会有3条</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>10.检查镜像站</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config get registry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>11.能否获得vue的信息</p>
+<pre class="line-numbers language-none"><code class="language-none">npm info vue<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>12.增加环境变量NODE_PATH 系统变量</p>
+<p>直接运行npm install等命令会报错</p>
+<pre class="line-numbers language-none"><code class="language-none">NODE_PATH  D:\Program Files\nodejs\node_global\node_modules<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>需要重新打开CMD让上面的环境变量生效</p>
+<p>13.更新npm</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install npm -g  &#x2F;&#x2F;npm -v 会看到最新版<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>14.配置path系统环境变量</p>
+<pre class="line-numbers language-none"><code class="language-none">D:\Program Files\nodejs\node_global
+D:\Program Files\nodejs\<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>15.查看有什么模块</p>
+<pre class="line-numbers language-none"><code class="language-none">npm list -global<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此时报错大概是node.js版本太低，去官网下最新版安装覆盖原版</p>
+<p>16.安装vue.js</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>去global文件下看看node_mo&#x2F;vue下有没有dist</p>
+<p>17.安装vue-router</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue-router -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>18.安装vue脚手架</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue-cli -g      这是2版本<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>npm uninstall -g vue-cli<br>  npm install -g @vue&#x2F;cli		这是3版本</p>
+<p>19.检查</p>
+<pre class="line-numbers language-none"><code class="language-none">vue -V   大写， 报错检查14步<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这是低版本，创建项目是vue init webpack 项目名 npm run dev 启动，好配置</p>
+<h5 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h5><pre class="line-numbers language-none"><code class="language-none">npm install yarn -g
+# 全局安装目录
+yarn config set global-folder &quot;D:\Program Files\Yarn\yarn_global&quot;
+# 缓存目录
+yarn config set cache-folder &quot;D:\Program Files\Yarn\yarn_cache&quot;
+# 查看当前源
+yarn config get registry
+# 修改为淘宝镜像源
+yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org
+如果你遇到了yarn命令无法执行的情况，可以试着删掉这个文件再重新配置 .yarnrc
+yarn list -global查看配置信息
+#  改变yarn全局安装位置
+yarn config  set global-folder &quot;D:\Program Files\nodejs&quot;
+# 改变yarn全局缓存位置
+yarn config set cache-folder &quot;D:\Program Files\nodejs&quot;
+检查当前yarn 的 bin的 位置
+yarn global bin
+检查当前 yarn 的 全局安装位置
+yarn global dir
+配置变量
+通过node找到cmd文件，通过cmd脚本执行对应的文件bin，bin执行.arnrc配置信息，将包下载到对应的文件夹。
+在没有配置好快捷命令前 yarn global add 包  yarn global remove 包
+yarn全局基本不使用 有npm npm管理全局包 yarn用来管理项目包 直接add remove 操作init过的目录,也就是package<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>loader:936  node node_cache损坏需要重新装</p>
+<pre class="line-numbers language-none"><code class="language-none">npm缺陷：很多依赖不会指定版本号，默认会安装最新的版本 如果新的版本无法兼容你的项目，你的程序可能就会出BUG
+yarn :  yarn为了解决这个问题推出了yarn.lock的机制，项目中的yarn.lock文件
+		启动项目安装依赖时把这个yarn.lock拷贝到相应的环境项目下再安装
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>快速删除node_module  秒删</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install rimraf -g
+rimraf node_modules
+rimraf &quot;ruoy - 副本&quot;  &#x2F;&#x2F;任何文件，文件名分离就用引号包裹<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/Git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/17/%E5%85%B6%E4%BB%96/Git/">Git 笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-16T16:00:00.000Z" itemprop="datePublished">2022年03月17日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+      
+      
+<a href="/2022/03/17/%E5%85%B6%E4%BB%96/Git/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="01-理论点"><a href="#01-理论点" class="headerlink" title="01-理论点"></a><a href="">01-理论点</a></h1><blockquote>
+<p>.git文件 &#x3D;&#x3D;&#x3D; 版本库：存储版本号、提交时间等信息</p>
+<p>git fetch &#x3D;&#x3D;&#x3D; 拉取版本库</p>
+<p>git merge &#x3D;&#x3D;&#x3D; 同步到工作区</p>
+<p>git pull &#x3D;&#x3D;&#x3D; git fetch+git merge</p>
+<p>git init –bare name1.git &#x3D;&#x3D;&#x3D; 创建一个name1.git的裸库(公共库)</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<h3 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a><strong>文件状态</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">></span>untracked 未跟踪： 最初状态，不参与版本控制
+<span class="token operator">></span>unmodify 未修改 ： commit入库后状态
+<span class="token operator">></span>modifled  已修改： 跟踪后文件被修改
+<span class="token operator">></span>staged    暂存  ： add后的状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="commit-提交规范"><a href="#commit-提交规范" class="headerlink" title="commit 提交规范"></a>commit 提交规范</h3><pre class="line-numbers language-none"><code class="language-none">type
+用于说明 commit 的类别，只允许使用下面7个标识。
+feat：新功能（feature）
+fix：修补bug
+docs：文档（documentation）
+style： 格式（不影响代码运行的变动）
+refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+test：增加测试
+chore：构建过程或辅助工具的变动
+如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>git commit -m &quot;feat:新增a.java&quot;</code></p>
+<h3 id="修改状态"><a href="#修改状态" class="headerlink" title="修改状态"></a><strong>修改状态</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">add       进入staged
+rm        将库中文件移除，然后文件就会从unmodify到untracked
+checkout  从库中取出文件覆盖当前文件，最后状态unmodify
+reset <span class="token constant">HEAD</span> filename  取消暂存，最后状态modefled
+总结
+<span class="token literal-property property">rm</span><span class="token operator">:</span>撤销提交commit
+checkout <span class="token operator">--</span> <span class="token operator">&lt;</span>file<span class="token operator">></span><span class="token operator">:</span>撤销修改
+<span class="token literal-property property">reset</span><span class="token operator">:</span>撤销跟踪<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="02-裸库"><a href="#02-裸库" class="headerlink" title="02-裸库"></a><a href="">02-裸库</a></h1><blockquote>
+<p>git init –bare name1.git &#x3D;&#x3D;&#x3D; 存放记录，共享记录，不存放文件，不能进行工作区的操作：push checkout..。<br>用”git init”初始化的版本库用户也可以在该目录下执行所有git方面的操作。但别的用户在将更新push上来的时候容易出现冲突。因此在多人开发时就使用裸库，一个人就不存在自己提交时远程仓库处于工作状态<br>区别 <a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_34349564/article/details/52487860">https://blog.csdn.net/sinat_34349564/article/details/52487860</a></p>
+</blockquote>
+<blockquote>
+<p>使用：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013541707/article/details/107482045">https://blog.csdn.net/u013541707/article/details/107482045</a></p>
+</blockquote>
+<p>config文件中</p>
+<ul>
+<li>直接 <code>git init</code> 创建的仓库:</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">[core]
+    repositoryformatversion &#x3D; 0
+    filemode &#x3D; true
+    bare &#x3D; false
+    logallrefupdates &#x3D; true
+    ignorecase &#x3D; true
+    precomposeunicode &#x3D; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>加了 <code>--bare</code> 创建的裸仓库:</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">[core]
+    repositoryformatversion &#x3D; 0
+    filemode &#x3D; true
+    bare &#x3D; true
+    ignorecase &#x3D; true
+    precomposeunicode &#x3D; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>区别</code></p>
+<p><code>logallrefupdates = true git的一道防线 不能向工作中的分支上提交信息,如果在工作状态就把服务器上切换到另一个分支</code></p>
+<p><code>裸库就是没有这道防线，比如码云上创建一个创库，可以直接push</code></p>
+<h1 id="02-1-标签"><a href="#02-1-标签" class="headerlink" title="02.1-标签"></a><a href="">02.1-标签</a></h1><p>相当于不能修改的分支,先提交再打标签</p>
+<p>查看标签</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git tag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>创建标签<code>版本号知识：a.b.c   a大版本大改变b添加修改了功能c修改了一下bug</code></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git tag <span class="token operator">-</span>a <span class="token function">版本</span><span class="token punctuation">(</span>比如<span class="token operator">:</span>v1<span class="token punctuation">.</span><span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token operator">-</span>m <span class="token string">"备注"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>删除标签</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git tag <span class="token operator">-</span>d tagname<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>提交标签</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git push <span class="token operator">--</span>tags<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h1 id="03-配置部分"><a href="#03-配置部分" class="headerlink" title="03-配置部分"></a><a href="">03-配置部分</a></h1><h3 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a><strong>全局配置</strong></h3><blockquote>
+<p>用户&#x2F;.gitconfig文件</p>
+</blockquote>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git config <span class="token operator">--</span>global <span class="token operator">--</span>list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a><strong>系统配置</strong></h3><blockquote>
+<p>系统：etc&#x2F;.gitconfig文件</p>
+</blockquote>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git config <span class="token operator">--</span>system <span class="token operator">--</span>list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a><strong>.gitignore</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">*</span><span class="token punctuation">.</span>txt   所有txt
+<span class="token operator">!</span>a<span class="token punctuation">.</span>txt  排除a<span class="token punctuation">.</span>txt，也就是a要提交
+b<span class="token comment">/*txt  b文件夹下所有txt文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="gitkeep"><a href="#gitkeep" class="headerlink" title=".gitkeep"></a><strong>.gitkeep</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">占位文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="ssh公钥免密登录"><a href="#ssh公钥免密登录" class="headerlink" title="ssh公钥免密登录"></a><strong>ssh公钥免密登录</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">1</span><span class="token punctuation">.</span>ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>t rsa 生产公钥，生成后第三行会有<span class="token punctuation">.</span>ssh文件存放地址
+<span class="token number">2</span><span class="token punctuation">.</span>pub里内容粘贴到码云公钥下
+
+https ssh区别 
+<span class="token literal-property property">https</span><span class="token operator">:</span>通过url克隆每次都需要输入一个账号密码
+<span class="token literal-property property">ssh</span><span class="token operator">:</span>只能通过拥有者的公钥克隆<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="04-命令"><a href="#04-命令" class="headerlink" title="04-命令"></a><a href="">04-命令</a></h1><h3 id="工作区对比"><a href="#工作区对比" class="headerlink" title="工作区对比"></a><strong>工作区对比</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git diff ： <span class="token function">对比工作区</span><span class="token punctuation">(</span>未 git add<span class="token punctuation">)</span><span class="token function">和暂存区</span><span class="token punctuation">(</span>git add 之后<span class="token punctuation">)</span> 
+
+git diff <span class="token operator">--</span>cached<span class="token operator">:</span> <span class="token function">对比暂存区</span><span class="token punctuation">(</span>git add 之后<span class="token punctuation">)</span><span class="token function">和版本库</span><span class="token punctuation">(</span>git commit 之后<span class="token punctuation">)</span> 
+
+git diff <span class="token constant">HEAD</span><span class="token operator">:</span> <span class="token function">对比工作区</span><span class="token punctuation">(</span>未 git add<span class="token punctuation">)</span><span class="token function">和版本库</span><span class="token punctuation">(</span>git commit 之后<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="查看fetch过来的信息"><a href="#查看fetch过来的信息" class="headerlink" title="查看fetch过来的信息"></a><strong>查看fetch过来的信息</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git log <span class="token operator">-</span>p <span class="token constant">FETCH_HEAD</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看到提交过的信息"><a href="#查看到提交过的信息" class="headerlink" title="查看到提交过的信息"></a><strong>查看到提交过的信息</strong></h3><p>能看到回退后的版本</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git reflog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="强制推送"><a href="#强制推送" class="headerlink" title="强制推送"></a><strong>强制推送</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git push <span class="token operator">-</span>f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="退出输入模式"><a href="#退出输入模式" class="headerlink" title="退出输入模式"></a><strong>退出输入模式</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a><strong>创建文件夹</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">mkdir FileName<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a><strong>创建文件</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">touch FileName<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="查看文本信息"><a href="#查看文本信息" class="headerlink" title="查看文本信息"></a><strong>查看文本信息</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">cat FileName<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a><strong>回退版本</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git reset <span class="token operator">--</span>hard fa770f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看某一个版本的信息"><a href="#查看某一个版本的信息" class="headerlink" title="查看某一个版本的信息"></a><strong>查看某一个版本的信息</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git show  fa770f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看提交日志信息"><a href="#查看提交日志信息" class="headerlink" title="查看提交日志信息"></a><strong>查看提交日志信息</strong></h3><p>看不了回退后的版本</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git log 
+
+git log <span class="token operator">--</span>pretty <span class="token operator">=</span> online 显示简略信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a><strong>提交</strong></h3><p>指定origin主机为默认主机 并且提交 ，往后提交就可以直接push省略主机</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git push <span class="token operator">-</span>u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="05-merge-rebase的区别"><a href="#05-merge-rebase的区别" class="headerlink" title="05-merge rebase的区别"></a><a href="">05-merge rebase的区别</a></h1><blockquote>
+<p>merge:从共同节点开始(包括)，将两者最新节点融合成一个新节点_适用在公共分支merge 其它子分支(因为会保留公共分支的祖先记录)</p>
+</blockquote>
+<blockquote>
+<p>rebase:a git rebase b,a:变基分支 b：基分支，变基分支相同节点(不包括)往后的每次提交形成新的commitid叠加到基节点后面(适用拉取最新公共代码时)</p>
+</blockquote>
+<blockquote>
+<p>不在公共库用rebase是因为在对方pull后，存在有未pull到的提交(如果rebase这<br>些提交就会消失，总之顺序会出问题)</p>
+</blockquote>
+<blockquote>
+<p>merge B+a+a.1+b.1+b&#x3D;Bc<br>rebase B+a+a.1+b.1+b&#x3D;Baa.1c.1c</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7026724793047220254">https://juejin.cn/post/7026724793047220254</a></p>
+</blockquote>
+<h1 id="06-整套"><a href="#06-整套" class="headerlink" title="06-整套"></a><a href="">06-整套</a></h1><h3 id="fetch拉取远程"><a href="#fetch拉取远程" class="headerlink" title="fetch拉取远程"></a><strong>fetch拉取远程</strong></h3><p><code>注意语法</code></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">git fetch origin <span class="token operator">&lt;</span>brach<span class="token operator">></span> 
+git log <span class="token operator">-</span>p <span class="token constant">FETCH_HEAD</span> 查看fetch信息
+git merge origin<span class="token operator">/</span>branch 最后合并
+
+or
+git pull origin 远程：本地分支
+
+or
+git fetch origin <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token operator">&lt;</span>branch<span class="token operator">></span><span class="token operator">:</span>远程分支
+git log <span class="token operator">-</span>p <span class="token constant">FETCH_HEAD</span> 查看是否是自己要的内容
+git checkout <span class="token operator">-</span>b newBranch origin<span class="token operator">/</span><span class="token operator">&lt;</span>远程分支<span class="token operator">></span>
+git log 查看是否成功
+git checkout <span class="token operator">-</span>b master
+git branch <span class="token operator">-</span>d newBranch
+git log 查看是否成功<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="回退"><a href="#回退" class="headerlink" title="回退"></a><strong>回退</strong></h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">先拉取到远程的代码
+然后
+git reset <span class="token operator">--</span>hard 版本号
+git push <span class="token operator">-</span>f <span class="token operator">-</span>u origin<span class="token operator">:</span>branch 强制提交<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/flexible rem自动生成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/16/%E5%85%B6%E4%BB%96/flexible%20rem%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/">rem自动生成</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-15T16:00:00.000Z" itemprop="datePublished">2022年03月16日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/03/16/%E5%85%B6%E4%BB%96/flexible%20rem%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+ * @Author: 无聊的鬼_
+ * @Date: 2022-03-16 18:44:47
+ * @LastEditTime: 2022-03-16 19:02:30
+ * @Description:
+ *&#x2F;
+;(function flexible(window, document) &#123;
+  var docEl &#x3D; document.documentElement
+  var dpr &#x3D; window.devicePixelRatio || 1
+
+  &#x2F;&#x2F; adjust body font size
+  function setBodyFontSize() &#123;
+    if (document.body) &#123;
+      document.body.style.fontSize &#x3D; 12 * dpr + &quot;px&quot;
+    &#125; else &#123;
+      document.addEventListener(&quot;DOMContentLoaded&quot;, setBodyFontSize)
+    &#125;
+  &#125;
+  setBodyFontSize()
+
+  &#x2F;&#x2F; set 1rem &#x3D; viewWidth &#x2F; 10
+  function setRemUnit() &#123;
+    var rem &#x3D; docEl.clientWidth &#x2F; 24
+    if (docEl.clientWidth &lt; 1024) &#123;
+      rem &#x3D; 1024 &#x2F; 24
+    &#125;
+    docEl.style.fontSize &#x3D; rem + &quot;px&quot;
+  &#125;
+
+  setRemUnit()
+
+  &#x2F;&#x2F; reset rem unit on page resize
+  window.addEventListener(&quot;resize&quot;, setRemUnit)
+  window.addEventListener(&quot;pageshow&quot;, function (e) &#123;
+    if (e.persisted) &#123;
+      setRemUnit()
+    &#125;
+  &#125;)
+
+  &#x2F;&#x2F; detect 0.5px supports
+  if (dpr &gt;&#x3D; 2) &#123;
+    var fakeBody &#x3D; document.createElement(&quot;body&quot;)
+    var testElement &#x3D; document.createElement(&quot;div&quot;)
+    testElement.style.border &#x3D; &quot;.5px solid transparent&quot;
+    fakeBody.appendChild(testElement)
+    docEl.appendChild(fakeBody)
+    if (testElement.offsetHeight &#x3D;&#x3D;&#x3D; 1) &#123;
+      docEl.classList.add(&quot;hairlines&quot;)
+    &#125;
+    docEl.removeChild(fakeBody)
+  &#125;
+&#125;)(window, document)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flexible/" rel="tag">flexible</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-插件库/flexible rem自动生成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/16/%E6%8F%92%E4%BB%B6%E5%BA%93/flexible%20rem%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/">rem自动生成</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-03-15T16:00:00.000Z" itemprop="datePublished">2022年03月16日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+      
+<a href="/2022/03/16/%E6%8F%92%E4%BB%B6%E5%BA%93/flexible%20rem%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+ * @Author: 无聊的鬼_
+ * @Date: 2022-03-16 18:44:47
+ * @LastEditTime: 2022-03-16 19:02:30
+ * @Description:
+ *&#x2F;
+;(function flexible(window, document) &#123;
+  var docEl &#x3D; document.documentElement
+  var dpr &#x3D; window.devicePixelRatio || 1
+
+  &#x2F;&#x2F; adjust body font size
+  function setBodyFontSize() &#123;
+    if (document.body) &#123;
+      document.body.style.fontSize &#x3D; 12 * dpr + &quot;px&quot;
+    &#125; else &#123;
+      document.addEventListener(&quot;DOMContentLoaded&quot;, setBodyFontSize)
+    &#125;
+  &#125;
+  setBodyFontSize()
+
+  &#x2F;&#x2F; set 1rem &#x3D; viewWidth &#x2F; 10
+  function setRemUnit() &#123;
+    var rem &#x3D; docEl.clientWidth &#x2F; 24
+    if (docEl.clientWidth &lt; 1024) &#123;
+      rem &#x3D; 1024 &#x2F; 24
+    &#125;
+    docEl.style.fontSize &#x3D; rem + &quot;px&quot;
+  &#125;
+
+  setRemUnit()
+
+  &#x2F;&#x2F; reset rem unit on page resize
+  window.addEventListener(&quot;resize&quot;, setRemUnit)
+  window.addEventListener(&quot;pageshow&quot;, function (e) &#123;
+    if (e.persisted) &#123;
+      setRemUnit()
+    &#125;
+  &#125;)
+
+  &#x2F;&#x2F; detect 0.5px supports
+  if (dpr &gt;&#x3D; 2) &#123;
+    var fakeBody &#x3D; document.createElement(&quot;body&quot;)
+    var testElement &#x3D; document.createElement(&quot;div&quot;)
+    testElement.style.border &#x3D; &quot;.5px solid transparent&quot;
+    fakeBody.appendChild(testElement)
+    docEl.appendChild(fakeBody)
+    if (testElement.offsetHeight &#x3D;&#x3D;&#x3D; 1) &#123;
+      docEl.classList.add(&quot;hairlines&quot;)
+    &#125;
+    docEl.removeChild(fakeBody)
+  &#125;
+&#125;)(window, document)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flexible/" rel="tag">flexible</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+
+    <nav id="page-nav">
+
+<a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+</nav>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+
+
+</body>
+</html>

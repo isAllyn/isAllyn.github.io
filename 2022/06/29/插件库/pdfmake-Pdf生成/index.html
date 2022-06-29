@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>pdfmake pdf自动生成 | xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-插件库/pdfmake-Pdf生成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      pdfmake pdf自动生成
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-28T16:00:00.000Z" itemprop="datePublished">2022年06月29日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p><code>&quot;pdfmake&quot;: &quot;^0.2.5&quot;,</code></p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add pdfmake<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="use"><a href="#use" class="headerlink" title="use"></a>use</h3><pre class="line-numbers language-none"><code class="language-none">const pdfmake &#x3D; require(&quot;pdfmake&#x2F;build&#x2F;pdfmake&quot;);
+const pdf_fonts &#x3D; require(&quot;pdfmake&#x2F;build&#x2F;vfs_fonts&quot;);
+pdfmake.vfs &#x3D; pdf_fonts.pdfMake.vfs;
+ var docDefinition &#x3D; &#123;
+     content: &quot;This is an sample PDF printed with pdfMake&quot;
+ &#125;;
+ this.$pdfmake.createPdf(docDefinition).download(&quot;test.pdf&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><p>[简书中文文档]<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/129554713e23">https://www.jianshu.com/p/129554713e23</a><br>[官方文档]<a target="_blank" rel="noopener" href="https://pdfmake.github.io/docs/0.3/getting-started/client-side/methods/">https://pdfmake.github.io/docs/0.3/getting-started/client-side/methods/</a></p>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123; content: &#39;This is an sample PDF printed with pdfMake&#39; &#125;;
+
+pdfMake.createPdf(docDefinition).download(); &#x2F;&#x2F; 下载
+
+pdfMake.createPdf(docDefinition).open(); &#x2F;&#x2F; 新窗口打开
+
+pdfMake.createPdf(docDefinition).print(); &#x2F;&#x2F; 打印
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="doc"><a href="#doc" class="headerlink" title="doc"></a>doc</h3><h4 id="content"><a href="#content" class="headerlink" title="content"></a>content</h4><pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content:string | array&lt;string|object&gt; &#x2F;&#x2F; 为数组时,一个索引为一个断落,索引为对象时可以设置更复杂的样式,可参考官方文档
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="styles"><a href="#styles" class="headerlink" title="styles"></a>styles</h4><ol>
+<li>等同于 style 标签</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content:[&#123;text:&#39;test text!!!!&#39;,style:&#39;testStyle&#39;&#125;],
+  defaultStyle:&#123; &#x2F;&#x2F; 默认样式
+    fontSize:15,
+  &#125;,
+  styles:&#123;  &#x2F;&#x2F; 重新定义样式
+    testStyle:&#123;
+      fontSize:22,
+      color:red
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>样式属性<br>查看文档</li>
+</ol>
+<h3 id="列的间隙"><a href="#列的间隙" class="headerlink" title="列的间隙"></a>列的间隙</h3><pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content:[
+    &#39;This paragraph fills full width, as there are no columns. Next paragraph however consists of three columns&#39;,
+    &#123;
+      columns:[
+        &#123;
+          width: &#39;auto&#39;, &#x2F;&#x2F; 会自动从下一行开始
+          text: &#39;First column&#39;
+        &#125;
+        ...
+      ]
+    &#125;
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content: [
+    &#123;
+      layout: &#39;lightHorizontalLines&#39;, &#x2F;&#x2F; optional
+      table: &#123;
+        &#x2F;&#x2F; headers are automatically repeated if the table spans over multiple pages
+        &#x2F;&#x2F; you can declare how many rows should be treated as headers
+        headerRows: 1,
+        widths: [ &#39;*&#39;, &#39;auto&#39;, 100, &#39;*&#39; ],
+
+        body: [ &#x2F;&#x2F; body数组中每一个索引就是一行, 索引的值为一个数组, 数组中的每一个索引都是相对应的列,跟导出excel表格的数据结构一样
+          [ &#39;First&#39;, &#39;Second&#39;, &#39;Third&#39;, &#39;The last one&#39; ],
+          [ &#39;Value 1&#39;, &#39;Value 2&#39;, &#39;Value 3&#39;, &#39;Value 4&#39; ],
+          [ &#123; text: &#39;Bold value&#39;, bold: true &#125;, &#39;Val 2&#39;, &#39;Val 3&#39;, &#39;Val 4&#39; ]
+        ]
+      &#125;
+    &#125;
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="有序列表和无序列表"><a href="#有序列表和无序列表" class="headerlink" title="有序列表和无序列表"></a>有序列表和无序列表</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  content: [
+    &#39;无需列表: ul&#39;,
+    &#123;
+      &#x2F;&#x2F; to treat a paragraph as a bulleted list, set an array of items under the ul key
+      ul: [
+        &#39;Item 1&#39;,
+        &#39;Item 2&#39;,
+        &#39;Item 3&#39;,
+        &#123; text: &#39;Item 4&#39;, bold: true &#125;, &#x2F;&#x2F; 依然可以设置样式
+      ]
+    &#125;,
+
+    &#39;有序列表 : ol&#39;,
+    &#123;
+      &#x2F;&#x2F; for numbered lists set the ol key
+      ol: [
+        &#39;Item 1&#39;,
+        &#39;Item 2&#39;,
+        &#39;Item 3&#39;
+      ]
+    &#125;
+  ]
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="页眉页脚"><a href="#页眉页脚" class="headerlink" title="页眉页脚"></a>页眉页脚</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: new Array(120).fill(&quot;asdasdasdasd&quot;),
+    header: function (currentPage, pageCount, pageSize) &#123;
+        &#x2F;&#x2F; you can apply any logic and return any valid pdfmake element
+        &#x2F;&#x2F; currentPage:当前页 pageCount:页数 和 pageSize:页面大小
+        return [
+            &#123; text: &quot;simple text&quot;, alignment: currentPage % 2 ? &quot;left&quot; : &quot;right&quot; &#125;,
+            &#123; canvas: [&#123; type: &quot;rect&quot;, x: 170, y: 32, w: pageSize.width - 170, h: 40 &#125;] &#125;
+        ];
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="背景层"><a href="#背景层" class="headerlink" title="背景层"></a>背景层</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: new Array(120).fill(&quot;asdasdasdasd&quot;),
+    header: function (currentPage) &#123;
+        return [&#123; text: &quot;simple text &quot; + currentPage &#125;];
+    &#125;,
+    &#x2F;&#x2F; 设置背景
+    background: function (currentPage, pageSize) &#123;
+        return &#96;page $&#123;currentPage&#125; with size $&#123;pageSize.width&#125; x $&#123;pageSize.height&#125;&#96;;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="边距"><a href="#边距" class="headerlink" title="边距"></a>边距</h3><p>pdfMake 中的任何元素都可以有边距：</p>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: new Array(120).fill(&quot;asdasdasdasd&quot;),
+    header: function (currentPage) &#123;
+        return [&#123; text: &quot;simple text &quot; + currentPage &#125;];
+    &#125;,
+    background: function (currentPage, pageSize) &#123;
+        return [
+            &#123;
+                text: &#96;page $&#123;currentPage&#125; with size $&#123;pageSize.width&#125; x $&#123;pageSize.height&#125;&#96;,
+                margin: [120, 100, 100, 100] &#x2F;&#x2F; 设置一个边距
+            &#125;
+        ];
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="列中的段落"><a href="#列中的段落" class="headerlink" title="列中的段落"></a>列中的段落</h3><p>更详细的查看文档</p>
+<pre class="line-numbers language-none"><code class="language-none"> var docDefinition &#x3D; &#123;
+    content: [
+        &quot;paragraph 1&quot;,
+        &quot;paragraph 2&quot;,
+        &#123;   &#x2F;&#x2F; 第三段开始设置列
+            columns: [
+                &quot;first column is a simple text&quot;,
+                &#x2F;&#x2F; 第二列开始设置段落
+                [
+                    &#x2F;&#x2F; second column consists of paragraphs
+                    &quot;paragraph A&quot;,
+                    &quot;paragraph B&quot;,
+                    &quot;these paragraphs will be rendered one below another inside the column&quot;
+                ]
+            ]
+        &#125;
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>这很简单。只需使用{ image: ‘…’ }节点类型。<br>支持 JPEG 和 PNG 格式。</p>
+<ul>
+<li>dataUrl || pdfmake 提供的虚拟文件系统 || url 从图像中的名称引用加载图像</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#x2F;&#x2F; &#123;
+        &#x2F;&#x2F;     &#x2F;&#x2F; you&#39;ll most often use dataURI images on the browser side
+        &#x2F;&#x2F;     &#x2F;&#x2F; if no width&#x2F;height&#x2F;fit is provided, the original size will be used
+        &#x2F;&#x2F;     image: &quot;data:image&#x2F;jpeg;base64,...encodedContent...&quot; &#x2F;&#x2F; 不配置宽高会使用原始宽高
+        &#x2F;&#x2F; &#125;,
+        &#123;
+            &#x2F;&#x2F; is supported loading images via url from reference by name in images
+            image: &quot;snow&quot;
+        &#125;,
+        &#123;
+            image: &quot;test&quot;
+        &#125;
+    ],
+    background: function () &#123;
+        return [
+            &#123;
+                image: &quot;bg&quot;
+            &#125;
+        ];
+    &#125;,
+    images: &#123;
+        &#x2F;&#x2F; is supported loading images via url (https or http protocol)
+        snow: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;seed&#x2F;picsum&#x2F;500&#x2F;700&quot;,
+        test: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;seed&#x2F;picsum&#x2F;600&#x2F;900&quot;,
+        bg: &#123;
+            url: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;id&#x2F;1080&#x2F;367&#x2F;267&quot;,
+            headers: &#123;
+                myheader: &quot;123&quot;,
+                myotherheader: &quot;abc&quot;
+            &#125;
+        &#125;,
+        &#x2F;&#x2F; is supported loading images via url with custom headers
+        strawberries: &#123;
+            url: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;id&#x2F;1080&#x2F;367&#x2F;267&quot;,
+            headers: &#123;
+                myheader: &quot;123&quot;,
+                myotherheader: &quot;abc&quot;
+            &#125;
+        &#125;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="svg-图像"><a href="#svg-图像" class="headerlink" title="svg 图像"></a>svg 图像</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  content: [
+    &#123;
+      &#x2F;&#x2F; If no width&#x2F;height&#x2F;fit is used, then dimensions from the svg element is used.
+      svg: &#39;&lt;svg width&#x3D;&quot;300&quot; height&#x3D;&quot;200&quot; viewBox&#x3D;&quot;0 0 300 200&quot;&gt;...&lt;&#x2F;svg&gt;&#39;
+    &#125;
+  ]
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#123; text: &quot;google&quot;, link: &quot;http:&#x2F;&#x2F;google.com&quot; &#125;, &#x2F;&#x2F; 链接外部站点
+        &#123; text: &quot;Go to page 2&quot;, linkToPage: 2 &#125;, &#x2F;&#x2F; 链接到2页码处
+        &#123; text: &quot;Go to Header&quot;, linkToDestination: &quot;header&quot; &#125;, &#x2F;&#x2F; 链接到 id为header的锚点处
+        &#123; text: &quot;Header content&quot;, id: &quot;header&quot; &#125; &#x2F;&#x2F; 当前id 为 header
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#x2F;&#x2F; basic usage 二维码中的内容
+        &#123; qr: &quot;text in QR&quot; &#125;,
+
+        &#x2F;&#x2F; colored QR  前景色跟背景色
+        &#123; qr: &quot;text in QR&quot;, foreground: &quot;red&quot;, background: &quot;yellow&quot; &#125;
+
+        &#x2F;&#x2F; 其它配置查看文档
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#123;
+            toc: &#123;
+                id: &quot;mainToc&quot;, &#x2F;&#x2F; 目录,跳转到 tocItem 为 mainToc 的内容处
+                title: &#123; text: &quot;INDEX&quot;, style: &quot;header&quot; &#125;
+            &#125;
+        &#125;,
+        &#123;
+            text: &quot;This is a header&quot;,
+            style: &quot;header&quot;,
+            tocItem: &quot;mainToc&quot;
+        &#125;
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="水印"><a href="#水印" class="headerlink" title="水印"></a>水印</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    watermark: &quot;test watermark&quot;,
+    content: [
+        ....
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其它配置查看文档</p>
+<h3 id="纸张大小"><a href="#纸张大小" class="headerlink" title="纸张大小"></a>纸张大小</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  &#x2F;&#x2F; a string or &#123; width: number, height: number &#125;
+    pageSize: &quot;A5&quot;, &#x2F;&#x2F; 这里可以设置相应值, 文档中有说明
+    content: [
+        ....
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h3><p>就是这个 pdf 属性当中能够查看到的一些信息</p>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    info: &#123;
+        title: &quot;awesome Document&quot;,
+        author: &quot;john doe&quot;,
+        subject: &quot;subject of document&quot;,
+        keywords: &quot;keywords for document&quot;
+    &#125;,
+    content: &quot;This is an sample PDF printed with pdfMake&quot;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  compress: false,
+
+  content: (...)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="加密和访问权限"><a href="#加密和访问权限" class="headerlink" title="加密和访问权限"></a>加密和访问权限</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    userPassword: &quot;123&quot;, &#x2F;&#x2F; 用户密码 用于解密文件
+    &#x2F;&#x2F; ownerPassword: &quot;123456&quot;, &#x2F;&#x2F;权限密码,解密后拥有以下权限,默认无任何权限
+    permissions: &#123;
+        printing: &quot;highResolution&quot;, &#x2F;&#x2F;是否允许打印。指定&quot;lowResolution&quot;允许降级打印，或&quot;highResolution&quot;允许以高分辨率打印
+        modifying: true, &#x2F;&#x2F;是否允许修改文件。指定true允许修改文档内容
+        copying: false, &#x2F;&#x2F;是否允许复制文本或图形。指定true允许复制
+        annotating: true, &#x2F;&#x2F;是否允许注释、填表。指定true允许注释和表单填写
+        fillingForms: true, &#x2F;&#x2F;是否允许填表和签名。指定true允许填写表单域和签名
+        contentAccessibility: false, &#x2F;&#x2F;是否允许复制可访问性文本。指定true以允许复制以实现可访问性
+        documentAssembly: true &#x2F;&#x2F;是否允许组装文件。指定true允许文档组装
+    &#125;,
+    content: [&quot;...&quot;]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="嵌入附件"><a href="#嵌入附件" class="headerlink" title="嵌入附件"></a>嵌入附件</h3><p>查看文档</p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-text">install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use"><span class="toc-text">use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#doc"><span class="toc-text">doc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#content"><span class="toc-text">content</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#styles"><span class="toc-text">styles</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E7%9A%84%E9%97%B4%E9%9A%99"><span class="toc-text">列的间隙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8"><span class="toc-text">表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8%E5%92%8C%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">有序列表和无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E7%9C%89%E9%A1%B5%E8%84%9A"><span class="toc-text">页眉页脚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E5%B1%82"><span class="toc-text">背景层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E8%B7%9D"><span class="toc-text">边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E4%B8%AD%E7%9A%84%E6%AE%B5%E8%90%BD"><span class="toc-text">列中的段落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-text">图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#svg-%E5%9B%BE%E5%83%8F"><span class="toc-text">svg 图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-text">二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%8D%B0"><span class="toc-text">水印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B8%E5%BC%A0%E5%A4%A7%E5%B0%8F"><span class="toc-text">纸张大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">文档元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9"><span class="toc-text">压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E5%92%8C%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-text">加密和访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E9%99%84%E4%BB%B6"><span class="toc-text">嵌入附件</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/06/22/CDN/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          前端开发工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          vue.config.js的一些配置
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>
