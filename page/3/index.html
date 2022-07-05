@@ -81,6 +81,1403 @@
 
       <div class="outer">
         <section id="main">
+  <article id="post-其他/电脑清理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/09/%E5%85%B6%E4%BB%96/%E7%94%B5%E8%84%91%E6%B8%85%E7%90%86/">电脑清理</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-08T16:00:00.000Z" itemprop="datePublished">2022年04月09日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/04/09/%E5%85%B6%E4%BB%96/%E7%94%B5%E8%84%91%E6%B8%85%E7%90%86/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="新电脑配置"><a href="#新电脑配置" class="headerlink" title="新电脑配置"></a>新电脑配置</h3><ul>
+<li><p>开启清理垃圾</p>
+<pre class="line-numbers language-none"><code class="language-none">右键选择显示设置
+选择存储
+打开存储感知,点击下方配置
+临时文件什么的改为每天<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>关闭无用开机自启</p>
+<pre class="line-numbers language-none"><code class="language-none">点击任务栏
+点击启动
+把不需要的都禁用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>修改默认存储盘</p>
+<pre class="line-numbers language-none"><code class="language-none">显示设置
+点击存储然后下滑
+点击 更改新内容的保存位置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="查看电脑使用记录"><a href="#查看电脑使用记录" class="headerlink" title="查看电脑使用记录"></a>查看电脑使用记录</h3><blockquote>
+<p>进入cmd 输入 recent 回车</p>
+</blockquote>
+<h3 id="C盘清理"><a href="#C盘清理" class="headerlink" title="C盘清理"></a>C盘清理</h3><blockquote>
+<p>download logFiles prefetch temp 4个文件夹删除<br><code>系统缓存垃圾 wind日常更新补丁包 电脑访问痕迹 临时文件</code></p>
+</blockquote>
+<h3 id="解决电脑卡顿"><a href="#解决电脑卡顿" class="headerlink" title="解决电脑卡顿"></a>解决电脑卡顿</h3><pre class="line-numbers language-none"><code class="language-none">进入任务管理器
+点击文件,运行新任务
+输入cmd进入terminal
+输入chkdsk回车(检查磁盘系统)
+输入sfc&#x2F;scannow回车(查找损坏文件并修复)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="激活wind系统"><a href="#激活wind系统" class="headerlink" title="激活wind系统"></a>激活wind系统</h3><pre class="line-numbers language-none"><code class="language-none">创建bat后缀文件
+内容为:
+slmgr&#x2F;skms kms.03k.org
+slmgr&#x2F;ato<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="wind激活密钥"><a href="#wind激活密钥" class="headerlink" title="wind激活密钥"></a>wind激活密钥</h3><pre class="line-numbers language-none"><code class="language-none">cmd依次输入
+win10专业版
+slmgr&#x2F;ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+slmgr&#x2F;skms kms kms.03k.org
+slmgr&#x2F;ato
+
+win10企业版
+slmgr&#x2F;ipk NPPR9-FWDCX-D2C8J-H872K-2FT43
+slmgr&#x2F;skms kms kms.03k.org
+slmgr&#x2F;ato
+
+win10家庭版
+slmgr&#x2F;ipk TX9XD-98N7V-6WNQ6-BX7FG-H8Q99
+slmgr&#x2F;skms kms kms.03k.org
+slmgr&#x2F;ato<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="修改电脑密码"><a href="#修改电脑密码" class="headerlink" title="修改电脑密码"></a>修改电脑密码</h3><pre class="line-numbers language-none"><code class="language-none">重启 连续按F8 选择安全模式
+出现adminostrator账户,打开管理员,命令窗口
+输入
+etuserAA123456&#x2F;add
+密码就会改成123456
+然后重启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="查看wifi密码"><a href="#查看wifi密码" class="headerlink" title="查看wifi密码"></a>查看wifi密码</h3><pre class="line-numbers language-none"><code class="language-none">cd cmd
+for &#x2F;f &quot;skip&#x3D;9 tokens&#x3D;1,2 delims&#x3D;:&quot; %i in (&#39;netsh wlan show profiles&#39;) do @echo %j | findstr -i -v echo | netsh wlan show profiles %j key&#x3D;clear<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/window/" rel="tag">window</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Vue/vue3学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/Vue/vue3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">vue3 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/Vue/vue3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>****### 区别 或者说是新特性</p>
+<ol>
+<li>双向绑定</li>
+</ol>
+<ul>
+<li>v2 使用的 Object.definePropety()实现,通过 length or keys 修改监听不到</li>
+<li>v3 使用的基于 Proxy</li>
+</ul>
+<ol start="2">
+<li><p>Dom 渲染</p>
+<pre class="line-numbers language-none"><code class="language-none">- v2 使用 diff,对新旧 dom 进行全量对比
+- v3 使用 diff 对新旧 dom 对比,v3 不会对静态 dom(没有绑定任何数据)做标记,只对动态 dom(通过 v-bind or &#123;&#123;&#125;&#125; 绑定有数据的)做相应的标记,在数据发生改变时只会对有标记的 dom 进行处理
+- 对事件侦听器做了缓存处理,页面不断刷新不会使侦听器销毁再重建<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template v-for :key&gt;
+	&lt;div v-if&#x2F;&gt;
+&lt;&#x2F;template&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>根节点</p>
+</li>
+</ol>
+<ul>
+<li>v3 支持多根节点</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
+	&lt;div&#x2F;&gt;
+	&lt;div&#x2F;&gt;
+&lt;&#x2F;template&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>v3 添加 render() 函数 JSX 写法</li>
+</ul>
+<ol start="4">
+<li>v3 支持多个 v-model (v2 中只支持一个)</li>
+<li>添加内置组件 Suspense</li>
+<li>Tree Shaking</li>
+</ol>
+<ul>
+<li>v2 中一些没用到的内置 api 都会被打包</li>
+<li>v3 新增 tree shaking 特性,因为 api 都需要导出使用,则一些用不到的 api 不会被打包,主要清除了多余的代码<br><code>比如:import &#123;watch&#125; from &#39;vue&#39;</code></li>
+</ul>
+<ol start="7">
+<li>函数式编程</li>
+</ol>
+<ul>
+<li>添加 Setup 钩子,也叫 vue Hook</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>ref 使用</li>
+</ol>
+<ul>
+<li>什么是 ref?<br>ref 和 reactive 一样,也是用来实现响应式数据的方法<br>由于 reactive 必须传递一个对象,所以在实际开发中如果只是想让某个变量实现响应式的时候回非常麻烦<br>所以 Vue3 提供了 ref 方法实现简单值得监听</li>
+<li>2.ref 本质<br>ref 底层其实还是 reactive,所以当运行时系统会自动根据传入的 ref 转换成 reactive.</li>
+<li>3.ref 注意点<br>在 vue 中使用 ref 的值不用通过 value 获取<br>在 js 中使用 ref 的值必须通过 value 获取</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123;ref&#125; from &#39;vue&#39;
+&#x2F;**
+ * @event: ref
+ * @Tip:
+ *&#x2F;
+const ref_value &#x3D; ref(&#123;
+  name: &#39;Boring ghost&#39;
+&#125;)
+const ref_change &#x3D; () &#x3D;&gt; &#123;
+  ref_value.value.name &#x3D; &#39;Boring ghost is change&#39;
+&#125;
+
+&lt;!-- 按钮 --&gt;
+&lt;button @click&#x3D;&quot;ref_change&quot;&gt;change ref&lt;&#x2F;button&gt;
+&lt;div&gt;&#123;&#123;ref_value.name&#125;&#125;&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>Ref 泛型</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; Ref &#125; from &#39;vue&#39;
+const ref_value:Ref&lt;string&gt;&#x3D;ref(&quot;text&quot;) &#x2F;&#x2F; no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>isRef 判断是否为 ref 对象</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; ref,isRef &#125; from &#39;vue&#39;
+const ref_vlue &#x3D; ref(&quot;Boring ghost&quot;)
+const its_value&#x3D; &quot;Boring ghost&quot;
+isRef(ref_value)&#x2F;&#x2F;return is true
+isRef(its_value)&#x2F;&#x2F;return is false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>shallowRef</li>
+<li>比较提高性能</li>
+<li>监听到 value, value 内部不具备响应式</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; ref, Ref, isRef, shallowRef &#125; from &#39;vue&#39;
+&#x2F;* shallowRef *&#x2F;
+let shallowRef_value &#x3D; shallowRef(&#123;
+  name: &#39;shallowRef Boring ghost&#39;
+&#125;)
+setTimeout(() &#x3D;&gt; &#123;
+  shallowRef_value.value.name &#x3D; &#39;1221&#39; &#x2F;&#x2F;并不会更新dom上的渲染
+  console.log(shallowRef_value.value.name)
+  shallowRef_value.value &#x3D; &#123;  &#x2F;&#x2F;会更新到dom
+    name: &#39;099999&#39;
+  &#125;
+&#125;, 1000)
+
+&lt;div&gt;&#123;&#123;shallowRef_value.name&#125;&#125;&lt;&#x2F;div&gt; &#x2F;&#x2F;&#39;099999&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>triggerRef 强制响应</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; ref, Ref, isRef, shallowRef, triggerRef &#125; from &#39;vue&#39;
+&#x2F;* shallowRef : 非响应 *&#x2F;
+let shallowRef_value &#x3D; shallowRef(&#123;
+  name: &#39;shallowRef Boring ghost&#39;
+&#125;)
+setTimeout(() &#x3D;&gt; &#123;
+  shallowRef_value.value.name &#x3D; &#39;1221&#39;
+  console.log(shallowRef_value.value.name)
+&#125;, 1000)
+
+&#x2F;* triggerRef : 强制响应 *&#x2F;
+const ref_triggerRef &#x3D; () &#x3D;&gt; &#123;
+  triggerRef(shallowRef_value) &#x2F;&#x2F;Tip:一般搭配shallowRef使用,因为不会响应到dom,如果需要响应就使用trggerRef强制响应
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>customRef 自定义 ref</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* customRef :自定义ref *&#x2F;
+function my_ref&lt;T&gt;(value: T) &#123;
+  return customRef((trank, trigger) &#x3D;&gt; &#123;
+    return &#123;
+      get() &#123;
+        trank() &#x2F;&#x2F;收集依赖,让这个值变成响应式
+        return value
+      &#125;,
+      set(newvalue: T) &#123;
+        value &#x3D; newvalue
+        console.log(value, newvalue)
+        trigger() &#x2F;&#x2F;修改完触发一下以实现效果
+      &#125;
+    &#125;
+  &#125;)
+&#125;
+let cus_value &#x3D; my_ref(&#39;Boring ghost&#39;)
+cus_value.value &#x3D; &#39;new Boring ghost&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>reactive 响应式</li>
+</ol>
+<ul>
+<li>reactive 复杂数据响应式</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* reactive : 复杂数据响应式 *&#x2F;
+let react_arr: &#123;
+  [propName: string]: any
+&#125; &#x3D; reactive(&#123;
+  name: &#39;Boring ghost&#39;,
+  list: []
+&#125;)
+setTimeout(() &#x3D;&gt; &#123;
+  react_arr.name &#x3D; &#39;new Boring ghost&#39; &#x2F;&#x2F;no problem
+  console.log(react_arr.name)
+  react_arr.list &#x3D; [12] &#x2F;&#x2F;no problem
+  react_arr &#x3D; &#123;
+    name: &#39;two: new Boring ghost&#39;
+  &#125;
+  console.log(react_arr.name) &#x2F;&#x2F;At Question! 直接赋值破坏了响应式,数据变了,但是dom没有响应
+
+  react_arr.list &#x3D; [12] &#x2F;&#x2F;At Question! 前面对react_arr直接赋值直接破坏了响应式,所有后面的更改都相当于没有了响应
+  &lt;!-- 最终的结果就是&#123; &quot;name&quot;: &quot;new Boring ghost&quot;, &quot;list&quot;: [ 12 ] &#125; --&gt;
+  破坏响应式之后数据改变,是不会响应到dom的
+&#125;, 3000)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>readonly 只读的</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* readonly : copy 出一个对象,copy 后这个对象是只读的不能赋值 *&#x2F;
+let reactive_object &#x3D; reactive(&#123;
+  name: &#39;Boring ghost&#39;
+&#125;)
+let copy &#x3D; readonly(reactive_object)
+reactive_object.name &#x3D; &#39;12122&#39; &#x2F;&#x2F;no problem
+console.log(copy) &#x2F;&#x2F;no problem
+&#x2F;&#x2F; copy.name&#x3D;&#39;&#39;&#x2F;&#x2F;At Question! copy 是只读的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>shallowReactive 变量只挂载一次</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* shallowReactive :挂载到dom后便不会响应,浅层次的会更新 *&#x2F;
+let shallow_value&#x3D;shallowReactive(&#123;
+	name:&#39;Boring ghost&#39;,
+  obj:&#123;
+    name:&quot;friend&quot;
+  &#125;
+&#125;)
+function change_one()&#123;
+  shallow_value.name&#x3D;&quot;new Boring ghost!&quot; &#x2F;&#x2F;no problem and show template
+&#125;
+function change_two()&#123;
+  shallow_value.obj.name&#x3D;&quot;new Friend !&quot; &#x2F;&#x2F;At Question! :数据会更改,但是不会更新到template
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>to 的用法</li>
+</ol>
+<ul>
+<li>toRef 原始对象是响应式&#x2F;非响应式 则 toRef 后的对象就是 响应式&#x2F;非响应式</li>
+<li>and toRefs 带有解构</li>
+<li>响应式的数据在更新视图时,自然会更新那些带有标记但是因为数据并非是响应式而尚未更新的视图</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; toRef, ref, reactive &#125; from &#39;vue&#39;
+&#x2F;* toRef: 原始对象是响应式&#x2F;非响应式 则 toRef 后的对象就是 响应式&#x2F;非响应式 *&#x2F;
+&#x2F;* Tip: 更改 toRef 后的数据同时会改变原始数据 *&#x2F;
+let noRef_obj &#x3D; &#123;
+  name: &#39;Boring ghost&#39;
+&#125;
+let ref_zhang &#x3D; reactive(&#123;
+  name: &#39;Boring ghost! zhang&#39;
+&#125;)
+let value_newObj &#x3D; toRef(noRef_obj, &#39;name&#39;)
+let &#123; name &#125; &#x3D; toRefs(noRef_obj)&#x2F;&#x2F;toRefs 可以进行解构
+let new_zhang &#x3D; toRef(ref_zhang, &#39;name&#39;)
+function chage_obj() &#123;
+  noRef_obj.name &#x3D; &#39;new Boring ghost&#39; &#x2F;&#x2F;At Question! 视图是不会改变,原始对象是非响应式
+  &#x2F;* Tip:若果没有下面这一行,仅靠上面是不会更新视图的,但是加了下面这一行,也就是原始数据本身是响应式的 *&#x2F;
+  &#x2F;* 所以视图是会跟着响应的,在响应的同时,绑定标记的dom自然也就跟着渲染到新状态了 *&#x2F;
+  new_zhang.value &#x3D; &#39;new Boring ghost! zhang&#39; &#x2F;&#x2F;no problem and can show template
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>toRaw 将响应式对象变成非响应式对象</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; toRef, ref, reactive, toRefs, toRaw &#125; from &#39;vue&#39;
+let react_lisi &#x3D; reactive(&#123;
+  name: &#39;Boring ghost lisi&#39;,
+  num: 2
+&#125;)
+let new_lisi &#x3D; toRaw(react_lisi)
+function click_lisi() &#123;
+  new_lisi.name &#x3D; &#39;new Boring ghost&#39; &#x2F;&#x2F;can&#39;t show to template view
+  console.log(new_lisi.name) &#x2F;&#x2F;new Boring ghost
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>markRaw 标记一个对象，使其永远不会再成为响应式对象。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!-- 在使用动态组件时非常有用 --&gt;
+import tem1 from &quot;.&#x2F;tem1.vue&quot;
+import tem2 from &quot;.&#x2F;tem2.vue&quot;
+
+interface Tem&#123;
+  name:string,
+  temName:any
+&#125;
+const data&#x3D;reactive&lt;Tem[]&gt;([
+  &#123;
+    name:&#39;template no.1&#39;,
+    temName:markRaw(tem1)
+  &#125;,
+  &#123;
+    name:&quot;template no.2&quot;,
+    temName:markRaw(tem2)
+  &#125;
+])
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>computed 计算属性</li>
+</ol>
+<ul>
+<li>computed</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; ref, computed &#125; from &#39;vue&#39;
+&#x2F;* computed : 计算属性 *&#x2F;
+let str_one &#x3D; ref(&#39;&#39;)
+let str_two &#x3D; ref(&#39;&#39;)
+let compute_value &#x3D; computed(&#123;
+  get() &#123;
+    return str_one.value + str_two.value
+  &#125;,
+  set() &#123;
+    str_one.value + str_two.value
+  &#125;
+&#125;)
+&lt;!-- or --&gt;
+let compute_value &#x3D; computed(() &#x3D;&gt; &#123;
+  return str_one.value + str_two.value
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>watch 监听<br>tip:reactive 不管写不写 deep 都能够深度监听</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* watch 监听 *&#x2F;
+watch([str_one, str_two], (newv, oldv) &#x3D;&gt; &#123;&#125;, &#123; deep: true, immediate: true &#125;)
+&lt;!-- 监听单个 --&gt;
+watch(str_one,()&#x3D;&gt;&#123;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="6">
+<li>高级侦听</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* 高级侦听 *&#x2F;
+let stop_watch &#x3D; watchEffect(
+  oninvalidate &#x3D;&gt; &#123;
+    &#x2F;* Tip: watchEffect 里面的值,只要改变就会执行,包括页面刚加载*&#x2F;
+    console.log(str_one.value)
+    console.log(12)
+    oninvalidate(() &#x3D;&gt; &#123;
+      &#x2F;&#x2F;每次改变都会限执行这个函数,页面刚加载不会执行
+      console.log(&#39;befor&#39;)
+    &#125;)
+  &#125;,
+  &#123;
+    &#x2F;&#x2F;额外的配置项
+    flush: &#39;post&#39; &#x2F;&#x2F;post 组件更新后执行,pre 更新前 sync同步
+  &#125;
+)
+&#x2F;* 返回值可以停止监听 *&#x2F;
+stop_watch()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="7">
+<li>使用组件<br><code>引入后可以直接使用</code></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script setup lang&#x3D;&quot;ts&quot;&gt;
+&#x2F;* 引入组件 *&#x2F;
+import tem from &#39;.&#x2F;components&#x2F;test_template.vue&#39;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="8">
+<li>生命周期顺序</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* 生命周期的顺序 *&#x2F;
+import &#123;
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted
+&#125; from &#39;vue&#39;
+&#x2F;* setup *&#x2F;
+console.log(&#39;setup 是最先执行的,可以处理一些数据,same as created&#39;)
+&#x2F;* onBeforeMount *&#x2F;
+onBeforeMount(() &#x3D;&gt; &#123;
+  console.log(&#39;dom渲染之前,这里获取不到dom元素&#39;)
+&#125;)
+&#x2F;* onMounted *&#x2F;
+onMounted(() &#x3D;&gt; &#123;
+  console.log(&#39;don渲染完之后,这里可以对dom元素进行操作&#39;)
+&#125;)
+&#x2F;* onBeforeUpdate *&#x2F;
+onBeforeUpdate(() &#x3D;&gt; &#123;
+  console.log(&#39;数据改变dom更新之前&#39;)
+&#125;)
+&#x2F;* onUpdated *&#x2F;
+onUpdated(() &#x3D;&gt; &#123;
+  console.log(&#39;数据改变dom更新完成&#39;)
+&#125;)
+&#x2F;* onBeforeUnmount *&#x2F;
+onBeforeUnmount(() &#x3D;&gt; &#123;
+  console.log(&#39;组件卸载之前,same as vue2 befordestory&#39;)
+&#125;)
+&#x2F;* onUnmounted *&#x2F;
+onUnmounted(() &#x3D;&gt; &#123;
+  console.log(&#39;组件卸载完成,same as vue2 destoryed&#39;)
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="9">
+<li>组件传参</li>
+</ol>
+<ul>
+<li>same as vue2</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+export default &#123;
+  props: &#123;
+    props_value: &#123;
+      type: String
+    &#125;
+  &#125;
+
+&#125;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>setup 语法糖 &amp; ts 中</li>
+<li>不需要导出接口, setup 默认以解析</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script setup lang&#x3D;&#39;ts&#39;&gt;
+interface Props &#123;
+  props_value: string
+&#125;
+defineProps&lt;Props&gt;()
+&lt;&#x2F;script&gt;
+
+&lt;div&gt;值:&#123;&#123;props_value&#125;&#125;&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>props 的默认值</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* son template&#39;s props *&#x2F;
+interface Props &#123;
+  name: string,
+  array:number[]
+&#125;
+withDefaults(defineProps&lt;Props&gt;(), &#123;
+  name: &#39;当前为默认值&#39;,
+  array: () &#x3D;&gt; [], &#x2F;&#x2F;复杂类型使用返回值
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>子向父传递参数</li>
+<li>通过 defineEmits API ,语法糖以解析,不需要 import</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!-- son template  --&gt;
+const emits &#x3D; defineEmits([&#39;on-change&#39;,&#39;on-click&#39;])
+function emitToFather()&#123;
+  emits(&#39;on-click&#39;,&#39;这是传递的参数&#39;)
+&#125;
+&lt;!-- father template :same as vue2--&gt;
+function self_click(arg:string)&#123;
+  console.log(arg) &#x2F;&#x2F;return value is &#39;这是传递的参数&#39;
+&#125;
+&lt;tem @on-click&#x3D;&#39;self_click&#39;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>通过依赖注入跨多子组件传参</li>
+<li>注入之后直接在当前组件使用没有用</li>
+<li>修改参数也会响应变化到其它组件的值</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!-- parent component --&gt;
+import &#123; ref, Ref, provide, inject &#125; from &#39;vue&#39;
+let test_value &#x3D; ref(&#39;name&#39;)
+provide(&#39;test_give&#39;, test_value) &#x2F;&#x2F;ref传递不要.value
+
+&lt;!-- son no1 --&gt;
+import com2 from &#39;@&#x2F;components&#x2F;other&#x2F;com_no2.vue&#39;
+let son_value &#x3D; inject(&#39;test_give&#39;, ref(&#39;default value&#39;))
+
+&lt;!-- son no2 --&gt;
+import &#123; inject, Ref, ref &#125; from &#39;vue&#39;
+&#x2F;* Tip:inject 必须给一个默认值,否则会报错 *&#x2F;
+let son_value &#x3D; inject(&#39;test_give&#39;, ref(&#39;default value&#39;))
+function change_value() &#123;
+  son_value.value &#x3D; &#39;new value&#39;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>eventBus 传参</li>
+<li>vue3 移除了 emit on 方法,需要自己创建一个 utils 工具</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!-- here is eventBus --&gt;
+class Bus&#123;
+  list:&#123;[key:string]:Array&lt;Function&gt;&#125;
+  constructor()&#123;
+    this.list&#x3D;&#123;&#125;
+  &#125;
+  on(name:string,arg:Function)&#123;
+    this.list[name]&#x3D;this.list[name]||[]
+    this.list[name].push(arg)
+  &#125;
+  emit(name:string,arg?:any)&#123;
+    if(this.list[name])&#123;
+      for(let fn of this.list[name])&#123;
+        fn(arg)
+      &#125;
+    &#125;
+  &#125;
+&#125;
+export default new Bus()
+
+&lt;!-- here brother no1 --&gt;
+import bus from &#39;.&#x2F;eventBus&#39;
+bus.on(&#39;test_fn&#39;,()&#x3D;&gt;&#123;..&#125;)
+
+&lt;!-- here brother no2 --&gt;
+import bus from &#39;.&#x2F;eventBus&#39;
+bus.emit(&#39;test_fn&#39;,&#39;arg_value&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="10">
+<li>组件</li>
+</ol>
+<ul>
+<li>全局组件 局部组件 递归组件</li>
+<li>main.ts 注册全局组件</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;* these is need use&#39;s template *&#x2F;
+import btnTem1 from &#39;.&#x2F;components&#x2F;btnTem1.vue&#39;
+import btnTem2 from &#39;.&#x2F;components&#x2F;btnTem2.vue&#39;
+
+const app &#x3D; createApp(App)
+app.component(&#39;btnTem1&#39;, btnTem1)
+app.component(&#39;btnTem2&#39;, btnTem2)
+app.mount(&#39;#app&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>动态组件的渲染</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!-- template --&gt;
+&lt;component :is&#x3D;&#39;current_component&#39;&#x2F;&gt;
+&lt;button @click&#x3D;&#39;switch_component&#39;&#x2F;&gt;
+
+&lt;!-- script --&gt;
+import 引入一些组件,例: tem1 tem2 tem3
+interface Tem&#123;
+  name:string,
+  comName:any
+&#125;
+const component_data&#x3D;reactive&lt;Tem[]&gt;([
+  &#123;
+    name:&#39;component no.1&#39;,
+    comName:markRaw(tem1),&#x2F;&#x2F;永久注销他的响应式来提高性能
+  &#125;,
+  &#123;
+    name:&#39;component no.2&#39;,
+    comName:markRaw(tem2)
+  &#125;,
+  &#123;
+    name:&#39;component no.3&#39;,
+    comName:markRaw(tem3)
+  &#125;
+])
+const current_compontent&#x3D;ref(component_data[0].comName)
+function switch_component()&#123;
+  let random_num&#x3D;Math.floor(Math.random()*(3-0)+0)
+  current_component.value&#x3D;component_data[random_num].comName
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>组件异步加载</li>
+<li>作用:组件过大时使用能提高性能</li>
+<li>打包后也会将组件的逻辑单独打一个文件,不会添加主逻辑文件的负担<br>例:一个 demo 引入的子组件非常大时可使用,这样这个页面加载时就不会同步加载这个组件,如果同步加载这个组件这个组件又比较大就会出现页面加载白屏卡顿的现象</li>
+</ul>
+<p><code>方式一</code></p>
+<ul>
+<li>default 为默认插槽 fallback 为加载时所显示的插槽</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; defineAsyncComponent &#125; from &#39;vue&#39;
+&#x2F;* 异步组件 *&#x2F;
+const async_compoent &#x3D; defineAsyncComponent(() &#x3D;&gt; import(&#39;@&#x2F;components&#x2F;other&#x2F;Async_component.vue&#39;))
+const async_compoent2 &#x3D; defineAsyncComponent(() &#x3D;&gt; import(&#39;@&#x2F;components&#x2F;other&#x2F;Async_component2.vue&#39;))
+
+&lt;!-- the bottom is template --&gt;
+    &lt;div&gt;异步组件&lt;&#x2F;div&gt;
+    &lt;Suspense&gt;
+      &lt;template #default&gt;
+        &lt;async_compoent&gt;&lt;&#x2F;async_compoent&gt;
+      &lt;&#x2F;template&gt;
+      &lt;template #fallback&gt;
+        &lt;div&gt;loading...&lt;&#x2F;div&gt;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;Suspense&gt;
+    &lt;Suspense&gt;
+      &lt;template #default&gt;
+        &lt;async_compoent2&gt;&lt;&#x2F;async_compoent2&gt;
+      &lt;&#x2F;template&gt;
+      &lt;template #fallback&gt;
+        &lt;div&gt;loading...&lt;&#x2F;div&gt;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;Suspense&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>方式二</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import loading_component And error_component!
+let async_component&#x3D;defineAsyncComponent(&#123;
+  loader:()&#x3D;&gt;import(&#39;..&#x2F;component.vue&#39;),&#x2F;&#x2F;需要加载的组件
+  loadingComponent:loading_component,&#x2F;&#x2F;提前导入好的loading组件
+  errorComponent:error_component,&#x2F;&#x2F;提前导入好的error404组件
+  delay:200,&#x2F;&#x2F;延迟多久之后开始显示loading组件
+  timeout:3000,&#x2F;&#x2F;loading加载多久后组件还没加载完就显示error组件,error组件显示之后,组件若是加载完成了,还是会显示组件的
+&#125;)
+
+&lt;!-- the bottom is template --&gt;
+&lt;async_component&gt;&lt;&#x2F;async_component&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>组件插槽</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!-- in the son component! --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+      &lt;!-- 匿名插槽 --&gt;
+      &lt;slot&gt;&lt;&#x2F;slot&gt;
+      &lt;!-- 具名插槽 --&gt;
+      &lt;slot name&#x3D;&#39;name_slot&#39;&gt;&lt;&#x2F;slot&gt;
+      &lt;!-- 具名作用域 --&gt;
+      &lt;slot name&#x3D;&#39;var_slot&#39; :ref_data&#x3D;&#39;ref_data&#39;&gt;&lt;&#x2F;slot&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+
+&lt;!-- in the parent component! --&gt;
+import slot_component from &#39;.&#x2F;component.vue&#39;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot_component&gt;
+      &lt;div&gt;匿名&lt;&#x2F;div&gt;
+      &lt;template #name_slot&gt;
+        具名
+      &lt;&#x2F;template&gt;
+      &lt;template #var_slot&#x3D;&#39;data&#39;&gt;
+      作用域具名,数据:&#123;&#123;data&#125;&#125;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;slot_component&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>telepoer 传送组件</li>
+<li>能够将组件内随意挂载到某个 class id or html 上!</li>
+<li>Tip:挂载的 dom 必须在 teleport 之前渲染,所以一般都是用它来实现弹窗效果直接挂载到 body 上面,因为按钮点击时 dom 都是渲染好的</li>
+<li>文档中的按钮就是弹窗</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;Teleport to&#x3D;&quot;.teleport_calss&quot;&gt;
+   &lt;div&gt;this is teleport component content!&lt;&#x2F;div&gt;
+&lt;&#x2F;Teleport&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>keep-alive 组件缓存</li>
+<li>组件渲染好第一次将不会再次渲染,提高了客户体验</li>
+<li>首次会执行 mounted 跟 activeted,第二次不再执行 mounted</li>
+<li>setup 语法糖设置不了组件 name,所以排除动态组件缓存搭配 if</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;keep-alive&gt;
+  &lt;component v-if&#x3D;&#39;current_com!&#x3D;&#x3D;com_no2&#39; :is&#x3D;&#39;current_com&#39;&#x2F;&gt;
+&lt;&#x2F;keep-alive&gt;
+  &lt;component v-if&#x3D;&#39;current_com&#x3D;&#x3D;&#x3D;com_no2&#39; :is&#x3D;&#39;current_com&#39;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>transtion 内置动画组件</li>
+<li>作用:搭配并为 if show 添加动画对组件实现显示隐藏功能</li>
+<li><a target="_blank" rel="noopener" href="https://vuejs.org/guide/built-ins/transition.html#the-transition-component">https://vuejs.org/guide/built-ins/transition.html#the-transition-component</a><br><code>普通使用 name</code></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;transition name&#x3D;&quot;test&quot;&gt;
+  &lt;div v-show&#x3D;&quot;bool&quot; class&#x3D;&quot;test_box&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;transition&gt;
+ .test_box &#123;
+    width: 200px;
+    height: 200px;
+    background-color: teal;
+    margin: 60px auto;
+  &#125;
+  .test-enter-to,
+  .test-leave-from &#123;
+    width: 200px;
+    height: 200px;
+  &#125;
+  .test-enter-active,
+  .test-leave-active &#123;
+    transition: all 1s ease;
+  &#125;
+  .test-enter-from,
+  .test-leave-to &#123;
+    width: 0;
+    height: 0;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>组件属性结合库来使用</code></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://animate.style/">https://animate.style/</a></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;transition
+  enter-active-class&#x3D;&quot;animate__animated animate__backInDown&quot;
+  leave-active-class&#x3D;&quot;animate__animated animate__backOutDown&quot;
+  :duration&#x3D;&quot;&#123; enter: 1000, leave: 1000 &#125;&quot;
+  name&#x3D;&quot;animate_css&quot;
+&gt;
+      &lt;div v-show&#x3D;&quot;bool1&quot; class&#x3D;&quot;test_box&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;transition&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>transtion生命周期结合 库 实现动画</code><br><a target="_blank" rel="noopener" href="https://greensock.com/docs/v3/GSAP/Tween">https://greensock.com/docs/v3/GSAP/Tween</a></p>
+<ul>
+<li>在过度生命周期,多个 done 回调,done 执行才表示过渡结束</li>
+<li>这个看起来相对丝滑</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">npm install gsap -s
+import gsap from &#39;gsap&#39;
+function before_enter(el: Element) &#123;
+  gsap.set(el, &#123;
+    width: 0,
+    height: 0
+  &#125;)
+  console.log(&#39;过渡之前&#39;)
+&#125;
+function enter(el: Element, done: gsap.Callback) &#123;
+  console.log(&#39;进入过渡完成&#39;)
+  gsap.to(el, &#123;
+    width: 200,
+    height: 200,
+    onComplete: done
+  &#125;)
+&#125;
+function leave(el: Element, done: gsap.Callback) &#123;
+  console.log(&#39;离开过渡完成&#39;)
+  gsap.to(el, &#123;
+    width: 0,
+    height: 0,
+    onComplete: done
+  &#125;)
+&#125;
+
+&lt;button @click&#x3D;&quot;bool2 &#x3D; !bool2&quot;&gt;the bottom is Hook and gsap&lt;&#x2F;button&gt;
+&lt;transition @before-enter&#x3D;&quot;before_enter&quot; @enter&#x3D;&quot;enter&quot; @leave&#x3D;&quot;leave&quot;&gt;
+  &lt;div v-show&#x3D;&quot;bool2&quot; class&#x3D;&quot;test_box&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;transition&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>appear 页面加载完成后执行的动画</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;button&gt;the bottom is Hook and gsap&lt;&#x2F;button&gt;
+&lt;transition :appear&#x3D;&quot;true&quot; appear-active-class&#x3D;&quot;animate__animated animate__backInLeft&quot;&gt;
+   &lt;div class&#x3D;&quot;test_box&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;transition&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>TransitionGroup 内置动画列表组件</li>
+<li>主要用来实现对列表的动画展示,用法与 transition 一致</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div class&#x3D;&quot;app_page&quot;&gt;
+    &lt;button&gt;the bottom is transitionGroup component&lt;&#x2F;button&gt;
+    &lt;button @click&#x3D;&quot;add&quot;&gt;add&lt;&#x2F;button&gt;
+    &lt;button @click&#x3D;&quot;splice&quot;&gt;splice&lt;&#x2F;button&gt;
+&lt;div class&#x3D;&quot;list&quot;&gt;
+  &lt;TransitionGroup
+    enter-active-class&#x3D;&quot;animate__animated animate__bounceInLeft&quot;
+    leave-active-class&#x3D;&quot;animate__animated animate__backOutRight&quot;
+  &gt;
+    &lt;div class&#x3D;&quot;item&quot; v-for&#x3D;&quot;item in transitionGroup_arr&quot; :key&#x3D;&quot;item&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;div&gt;
+  &lt;&#x2F;TransitionGroup&gt;
+&lt;&#x2F;div&gt;
+
+let transitionGroup_arr &#x3D; reactive([1, 2, 3, 4, 5, 6])
+function add() &#123;
+  let random_num &#x3D; Math.floor(Math.random() * (transitionGroup_arr.length - 0) + 0)
+  let random_num2 &#x3D; Math.floor(Math.random() * (100 - 0) + 0)
+  transitionGroup_arr.splice(random_num, 0, random_num2)
+&#125;
+function splice() &#123;
+  let random_num &#x3D; Math.floor(Math.random() * (transitionGroup_arr.length - 0) + 0)
+  transitionGroup_arr.splice(random_num, 1)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>TransitionGroup move-class</code></p>
+<pre class="line-numbers language-none"><code class="language-none">let transitionGroup_arr1 &#x3D; reactive([1, 2, 3, 4, 5, 6])
+function move() &#123;
+  let random_num &#x3D; Math.floor(Math.random() * (transitionGroup_arr1.length - 0) + 0)
+  let random_num1 &#x3D; Math.floor(Math.random() * (transitionGroup_arr1.length - 0) + 0)
+  let value &#x3D; transitionGroup_arr1[random_num]
+  transitionGroup_arr1[random_num] &#x3D; transitionGroup_arr1[random_num1]
+  transitionGroup_arr1[random_num1] &#x3D; value
+&#125;
+
+&lt;button&gt;the bottom is transitionGroup moveClass&lt;&#x2F;button&gt;
+&lt;button @click&#x3D;&quot;move&quot;&gt;splice&lt;&#x2F;button&gt;
+&lt;TransitionGroup class&#x3D;&quot;move_class&quot; tag&#x3D;&quot;div&quot; move-class&#x3D;&quot;mmm&quot;&gt;
+  &lt;div class&#x3D;&quot;item&quot; v-for&#x3D;&quot;item in transitionGroup_arr1&quot; :key&#x3D;&quot;item&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;div&gt;
+&lt;&#x2F;TransitionGroup&gt;
+
+  .move_class &#123;
+    position: relative;
+  &#125;
+  .mmm &#123;
+    transition: all 0.5s ease;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>gsap 实现数字动画</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">let num &#x3D; ref(8)
+let num1 &#x3D; ref(8)
+watch(() &#x3D;&gt; num.value, (newv, oldv) &#x3D;&gt; &#123;
+  gsap.to(num1, &#123;
+    duration: .5,
+    value: newv
+  &#125;)
+&#125;)
+    &lt;input type&#x3D;&quot;number&quot; step&#x3D;&quot;20&quot; v-model&#x3D;&quot;num&quot; &#x2F;&gt;
+    &lt;div&gt;&#123;&#123; num1.toFixed(0) &#125;&#125;&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="11">
+<li>自定义指令</li>
+</ol>
+<ul>
+<li>指令的 Hook</li>
+<li>与 v2 一致</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; Directive &#125; from &#39;vue&#39;
+const vTest: Directive &#x3D; &#123;
+  created() &#123;
+    console.log(&#39;created...&#39;)
+  &#125;,
+  mounted(...arg) &#123;
+    console.log(&#39;mounted...&#39;)
+    console.log(arg)
+  &#125;
+&#125;
+&lt;div v-test:aaa&#x3D;&quot;&#123; key_name: &#39;key_value&#39; &#125;&quot;&gt;自定义指令&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>简写</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; Directive, DirectiveBinding &#125; from &#39;vue&#39;
+const vTest: Directive &#x3D; (el: HTMLElement, arg: DirectiveBinding) &#x3D;&gt; &#123;
+  console.log(el, arg)
+&#125;
+&lt;div v-test:aaa&#x3D;&quot;&#123; key_name: &#39;key_value&#39; &#125;&quot;&gt;自定义指令&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="12">
+<li>全局变量</li>
+</ol>
+<ul>
+<li>vue3 移除了 filter 过滤器,这是用来代替过滤器的.</li>
+<li>main.ts 定义</li>
+<li>定义完之后重启项目跟 vscode</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">declare module &#39;@vue&#x2F;runtime-core&#39; &#123;
+  export interface ComponentCustomProperties &#123;
+    global_value: string
+  &#125;
+&#125;
+
+app.config.globalProperties.global_value &#x3D; &#39;自定义全局变量&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>使用</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div&gt;&#123;&#123; global_value &#125;&#125;&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="13">
+<li>element ui 注意点</li>
+</ol>
+<ul>
+<li>安装后在 tsconfig.ts 配置,否则没有提示</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">添加
+&quot;types&quot;:[&#39;element-plus&#x2F;global&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue3/" rel="tag">vue3</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/Pinia" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E5%85%B6%E4%BB%96/Pinia/">pinia 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E5%85%B6%E4%BB%96/Pinia/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><pre class="line-numbers language-none"><code class="language-none">npm i -S pinia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="use"><a href="#use" class="headerlink" title="use"></a>use</h3><pre class="line-numbers language-none"><code class="language-none">import &#123; createPinia &#125; from &#39;pinia&#39;
+
+app.use(createPinia())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="difineStore"><a href="#difineStore" class="headerlink" title="difineStore"></a>difineStore</h3><pre class="line-numbers language-none"><code class="language-none">import &#123; defineStore &#125; from &#39;pinia&#39;
+
+export const test_store &#x3D; defineStore(&#39;test_store&#39;, &#123;
+  state: () &#x3D;&gt; &#123;
+    return &#123;
+      name: &#39;Boring ghost!&#39;,
+    &#125;
+  &#125;,
+  getters: &#123;
+    new_name: (state) &#x3D;&gt; &#39;new &#39; + state.name,
+  &#125;,
+  actions: &#123;
+    refresh() &#123;
+      this.name &#x3D; &#39;refresh Boring ghost!&#39;
+    &#125;,
+  &#125;,
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>at component</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+    &lt;div&gt;this is store state value:&#123;&#123; store.name &#125;&#125;&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="set-state"><a href="#set-state" class="headerlink" title="set state"></a>set state</h3><p><code>直接解构会失去响应式</code></p>
+<pre class="line-numbers language-列" data-language="列"><code class="language-列">const &#123;name&#125; &#x3D; test_store() &#x2F;&#x2F;At question! this is error!
+&lt;!-- bottom is no problem --&gt;
+import &#123;storeToRefs&#125; from &quot;pinia&quot;
+const &#123;name&#125; &#x3D; storeToRefs(test_store())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>方式一</p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+store.name&#x3D;&#39;new value&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>方式二<br><code>批量修改</code></p>
+<pre class="line-numbers language-none"><code class="language-none">store.$patch(&#123;
+	name:&#39;new value&#39;,
+	key2:&quot;new value&quot;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>方式三(推荐)</p>
+<pre class="line-numbers language-none"><code class="language-none">store.$patch((state)&#x3D;&gt;&#123;
+	state.name&#x3D;&quot;new value&quot;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="pinia-Actions"><a href="#pinia-Actions" class="headerlink" title="pinia Actions"></a>pinia Actions</h3><blockquote>
+<p>支持同步跟异步</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+store.fn()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
+<li><p>$reset</p>
+<blockquote>
+<p>将state回复成初始状态</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+store.$reset() &#x2F;&#x2F;直接调用不需要传参<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>$subscribe</p>
+<blockquote>
+<p>state发生变化就会触发</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">store.$subscribe((args,state)&#x3D;&gt;&#123;&#125;,&#123;
+	detached:true,&#x2F;&#x2F;true:组件销毁后任然监听
+	deep:true
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>$onAction</p>
+<blockquote>
+<p>调用actions就会被触发</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">store.$onAction((args)&#x3D;&gt;&#123;&#125;,true)&#x2F;&#x2F;true:组件销毁后任然监听<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pinia/" rel="tag">pinia</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/Vite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E5%85%B6%E4%BB%96/Vite/">vite 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/vite/">vite</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E5%85%B6%E4%BB%96/Vite/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>npm init vite@latest</code></p>
+<h3 id="相比webpack"><a href="#相比webpack" class="headerlink" title="相比webpack"></a>相比webpack</h3><ul>
+<li>vite 直接type&#x3D;’module’ 引入就预览,而 webpack 打一次包后再预览</li>
+<li>vite HMR热更新,只刷新更新部分的内容,非所有内容</li>
+<li>vite Rollip 插件打包</li>
+</ul>
+<h3 id="使用ts"><a href="#使用ts" class="headerlink" title="使用ts"></a>使用ts</h3><ol>
+<li>选择 vue-ts 模板时自带 typescript, 只需要npm i</li>
+</ol>
+<h3 id="配置-resolve-alias"><a href="#配置-resolve-alias" class="headerlink" title="配置 resolve.alias"></a>配置 resolve.alias</h3><blockquote>
+<p>path会报2307,根据提示install @types&#x2F;node 即可<br><code>vite.config.ts</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; resolve &#125; from &#39;path&#39;
+export default defineConfig(&#123;
+	resolve:&#123;
+		alias:&#123;
+			&#39;@&#39;:resolve(__dirname,&#39;src&#39;)
+		&#125;
+	&#125;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>tsconfig.json add+</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;baseUrl&quot;: &quot;.&quot;,
+&quot;paths&quot;: &#123;
+   &quot;@&#x2F;*&quot;: [&quot;src&#x2F;*&quot;],
+   &quot;@page&#x2F;*&quot;: [&quot;src&#x2F;page&#x2F;*&quot;],
+   &quot;@img&#x2F;*&quot;: [&quot;src&#x2F;asstes&#x2F;img&#x2F;*&quot;]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="vite-中使用-process-变量"><a href="#vite-中使用-process-变量" class="headerlink" title="vite 中使用 process 变量"></a>vite 中使用 process 变量</h3><blockquote>
+<p>使用查看文档<br><code>https://vitejs.cn/guide/env-and-mode.html#modes</code></p>
+</blockquote>
+<h3 id="unplugin-auto-import"><a href="#unplugin-auto-import" class="headerlink" title="unplugin-auto-import"></a>unplugin-auto-import</h3><blockquote>
+<p>自动导入插件<br><a target="_blank" rel="noopener" href="https://github.com/antfu/unplugin-auto-import">https://github.com/antfu/unplugin-auto-import</a></p>
+</blockquote>
+<ul>
+<li>配置<pre class="line-numbers language-none"><code class="language-none">import AutoImport from &#39;unplugin-auto-import&#x2F;vite&#39;
+export default defineConfig(&#123;
+  plugins: [AutoImport(&#123;
+      imports: [&#39;vue&#39;],
+      dts: &#39;src&#x2F;auto-import.d.ts&#39;,
+    &#125;)]
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h3><p><code>npm i -D @vitejs/plugin-legacy</code></p>
+<pre class="line-numbers language-none"><code class="language-none">plugins: [
+  vue(),
+  legacyPlugin(&#123;
+    targets: [&quot;defaults&quot;, &quot;not IE 11&quot;],
+    additionalLegacyPolyfills: [&quot;regenerator-runtime&#x2F;runtime&quot;] &#x2F;&#x2F; 面向IE11时需要此插件
+  &#125;)
+],<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="提升打包性能"><a href="#提升打包性能" class="headerlink" title="提升打包性能"></a>提升打包性能</h3><ul>
+<li><p>静态文件夹管理</p>
+<pre class="line-numbers language-none"><code class="language-none">build: &#123;
+    rollupOptions: &#123;
+      output: &#123;
+        chunkFileNames: &#39;js&#x2F;[name]-[hash].js&#39;,
+        entryFileNames: &#39;js&#x2F;[name]-[hash].js&#39;,
+        assetFileNames: &#39;[ext]&#x2F;[name]-[hash].[ext]&#39;,
+      &#125;
+    &#125;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>压缩插件</p>
+<blockquote>
+<p>压缩静态资源较大的文件,<br>一些js，css，html，以及静态资源。gzip是用算法压缩文件，节省流量。等文件到达浏览器后，浏览器会解压文件，解压出的源文件与gzip之前的大小是没变化的。但是传输过程的流量消耗和带宽节省了。<br><code> npm i -D vite-plugin-compression</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">
+import viteCompression from &#39;vite-plugin-compression&#39;
+
+viteCompression(&#123;
+    verbose: true,
+    disable: false,
+    threshold: 10240,
+    algorithm: &#39;gzip&#39;,
+    ext: &#39;.gz&#39;,
+  &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>生产环境移除 console</p>
+<pre class="line-numbers language-none"><code class="language-none">build:&#123;
+  minify:&quot;terser&quot;,
+  terserOptions: &#123;
+      compress: &#123;
+        drop_console: true,
+        drop_debugger: true
+      &#125;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="PWA-离线"><a href="#PWA-离线" class="headerlink" title="PWA 离线"></a>PWA 离线</h3><p><code>npm i -S vite-plugin-pwa</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; VitePWA &#125; from &#39;vite-plugin-pwa&#39;
+
+plugins:[
+  ...
+  VitePWA(&#123;
+    manifest: &#123;&#125;,
+    workbox: &#123;
+      skipWaiting: true,
+      clientsClaim: true
+    &#125;
+  &#125;)
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="css前缀"><a href="#css前缀" class="headerlink" title="css前缀"></a>css前缀</h3><p><code>npm i -D autoprefixer</code></p>
+<pre class="line-numbers language-none"><code class="language-none">  &quot;defaults&quot;, &#x2F;&#x2F; 默认 &quot;last 2 versions&quot;, 
+  &quot;last 2 versions&quot;,  &#x2F;&#x2F; 兼容主流浏览器的最近两个版本 &quot;&gt; 1%&quot;, 
+  &quot;&gt; 1%&quot;, &#x2F;&#x2F; 兼容主流浏览器的最近两个版本 &quot;&gt; 1%&quot;, 
+  &quot;iOS 7&quot;,  &#x2F;&#x2F; 使用的浏览器需要在市场上的份额大于 1 &quot;iOS 7&quot;,
+  &quot;last 3 iOS versions&quot; &#x2F;&#x2F; 兼容 ios 的最新 3 个版本 
+postcss.config.js
+module.exports &#x3D; &#123;
+  plugins: &#123;
+    &#x2F;&#x2F;如果产生重突就将autoprefixer对象注释掉，因为脚手架内部也默认配置了一样的
+        autoprefixer: &#123;
+      overrideBrowserslist: [
+        &quot;Android 4.1&quot;,
+        &quot;iOS 7.1&quot;,
+        &quot;Chrome &gt; 31&quot;,
+        &quot;ff &gt; 31&quot;,
+        &quot;ie &gt;&#x3D; 8&quot;,
+        &quot;last 10 versions&quot; &#x2F;&#x2F; 所有主流浏览器最近10版本用
+      ],
+      grid: true
+    &#125;,
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="适屏"><a href="#适屏" class="headerlink" title="适屏"></a>适屏</h3><p><code>npm i -S postcss-pxtorem</code> <code>&quot;postcss-pxtorem&quot;: &quot;^6.0.0&quot;</code></p>
+<blockquote>
+<p>flexible 同样改成24</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">postcss.config.js
+
+  &quot;postcss-pxtorem&quot;: &#123;
+      rootValue(&#123; file &#125;) &#123;&#x2F;&#x2F;根元素的值1920 24份为准是80
+        return file.indexOf(&quot;vant&quot;) !&#x3D;&#x3D; -1 ? 37.5 : 80
+      &#125;,
+      propList: [&quot;*&quot;],
+      mediaQuery: false,
+      selectorBlackList: [&quot;fiexdPx&quot;],&#x2F;&#x2F;忽略转换,例如:.fiexdPx_app_page
+      minPixelValue: 6,
+      exclude: &#x2F;node_modules&#x2F;i
+    &#125;
+
+module.exports &#x3D; &#123;
+  plugins: &#123;
+    &#x2F;&#x2F;如果产生重突就将autoprefixer对象注释掉，因为脚手架内部也默认配置了一样的
+    autoprefixer: &#123;&#125;,
+    &quot;postcss-pxtorem&quot;: &#123;
+      rootValue(&#123; file &#125;) &#123;
+        return file.indexOf(&quot;vant&quot;) !&#x3D;&#x3D; -1 ? 37.5 : 192
+      &#125;,
+      propList: [&quot;*&quot;], &#x2F;&#x2F;*表示转换所有  height表示值转换高
+      exclude: &#x2F;node_modules&#x2F;i,
+       unitPrecision: 5, &#x2F;&#x2F;保留rem小数点多少位
+       mediaQuery: false, &#x2F;&#x2F;媒体查询( @media screen 之类的)中不生效
+       minPixelValue: 12, &#x2F;&#x2F;px小于12的不会被转换
+       selectorBlackList: [&#39;.radius&#39;],  &#x2F;&#x2F;则是一个对css选择器进行过滤的数组，比如你设置为[&#39;fs&#39;]，那例如fs-xl类名，里面有关px的样式将不被转换，这里也支持正则写法。
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vite/" rel="tag">vite</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
   <article id="post-其他/vue-i18n" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
@@ -1185,796 +2582,10 @@ module.exports &#x3D; &#123;
 </article>
 
 
-  <article id="post-Vscode/vscode常用设置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/02/Vscode/vscode%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/">vscode常用设置</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/vscode/">vscode</a>
-  </div>
-
-      
-      
-<a href="/2022/04/02/Vscode/vscode%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="vscode配色方案"><a href="#vscode配色方案" class="headerlink" title="vscode配色方案"></a><code>vscode配色方案</code></h3><blockquote>
-<p>找到文件C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\theme-defaults\themes 中的<code>dark_vs.json</code>已写好的<br>然后vscode主题color theme选择Dark (visual studio)<br>参数 <a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_39620217/article/details/115618730">https://blog.csdn.net/sinat_39620217/article/details/115618730</a></p>
-</blockquote>
-<h3 id="单行注释删除"><a href="#单行注释删除" class="headerlink" title="单行注释删除"></a>单行注释删除</h3><p><code>//[\s\S]*?\n</code></p>
-<h3 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h3><p><code>/\*(.|\r\n|\n)*?\*/</code></p>
-<h3 id="块注释多行"><a href="#块注释多行" class="headerlink" title="块注释多行"></a>块注释多行</h3><p><code>/\*(.|\r\n|\n)*?\*/</code></p>
-<h3 id="所有注释"><a href="#所有注释" class="headerlink" title="所有注释"></a>所有注释</h3><p><code>\/\*[\s\S]*\*\/|\/\/.*</code></p>
-<h3 id="html注释"><a href="#html注释" class="headerlink" title="html注释"></a>html注释</h3><p><code>&lt;!--(.*?)--&gt;</code></p>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Vscode/我的hbuilder配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/02/Vscode/%E6%88%91%E7%9A%84hbuilder%E9%85%8D%E7%BD%AE/">我的hbuilder配置</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/vscode/">vscode</a>
-  </div>
-
-      
-      
-<a href="/2022/04/02/Vscode/%E6%88%91%E7%9A%84hbuilder%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <pre class="line-numbers language-none"><code class="language-none">&#123;
-    &quot;adb.path&quot; : &quot;D:\\insatll\\ziyuan\\anZhuo\\Microvirt\\MEmu&quot;,
-    &quot;android.simulator.port&quot; : &quot;21503&quot;,
-    &quot;auto-saver.autosave&quot; : false,
-    &quot;builtin.web.server.port&quot; : &quot;29766&quot;,
-    &quot;editor.codeassistKeyTab&quot; : true,
-    &quot;editor.colorScheme&quot; : &quot;Atom One Dark&quot;,
-    &quot;editor.contentAssistSelectionMode&quot; : &quot;数字模式&quot;,
-    &quot;editor.tokenColorCustomizations&quot; : &#123;
-        &quot;[Atom One Dark]&quot; : &#123;&#125;,
-        &quot;[Default]&quot; : &#123;&#125;,
-        &quot;[Monokai]&quot; : &#123;&#125;
-    &#125;,
-    &quot;eslint-js.autoFixOnSave&quot; : true,
-    &quot;eslint-js.validateOnDocumentChanged&quot; : true,
-    &quot;eslint-vue.autoFixOnSave&quot; : true,
-    &quot;eslint-vue.validateOnDocumentChanged&quot; : true,
-    &quot;explorer.iconTheme&quot; : &quot;hx-file-icons-colorful&quot;,
-    &quot;view.remoteDebug.openOnRunDevice&quot; : true,
-    &quot;weApp.devTools.path&quot; : &quot;D:\\insatll\\ziyuan\\weixinkaifgj\\微信web开发者工具\\微信开发者工具.exe&quot;,
-    &quot;workbench.colorCustomizations&quot; : &#123;
-        &quot;[Atom One Dark]&quot; : &#123;
-            &quot;editor.caretLine&quot; : &quot;#191a21&quot;,
-            &quot;list.activeSelectionBackground&quot; : &quot;#6272a4&quot;,
-            &quot;list.hoverBackground&quot; : &quot;#313341&quot;
-        &#125;,
-        &quot;[Default]&quot; : &#123;&#125;,
-        &quot;[Monokai]&quot; : &#123;&#125;
-    &#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Vscode/我的jsconfig.json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/02/Vscode/%E6%88%91%E7%9A%84jsconfig.json/">我的jsconfig.json</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/vscode/">vscode</a>
-  </div>
-
-      
-      
-<a href="/2022/04/02/Vscode/%E6%88%91%E7%9A%84jsconfig.json/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <pre class="line-numbers language-none"><code class="language-none">&#123;
-    &quot;compilerOptions&quot;: &#123;
-        &quot;baseUrl&quot;: &quot;.&quot;,
-        &quot;paths&quot;: &#123;
-            &quot;@&#x2F;*&quot;: [
-                &quot;src&#x2F;*&quot;
-            ]
-        &#125;,
-        &quot;target&quot;: &quot;ES6&quot;,
-        &quot;module&quot;: &quot;commonjs&quot;,
-        &quot;allowSyntheticDefaultImports&quot;: true
-    &#125;,
-    &quot;include&quot;: [
-        &quot;src&#x2F;**&#x2F;*&quot;
-    ],
-    &quot;exclude&quot;: [
-        &quot;node_modules&quot;
-    ]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Vscode/项目中eslint配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/02/Vscode/%E9%A1%B9%E7%9B%AE%E4%B8%ADeslint%E9%85%8D%E7%BD%AE/">项目中eslint配置</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/vscode/">vscode</a>
-  </div>
-
-      
-      
-<a href="/2022/04/02/Vscode/%E9%A1%B9%E7%9B%AE%E4%B8%ADeslint%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Install-Vscode-Plugins"><a href="#Install-Vscode-Plugins" class="headerlink" title="Install Vscode Plugins"></a>Install Vscode Plugins</h3><ol>
-<li>eslint</li>
-<li>prettier</li>
-<li>csscomb</li>
-</ol>
-<h3 id="Install-Project-Plugins"><a href="#Install-Project-Plugins" class="headerlink" title="Install Project Plugins"></a>Install Project Plugins</h3><ol>
-<li>npm i -g eslint</li>
-<li>npm i prettier -D</li>
-</ol>
-<h3 id="Config-File"><a href="#Config-File" class="headerlink" title="Config File"></a>Config File</h3><ol>
-<li>npx eslint –init</li>
-</ol>
-<h3 id="Docs"><a href="#Docs" class="headerlink" title="Docs"></a>Docs</h3><ol>
-<li>Eslint<pre class="line-numbers language-none"><code class="language-none">忽略整个文件
-&#x2F;*eslint-disable*&#x2F;
-忽略下一行
-&#x2F;* eslint-disable-next-line *&#x2F;
-忽略文件
-.eslintignore<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-<h3 id="me"><a href="#me" class="headerlink" title="me"></a>me</h3><p>1.Vscode settings.json</p>
-<pre class="line-numbers language-none"><code class="language-none">&#123;
-    &quot;editor.formatOnType&quot;: true,
-    &quot;editor.formatOnSave&quot;: true,
-    &quot;eslint.codeAction.showDocumentation&quot;: &#123;
-        &quot;enable&quot;: true
-    &#125;,
-    &quot;editor.codeActionsOnSave&quot;: &#123;
-        &quot;source.fixAll.eslint&quot;: true
-    &#125;,
-    &quot;csscomb.formatOnSave&quot;: true,
-    &quot;csscomb.preset&quot;: &#123;&#125;,
-    &quot;eslint.validate&quot;: [&quot;javascript&quot;, &quot;javascriptreact&quot;, &quot;html&quot;, &quot;vue&quot;],
-    &quot;[vue]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[javascript]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[json]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[jsonc]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[css]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[typescript]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[html]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li><p>.eslintrc.js</p>
-<pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
-    env: &#123;
-        browser: true,
-        es2021: true,
-        node: true
-    &#125;,
-    extends: [&quot;eslint:recommended&quot;, &quot;plugin:vue&#x2F;essential&quot;],
-    parserOptions: &#123;
-        ecmaVersion: 12,
-        sourceType: &quot;module&quot;
-    &#125;,
-    plugins: [&quot;vue&quot;],
-    rules: &#123;
-        semi: [2, &quot;always&quot;],
-        &quot;no-console&quot;: 0
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>.prettierrc.js</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;* DOCS https:&#x2F;&#x2F;prettier.io&#x2F;docs&#x2F;en&#x2F;options.html *&#x2F;
-module.exports &#x3D; &#123;
-    printWidth: 120, &#x2F;&#x2F; 一行最多 120 字符
-    tabWidth: 4, &#x2F;&#x2F;指定每个缩进级别的空格数。
-    useTabs: false, &#x2F;&#x2F;是否使用制表符来缩进
-    singleQuote: false, &#x2F;&#x2F; 使用单引号
-    semi: true, &#x2F;&#x2F; 行尾需要有分号
-    trailingComma: &quot;none&quot;, &#x2F;&#x2F; 末尾不需要逗号
-    bracketSpacing: true, &#x2F;&#x2F; 大括号内的首尾需要空格
-    jsxBracketSameLine: false, &#x2F;&#x2F; jsx 标签的反尖括号需要换行
-    arrowParens: &quot;avoid&quot;, &#x2F;&#x2F;箭头函数参数周围可以不用括号
-    endOfLine: &quot;auto&quot;, &#x2F;&#x2F;换行符的使用
-    quoteProps: &quot;as-needed&quot;, &#x2F;&#x2F; 对象的 key 仅在必要时用引号
-    jsxSingleQuote: false, &#x2F;&#x2F; jsx 不使用单引号，而使用双引号
-    rangeStart: 0, &#x2F;&#x2F; 每个文件格式化的范围是文件的全部内容
-    requirePragma: false, &#x2F;&#x2F; 不需要写文件开头的 @prettier
-    insertPragma: false, &#x2F;&#x2F; 不需要自动在文件开头插入 @prettier
-    &#x2F;&#x2F; proseWrap: &#39;always&#39;, &#x2F;&#x2F; 根据打印宽度决定是否折行 printWidth
-    htmlWhitespaceSensitivity: &quot;css&quot; &#x2F;&#x2F; 根据显示样式决定 html 要不要折行
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>.csscomb.json</p>
-<pre class="line-numbers language-none"><code class="language-none">&#123;
-    &quot;exclude&quot;: [&quot;.git&#x2F;**&quot;, &quot;node_modules&#x2F;**&quot;, &quot;bower_components&#x2F;**&quot;],
-    &quot;always-semicolon&quot;: true,
-    &quot;block-indent&quot;: &quot;  &quot;,
-    &quot;color-case&quot;: &quot;lower&quot;,
-    &quot;color-shorthand&quot;: true,
-    &quot;element-case&quot;: &quot;lower&quot;,
-    &quot;eof-newline&quot;: true,
-    &quot;leading-zero&quot;: false,
-    &quot;quotes&quot;: &quot;single&quot;,
-    &quot;remove-empty-rulesets&quot;: true,
-    &quot;space-after-colon&quot;: &quot; &quot;,
-    &quot;lines-between-rulesets&quot;: 1,
-    &quot;space-after-combinator&quot;: &quot; &quot;,
-    &quot;space-after-opening-brace&quot;: &quot;\n&quot;,
-    &quot;space-after-selector-delimiter&quot;: &quot;\n&quot;,
-    &quot;space-before-closing-brace&quot;: &quot;\n&quot;,
-    &quot;space-before-colon&quot;: &quot;&quot;,
-    &quot;space-before-combinator&quot;: &quot; &quot;,
-    &quot;space-before-opening-brace&quot;: &quot; &quot;,
-    &quot;space-before-selector-delimiter&quot;: &quot;&quot;,
-    &quot;space-between-declarations&quot;: &quot;\n&quot;,
-    &quot;strip-spaces&quot;: true,
-    &quot;unitless-zero&quot;: true,
-    &quot;vendor-prefix-align&quot;: true,
-    &quot;sort-order&quot;: [
-        [
-            &quot;font&quot;,
-            &quot;font-family&quot;,
-            &quot;font-size&quot;,
-            &quot;font-weight&quot;,
-            &quot;font-style&quot;,
-            &quot;font-variant&quot;,
-            &quot;font-size-adjust&quot;,
-            &quot;font-stretch&quot;,
-            &quot;font-effect&quot;,
-            &quot;font-emphasize&quot;,
-            &quot;font-emphasize-position&quot;,
-            &quot;font-emphasize-style&quot;,
-            &quot;font-smooth&quot;,
-            &quot;line-height&quot;,
-            &quot;position&quot;,
-            &quot;z-index&quot;,
-            &quot;top&quot;,
-            &quot;right&quot;,
-            &quot;bottom&quot;,
-            &quot;left&quot;,
-            &quot;display&quot;,
-            &quot;visibility&quot;,
-            &quot;float&quot;,
-            &quot;clear&quot;,
-            &quot;overflow&quot;,
-            &quot;overflow-x&quot;,
-            &quot;overflow-y&quot;,
-            &quot;-ms-overflow-x&quot;,
-            &quot;-ms-overflow-y&quot;,
-            &quot;clip&quot;,
-            &quot;zoom&quot;,
-            &quot;-webkit-align-content&quot;,
-            &quot;-ms-flex-line-pack&quot;,
-            &quot;align-content&quot;,
-            &quot;-webkit-box-align&quot;,
-            &quot;-moz-box-align&quot;,
-            &quot;-webkit-align-items&quot;,
-            &quot;align-items&quot;,
-            &quot;-ms-flex-align&quot;,
-            &quot;-webkit-align-self&quot;,
-            &quot;-ms-flex-item-align&quot;,
-            &quot;-ms-grid-row-align&quot;,
-            &quot;align-self&quot;,
-            &quot;-webkit-box-flex&quot;,
-            &quot;-webkit-flex&quot;,
-            &quot;-moz-box-flex&quot;,
-            &quot;-ms-flex&quot;,
-            &quot;flex&quot;,
-            &quot;-webkit-flex-flow&quot;,
-            &quot;-ms-flex-flow&quot;,
-            &quot;flex-flow&quot;,
-            &quot;-webkit-flex-basis&quot;,
-            &quot;-ms-flex-preferred-size&quot;,
-            &quot;flex-basis&quot;,
-            &quot;-webkit-box-orient&quot;,
-            &quot;-webkit-box-direction&quot;,
-            &quot;-webkit-flex-direction&quot;,
-            &quot;-moz-box-orient&quot;,
-            &quot;-moz-box-direction&quot;,
-            &quot;-ms-flex-direction&quot;,
-            &quot;flex-direction&quot;,
-            &quot;-webkit-flex-grow&quot;,
-            &quot;-ms-flex-positive&quot;,
-            &quot;flex-grow&quot;,
-            &quot;-webkit-flex-shrink&quot;,
-            &quot;-ms-flex-negative&quot;,
-            &quot;flex-shrink&quot;,
-            &quot;-webkit-flex-wrap&quot;,
-            &quot;-ms-flex-wrap&quot;,
-            &quot;flex-wrap&quot;,
-            &quot;-webkit-box-pack&quot;,
-            &quot;-moz-box-pack&quot;,
-            &quot;-ms-flex-pack&quot;,
-            &quot;-webkit-justify-content&quot;,
-            &quot;justify-content&quot;,
-            &quot;-webkit-box-ordinal-group&quot;,
-            &quot;-webkit-order&quot;,
-            &quot;-moz-box-ordinal-group&quot;,
-            &quot;-ms-flex-order&quot;,
-            &quot;order&quot;,
-            &quot;-webkit-box-sizing&quot;,
-            &quot;-moz-box-sizing&quot;,
-            &quot;box-sizing&quot;,
-            &quot;width&quot;,
-            &quot;min-width&quot;,
-            &quot;max-width&quot;,
-            &quot;height&quot;,
-            &quot;min-height&quot;,
-            &quot;max-height&quot;,
-            &quot;margin&quot;,
-            &quot;margin-top&quot;,
-            &quot;margin-right&quot;,
-            &quot;margin-bottom&quot;,
-            &quot;margin-left&quot;,
-            &quot;padding&quot;,
-            &quot;padding-top&quot;,
-            &quot;padding-right&quot;,
-            &quot;padding-bottom&quot;,
-            &quot;padding-left&quot;,
-            &quot;table-layout&quot;,
-            &quot;empty-cells&quot;,
-            &quot;caption-side&quot;,
-            &quot;border-spacing&quot;,
-            &quot;border-collapse&quot;,
-            &quot;list-style&quot;,
-            &quot;list-style-position&quot;,
-            &quot;list-style-type&quot;,
-            &quot;list-style-image&quot;,
-            &quot;content&quot;,
-            &quot;quotes&quot;,
-            &quot;counter-reset&quot;,
-            &quot;counter-increment&quot;,
-            &quot;resize&quot;,
-            &quot;cursor&quot;,
-            &quot;-webkit-user-select&quot;,
-            &quot;-moz-user-select&quot;,
-            &quot;-ms-user-select&quot;,
-            &quot;user-select&quot;,
-            &quot;nav-index&quot;,
-            &quot;nav-up&quot;,
-            &quot;nav-right&quot;,
-            &quot;nav-down&quot;,
-            &quot;nav-left&quot;,
-            &quot;-webkit-transition&quot;,
-            &quot;-moz-transition&quot;,
-            &quot;-ms-transition&quot;,
-            &quot;-o-transition&quot;,
-            &quot;transition&quot;,
-            &quot;-webkit-transition-delay&quot;,
-            &quot;-moz-transition-delay&quot;,
-            &quot;-ms-transition-delay&quot;,
-            &quot;-o-transition-delay&quot;,
-            &quot;transition-delay&quot;,
-            &quot;-webkit-transition-timing-function&quot;,
-            &quot;-moz-transition-timing-function&quot;,
-            &quot;-ms-transition-timing-function&quot;,
-            &quot;-o-transition-timing-function&quot;,
-            &quot;transition-timing-function&quot;,
-            &quot;-webkit-transition-duration&quot;,
-            &quot;-moz-transition-duration&quot;,
-            &quot;-ms-transition-duration&quot;,
-            &quot;-o-transition-duration&quot;,
-            &quot;transition-duration&quot;,
-            &quot;-webkit-transition-property&quot;,
-            &quot;-moz-transition-property&quot;,
-            &quot;-ms-transition-property&quot;,
-            &quot;-o-transition-property&quot;,
-            &quot;transition-property&quot;,
-            &quot;-webkit-transform&quot;,
-            &quot;-moz-transform&quot;,
-            &quot;-ms-transform&quot;,
-            &quot;-o-transform&quot;,
-            &quot;transform&quot;,
-            &quot;-webkit-transform-origin&quot;,
-            &quot;-moz-transform-origin&quot;,
-            &quot;-ms-transform-origin&quot;,
-            &quot;-o-transform-origin&quot;,
-            &quot;transform-origin&quot;,
-            &quot;-webkit-animation&quot;,
-            &quot;-moz-animation&quot;,
-            &quot;-ms-animation&quot;,
-            &quot;-o-animation&quot;,
-            &quot;animation&quot;,
-            &quot;-webkit-animation-name&quot;,
-            &quot;-moz-animation-name&quot;,
-            &quot;-ms-animation-name&quot;,
-            &quot;-o-animation-name&quot;,
-            &quot;animation-name&quot;,
-            &quot;-webkit-animation-duration&quot;,
-            &quot;-moz-animation-duration&quot;,
-            &quot;-ms-animation-duration&quot;,
-            &quot;-o-animation-duration&quot;,
-            &quot;animation-duration&quot;,
-            &quot;-webkit-animation-play-state&quot;,
-            &quot;-moz-animation-play-state&quot;,
-            &quot;-ms-animation-play-state&quot;,
-            &quot;-o-animation-play-state&quot;,
-            &quot;animation-play-state&quot;,
-            &quot;-webkit-animation-timing-function&quot;,
-            &quot;-moz-animation-timing-function&quot;,
-            &quot;-ms-animation-timing-function&quot;,
-            &quot;-o-animation-timing-function&quot;,
-            &quot;animation-timing-function&quot;,
-            &quot;-webkit-animation-delay&quot;,
-            &quot;-moz-animation-delay&quot;,
-            &quot;-ms-animation-delay&quot;,
-            &quot;-o-animation-delay&quot;,
-            &quot;animation-delay&quot;,
-            &quot;-webkit-animation-iteration-count&quot;,
-            &quot;-moz-animation-iteration-count&quot;,
-            &quot;-ms-animation-iteration-count&quot;,
-            &quot;-o-animation-iteration-count&quot;,
-            &quot;animation-iteration-count&quot;,
-            &quot;-webkit-animation-direction&quot;,
-            &quot;-moz-animation-direction&quot;,
-            &quot;-ms-animation-direction&quot;,
-            &quot;-o-animation-direction&quot;,
-            &quot;animation-direction&quot;,
-            &quot;text-align&quot;,
-            &quot;-webkit-text-align-last&quot;,
-            &quot;-moz-text-align-last&quot;,
-            &quot;-ms-text-align-last&quot;,
-            &quot;text-align-last&quot;,
-            &quot;vertical-align&quot;,
-            &quot;white-space&quot;,
-            &quot;text-decoration&quot;,
-            &quot;text-emphasis&quot;,
-            &quot;text-emphasis-color&quot;,
-            &quot;text-emphasis-style&quot;,
-            &quot;text-emphasis-position&quot;,
-            &quot;text-indent&quot;,
-            &quot;-ms-text-justify&quot;,
-            &quot;text-justify&quot;,
-            &quot;letter-spacing&quot;,
-            &quot;word-spacing&quot;,
-            &quot;-ms-writing-mode&quot;,
-            &quot;text-outline&quot;,
-            &quot;text-transform&quot;,
-            &quot;text-wrap&quot;,
-            &quot;text-overflow&quot;,
-            &quot;-ms-text-overflow&quot;,
-            &quot;text-overflow-ellipsis&quot;,
-            &quot;text-overflow-mode&quot;,
-            &quot;-ms-word-wrap&quot;,
-            &quot;word-wrap&quot;,
-            &quot;word-break&quot;,
-            &quot;-ms-word-break&quot;,
-            &quot;-moz-tab-size&quot;,
-            &quot;-o-tab-size&quot;,
-            &quot;tab-size&quot;,
-            &quot;-webkit-hyphens&quot;,
-            &quot;-moz-hyphens&quot;,
-            &quot;hyphens&quot;,
-            &quot;pointer-events&quot;,
-            &quot;opacity&quot;,
-            &quot;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity&quot;,
-            &quot;-ms-filter:\\&#39;progid:DXImageTransform.Microsoft.Alpha&quot;,
-            &quot;-ms-interpolation-mode&quot;,
-            &quot;color&quot;,
-            &quot;border&quot;,
-            &quot;border-width&quot;,
-            &quot;border-style&quot;,
-            &quot;border-color&quot;,
-            &quot;border-top&quot;,
-            &quot;border-top-width&quot;,
-            &quot;border-top-style&quot;,
-            &quot;border-top-color&quot;,
-            &quot;border-right&quot;,
-            &quot;border-right-width&quot;,
-            &quot;border-right-style&quot;,
-            &quot;border-right-color&quot;,
-            &quot;border-bottom&quot;,
-            &quot;border-bottom-width&quot;,
-            &quot;border-bottom-style&quot;,
-            &quot;border-bottom-color&quot;,
-            &quot;border-left&quot;,
-            &quot;border-left-width&quot;,
-            &quot;border-left-style&quot;,
-            &quot;border-left-color&quot;,
-            &quot;-webkit-border-radius&quot;,
-            &quot;-moz-border-radius&quot;,
-            &quot;border-radius&quot;,
-            &quot;-webkit-border-top-left-radius&quot;,
-            &quot;-moz-border-radius-topleft&quot;,
-            &quot;border-top-left-radius&quot;,
-            &quot;-webkit-border-top-right-radius&quot;,
-            &quot;-moz-border-radius-topright&quot;,
-            &quot;border-top-right-radius&quot;,
-            &quot;-webkit-border-bottom-right-radius&quot;,
-            &quot;-moz-border-radius-bottomright&quot;,
-            &quot;border-bottom-right-radius&quot;,
-            &quot;-webkit-border-bottom-left-radius&quot;,
-            &quot;-moz-border-radius-bottomleft&quot;,
-            &quot;border-bottom-left-radius&quot;,
-            &quot;-webkit-border-image&quot;,
-            &quot;-moz-border-image&quot;,
-            &quot;-o-border-image&quot;,
-            &quot;border-image&quot;,
-            &quot;-webkit-border-image-source&quot;,
-            &quot;-moz-border-image-source&quot;,
-            &quot;-o-border-image-source&quot;,
-            &quot;border-image-source&quot;,
-            &quot;-webkit-border-image-slice&quot;,
-            &quot;-moz-border-image-slice&quot;,
-            &quot;-o-border-image-slice&quot;,
-            &quot;border-image-slice&quot;,
-            &quot;-webkit-border-image-width&quot;,
-            &quot;-moz-border-image-width&quot;,
-            &quot;-o-border-image-width&quot;,
-            &quot;border-image-width&quot;,
-            &quot;-webkit-border-image-outset&quot;,
-            &quot;-moz-border-image-outset&quot;,
-            &quot;-o-border-image-outset&quot;,
-            &quot;border-image-outset&quot;,
-            &quot;-webkit-border-image-repeat&quot;,
-            &quot;-moz-border-image-repeat&quot;,
-            &quot;-o-border-image-repeat&quot;,
-            &quot;border-image-repeat&quot;,
-            &quot;outline&quot;,
-            &quot;outline-width&quot;,
-            &quot;outline-style&quot;,
-            &quot;outline-color&quot;,
-            &quot;outline-offset&quot;,
-            &quot;background&quot;,
-            &quot;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader&quot;,
-            &quot;background-color&quot;,
-            &quot;background-image&quot;,
-            &quot;background-repeat&quot;,
-            &quot;background-attachment&quot;,
-            &quot;background-position&quot;,
-            &quot;background-position-x&quot;,
-            &quot;-ms-background-position-x&quot;,
-            &quot;background-position-y&quot;,
-            &quot;-ms-background-position-y&quot;,
-            &quot;-webkit-background-clip&quot;,
-            &quot;-moz-background-clip&quot;,
-            &quot;background-clip&quot;,
-            &quot;background-origin&quot;,
-            &quot;-webkit-background-size&quot;,
-            &quot;-moz-background-size&quot;,
-            &quot;-o-background-size&quot;,
-            &quot;background-size&quot;,
-            &quot;box-decoration-break&quot;,
-            &quot;-webkit-box-shadow&quot;,
-            &quot;-moz-box-shadow&quot;,
-            &quot;box-shadow&quot;,
-            &quot;filter:progid:DXImageTransform.Microsoft.gradient&quot;,
-            &quot;-ms-filter:\\&#39;progid:DXImageTransform.Microsoft.gradient&quot;,
-            &quot;text-shadow&quot;
-        ]
-    ]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
 
     <nav id="page-nav">
 
-<a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+<a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
 </nav>
 
 
@@ -1989,23 +2600,23 @@ module.exports &#x3D; &#123;
       <ul>
         
           <li>
+            <a href="/2022/07/05/Vscode/hbuilderX%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%85%8D%E7%BD%AE/">hbuilderX eslint格式化配置</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/Mqtt%E5%8D%8F%E8%AE%AE/">mqtt 协议</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/chimee%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/">chimee曲米播放控件的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/%E5%9B%BE%E7%89%87%E5%85%A8%E5%B1%8F%E9%A2%84%E8%A7%88/">图片满屏预览</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
           </li>
         
       </ul>
@@ -2018,7 +2629,7 @@ module.exports &#x3D; &#123;
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chimee/" style="font-size: 10px;">chimee</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hbuilderX/" style="font-size: 10px;">hbuilderX</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/img/" style="font-size: 10px;">img</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
     </div>
   </div>
 
@@ -2027,7 +2638,7 @@ module.exports &#x3D; &#123;
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -2037,7 +2648,7 @@ module.exports &#x3D; &#123;
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">48</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">52</span></li></ul>
     </div>
   </div>
 
@@ -2047,7 +2658,7 @@ module.exports &#x3D; &#123;
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chimee/" rel="tag">chimee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilderX/" rel="tag">hbuilderX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/img/" rel="tag">img</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
