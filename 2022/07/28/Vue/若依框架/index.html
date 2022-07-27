@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>若依框架 学习 | xiaol.docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="xiaol.docs" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xiaol.docs</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Vue/若依框架" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      若依框架 学习
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-07-27T16:00:00.000Z" itemprop="datePublished">2022年07月28日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E6%A1%86%E6%9E%B6/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ol>
+<li><p>bin<br>一些执行脚本</p>
+</li>
+<li><p>build<br>打包的一些配置项</p>
+</li>
+<li><p>public<br>title 栏图标跟加载页</p>
+</li>
+</ol>
+<ul>
+<li>robots.txt 返爬虫文件,反扒协议</li>
+</ul>
+<ol start="4">
+<li><p>src&#x2F;api<br>所有的 api 封装</p>
+</li>
+<li><p>src&#x2F;asstes<br>图片图标字体样式等等静态资源存放点</p>
+</li>
+</ol>
+<ul>
+<li>styles 自定义的一些全局样式</li>
+</ul>
+<ol start="6">
+<li>src&#x2F;components<br>全局组件</li>
+</ol>
+<ul>
+<li>Breadcrumb 面包屑导航栏 面包屑导航栏组件</li>
+<li>Crontab 表达式生成器, 系统监控-&gt;定时任务有使用</li>
+<li>DictData 字典数据组件</li>
+<li>DictTag 字典标签组件</li>
+<li>Editor 富文本编辑器</li>
+<li>FileUpload 文件上传组件</li>
+<li>Hamburger 导航栏左侧汉堡包图标菜单组件</li>
+<li>HeaderSearch 头部搜索 header 组件</li>
+<li>IconSelect 图标菜单选择器组件</li>
+<li>iFrame 页面嵌套组件</li>
+<li>ImagePreview 多图预览组件</li>
+<li>ImageUpload 多图同时选择上传组件</li>
+<li>Pagination 分页功能组件</li>
+<li>PanThumb 未知</li>
+<li>ParentView 路由组件</li>
+<li>RightPanel 右侧菜单组件,头像处</li>
+<li>RightToolbar 右侧联合按钮组件,表格右上角处</li>
+<li>RuoYi 导航栏菜单上的 github 图标组件(前后分离版)</li>
+<li>Screenfull 全屏组件</li>
+<li>SizeSelect 布局大小按钮</li>
+<li>SvgIcon svg 图标组件</li>
+<li>ThemePicker 颜色选择器组件</li>
+<li>TopNav 顶部显示 viewtag 的组件</li>
+</ul>
+<ol start="7">
+<li>src&#x2F;directive<br>全局指令</li>
+</ol>
+<ul>
+<li>dialog 拖拽弹窗系列</li>
+<li>clipboaerd 文字复制粘贴</li>
+<li>perssion 权限处理</li>
+</ul>
+<ol start="8">
+<li><p>src&#x2F;layout<br>布局模块</p>
+</li>
+<li><p>src&#x2F;plugins<br>插件</p>
+</li>
+</ol>
+<ul>
+<li>auth 验证用户是否拥有某（些）权限或角色相关的封装 (前端手册有示例)</li>
+<li>cache 数据缓存的封装 (前端手册有示例)</li>
+<li>download 文件处理之类的封装 (前端手册有示例)</li>
+<li>modal 所有模态框的封装 (前端手册有示例)</li>
+<li>tab 导航栏页签操作的封装(前端手册有示例)</li>
+<li>index 将这些封装以挂到了vue全局</li>
+</ul>
+<ol start="10">
+<li>src&#x2F;store</li>
+</ol>
+<ul>
+<li>app.js 布局变化相关的方法封装</li>
+<li>permission.js 路由权限管理</li>
+<li>setting.js 布局相关设置</li>
+<li>tagsView.js 导航栏页签相关操作</li>
+<li>user.js 个人中心相关操作,登录,退出等等</li>
+</ul>
+<ol start="11">
+<li>src&#x2F;utils<br>  工具封装</li>
+</ol>
+<ul>
+<li>dict 字典类的封装</li>
+<li>generator 代码生成器相关</li>
+<li>auth.js token存删方法</li>
+<li>errorcode.js 接口状态码错误信息</li>
+<li>index.js 函数功能封装</li>
+<li>ruoyi.js 函数功能封装</li>
+<li>jsencrypt.js 数据加密解密传输</li>
+<li>permission.js 部分值的权限校验</li>
+<li>request.js axios封装</li>
+<li>scroll-to.js 滚动条位置的封装</li>
+<li>validate.js 一些正则校验的封装</li>
+</ul>
+<ol start="12">
+<li>src&#x2F;view</li>
+</ol>
+<ul>
+<li><p>components</p>
+</li>
+<li><p>element-icons.js 字体图标库名称</p>
+</li>
+<li><p>index.vue 字体图标选择组件</p>
+</li>
+<li><p>svg-icons.js 判断后缀为SVG样式算法</p>
+</li>
+<li><p>dashiboard（首页）</p>
+</li>
+<li><p>BarChart.vue 柱状图组件</p>
+</li>
+<li><p>LineChart.vue 折线图组件</p>
+</li>
+<li><p>PanelGroup.vue 访客，消息栏功能组件</p>
+</li>
+<li><p>PieChart.vue 饼状图组件</p>
+</li>
+<li><p>RaddarChart.vue 柱状图组件</p>
+</li>
+<li><p>mixins resize.js 首页在进行切换时保护首页状态和大小</p>
+</li>
+<li><p>error（发生错误导航页面）</p>
+</li>
+<li><p>401.vue 401错误页面</p>
+</li>
+<li><p>404.vue 404错误页面</p>
+</li>
+<li><p>monitor（系统监控）各种页面</p>
+</li>
+<li><p>system (系统管理) 各种页面</p>
+</li>
+<li><p>dept 部门管理</p>
+</li>
+<li><p>config 参数设置</p>
+</li>
+<li><p>dict 字典管理</p>
+<pre class="line-numbers language-none"><code class="language-none">data.vue 点击字典类型数据进入页面 index.vue 字典管理页面<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>enum 菜单管理</p>
+</li>
+<li><p>notice 通告公告</p>
+</li>
+<li><p>post 岗位管理</p>
+</li>
+<li><p>role 角色管理</p>
+</li>
+<li><p>user 用户管理</p>
+<pre class="line-numbers language-none"><code class="language-none">profile
+index.vue 个人信息界面
+resetPwd.vue 修改密码组件
+userAvatar.vue 上传头像组件
+userInfo.vue 基本资料修改页面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</li>
+<li><p>tool（系统工具）</p>
+</li>
+<li><p>build（表单构建）</p>
+</li>
+<li><p>index.vue 表单构建左边功能框</p>
+</li>
+<li><p>CodeTypeDialog.vue 生成代码与复制代码点击弹出框</p>
+</li>
+<li><p>Draggableltem.vue 没看懂</p>
+</li>
+<li><p>IconsDialog.vue 选择图标</p>
+</li>
+<li><p>RightPanel.vue 表单构建右边功能框</p>
+</li>
+<li><p>TreeNodeDialog.vue 树形级联选择框（没看懂在哪）</p>
+</li>
+<li><p>gen（代码生成 需手动访问&#x2F;tool&#x2F;gen进入）</p>
+</li>
+<li><p>swagger（系统接口）</p>
+</li>
+<li><p>index_v1.vue 其他</p>
+</li>
+<li><p>index.vue 首页</p>
+</li>
+<li><p>login.vue  登录页面</p>
+</li>
+</ul>
+<ol start="13">
+<li>permission.js 路由拦截配置</li>
+<li>settings.js 系统默认设置</li>
+</ol>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li><p>路由配置<br>  前端手册–&gt;路由使用</p>
+</li>
+<li><p>权限的使用<br>  前端手册–&gt;权限的使用</p>
+</li>
+<li><p>图标的使用<br>  前端手册–&gt;图标的使用
+   	 </p>
+</li>
+<li><p>字典的使用<br>  前端手册–&gt;字典的使用</p>
+</li>
+<li><p>修改后台参数<br>  前端手册–&gt;字典的使用</p>
+</li>
+<li><p>内容复制<br>  前端手册–&gt;字典的使用</p>
+</li>
+</ol>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3"><span class="toc-text">文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%8B%A5%E4%BE%9D/" rel="tag">若依</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/07/28/%E5%85%B6%E4%BB%96/Moment/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          moment使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E5%88%86%E7%A6%BB%E7%89%88%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          若依框架分离版使用
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/28/Ts/ts%E9%85%8D%E7%BD%AE%E7%BF%BB%E8%AF%91/">Ts 配置翻译</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/UniApp/app%E5%8A%9F%E8%83%BD%E7%82%B9/">app开发功能点</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/UniApp/app%E5%8A%9F%E8%83%BD%E7%82%B9%E8%B7%9F%E4%BC%98%E5%8C%96/">app开发功能点</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E5%88%86%E7%A6%BB%E7%89%88%E4%BD%BF%E7%94%A8/">若依框架分离版使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E6%A1%86%E6%9E%B6/">若依框架 学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chimee/" style="font-size: 10px;">chimee</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hbuilderX/" style="font-size: 10px;">hbuilderX</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/img/" style="font-size: 10px;">img</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/moment/" style="font-size: 10px;">moment</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 16.67px;">ts</a> <a href="/tags/uniapp/" style="font-size: 16.67px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 13.33px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E8%8B%A5%E4%BE%9D/" style="font-size: 13.33px;">若依</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">59</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chimee/" rel="tag">chimee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilderX/" rel="tag">hbuilderX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/img/" rel="tag">img</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/moment/" rel="tag">moment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%A5%E4%BE%9D/" rel="tag">若依</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 BORING GHOST.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

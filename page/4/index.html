@@ -81,6 +81,1338 @@
 
       <div class="outer">
         <section id="main">
+  <article id="post-其他/Vite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E5%85%B6%E4%BB%96/Vite/">vite 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/vite/">vite</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E5%85%B6%E4%BB%96/Vite/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>npm init vite@latest</code></p>
+<h3 id="相比webpack"><a href="#相比webpack" class="headerlink" title="相比webpack"></a>相比webpack</h3><ul>
+<li>vite 直接type&#x3D;’module’ 引入就预览,而 webpack 打一次包后再预览</li>
+<li>vite HMR热更新,只刷新更新部分的内容,非所有内容</li>
+<li>vite Rollip 插件打包</li>
+</ul>
+<h3 id="使用ts"><a href="#使用ts" class="headerlink" title="使用ts"></a>使用ts</h3><ol>
+<li>选择 vue-ts 模板时自带 typescript, 只需要npm i</li>
+</ol>
+<h3 id="配置-resolve-alias"><a href="#配置-resolve-alias" class="headerlink" title="配置 resolve.alias"></a>配置 resolve.alias</h3><blockquote>
+<p>path会报2307,根据提示install @types&#x2F;node 即可<br><code>vite.config.ts</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; resolve &#125; from &#39;path&#39;
+export default defineConfig(&#123;
+	resolve:&#123;
+		alias:&#123;
+			&#39;@&#39;:resolve(__dirname,&#39;src&#39;)
+		&#125;
+	&#125;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>tsconfig.json add+</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;baseUrl&quot;: &quot;.&quot;,
+&quot;paths&quot;: &#123;
+   &quot;@&#x2F;*&quot;: [&quot;src&#x2F;*&quot;],
+   &quot;@page&#x2F;*&quot;: [&quot;src&#x2F;page&#x2F;*&quot;],
+   &quot;@img&#x2F;*&quot;: [&quot;src&#x2F;asstes&#x2F;img&#x2F;*&quot;]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="vite-中使用-process-变量"><a href="#vite-中使用-process-变量" class="headerlink" title="vite 中使用 process 变量"></a>vite 中使用 process 变量</h3><blockquote>
+<p>使用查看文档<br><code>https://vitejs.cn/guide/env-and-mode.html#modes</code></p>
+</blockquote>
+<h3 id="unplugin-auto-import"><a href="#unplugin-auto-import" class="headerlink" title="unplugin-auto-import"></a>unplugin-auto-import</h3><blockquote>
+<p>自动导入插件<br><a target="_blank" rel="noopener" href="https://github.com/antfu/unplugin-auto-import">https://github.com/antfu/unplugin-auto-import</a></p>
+</blockquote>
+<ul>
+<li>配置<pre class="line-numbers language-none"><code class="language-none">import AutoImport from &#39;unplugin-auto-import&#x2F;vite&#39;
+export default defineConfig(&#123;
+  plugins: [AutoImport(&#123;
+      imports: [&#39;vue&#39;],
+      dts: &#39;src&#x2F;auto-import.d.ts&#39;,
+    &#125;)]
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h3><p><code>npm i -D @vitejs/plugin-legacy</code></p>
+<pre class="line-numbers language-none"><code class="language-none">plugins: [
+  vue(),
+  legacyPlugin(&#123;
+    targets: [&quot;defaults&quot;, &quot;not IE 11&quot;],
+    additionalLegacyPolyfills: [&quot;regenerator-runtime&#x2F;runtime&quot;] &#x2F;&#x2F; 面向IE11时需要此插件
+  &#125;)
+],<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="提升打包性能"><a href="#提升打包性能" class="headerlink" title="提升打包性能"></a>提升打包性能</h3><ul>
+<li><p>静态文件夹管理</p>
+<pre class="line-numbers language-none"><code class="language-none">build: &#123;
+    rollupOptions: &#123;
+      output: &#123;
+        chunkFileNames: &#39;js&#x2F;[name]-[hash].js&#39;,
+        entryFileNames: &#39;js&#x2F;[name]-[hash].js&#39;,
+        assetFileNames: &#39;[ext]&#x2F;[name]-[hash].[ext]&#39;,
+      &#125;
+    &#125;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>压缩插件</p>
+<blockquote>
+<p>压缩静态资源较大的文件,<br>一些js，css，html，以及静态资源。gzip是用算法压缩文件，节省流量。等文件到达浏览器后，浏览器会解压文件，解压出的源文件与gzip之前的大小是没变化的。但是传输过程的流量消耗和带宽节省了。<br><code> npm i -D vite-plugin-compression</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">
+import viteCompression from &#39;vite-plugin-compression&#39;
+
+viteCompression(&#123;
+    verbose: true,
+    disable: false,
+    threshold: 10240,
+    algorithm: &#39;gzip&#39;,
+    ext: &#39;.gz&#39;,
+  &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>生产环境移除 console</p>
+<pre class="line-numbers language-none"><code class="language-none">build:&#123;
+  minify:&quot;terser&quot;,
+  terserOptions: &#123;
+      compress: &#123;
+        drop_console: true,
+        drop_debugger: true
+      &#125;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="PWA-离线"><a href="#PWA-离线" class="headerlink" title="PWA 离线"></a>PWA 离线</h3><p><code>npm i -S vite-plugin-pwa</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; VitePWA &#125; from &#39;vite-plugin-pwa&#39;
+
+plugins:[
+  ...
+  VitePWA(&#123;
+    manifest: &#123;&#125;,
+    workbox: &#123;
+      skipWaiting: true,
+      clientsClaim: true
+    &#125;
+  &#125;)
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="css前缀"><a href="#css前缀" class="headerlink" title="css前缀"></a>css前缀</h3><p><code>npm i -D autoprefixer</code></p>
+<pre class="line-numbers language-none"><code class="language-none">  &quot;defaults&quot;, &#x2F;&#x2F; 默认 &quot;last 2 versions&quot;, 
+  &quot;last 2 versions&quot;,  &#x2F;&#x2F; 兼容主流浏览器的最近两个版本 &quot;&gt; 1%&quot;, 
+  &quot;&gt; 1%&quot;, &#x2F;&#x2F; 兼容主流浏览器的最近两个版本 &quot;&gt; 1%&quot;, 
+  &quot;iOS 7&quot;,  &#x2F;&#x2F; 使用的浏览器需要在市场上的份额大于 1 &quot;iOS 7&quot;,
+  &quot;last 3 iOS versions&quot; &#x2F;&#x2F; 兼容 ios 的最新 3 个版本 
+postcss.config.js
+module.exports &#x3D; &#123;
+  plugins: &#123;
+    &#x2F;&#x2F;如果产生重突就将autoprefixer对象注释掉，因为脚手架内部也默认配置了一样的
+        autoprefixer: &#123;
+      overrideBrowserslist: [
+        &quot;Android 4.1&quot;,
+        &quot;iOS 7.1&quot;,
+        &quot;Chrome &gt; 31&quot;,
+        &quot;ff &gt; 31&quot;,
+        &quot;ie &gt;&#x3D; 8&quot;,
+        &quot;last 10 versions&quot; &#x2F;&#x2F; 所有主流浏览器最近10版本用
+      ],
+      grid: true
+    &#125;,
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="适屏"><a href="#适屏" class="headerlink" title="适屏"></a>适屏</h3><p><code>npm i -S postcss-pxtorem</code> <code>&quot;postcss-pxtorem&quot;: &quot;^6.0.0&quot;</code></p>
+<blockquote>
+<p>flexible 同样改成24</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">postcss.config.js
+
+  &quot;postcss-pxtorem&quot;: &#123;
+      rootValue(&#123; file &#125;) &#123;&#x2F;&#x2F;根元素的值1920 24份为准是80
+        return file.indexOf(&quot;vant&quot;) !&#x3D;&#x3D; -1 ? 37.5 : 80
+      &#125;,
+      propList: [&quot;*&quot;],
+      mediaQuery: false,
+      selectorBlackList: [&quot;fiexdPx&quot;],&#x2F;&#x2F;忽略转换,例如:.fiexdPx_app_page
+      minPixelValue: 6,
+      exclude: &#x2F;node_modules&#x2F;i
+    &#125;
+
+module.exports &#x3D; &#123;
+  plugins: &#123;
+    &#x2F;&#x2F;如果产生重突就将autoprefixer对象注释掉，因为脚手架内部也默认配置了一样的
+    autoprefixer: &#123;&#125;,
+    &quot;postcss-pxtorem&quot;: &#123;
+      rootValue(&#123; file &#125;) &#123;
+        return file.indexOf(&quot;vant&quot;) !&#x3D;&#x3D; -1 ? 37.5 : 192
+      &#125;,
+      propList: [&quot;*&quot;], &#x2F;&#x2F;*表示转换所有  height表示值转换高
+      exclude: &#x2F;node_modules&#x2F;i,
+       unitPrecision: 5, &#x2F;&#x2F;保留rem小数点多少位
+       mediaQuery: false, &#x2F;&#x2F;媒体查询( @media screen 之类的)中不生效
+       minPixelValue: 12, &#x2F;&#x2F;px小于12的不会被转换
+       selectorBlackList: [&#39;.radius&#39;],  &#x2F;&#x2F;则是一个对css选择器进行过滤的数组，比如你设置为[&#39;fs&#39;]，那例如fs-xl类名，里面有关px的样式将不被转换，这里也支持正则写法。
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vite/" rel="tag">vite</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/vue-i18n" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E5%85%B6%E4%BB%96/vue-i18n/">vue3中i18n的使用</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E5%85%B6%E4%BB%96/vue-i18n/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="v3-use"><a href="#v3-use" class="headerlink" title="v3 use"></a>v3 use</h3><p><code>npm i -S vue-i18n@next</code></p>
+<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><pre class="line-numbers language-none"><code class="language-none">const i18n&#x3D;createI18n(&#123;
+  locale:&quot;&quot;,
+  fallbackLocale?: &#39;zh-CN&#39;,&#x2F;&#x2F;没有英文的时候默认中文语言
+  locale: &#39;zh-CN&#39;,    &#x2F;&#x2F; 语言标识
+  globalInjection: true, &#x2F;&#x2F;使用全局$t()函数
+  message:message, &#x2F;&#x2F;信息
+  legacy:false, &#x2F;&#x2F;跟v3的comsitionapi 有关
+&#125;)
+export default i18n
+app.use(i18n) the main.js
+use the template:
+&lt;button&gt;&#123;&#123; $t(&quot;title&quot;) &#125;&#125;&lt;&#x2F;button&gt;
+
+  let i18n &#x3D; useI18n();
+  i18n.locale.value &#x3D; e.target.innerText;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><pre class="line-numbers language-none"><code class="language-none">const getCurrentLanguge &#x3D; () &#x3D;&gt; &#123;
+  const win_lang &#x3D; navigator.language&#x2F;&#x2F;浏览器使用的语言
+  const current_lang &#x3D; win_lang.indexOf(&#39;zh&#39;) !&#x3D;&#x3D; -1 ? &#39;zh&#39; : &#39;en&#39;
+  localStorage.setItem(&#39;lang&#39;, current_lang)
+  return current_lang
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i18n/" rel="tag">i18n</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-插件库/Pinia" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E6%8F%92%E4%BB%B6%E5%BA%93/Pinia/">pinia 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E6%8F%92%E4%BB%B6%E5%BA%93/Pinia/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><pre class="line-numbers language-none"><code class="language-none">npm i -S pinia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="use"><a href="#use" class="headerlink" title="use"></a>use</h3><pre class="line-numbers language-none"><code class="language-none">import &#123; createPinia &#125; from &#39;pinia&#39;
+
+app.use(createPinia())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="difineStore"><a href="#difineStore" class="headerlink" title="difineStore"></a>difineStore</h3><pre class="line-numbers language-none"><code class="language-none">import &#123; defineStore &#125; from &#39;pinia&#39;
+
+export const test_store &#x3D; defineStore(&#39;test_store&#39;, &#123;
+  state: () &#x3D;&gt; &#123;
+    return &#123;
+      name: &#39;Boring ghost!&#39;,
+    &#125;
+  &#125;,
+  getters: &#123;
+    new_name: (state) &#x3D;&gt; &#39;new &#39; + state.name,
+  &#125;,
+  actions: &#123;
+    refresh() &#123;
+      this.name &#x3D; &#39;refresh Boring ghost!&#39;
+    &#125;,
+  &#125;,
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>at component</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+    &lt;div&gt;this is store state value:&#123;&#123; store.name &#125;&#125;&lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="set-state"><a href="#set-state" class="headerlink" title="set state"></a>set state</h3><p><code>直接解构会失去响应式</code></p>
+<pre class="line-numbers language-列" data-language="列"><code class="language-列">const &#123;name&#125; &#x3D; test_store() &#x2F;&#x2F;At question! this is error!
+&lt;!-- bottom is no problem --&gt;
+import &#123;storeToRefs&#125; from &quot;pinia&quot;
+const &#123;name&#125; &#x3D; storeToRefs(test_store())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>方式一</p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+store.name&#x3D;&#39;new value&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>方式二<br><code>批量修改</code></p>
+<pre class="line-numbers language-none"><code class="language-none">store.$patch(&#123;
+	name:&#39;new value&#39;,
+	key2:&quot;new value&quot;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>方式三(推荐)</p>
+<pre class="line-numbers language-none"><code class="language-none">store.$patch((state)&#x3D;&gt;&#123;
+	state.name&#x3D;&quot;new value&quot;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="pinia-Actions"><a href="#pinia-Actions" class="headerlink" title="pinia Actions"></a>pinia Actions</h3><blockquote>
+<p>支持同步跟异步</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+store.fn()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
+<li><p>$reset</p>
+<blockquote>
+<p>将state回复成初始状态</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; test_store &#125; from &#39;@&#x2F;store&#x2F;store_test&#39;
+const store &#x3D; test_store()
+store.$reset() &#x2F;&#x2F;直接调用不需要传参<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>$subscribe</p>
+<blockquote>
+<p>state发生变化就会触发</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">store.$subscribe((args,state)&#x3D;&gt;&#123;&#125;,&#123;
+	detached:true,&#x2F;&#x2F;true:组件销毁后任然监听
+	deep:true
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>$onAction</p>
+<blockquote>
+<p>调用actions就会被触发</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">store.$onAction((args)&#x3D;&gt;&#123;&#125;,true)&#x2F;&#x2F;true:组件销毁后任然监听<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pinia/" rel="tag">pinia</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-插件库/Vite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E6%8F%92%E4%BB%B6%E5%BA%93/Vite/">vite 学习笔记</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E6%8F%92%E4%BB%B6%E5%BA%93/Vite/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>npm init vite@latest</code></p>
+<h3 id="相比webpack"><a href="#相比webpack" class="headerlink" title="相比webpack"></a>相比webpack</h3><ul>
+<li>vite 直接type&#x3D;’module’ 引入就预览,而 webpack 打一次包后再预览</li>
+<li>vite HMR热更新,只刷新更新部分的内容,非所有内容</li>
+<li>vite Rollip 插件打包</li>
+</ul>
+<h3 id="使用ts"><a href="#使用ts" class="headerlink" title="使用ts"></a>使用ts</h3><ol>
+<li>选择 vue-ts 模板时自带 typescript, 只需要npm i</li>
+</ol>
+<h3 id="配置-resolve-alias"><a href="#配置-resolve-alias" class="headerlink" title="配置 resolve.alias"></a>配置 resolve.alias</h3><blockquote>
+<p>path会报2307,根据提示install @types&#x2F;node 即可<br><code>vite.config.ts</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; resolve &#125; from &#39;path&#39;
+export default defineConfig(&#123;
+	resolve:&#123;
+		alias:&#123;
+			&#39;@&#39;:resolve(__dirname,&#39;src&#39;)
+		&#125;
+	&#125;
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>tsconfig.json add+</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;baseUrl&quot;: &quot;.&quot;,
+&quot;paths&quot;: &#123;
+   &quot;@&#x2F;*&quot;: [&quot;src&#x2F;*&quot;],
+   &quot;@page&#x2F;*&quot;: [&quot;src&#x2F;page&#x2F;*&quot;],
+   &quot;@img&#x2F;*&quot;: [&quot;src&#x2F;asstes&#x2F;img&#x2F;*&quot;]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="vite-中使用-process-变量"><a href="#vite-中使用-process-变量" class="headerlink" title="vite 中使用 process 变量"></a>vite 中使用 process 变量</h3><blockquote>
+<p>使用查看文档<br><code>https://vitejs.cn/guide/env-and-mode.html#modes</code></p>
+</blockquote>
+<h3 id="unplugin-auto-import"><a href="#unplugin-auto-import" class="headerlink" title="unplugin-auto-import"></a>unplugin-auto-import</h3><blockquote>
+<p>自动导入插件<br><a target="_blank" rel="noopener" href="https://github.com/antfu/unplugin-auto-import">https://github.com/antfu/unplugin-auto-import</a></p>
+</blockquote>
+<ul>
+<li>配置<pre class="line-numbers language-none"><code class="language-none">import AutoImport from &#39;unplugin-auto-import&#x2F;vite&#39;
+export default defineConfig(&#123;
+  plugins: [AutoImport(&#123;
+      imports: [&#39;vue&#39;],
+      dts: &#39;src&#x2F;auto-import.d.ts&#39;,
+    &#125;)]
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h3><p><code>npm i -D @vitejs/plugin-legacy</code></p>
+<pre class="line-numbers language-none"><code class="language-none">plugins: [
+  vue(),
+  legacyPlugin(&#123;
+    targets: [&quot;defaults&quot;, &quot;not IE 11&quot;],
+    additionalLegacyPolyfills: [&quot;regenerator-runtime&#x2F;runtime&quot;] &#x2F;&#x2F; 面向IE11时需要此插件
+  &#125;)
+],<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="提升打包性能"><a href="#提升打包性能" class="headerlink" title="提升打包性能"></a>提升打包性能</h3><ul>
+<li><p>静态文件夹管理</p>
+<pre class="line-numbers language-none"><code class="language-none">build: &#123;
+    rollupOptions: &#123;
+      output: &#123;
+        chunkFileNames: &#39;js&#x2F;[name]-[hash].js&#39;,
+        entryFileNames: &#39;js&#x2F;[name]-[hash].js&#39;,
+        assetFileNames: &#39;[ext]&#x2F;[name]-[hash].[ext]&#39;,
+      &#125;
+    &#125;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>压缩插件</p>
+<blockquote>
+<p>压缩静态资源较大的文件,<br>一些js，css，html，以及静态资源。gzip是用算法压缩文件，节省流量。等文件到达浏览器后，浏览器会解压文件，解压出的源文件与gzip之前的大小是没变化的。但是传输过程的流量消耗和带宽节省了。<br><code> npm i -D vite-plugin-compression</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">
+import viteCompression from &#39;vite-plugin-compression&#39;
+
+viteCompression(&#123;
+    verbose: true,
+    disable: false,
+    threshold: 10240,
+    algorithm: &#39;gzip&#39;,
+    ext: &#39;.gz&#39;,
+  &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>生产环境移除 console</p>
+<pre class="line-numbers language-none"><code class="language-none">build:&#123;
+  minify:&quot;terser&quot;,
+  terserOptions: &#123;
+      compress: &#123;
+        drop_console: true,
+        drop_debugger: true
+      &#125;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="PWA-离线"><a href="#PWA-离线" class="headerlink" title="PWA 离线"></a>PWA 离线</h3><p><code>npm i -S vite-plugin-pwa</code></p>
+<pre class="line-numbers language-none"><code class="language-none">import &#123; VitePWA &#125; from &#39;vite-plugin-pwa&#39;
+
+plugins:[
+  ...
+  VitePWA(&#123;
+    manifest: &#123;&#125;,
+    workbox: &#123;
+      skipWaiting: true,
+      clientsClaim: true
+    &#125;
+  &#125;)
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="css前缀"><a href="#css前缀" class="headerlink" title="css前缀"></a>css前缀</h3><p><code>npm i -D autoprefixer</code></p>
+<pre class="line-numbers language-none"><code class="language-none">  &quot;defaults&quot;, &#x2F;&#x2F; 默认 &quot;last 2 versions&quot;, 
+  &quot;last 2 versions&quot;,  &#x2F;&#x2F; 兼容主流浏览器的最近两个版本 &quot;&gt; 1%&quot;, 
+  &quot;&gt; 1%&quot;, &#x2F;&#x2F; 兼容主流浏览器的最近两个版本 &quot;&gt; 1%&quot;, 
+  &quot;iOS 7&quot;,  &#x2F;&#x2F; 使用的浏览器需要在市场上的份额大于 1 &quot;iOS 7&quot;,
+  &quot;last 3 iOS versions&quot; &#x2F;&#x2F; 兼容 ios 的最新 3 个版本 
+postcss.config.js
+module.exports &#x3D; &#123;
+  plugins: &#123;
+    &#x2F;&#x2F;如果产生重突就将autoprefixer对象注释掉，因为脚手架内部也默认配置了一样的
+        autoprefixer: &#123;
+      overrideBrowserslist: [
+        &quot;Android 4.1&quot;,
+        &quot;iOS 7.1&quot;,
+        &quot;Chrome &gt; 31&quot;,
+        &quot;ff &gt; 31&quot;,
+        &quot;ie &gt;&#x3D; 8&quot;,
+        &quot;last 10 versions&quot; &#x2F;&#x2F; 所有主流浏览器最近10版本用
+      ],
+      grid: true
+    &#125;,
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="适屏"><a href="#适屏" class="headerlink" title="适屏"></a>适屏</h3><p><code>npm i -S postcss-pxtorem</code> <code>&quot;postcss-pxtorem&quot;: &quot;^6.0.0&quot;</code></p>
+<blockquote>
+<p>flexible 同样改成24</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">postcss.config.js
+
+  &quot;postcss-pxtorem&quot;: &#123;
+      rootValue(&#123; file &#125;) &#123;&#x2F;&#x2F;根元素的值1920 24份为准是80
+        return file.indexOf(&quot;vant&quot;) !&#x3D;&#x3D; -1 ? 37.5 : 80
+      &#125;,
+      propList: [&quot;*&quot;],
+      mediaQuery: false,
+      selectorBlackList: [&quot;fiexdPx&quot;],&#x2F;&#x2F;忽略转换,例如:.fiexdPx_app_page
+      minPixelValue: 6,
+      exclude: &#x2F;node_modules&#x2F;i
+    &#125;
+
+module.exports &#x3D; &#123;
+  plugins: &#123;
+    &#x2F;&#x2F;如果产生重突就将autoprefixer对象注释掉，因为脚手架内部也默认配置了一样的
+    autoprefixer: &#123;&#125;,
+    &quot;postcss-pxtorem&quot;: &#123;
+      rootValue(&#123; file &#125;) &#123;
+        return file.indexOf(&quot;vant&quot;) !&#x3D;&#x3D; -1 ? 37.5 : 192
+      &#125;,
+      propList: [&quot;*&quot;], &#x2F;&#x2F;*表示转换所有  height表示值转换高
+      exclude: &#x2F;node_modules&#x2F;i,
+       unitPrecision: 5, &#x2F;&#x2F;保留rem小数点多少位
+       mediaQuery: false, &#x2F;&#x2F;媒体查询( @media screen 之类的)中不生效
+       minPixelValue: 12, &#x2F;&#x2F;px小于12的不会被转换
+       selectorBlackList: [&#39;.radius&#39;],  &#x2F;&#x2F;则是一个对css选择器进行过滤的数组，比如你设置为[&#39;fs&#39;]，那例如fs-xl类名，里面有关px的样式将不被转换，这里也支持正则写法。
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vite/" rel="tag">vite</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-插件库/vue-i18n" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/08/%E6%8F%92%E4%BB%B6%E5%BA%93/vue-i18n/">vue3中i18n的使用</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-07T16:00:00.000Z" itemprop="datePublished">2022年04月08日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+      
+<a href="/2022/04/08/%E6%8F%92%E4%BB%B6%E5%BA%93/vue-i18n/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="v3-use"><a href="#v3-use" class="headerlink" title="v3 use"></a>v3 use</h3><p><code>npm i -S vue-i18n@next</code></p>
+<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><pre class="line-numbers language-none"><code class="language-none">const i18n&#x3D;createI18n(&#123;
+  locale:&quot;&quot;,
+  fallbackLocale?: &#39;zh-CN&#39;,&#x2F;&#x2F;没有英文的时候默认中文语言
+  locale: &#39;zh-CN&#39;,    &#x2F;&#x2F; 语言标识
+  globalInjection: true, &#x2F;&#x2F;使用全局$t()函数
+  message:message, &#x2F;&#x2F;信息
+  legacy:false, &#x2F;&#x2F;跟v3的comsitionapi 有关
+&#125;)
+export default i18n
+app.use(i18n) the main.js
+use the template:
+&lt;button&gt;&#123;&#123; $t(&quot;title&quot;) &#125;&#125;&lt;&#x2F;button&gt;
+
+  let i18n &#x3D; useI18n();
+  i18n.locale.value &#x3D; e.target.innerText;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><pre class="line-numbers language-none"><code class="language-none">const getCurrentLanguge &#x3D; () &#x3D;&gt; &#123;
+  const win_lang &#x3D; navigator.language&#x2F;&#x2F;浏览器使用的语言
+  const current_lang &#x3D; win_lang.indexOf(&#39;zh&#39;) !&#x3D;&#x3D; -1 ? &#39;zh&#39; : &#39;en&#39;
+  localStorage.setItem(&#39;lang&#39;, current_lang)
+  return current_lang
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i18n/" rel="tag">i18n</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/webpack4+ts完整配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/07/%E5%85%B6%E4%BB%96/webpack4+ts%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE/">webpack4+ts完整配置</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-06T16:00:00.000Z" itemprop="datePublished">2022年04月07日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/04/07/%E5%85%B6%E4%BB%96/webpack4+ts%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>package.json</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &quot;name&quot;: &quot;books-ts&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;scripts&quot;: &#123;
+    &quot;build&quot;: &quot;webpack --mode production&quot;,
+    &quot;serve&quot;: &quot;npx webpack-dev-server&quot;
+  &#125;,
+  &quot;browserslist&quot;: &#123;
+    &quot;development&quot;: [
+      &quot;last 1 chrome version&quot;,
+      &quot;last 1 firefox version&quot;,
+      &quot;last 1 safari version&quot;
+    ],
+    &quot;production&quot;: [
+      &quot;&gt;0.2%&quot;,
+      &quot;not dead&quot;,
+      &quot;not op_mini all&quot;
+    ]
+  &#125;,
+  &quot;devDependencies&quot;: &#123;
+    &quot;typescript&quot;: &quot;4.6.3&quot;,
+    &quot;ts-loader&quot;: &quot;8.0.11&quot;,
+    &quot;css-loader&quot;: &quot;3.4.2&quot;,
+    &quot;file-loader&quot;: &quot;3.0.1&quot;,
+    &quot;html-loader&quot;: &quot;0.5.5&quot;,
+    &quot;html-webpack-plugin&quot;: &quot;3.2.0&quot;,
+    &quot;clean-webpack-plugin&quot;: &quot;1.0.0&quot;,
+    &quot;less&quot;: &quot;3.0.0&quot;,
+    &quot;less-loader&quot;: &quot;5.0.0&quot;,
+    &quot;sass&quot;: &quot;1.30.0&quot;,
+    &quot;sass-loader&quot;: &quot;10.1.0&quot;,
+    &quot;mini-css-extract-plugin&quot;: &quot;0.9.0&quot;,
+    &quot;optimize-css-assets-webpack-plugin&quot;: &quot;5.0.3&quot;,
+    &quot;postcss-loader&quot;: &quot;3.0.0&quot;,
+    &quot;postcss-preset-env&quot;: &quot;6.7.0&quot;,
+    &quot;style-loader&quot;: &quot;1.1.3&quot;,
+    &quot;url-loader&quot;: &quot;3.0.0&quot;,
+    &quot;webpack&quot;: &quot;4.41.6&quot;,
+    &quot;webpack-cli&quot;: &quot;3.3.11&quot;,
+    &quot;webpack-dev-server&quot;: &quot;3.10.3&quot;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>webpack.config.js</code></p>
+<pre class="line-numbers language-none"><code class="language-none">const &#123; resolve &#125; &#x3D; require(&#39;path&#39;)
+const HtmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;)
+const MiniCssExtractPlugin &#x3D; require(&#39;mini-css-extract-plugin&#39;)
+const optimizeCssAssetsWebpackPlugin &#x3D; require(&#39;optimize-css-assets-webpack-plugin&#39;)
+const CleanWebpackPlugin &#x3D; require(&#39;clean-webpack-plugin&#39;)
+
+process.env.NODE_ENV &#x3D; &#39;production&#39; &#x2F;&#x2F;指定环境为生产环境,postcss兼容时会选择生产的配置
+
+module.exports &#x3D; &#123;
+  entry: &#39;.&#x2F;js&#x2F;index.js&#39;,&#x2F;&#x2F;入口文件
+  devServer: &#123;&#x2F;&#x2F;开发服务的配置,只打包到内存,不做实际打包,作用于开发时实时预览
+    contentBase: resolve(__dirname, &#39;dist&#39;),&#x2F;&#x2F;打包后的文件路径,跟出口文件路径一致
+    compress: true,&#x2F;&#x2F;是否开启gzip 压缩
+    port: &#39;888&#39;,&#x2F;&#x2F;启动后的端口
+    index: &#39;index.html&#39;,&#x2F;&#x2F;索引文件的文件名,默认就是index.html,配置一下应该启动会快一点..
+    publicPath: &#39;&#x2F;&#39;,&#x2F;&#x2F;静态资源访问路径 默认就是&#x2F; &#x3D;&gt; 比如: ip&#x2F;build.js (文档有说明)
+    hot: true,&#x2F;&#x2F;开启HMR
+    overlay: true,&#x2F;&#x2F;代码出错开启全屏错误提示
+    watchContentBase: true,&#x2F;&#x2F; 监视contentBase目录下所有文件
+    watchOptions: &#123;
+      ignored: &#x2F;node_modules&#x2F; &#x2F;&#x2F;忽略文件
+    &#125;,
+    clientLogLevel: &#39;none&#39;,&#x2F;&#x2F;不要显示启动服务的日志信息 
+    &#x2F;&#x2F; quiet: true,&#x2F;&#x2F;除了初始启动信息之外的任何内容都不会被打印到控制台 TODO :小项目没必要关闭,还可以检查一下打包的信息   
+  &#125;,
+  output: &#123;&#x2F;&#x2F;打包出口配置
+    filename: &#39;js&#x2F;main.js&#39;,&#x2F;&#x2F;出口文件的文件名
+    path: resolve(__dirname, &#39;dist&#39;),&#x2F;&#x2F;所有打包后的文件放入dist文件夹下
+    chunkFilename: &#39;js&#x2F;[name]_chunk_[hash:6].js&#39;,&#x2F;&#x2F; TODO :如果不配置改命名,那么做了代码分割的那些包命名就会成为一个个数字 0.js
+  &#125;,
+  module: &#123;
+    rules: [
+      &#123;
+        oneOf: [&#x2F;&#x2F;loader已经编译过的,不会再进行编译,如果存在还需要编译的情况,可以把对象单独抽出去
+          &#123;
+            test: &#x2F;\.css$&#x2F;i,
+            use: [
+              &#x2F;&#x2F; &#39;style-loader&#39;,&#x2F;&#x2F;将出口文件里的css插入到html中的style标签中
+              &#123;
+                loader: MiniCssExtractPlugin.loader,
+                options: &#123;
+                  publicPath: &#39;..&#x2F;&#39; &#x2F;&#x2F; TODO :因为css单独提取是配置了提取到css文件夹下,也就是多出了一层css,所以这里也要相应的回退一层
+                &#125;
+              &#125;,&#x2F;&#x2F;将出口文件中的css内容编译成css文件,并引入html文件中
+              &#39;css-loader&#39;,&#x2F;&#x2F;将入口文件中引入的css文件编译成css内容放入到出口文件
+              &#123;
+                loader: &#39;postcss-loader&#39;,&#x2F;&#x2F;css兼容处理
+                options: &#123;
+                  ident: &#39;postcss&#39;,
+                  plugins: () &#x3D;&gt; [
+                    require(&#39;postcss-preset-env&#39;)(), &#x2F;&#x2F;自动读取package.json中的兼容配置
+                  ]
+                &#125;
+              &#125;
+            ]
+          &#125;,
+          &#123;
+            test: &#x2F;\.less$&#x2F;i,&#x2F;&#x2F; TODO :less不要跟css文件混搭使用
+            use: [
+              &#123;
+                loader: MiniCssExtractPlugin.loader,
+                options: &#123;
+                  publicPath: &#39;..&#x2F;&#39;
+                &#125;
+              &#125;,
+              &#39;css-loader&#39;,
+              &#39;less-loader&#39;,&#x2F;&#x2F;编译less文件
+              &#123;
+                loader: &#39;postcss-loader&#39;,
+                options: &#123;
+                  ident: &#39;postcss&#39;,
+                  plugins: () &#x3D;&gt; [
+                    require(&#39;postcss-preset-env&#39;)(),
+                  ]
+                &#125;
+              &#125;
+            ]
+          &#125;,
+          &#123;
+            test: &#x2F;\.scss$&#x2F;i, &#x2F;&#x2F; TODO :scss文件跟css文件不要混合使用
+            use: [
+              &#x2F;&#x2F; &#39;style-loader&#39;,
+              &#123;
+                loader: MiniCssExtractPlugin.loader,
+                options: &#123;
+                  publicPath: &#39;..&#x2F;&#39; &#x2F;&#x2F; TODO :因为css单独提取是配置了提取到css文件夹下,也就是多出了一层css,所以这里也要相应的回退一层
+                &#125;
+              &#125;,
+              &#39;css-loader&#39;,
+              &#39;sass-loader&#39;,
+              &#123;
+                loader: &#39;postcss-loader&#39;,
+                options: &#123;
+                  ident: &#39;postcss&#39;,
+                  plugins: () &#x3D;&gt; [
+                    require(&#39;postcss-preset-env&#39;)(),
+                  ]
+                &#125;
+              &#125;
+            ]
+          &#125;,
+          &#123;
+            test: &#x2F;\.ts$&#x2F;i,
+            loader: &#39;ts-loader&#39;,
+          &#125;,
+          &#123;
+            test: &#x2F;\.(png|jpg|gif)$&#x2F;i,
+            loader: &#39;url-loader&#39;,&#x2F;&#x2F; 处理图片路径 TODO :无法处理html文件的图片,需要搭配html-loader
+            options: &#123;
+              limit: 0,&#x2F;&#x2F;小于0k编译成base64 优点:减少服务请求(服务压力) 缺点:文件变大,加载变慢
+              esModule: false,&#x2F;&#x2F; TODO :html-loader用的commonjs写法引入图片,需要将url-loader esmodule写法关闭,否则html无法解析
+              name: &#39;img&#x2F;[name].[hash:6].[ext]&#39;&#x2F;&#x2F;打包后的文件名
+            &#125;
+          &#125;,
+          &#123;
+            test: &#x2F;\.html$&#x2F;i,&#x2F;&#x2F;处理html文件的图片
+            loader: &#39;html-loader&#39;
+          &#125;,
+          &#123;
+            exclude: &#x2F;\.(html|png|jpg|gif|less|css|js|ts)$&#x2F;i,&#x2F;&#x2F;一定要将js排除,否则会冲突
+            loader: &#39;file-loader&#39;,
+            options: &#123;
+              name: &#39;asstes&#x2F;[name].[hash:6].[ext]&#39;&#x2F;&#x2F;打包后的文件名
+            &#125;
+          &#125;
+        ]
+      &#125;
+    ]
+  &#125;,
+  plugins: [
+    new HtmlWebpackPlugin(&#123;&#x2F;&#x2F;以一个模板为基础复刻一个html文件为index.html,并且自动引入出口js文件
+      template: &#39;.&#x2F;index.html&#39;,&#x2F;&#x2F;模板路径
+      minify: &#123;&#x2F;&#x2F;模板的压缩配置 (文档有说明(
+        collapseWhitespace: false,&#x2F;&#x2F;去除空白区
+        removeComments: true,&#x2F;&#x2F;去除注释
+      &#125;
+    &#125;),
+    new MiniCssExtractPlugin(&#123;&#x2F;&#x2F;将css抽离成单个css文件,并且自动引入到index.html中
+      filename: &#39;css&#x2F;[name].[hash:6].css&#39;
+    &#125;),
+    new optimizeCssAssetsWebpackPlugin(),&#x2F;&#x2F;压缩css文件
+    new CleanWebpackPlugin(&#39;.&#x2F;dist&#39;)&#x2F;&#x2F;每次打包清理掉前一次打包的文件
+  ],
+  resolve: &#123;
+    alias: &#123;&#x2F;&#x2F; 路径别名
+      &#39;@js3&#39;: resolve(__dirname, &#39;.&#x2F;src&#x2F;js3&#39;),
+    &#125;,
+     extensions: [&#39;.wasm&#39;, &#39;.mjs&#39;, &#39;.js&#39;, &#39;.json&#39;, &#39;.ts&#39;],
+    modules: [resolve(__dirname, &#39;.&#x2F;node_modules&#39;), &#39;node_modules&#39;] &#x2F;&#x2F; TODO :提高解析速度,告诉webpack解析不带路径的模块式默认去哪里找
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Vscode/vscode 默认setting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/02/Vscode/vscode%20%E9%BB%98%E8%AE%A4setting/">vscode 默认设置</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/vscode/">vscode</a>
+  </div>
+
+      
+      
+<a href="/2022/04/02/Vscode/vscode%20%E9%BB%98%E8%AE%A4setting/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <pre class="line-numbers language-none"><code class="language-none">&#123;
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| name |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| name |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| 格式化:默认 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||https:&#x2F;&#x2F;blog.csdn.net&#x2F;Gabriel_wei&#x2F;article&#x2F;details&#x2F;90440542
+  &#x2F;&#x2F;||
+  &quot;editor.formatOnType&quot;: true,
+  &quot;editor.formatOnSave&quot;: true, &#x2F;&#x2F; 每次保存自动格式化
+  &quot;editor.tabSize&quot;: 2, &#x2F;&#x2F; 换行默认以tab缩进 2个字符
+  &#x2F;&#x2F; &quot;editor.wordWrap&quot;: &quot;on&quot;, &#x2F;&#x2F; 控制折行方式 - &quot;on&quot; (根据视区宽度折行)
+  &quot;editor.codeActionsOnSave&quot;: &#123;
+    &#x2F;&#x2F; 每次保存的时候将代码按eslint格式进行修复
+    &quot;source.fixAll.eslint&quot;: false
+  &#125;,
+  &quot;[vue]&quot;: &#123;
+    &#x2F;&#x2F; vue文件默认格式化方式 vetur
+    &quot;editor.defaultFormatter&quot;: &quot;octref.vetur&quot;
+    &#x2F;&#x2F; &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+  &#125;,
+  &quot;[javascript]&quot;: &#123;
+    &#x2F;&#x2F; javascript文件默认格式化方式:prettier
+    &#x2F;&#x2F; &quot;editor.defaultFormatter&quot;: &quot;vscode.typescript-language-features&quot;
+    &quot;editor.defaultFormatter&quot;: &quot;vscode.typescript-language-features&quot;
+  &#125;,
+  &quot;[json]&quot;: &#123;
+    &#x2F;&#x2F; json文件默认格式化方式prettier
+    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+  &#125;,
+  &quot;[jsonc]&quot;: &#123;
+    &#x2F;&#x2F; json文件默认格式化方式prettier
+    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+  &#125;,
+  &quot;[css]&quot;: &#123;
+    &#x2F;&#x2F; css文件默认格式化方式prettier
+    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+  &#125;,
+  &quot;[typescript]&quot;: &#123;
+    &#x2F;&#x2F; typescript文件默认格式化方式prettier
+    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+  &#125;,
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| 格式化:默认 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| 格式化:eslint |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F; 添加 vue 支持
+  &quot;eslint.validate&quot;: [&quot;javascript&quot;, &quot;javascriptreact&quot;, &quot;vue&quot;, &quot;html&quot;],
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| 格式化:eslint |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| 格式化:prettier |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &quot;prettier.eslintIntegration&quot;: false, &#x2F;&#x2F; prettier进行格式化时是否安装eslint配置去执行，建议false
+  &quot;prettier.singleQuote&quot;: true, &#x2F;&#x2F; 如果为true，将使用单引号而不是双引号
+  &quot;prettier.semi&quot;: true, &#x2F;&#x2F;末尾是否添加分号
+  &quot;prettier.tabWidth&quot;: 2, &#x2F;&#x2F; 设置格式化缩进4格
+  &quot;prettier.printWidth&quot;: 1000, &#x2F;&#x2F; 一行最多 1000 字符
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| 格式化:prettier |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| 格式化:vetur |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||https:&#x2F;&#x2F;blog.csdn.net&#x2F;Gabriel_wei&#x2F;article&#x2F;details&#x2F;90440542
+  &#x2F;&#x2F;||
+  &quot;vetur.format.enable&quot;: true, &#x2F;&#x2F;是否开启vetur格式化器
+  &#x2F;&#x2F; vetur格式化时html指定用哪个格式化规则
+  &#x2F;&#x2F;  - none: 默认
+  &#x2F;&#x2F;  - prettyhtml: prettyhtml格式花化器
+  &#x2F;&#x2F;  - js-beautify-html: js-beautify格式化
+  &#x2F;&#x2F;  - prettier: prettier格式化
+  &quot;vetur.format.defaultFormatter.html&quot;: &quot;js-beautify-html&quot;, &#x2F;&#x2F;vue的html区域使用prettyhtml格式化规则
+  &quot;vetur.format.defaultFormatter.css&quot;: &quot;prettier&quot;, &#x2F;&#x2F;vue的style区域使用prettier规则
+  &quot;vetur.format.defaultFormatter.postcss&quot;: &quot;prettier&quot;, &#x2F;&#x2F;&lt;style lang&#x3D;&#39;postcss&#39;&gt;区域的默认格式化器
+  &quot;vetur.format.defaultFormatter.scss&quot;: &quot;prettier&quot;, &#x2F;&#x2F;&lt;style lang&#x3D;&#39;scss&#39;&gt;区域的默认格式化器
+  &quot;vetur.format.defaultFormatter.less&quot;: &quot;prettier&quot;, &#x2F;&#x2F;&lt;style lang&#x3D;&#39;less&#39;&gt;区域的默认格式化器
+  &#x2F;&#x2F; Default formatter for &lt;script&gt; region
+  &#x2F;&#x2F;  - none: 默认
+  &#x2F;&#x2F;  - prettier: prettier
+  &#x2F;&#x2F;  - vscode-typescript: 从vscode TypeScript中获取格式化器
+  &quot;vetur.format.defaultFormatter.ts&quot;: &quot;prettier&quot;, &#x2F;&#x2F;ts &lt;script&gt;区域的默认格式化程序
+  &#x2F;&#x2F; Default formatter for &lt;script&gt; region
+  &#x2F;&#x2F;  - none: disable formatting
+  &#x2F;&#x2F;  - prettier: js formatter from prettier
+  &#x2F;&#x2F;  - prettier-eslint: prettier-eslint
+  &#x2F;&#x2F;  - vscode-typescript: js formatter from TypeScript
+  &quot;vetur.format.defaultFormatter.js&quot;: &quot;vscode-typescript&quot;, &#x2F;&#x2F;js &lt;script&gt;区域的默认格式化程序
+  &quot;vetur.format.options.tabSize&quot;: 2, &#x2F;&#x2F;每个缩进级别的空格数
+  &quot;vetur.format.defaultFormatterOptions&quot;: &#123;
+    &#x2F;&#x2F;相关配置
+    &quot;js-beautify-html&quot;: &#123;
+      &#x2F;&#x2F; - auto: 仅在超出行长度时才对属性进行换行
+      &#x2F;&#x2F; - force: 对除第一个属性外的其他每个属性进行换行
+      &#x2F;&#x2F; - force-aligned: 对除第一个属性外的其他每个属性进行换行，并保持对齐
+      &#x2F;&#x2F; - force-expand-multiline: 对每个属性进行换行
+      &#x2F;&#x2F; - aligned-multiple: 当超出折行长度时，将属性进行垂直对齐
+      &quot;wrap_attributes&quot;: &quot;aligned-multiple&quot;,
+      &#x2F;&#x2F; &quot;wrap_attributes&quot;: &quot;auto&quot;,
+      &quot;wrap_line_length&quot;: 80 &#x2F;&#x2F; 设置一行多少字符换行
+    &#125;,
+    &quot;prettyhtml&quot;: &#123;
+      &quot;printWidth&quot;: 1000, &#x2F;&#x2F; 一行最多 1000 字符
+      &quot;singleQuote&quot;: false, &#x2F;&#x2F;是否使用单引号
+      &quot;wrapAttributes&quot;: true, &#x2F;&#x2F;属性是否换行
+      &quot;sortAttributes&quot;: false &#x2F;&#x2F;??
+    &#125;,
+    &quot;prettier&quot;: &#123;
+      &#x2F;&#x2F;prettier文档规则 https:&#x2F;&#x2F;prettier.io&#x2F;docs&#x2F;en&#x2F;options.html
+      &quot;printWidth&quot;: 80, &#x2F;&#x2F; 一行最多 80 字符
+      &quot;tabWidth&quot;: 2, &#x2F;&#x2F;指定每个缩进级别的空格数。
+      &quot;useTabs&quot;: false, &#x2F;&#x2F;是否使用制表符来缩进
+      &quot;singleQuote&quot;: true, &#x2F;&#x2F; 使用单引号
+      &quot;semi&quot;: false, &#x2F;&#x2F; 行尾需要有分号
+      &quot;trailingComma&quot;: &quot;none&quot;, &#x2F;&#x2F; 末尾不需要逗号
+      &quot;bracketSpacing&quot;: true, &#x2F;&#x2F; 大括号内的首尾需要空格
+      &quot;bracketLine&quot;: true, &#x2F;&#x2F;标签换行时&gt;符号要不要独占一行
+      &quot;jsxBracketSameLine&quot;: false, &#x2F;&#x2F; jsx 标签的反尖括号需要换行
+      &quot;arrowParens&quot;: &quot;avoid&quot;, &#x2F;&#x2F;箭头函数参数周围可以不用括号
+      &quot;endOfLine&quot;: &quot;auto&quot;, &#x2F;&#x2F;换行符的使用
+      &quot;quoteProps&quot;: &quot;as-needed&quot;, &#x2F;&#x2F; 对象的 key 仅在必要时用引号,会在js文件去除对象key的&quot;&quot;号,json文件就会加上
+      &quot;jsxSingleQuote&quot;: false, &#x2F;&#x2F; jsx 不使用单引号，而使用双引号
+      &quot;rangeStart&quot;: 0, &#x2F;&#x2F; 每个文件格式化的范围是文件的全部内容
+      &quot;requirePragma&quot;: false, &#x2F;&#x2F; 不需要写文件开头的 @prettier
+      &quot;insertPragma&quot;: false, &#x2F;&#x2F; 不需要自动在文件开头插入 @prettier
+      &quot;proseWrap&quot;: &quot;always&quot;, &#x2F;&#x2F; 根据打印宽度决定是否折行 printWidth
+      &quot;htmlWhitespaceSensitivity&quot;: &quot;css&quot; &#x2F;&#x2F; 根据显示样式决定 html 要不要折行
+    &#125;
+  &#125;,
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| 格式化:vetur |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| csscomb配置 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &quot;csscomb.formatOnSave&quot;: true, &#x2F;&#x2F;css排序，保存后格式化
+  &quot;csscomb.preset&quot;: &#123;&#125;, &#x2F;&#x2F;默认规则 没有就遵循项目的.csscomn.json文件
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| csscomb配置 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| SASS 编译器 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &quot;easysass.compileAfterSave&quot;: false, &#x2F;&#x2F;保存后是否生成css文件
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| SASS 编译器 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+  &#x2F;&#x2F;||START
+  &#x2F;*||———————————————————————————————————————| 注释插件配置 |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &quot;fileheader.customMade&quot;: &#123;
+    &#x2F;&#x2F;头部文件注释的配置
+    &quot;Author&quot;: &quot;BORING GHOST&quot;,
+    &quot;Date&quot;: &quot;Do not edit&quot;,
+    &quot;LastEditTime&quot;: &quot;Do not edit&quot;,
+    &quot;Description&quot;: &quot;&quot;
+  &#125;,
+  &quot;fileheader.cursorMode&quot;: &#123;
+    &#x2F;&#x2F;函数注释的配置
+    &quot;EVENT&quot;: &quot;&quot;,
+    &quot;PARAM&quot;: &quot;&quot;
+  &#125;,
+  &quot;fileheader.configObj&quot;: &#123;
+    &#x2F;&#x2F;md和json文件不自动添加头部注释
+    &quot;prohibitAutoAdd&quot;: [&quot;json&quot;, &quot;md&quot;, &quot;js&quot;]
+  &#125;, &#x2F;&#x2F;图标主题
+  &#x2F;&#x2F;缩进时代码块的线条显示，注释时一定要是true
+  &#x2F;&#x2F; &quot;editor.renderIndentGuides&quot;: true,
+  &quot;workbench.colorCustomizations&quot;: &#123;
+    &quot;editorIndentGuide.background&quot;: &quot;#333333&quot;,
+    &quot;editorIndentGuide.activeBackground&quot;: &quot;#a3a3a3&quot;
+  &#125;,
+  &quot;explorer.compactFolders&quot;: false, &#x2F;&#x2F; 新建文件夹是否以紧凑形式呈现文件夹
+  &quot;git.ignoreWindowsGit27Warning&quot;: true, &#x2F;&#x2F;侧边栏显示方向
+  &quot;gitee.gist&quot;: &quot;&quot;, &#x2F;&#x2F;代码片段同步插件配置
+  &quot;gitee.access_token&quot;: &quot;&quot;, &#x2F;&#x2F;代码片段同步插件配置
+  &quot;search.followSymlinks&quot;: false, &#x2F;&#x2F;加快启动速度：关闭在搜索中跟踪符号
+  &quot;git.enabled&quot;: false, &#x2F;&#x2F;加快启动速度 同步代码时需要开启
+  &quot;git.autorefresh&quot;: false, &#x2F;&#x2F;加快启动速度
+  &quot;git.decorations.enabled&quot;: false, &#x2F;&#x2F;颜色主题
+  &quot;editor.lineHighlightBackground&quot;: &quot;#f2ca93&quot;,
+  &quot;bracketPairColorizer.depreciation-notice&quot;: false, &#x2F;&#x2F;是否通知扩展已弃用
+  &quot;explorer.confirmDelete&quot;: false,
+  &quot;workbench.iconTheme&quot;: &quot;material-icon-theme&quot;,
+  &quot;editor.fontSize&quot;: 17,
+  &quot;workbench.colorTheme&quot;: &quot;Visual Studio Dark&quot;,
+  &quot;[scss]&quot;: &#123;
+    &quot;editor.defaultFormatter&quot;: &quot;vscode.css-language-features&quot;
+  &#125;,
+  &quot;workbench.sideBar.location&quot;: &quot;right&quot;
+  &#x2F;&#x2F;||
+  &#x2F;&#x2F;||
+  &#x2F;*||———————————————————————————————————————| name |——————————————————————————————————*&#x2F;
+  &#x2F;&#x2F;||END
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
   <article id="post-Vscode/vscode常用设置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
@@ -344,1489 +1676,6 @@
 </article>
 
 
-  <article id="post-Vscode/项目中eslint配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/02/Vscode/%E9%A1%B9%E7%9B%AE%E4%B8%ADeslint%E9%85%8D%E7%BD%AE/">项目中eslint配置</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/vscode/">vscode</a>
-  </div>
-
-      
-      
-<a href="/2022/04/02/Vscode/%E9%A1%B9%E7%9B%AE%E4%B8%ADeslint%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Install-Vscode-Plugins"><a href="#Install-Vscode-Plugins" class="headerlink" title="Install Vscode Plugins"></a>Install Vscode Plugins</h3><ol>
-<li>eslint</li>
-<li>prettier</li>
-<li>csscomb</li>
-</ol>
-<h3 id="Install-Project-Plugins"><a href="#Install-Project-Plugins" class="headerlink" title="Install Project Plugins"></a>Install Project Plugins</h3><ol>
-<li>npm i -g eslint</li>
-<li>npm i prettier -D</li>
-</ol>
-<h3 id="Config-File"><a href="#Config-File" class="headerlink" title="Config File"></a>Config File</h3><ol>
-<li>npx eslint –init</li>
-</ol>
-<h3 id="Docs"><a href="#Docs" class="headerlink" title="Docs"></a>Docs</h3><ol>
-<li>Eslint<pre class="line-numbers language-none"><code class="language-none">忽略整个文件
-&#x2F;*eslint-disable*&#x2F;
-忽略下一行
-&#x2F;* eslint-disable-next-line *&#x2F;
-忽略文件
-.eslintignore<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-<h3 id="me"><a href="#me" class="headerlink" title="me"></a>me</h3><p>1.Vscode settings.json</p>
-<pre class="line-numbers language-none"><code class="language-none">&#123;
-    &quot;editor.formatOnType&quot;: true,
-    &quot;editor.formatOnSave&quot;: true,
-    &quot;eslint.codeAction.showDocumentation&quot;: &#123;
-        &quot;enable&quot;: true
-    &#125;,
-    &quot;editor.codeActionsOnSave&quot;: &#123;
-        &quot;source.fixAll.eslint&quot;: true
-    &#125;,
-    &quot;csscomb.formatOnSave&quot;: true,
-    &quot;csscomb.preset&quot;: &#123;&#125;,
-    &quot;eslint.validate&quot;: [&quot;javascript&quot;, &quot;javascriptreact&quot;, &quot;html&quot;, &quot;vue&quot;],
-    &quot;[vue]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[javascript]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[json]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[jsonc]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[css]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[typescript]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
-    &#125;,
-    &quot;[html]&quot;: &#123;
-        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li><p>.eslintrc.js</p>
-<pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
-    env: &#123;
-        browser: true,
-        es2021: true,
-        node: true
-    &#125;,
-    extends: [&quot;eslint:recommended&quot;, &quot;plugin:vue&#x2F;essential&quot;],
-    parserOptions: &#123;
-        ecmaVersion: 12,
-        sourceType: &quot;module&quot;
-    &#125;,
-    plugins: [&quot;vue&quot;],
-    rules: &#123;
-        semi: [2, &quot;always&quot;],
-        &quot;no-console&quot;: 0
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>.prettierrc.js</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;* DOCS https:&#x2F;&#x2F;prettier.io&#x2F;docs&#x2F;en&#x2F;options.html *&#x2F;
-module.exports &#x3D; &#123;
-    printWidth: 120, &#x2F;&#x2F; 一行最多 120 字符
-    tabWidth: 4, &#x2F;&#x2F;指定每个缩进级别的空格数。
-    useTabs: false, &#x2F;&#x2F;是否使用制表符来缩进
-    singleQuote: false, &#x2F;&#x2F; 使用单引号
-    semi: true, &#x2F;&#x2F; 行尾需要有分号
-    trailingComma: &quot;none&quot;, &#x2F;&#x2F; 末尾不需要逗号
-    bracketSpacing: true, &#x2F;&#x2F; 大括号内的首尾需要空格
-    jsxBracketSameLine: false, &#x2F;&#x2F; jsx 标签的反尖括号需要换行
-    arrowParens: &quot;avoid&quot;, &#x2F;&#x2F;箭头函数参数周围可以不用括号
-    endOfLine: &quot;auto&quot;, &#x2F;&#x2F;换行符的使用
-    quoteProps: &quot;as-needed&quot;, &#x2F;&#x2F; 对象的 key 仅在必要时用引号
-    jsxSingleQuote: false, &#x2F;&#x2F; jsx 不使用单引号，而使用双引号
-    rangeStart: 0, &#x2F;&#x2F; 每个文件格式化的范围是文件的全部内容
-    requirePragma: false, &#x2F;&#x2F; 不需要写文件开头的 @prettier
-    insertPragma: false, &#x2F;&#x2F; 不需要自动在文件开头插入 @prettier
-    &#x2F;&#x2F; proseWrap: &#39;always&#39;, &#x2F;&#x2F; 根据打印宽度决定是否折行 printWidth
-    htmlWhitespaceSensitivity: &quot;css&quot; &#x2F;&#x2F; 根据显示样式决定 html 要不要折行
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>.csscomb.json</p>
-<pre class="line-numbers language-none"><code class="language-none">&#123;
-    &quot;exclude&quot;: [&quot;.git&#x2F;**&quot;, &quot;node_modules&#x2F;**&quot;, &quot;bower_components&#x2F;**&quot;],
-    &quot;always-semicolon&quot;: true,
-    &quot;block-indent&quot;: &quot;  &quot;,
-    &quot;color-case&quot;: &quot;lower&quot;,
-    &quot;color-shorthand&quot;: true,
-    &quot;element-case&quot;: &quot;lower&quot;,
-    &quot;eof-newline&quot;: true,
-    &quot;leading-zero&quot;: false,
-    &quot;quotes&quot;: &quot;single&quot;,
-    &quot;remove-empty-rulesets&quot;: true,
-    &quot;space-after-colon&quot;: &quot; &quot;,
-    &quot;lines-between-rulesets&quot;: 1,
-    &quot;space-after-combinator&quot;: &quot; &quot;,
-    &quot;space-after-opening-brace&quot;: &quot;\n&quot;,
-    &quot;space-after-selector-delimiter&quot;: &quot;\n&quot;,
-    &quot;space-before-closing-brace&quot;: &quot;\n&quot;,
-    &quot;space-before-colon&quot;: &quot;&quot;,
-    &quot;space-before-combinator&quot;: &quot; &quot;,
-    &quot;space-before-opening-brace&quot;: &quot; &quot;,
-    &quot;space-before-selector-delimiter&quot;: &quot;&quot;,
-    &quot;space-between-declarations&quot;: &quot;\n&quot;,
-    &quot;strip-spaces&quot;: true,
-    &quot;unitless-zero&quot;: true,
-    &quot;vendor-prefix-align&quot;: true,
-    &quot;sort-order&quot;: [
-        [
-            &quot;font&quot;,
-            &quot;font-family&quot;,
-            &quot;font-size&quot;,
-            &quot;font-weight&quot;,
-            &quot;font-style&quot;,
-            &quot;font-variant&quot;,
-            &quot;font-size-adjust&quot;,
-            &quot;font-stretch&quot;,
-            &quot;font-effect&quot;,
-            &quot;font-emphasize&quot;,
-            &quot;font-emphasize-position&quot;,
-            &quot;font-emphasize-style&quot;,
-            &quot;font-smooth&quot;,
-            &quot;line-height&quot;,
-            &quot;position&quot;,
-            &quot;z-index&quot;,
-            &quot;top&quot;,
-            &quot;right&quot;,
-            &quot;bottom&quot;,
-            &quot;left&quot;,
-            &quot;display&quot;,
-            &quot;visibility&quot;,
-            &quot;float&quot;,
-            &quot;clear&quot;,
-            &quot;overflow&quot;,
-            &quot;overflow-x&quot;,
-            &quot;overflow-y&quot;,
-            &quot;-ms-overflow-x&quot;,
-            &quot;-ms-overflow-y&quot;,
-            &quot;clip&quot;,
-            &quot;zoom&quot;,
-            &quot;-webkit-align-content&quot;,
-            &quot;-ms-flex-line-pack&quot;,
-            &quot;align-content&quot;,
-            &quot;-webkit-box-align&quot;,
-            &quot;-moz-box-align&quot;,
-            &quot;-webkit-align-items&quot;,
-            &quot;align-items&quot;,
-            &quot;-ms-flex-align&quot;,
-            &quot;-webkit-align-self&quot;,
-            &quot;-ms-flex-item-align&quot;,
-            &quot;-ms-grid-row-align&quot;,
-            &quot;align-self&quot;,
-            &quot;-webkit-box-flex&quot;,
-            &quot;-webkit-flex&quot;,
-            &quot;-moz-box-flex&quot;,
-            &quot;-ms-flex&quot;,
-            &quot;flex&quot;,
-            &quot;-webkit-flex-flow&quot;,
-            &quot;-ms-flex-flow&quot;,
-            &quot;flex-flow&quot;,
-            &quot;-webkit-flex-basis&quot;,
-            &quot;-ms-flex-preferred-size&quot;,
-            &quot;flex-basis&quot;,
-            &quot;-webkit-box-orient&quot;,
-            &quot;-webkit-box-direction&quot;,
-            &quot;-webkit-flex-direction&quot;,
-            &quot;-moz-box-orient&quot;,
-            &quot;-moz-box-direction&quot;,
-            &quot;-ms-flex-direction&quot;,
-            &quot;flex-direction&quot;,
-            &quot;-webkit-flex-grow&quot;,
-            &quot;-ms-flex-positive&quot;,
-            &quot;flex-grow&quot;,
-            &quot;-webkit-flex-shrink&quot;,
-            &quot;-ms-flex-negative&quot;,
-            &quot;flex-shrink&quot;,
-            &quot;-webkit-flex-wrap&quot;,
-            &quot;-ms-flex-wrap&quot;,
-            &quot;flex-wrap&quot;,
-            &quot;-webkit-box-pack&quot;,
-            &quot;-moz-box-pack&quot;,
-            &quot;-ms-flex-pack&quot;,
-            &quot;-webkit-justify-content&quot;,
-            &quot;justify-content&quot;,
-            &quot;-webkit-box-ordinal-group&quot;,
-            &quot;-webkit-order&quot;,
-            &quot;-moz-box-ordinal-group&quot;,
-            &quot;-ms-flex-order&quot;,
-            &quot;order&quot;,
-            &quot;-webkit-box-sizing&quot;,
-            &quot;-moz-box-sizing&quot;,
-            &quot;box-sizing&quot;,
-            &quot;width&quot;,
-            &quot;min-width&quot;,
-            &quot;max-width&quot;,
-            &quot;height&quot;,
-            &quot;min-height&quot;,
-            &quot;max-height&quot;,
-            &quot;margin&quot;,
-            &quot;margin-top&quot;,
-            &quot;margin-right&quot;,
-            &quot;margin-bottom&quot;,
-            &quot;margin-left&quot;,
-            &quot;padding&quot;,
-            &quot;padding-top&quot;,
-            &quot;padding-right&quot;,
-            &quot;padding-bottom&quot;,
-            &quot;padding-left&quot;,
-            &quot;table-layout&quot;,
-            &quot;empty-cells&quot;,
-            &quot;caption-side&quot;,
-            &quot;border-spacing&quot;,
-            &quot;border-collapse&quot;,
-            &quot;list-style&quot;,
-            &quot;list-style-position&quot;,
-            &quot;list-style-type&quot;,
-            &quot;list-style-image&quot;,
-            &quot;content&quot;,
-            &quot;quotes&quot;,
-            &quot;counter-reset&quot;,
-            &quot;counter-increment&quot;,
-            &quot;resize&quot;,
-            &quot;cursor&quot;,
-            &quot;-webkit-user-select&quot;,
-            &quot;-moz-user-select&quot;,
-            &quot;-ms-user-select&quot;,
-            &quot;user-select&quot;,
-            &quot;nav-index&quot;,
-            &quot;nav-up&quot;,
-            &quot;nav-right&quot;,
-            &quot;nav-down&quot;,
-            &quot;nav-left&quot;,
-            &quot;-webkit-transition&quot;,
-            &quot;-moz-transition&quot;,
-            &quot;-ms-transition&quot;,
-            &quot;-o-transition&quot;,
-            &quot;transition&quot;,
-            &quot;-webkit-transition-delay&quot;,
-            &quot;-moz-transition-delay&quot;,
-            &quot;-ms-transition-delay&quot;,
-            &quot;-o-transition-delay&quot;,
-            &quot;transition-delay&quot;,
-            &quot;-webkit-transition-timing-function&quot;,
-            &quot;-moz-transition-timing-function&quot;,
-            &quot;-ms-transition-timing-function&quot;,
-            &quot;-o-transition-timing-function&quot;,
-            &quot;transition-timing-function&quot;,
-            &quot;-webkit-transition-duration&quot;,
-            &quot;-moz-transition-duration&quot;,
-            &quot;-ms-transition-duration&quot;,
-            &quot;-o-transition-duration&quot;,
-            &quot;transition-duration&quot;,
-            &quot;-webkit-transition-property&quot;,
-            &quot;-moz-transition-property&quot;,
-            &quot;-ms-transition-property&quot;,
-            &quot;-o-transition-property&quot;,
-            &quot;transition-property&quot;,
-            &quot;-webkit-transform&quot;,
-            &quot;-moz-transform&quot;,
-            &quot;-ms-transform&quot;,
-            &quot;-o-transform&quot;,
-            &quot;transform&quot;,
-            &quot;-webkit-transform-origin&quot;,
-            &quot;-moz-transform-origin&quot;,
-            &quot;-ms-transform-origin&quot;,
-            &quot;-o-transform-origin&quot;,
-            &quot;transform-origin&quot;,
-            &quot;-webkit-animation&quot;,
-            &quot;-moz-animation&quot;,
-            &quot;-ms-animation&quot;,
-            &quot;-o-animation&quot;,
-            &quot;animation&quot;,
-            &quot;-webkit-animation-name&quot;,
-            &quot;-moz-animation-name&quot;,
-            &quot;-ms-animation-name&quot;,
-            &quot;-o-animation-name&quot;,
-            &quot;animation-name&quot;,
-            &quot;-webkit-animation-duration&quot;,
-            &quot;-moz-animation-duration&quot;,
-            &quot;-ms-animation-duration&quot;,
-            &quot;-o-animation-duration&quot;,
-            &quot;animation-duration&quot;,
-            &quot;-webkit-animation-play-state&quot;,
-            &quot;-moz-animation-play-state&quot;,
-            &quot;-ms-animation-play-state&quot;,
-            &quot;-o-animation-play-state&quot;,
-            &quot;animation-play-state&quot;,
-            &quot;-webkit-animation-timing-function&quot;,
-            &quot;-moz-animation-timing-function&quot;,
-            &quot;-ms-animation-timing-function&quot;,
-            &quot;-o-animation-timing-function&quot;,
-            &quot;animation-timing-function&quot;,
-            &quot;-webkit-animation-delay&quot;,
-            &quot;-moz-animation-delay&quot;,
-            &quot;-ms-animation-delay&quot;,
-            &quot;-o-animation-delay&quot;,
-            &quot;animation-delay&quot;,
-            &quot;-webkit-animation-iteration-count&quot;,
-            &quot;-moz-animation-iteration-count&quot;,
-            &quot;-ms-animation-iteration-count&quot;,
-            &quot;-o-animation-iteration-count&quot;,
-            &quot;animation-iteration-count&quot;,
-            &quot;-webkit-animation-direction&quot;,
-            &quot;-moz-animation-direction&quot;,
-            &quot;-ms-animation-direction&quot;,
-            &quot;-o-animation-direction&quot;,
-            &quot;animation-direction&quot;,
-            &quot;text-align&quot;,
-            &quot;-webkit-text-align-last&quot;,
-            &quot;-moz-text-align-last&quot;,
-            &quot;-ms-text-align-last&quot;,
-            &quot;text-align-last&quot;,
-            &quot;vertical-align&quot;,
-            &quot;white-space&quot;,
-            &quot;text-decoration&quot;,
-            &quot;text-emphasis&quot;,
-            &quot;text-emphasis-color&quot;,
-            &quot;text-emphasis-style&quot;,
-            &quot;text-emphasis-position&quot;,
-            &quot;text-indent&quot;,
-            &quot;-ms-text-justify&quot;,
-            &quot;text-justify&quot;,
-            &quot;letter-spacing&quot;,
-            &quot;word-spacing&quot;,
-            &quot;-ms-writing-mode&quot;,
-            &quot;text-outline&quot;,
-            &quot;text-transform&quot;,
-            &quot;text-wrap&quot;,
-            &quot;text-overflow&quot;,
-            &quot;-ms-text-overflow&quot;,
-            &quot;text-overflow-ellipsis&quot;,
-            &quot;text-overflow-mode&quot;,
-            &quot;-ms-word-wrap&quot;,
-            &quot;word-wrap&quot;,
-            &quot;word-break&quot;,
-            &quot;-ms-word-break&quot;,
-            &quot;-moz-tab-size&quot;,
-            &quot;-o-tab-size&quot;,
-            &quot;tab-size&quot;,
-            &quot;-webkit-hyphens&quot;,
-            &quot;-moz-hyphens&quot;,
-            &quot;hyphens&quot;,
-            &quot;pointer-events&quot;,
-            &quot;opacity&quot;,
-            &quot;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity&quot;,
-            &quot;-ms-filter:\\&#39;progid:DXImageTransform.Microsoft.Alpha&quot;,
-            &quot;-ms-interpolation-mode&quot;,
-            &quot;color&quot;,
-            &quot;border&quot;,
-            &quot;border-width&quot;,
-            &quot;border-style&quot;,
-            &quot;border-color&quot;,
-            &quot;border-top&quot;,
-            &quot;border-top-width&quot;,
-            &quot;border-top-style&quot;,
-            &quot;border-top-color&quot;,
-            &quot;border-right&quot;,
-            &quot;border-right-width&quot;,
-            &quot;border-right-style&quot;,
-            &quot;border-right-color&quot;,
-            &quot;border-bottom&quot;,
-            &quot;border-bottom-width&quot;,
-            &quot;border-bottom-style&quot;,
-            &quot;border-bottom-color&quot;,
-            &quot;border-left&quot;,
-            &quot;border-left-width&quot;,
-            &quot;border-left-style&quot;,
-            &quot;border-left-color&quot;,
-            &quot;-webkit-border-radius&quot;,
-            &quot;-moz-border-radius&quot;,
-            &quot;border-radius&quot;,
-            &quot;-webkit-border-top-left-radius&quot;,
-            &quot;-moz-border-radius-topleft&quot;,
-            &quot;border-top-left-radius&quot;,
-            &quot;-webkit-border-top-right-radius&quot;,
-            &quot;-moz-border-radius-topright&quot;,
-            &quot;border-top-right-radius&quot;,
-            &quot;-webkit-border-bottom-right-radius&quot;,
-            &quot;-moz-border-radius-bottomright&quot;,
-            &quot;border-bottom-right-radius&quot;,
-            &quot;-webkit-border-bottom-left-radius&quot;,
-            &quot;-moz-border-radius-bottomleft&quot;,
-            &quot;border-bottom-left-radius&quot;,
-            &quot;-webkit-border-image&quot;,
-            &quot;-moz-border-image&quot;,
-            &quot;-o-border-image&quot;,
-            &quot;border-image&quot;,
-            &quot;-webkit-border-image-source&quot;,
-            &quot;-moz-border-image-source&quot;,
-            &quot;-o-border-image-source&quot;,
-            &quot;border-image-source&quot;,
-            &quot;-webkit-border-image-slice&quot;,
-            &quot;-moz-border-image-slice&quot;,
-            &quot;-o-border-image-slice&quot;,
-            &quot;border-image-slice&quot;,
-            &quot;-webkit-border-image-width&quot;,
-            &quot;-moz-border-image-width&quot;,
-            &quot;-o-border-image-width&quot;,
-            &quot;border-image-width&quot;,
-            &quot;-webkit-border-image-outset&quot;,
-            &quot;-moz-border-image-outset&quot;,
-            &quot;-o-border-image-outset&quot;,
-            &quot;border-image-outset&quot;,
-            &quot;-webkit-border-image-repeat&quot;,
-            &quot;-moz-border-image-repeat&quot;,
-            &quot;-o-border-image-repeat&quot;,
-            &quot;border-image-repeat&quot;,
-            &quot;outline&quot;,
-            &quot;outline-width&quot;,
-            &quot;outline-style&quot;,
-            &quot;outline-color&quot;,
-            &quot;outline-offset&quot;,
-            &quot;background&quot;,
-            &quot;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader&quot;,
-            &quot;background-color&quot;,
-            &quot;background-image&quot;,
-            &quot;background-repeat&quot;,
-            &quot;background-attachment&quot;,
-            &quot;background-position&quot;,
-            &quot;background-position-x&quot;,
-            &quot;-ms-background-position-x&quot;,
-            &quot;background-position-y&quot;,
-            &quot;-ms-background-position-y&quot;,
-            &quot;-webkit-background-clip&quot;,
-            &quot;-moz-background-clip&quot;,
-            &quot;background-clip&quot;,
-            &quot;background-origin&quot;,
-            &quot;-webkit-background-size&quot;,
-            &quot;-moz-background-size&quot;,
-            &quot;-o-background-size&quot;,
-            &quot;background-size&quot;,
-            &quot;box-decoration-break&quot;,
-            &quot;-webkit-box-shadow&quot;,
-            &quot;-moz-box-shadow&quot;,
-            &quot;box-shadow&quot;,
-            &quot;filter:progid:DXImageTransform.Microsoft.gradient&quot;,
-            &quot;-ms-filter:\\&#39;progid:DXImageTransform.Microsoft.gradient&quot;,
-            &quot;text-shadow&quot;
-        ]
-    ]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-其他/webpack4学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/02/%E5%85%B6%E4%BB%96/webpack4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">webpack4学习笔记</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-01T16:00:00.000Z" itemprop="datePublished">2022年04月02日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
-  </div>
-
-      
-      
-<a href="/2022/04/02/%E5%85%B6%E4%BB%96/webpack4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="HMR-热模块替换-一个模块发生变化-只会重新打包这一个模块而不是所有模块"><a href="#HMR-热模块替换-一个模块发生变化-只会重新打包这一个模块而不是所有模块" class="headerlink" title="HMR :热模块替换,一个模块发生变化,只会重新打包这一个模块而不是所有模块"></a>HMR :热模块替换,一个模块发生变化,只会重新打包这一个模块而不是所有模块</h4><p>提高构建速度<br>js,html 文件没有这个功能</p>
-<h4 id="source-map-调试优化"><a href="#source-map-调试优化" class="headerlink" title="source-map :调试优化"></a>source-map :调试优化</h4><p>通过 devtool 配置</p>
-<h4 id="oneOf-loader-优化"><a href="#oneOf-loader-优化" class="headerlink" title="oneOf loader 优化"></a>oneOf loader 优化</h4><h4 id="代码分割-不让-js-打包在一个-js-文件中"><a href="#代码分割-不让-js-打包在一个-js-文件中" class="headerlink" title="代码分割 不让 js 打包在一个 js 文件中"></a>代码分割 不让 js 打包在一个 js 文件中</h4><p>问题:会重复被下载</p>
-<ol>
-<li>多入口(不推荐)</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">entry: &#123;
-  main: &#39;.&#x2F;src&#x2F;index.js&#39;,
-  test: &#39;.&#x2F;src&#x2F;js&#x2F;index.js&#39;
-&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li>配置 加 动态导入语法 (推荐)</li>
-</ol>
-<ul>
-<li>让 node_module 的文件单独打包,并解决同一文件重复打包(前提是 node_module 下的文件)<blockquote>
-<p>缺点:所有用过的 node_module 包都会打包成一个文件 解决:配合下面的 dll 技术</p>
-</blockquote>
-</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">optimization: &#123;
-  splitChunks: &#123;
-    chunks: &#39;all&#39; &#x2F;&#x2F; 解决重复打包
-  &#125;
-&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>让其它文件单独打包<blockquote>
-<p>ccc 问自定义的 id 也会被打包出口解析成文件名</p>
-</blockquote>
-</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">import(&#x2F;* webpackChunkName: &quot;ccc&quot; *&#x2F;&#39;.&#x2F;js3&#x2F;index.js&#39;).then(res &#x3D;&gt; &#123;
-
-&#125;).catch(() &#x3D;&gt; &#123;
-  console.log(&#39;文件加载失败&#39;);
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h4><ul>
-<li>通过某种事件触发加载,不会跟随页面加载 tip:(不会重复加载)<br>优点:提高速度</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">div.onclick&#x3D;()&#x3D;&gt;&#123;
-import(&#x2F;* webpackChunkName: &quot;ccc&quot; *&#x2F;&#39;.&#x2F;js3&#x2F;index.js&#39;).then(res &#x3D;&gt; &#123;
- fn()
-&#125;).catch(() &#x3D;&gt; &#123;
-  console.log(&#39;文件加载失败&#39;);
-&#125;)
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h4><ul>
-<li>在懒加载中添加一个 webpackPrefetch:true (浏览器其它资源加载完再偷偷加载)(推荐)<br>区别:预加载提前加载但是不运行</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">div.onclick&#x3D;()&#x3D;&gt;&#123;
-import(&#x2F;* webpackChunkName: &quot;ccc&quot;, webpackPrefetch:true *&#x2F;&#39;.&#x2F;js3&#x2F;index.js&#39;).then(res &#x3D;&gt; &#123;
- fn()
-&#125;).catch(() &#x3D;&gt; &#123;
-  console.log(&#39;文件加载失败&#39;);
-&#125;)
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="忽略打包"><a href="#忽略打包" class="headerlink" title="忽略打包"></a>忽略打包</h4><ul>
-<li>当已经使用了 cdn 引入的包后,在打包的时候可以防止 webpack 再次进行打包</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">externals:&#123;
-  &#x2F;&#x2F;拒绝打包jQuery  库名:npm包名
-  jquery:&#39;jQuery&#39;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="dll-技术"><a href="#dll-技术" class="headerlink" title="dll 技术"></a>dll 技术</h4><ul>
-<li>让某些库单独打包<br>新建 webpack.dll.js<br>主要作用:单独打包 entry 对应的包,并且生成 json 文件,内容是每个包对应的包名跟所在目录<br>tip:将这个内容提供给 webpack.config,让其知道这几个包不需要再打包了,(dll.js)运行一次后不需要再运行<br>tip:但是不打包最后就没法用这个包的方法,然后就需要使用到<a href="mailto:&#97;&#x64;&#100;&#x2d;&#x61;&#x73;&#x73;&#x65;&#116;&#45;&#104;&#x74;&#x6d;&#108;&#x2d;&#x77;&#x65;&#98;&#x70;&#x61;&#x63;&#x6b;&#x2d;&#x70;&#x6c;&#x75;&#103;&#x69;&#110;&#64;&#51;&#46;&#49;&#46;&#x33;">&#97;&#x64;&#100;&#x2d;&#x61;&#x73;&#x73;&#x65;&#116;&#45;&#104;&#x74;&#x6d;&#108;&#x2d;&#x77;&#x65;&#98;&#x70;&#x61;&#x63;&#x6b;&#x2d;&#x70;&#x6c;&#x75;&#103;&#x69;&#110;&#64;&#51;&#46;&#49;&#46;&#x33;</a>插件<br>tip:这个插件就是将之前忽略的包再自动引入到 html 文件</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">const &#123;resolve&#125;&#x3D;require(&#39;path&#39;)
-const webpack&#x3D;require(&#39;webpack&#39;)
-module.exports&#x3D;&#123;
-  entry:&#123;
-    dll:[&#39;jqeury&#39;] &#x2F;&#x2F; 最终打包后生成的[name]:需要打包的库的库名
-  &#125;,
-  output:&#123;
-    filename:&#39;[name].js&#39;, &#x2F;&#x2F; [name]&#x3D;&#x3D;&#x3D;dll
-    path:resolve(__dirname,&#39;dll&#39;) &#x2F;&#x2F;这些单独打包的库文件都放入dll文件夹下
-    library:&#39;[name]_[hash:6]&#39;,&#x2F;&#x2F;这是打包后库里面暴露出去的名字
-  &#125;,
-  plugins:[
-    new webpack.DllPlugin(&#123;&#x2F;&#x2F; 生成一个映射关系文件告诉webpack这些内容不用打包
-      name:&#39;[name]_[hash:6]&#39;,&#x2F;&#x2F;映射库暴露的内容
-      path:resolve(__dirname,&#39;dll&#x2F;manifest.json&#39;) &#x2F;&#x2F;映射库暴露的内容保存到这个路径
-    &#125;)
-  ]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>运行一次 webpack –config webpack.dll.js<br>然后再配置 webpack.config.js<br>下载插件<code>add-asset-html-webpack-plugin@3.1.3</code></p>
-<pre class="line-numbers language-none"><code class="language-none">plugins:[
-  new webpack.DllReferencePlugin(&#123;&#x2F;&#x2F;根据这个文件告诉webpack哪些库不参与打包,并且修改库暴露的名称
-    manifest:resolve(__dirname,&#39;dll&#x2F;manifest.json&#39;)
-  &#125;),
-  new AddAssetHtmlWebpackPlugin(&#123;
-    filepath:resolve(__dirname,&#39;dll&#x2F;dll.js&#39;)
-  &#125;)
-]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h4 id="使用ts"><a href="#使用ts" class="headerlink" title="使用ts"></a>使用ts</h4><p><code>yarn add -D typescript</code><br><code>yarn add -D ts-loader@8.0.11</code></p>
-<pre class="line-numbers language-none"><code class="language-none">rules:[
-       &#123;
-         test: &#x2F;\.ts$&#x2F;i,
-         loader: &#39;ts-loader&#39;,
-       &#125;,
-    ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Npm/一些库的对应版本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/25/Npm/%E4%B8%80%E4%BA%9B%E5%BA%93%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/">一些常用库的指定版本 版本对应问题</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/npm/">npm</a>
-  </div>
-
-      
-      
-<a href="/2022/03/25/Npm/%E4%B8%80%E4%BA%9B%E5%BA%93%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="vue2脚手架安装sass"><a href="#vue2脚手架安装sass" class="headerlink" title="vue2脚手架安装sass"></a>vue2脚手架安装sass</h3><ul>
-<li>如果在搭建脚手架时没有选择sass编译器就需要下载sass版本<pre class="line-numbers language-none"><code class="language-none">yarn add sass sass-loader@10.0.0 -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>其中sass版本为 “sass”: “^1.53.0”</li>
-</ul>
-<h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><p>vue2</p>
-<pre class="line-numbers language-none"><code class="language-none">yarn add vue-router@3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><p>vue2</p>
-<pre class="line-numbers language-none"><code class="language-none">yarn add vuex@3.6.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="ant-design-vue"><a href="#ant-design-vue" class="headerlink" title="ant-design-vue"></a>ant-design-vue</h3><p>vue2</p>
-<pre class="line-numbers language-none"><code class="language-none">yarn add ant-design-vue@1.7.8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Npm/发布npm包" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/25/Npm/%E5%8F%91%E5%B8%83npm%E5%8C%85/">npm发布包</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/npm/">npm</a>
-  </div>
-
-      
-      
-<a href="/2022/03/25/Npm/%E5%8F%91%E5%B8%83npm%E5%8C%85/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>参照:<a target="_blank" rel="noopener" href="https://blog.csdn.net/taoerchun/article/details/82531549">https://blog.csdn.net/taoerchun/article/details/82531549</a></p>
-<h3 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h3><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a></p>
-<h3 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h3><ul>
-<li>npm init<pre class="line-numbers language-none"><code class="language-none">依次按提示填入包名、版本、描述、github地址、关键字、license等
-这步完成之后会生成一个package.json文件，上面输入的这些信息可以在该文件中修改<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<code>注意：如果你的包引用了第三方包，则需要在package.json文件种增加dependencies节点，写入依赖的包及版本</code></li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">&quot;dependencies&quot;: &#123;
-    &quot;colors&quot;: &quot;^1.3.2&quot;,
-    &quot;on-finished&quot;: &quot;^2.3.0&quot;
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><ul>
-<li>npm login</li>
-<li>npm publish –access public<br><code>发布为公开包</code></li>
-</ul>
-<h3 id="修改版本"><a href="#修改版本" class="headerlink" title="修改版本"></a>修改版本</h3><ul>
-<li>npm login<br><code>npm version patch</code></li>
-<li>npm publish –access public</li>
-</ul>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Ts/ts学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/25/Ts/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Ts 学习笔记</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/ts/">ts</a>
-  </div>
-
-      
-      
-<a href="/2022/03/25/Ts/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>官网<br><a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/release-notes/typescript-3.1.html">https://www.tslang.cn/docs/release-notes/typescript-3.1.html</a></p>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li><p>1.ts由微软开发</p>
-</li>
-<li><p>2.ts是js的超集</p>
-<blockquote>
-<p>es2017往后统称es7,ts包含所有版本的js语法<br>浏览器能够识别ts编译后的js语法,但不识别ts语法<br>js是动态类型 ts是静态类型(定义类型后不可赋值其它类型)</p>
-</blockquote>
-</li>
-<li><p>3.ts提供丰富的语法提示,比如一些变量的方法</p>
-</li>
-<li><p>4.ts提供丰富的错误提示,在编写阶段能够检查错误</p>
-</li>
-</ul>
-<h3 id="安装-amp-编译"><a href="#安装-amp-编译" class="headerlink" title="安装&amp;编译"></a>安装&amp;编译</h3><blockquote>
-<p>npm install typescript -g<br>tsc helloworld.ts</p>
-</blockquote>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><code>ts包含所有js数据类型,ts对引用类型进一步区分,下面是类型关键字</code><br><code>首字母小写</code></p>
-<ul>
-<li><p>js<br>  原始数据类型:boolean string number null array undefined es6:symbol<br>  引用数据类型:object typeof:function</p>
-</li>
-<li><p>ts<br>  基础数据类型:js中的原始类型<br>  +:any:任意数据类型 never没有类型 void无<br>  联合类型:一个变量可能有多个类型,<code>如:let num:number | string;</code><br>  对象类型:interface接口关键字<br>  数组类型:number[] string[] 泛型的写法:Array<number> 用于构造函数<br>  函数类型:定义参数的类型 function(argument:number),定义返回值 function():number{}</p>
-</li>
-<li><p>类型的说法</p>
-<blockquote>
-<p>类型注解:就是给变量定义一个类型,简单能推断出类型的时候没必要注解<br>类型推断:就是在未定义类型时,ts会根据所赋予的值推断出变量的类型</p>
-</blockquote>
-</li>
-<li><p>注解</p>
-<blockquote>
-<p>数字类型注解,字符串注解,对象类型接口方式注解,联合类型注解,数组注解</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p><code>就是在数据后面注解相关的类型</code></p>
-<ol>
-<li>布尔注解</li>
-</ol>
-<ul>
-<li>let flag: boolean &#x3D; false;</li>
-</ul>
-<ol start="2">
-<li>数字注解</li>
-</ol>
-<ul>
-<li>let price: number &#x3D; 12;</li>
-</ul>
-<ol start="3">
-<li>any注解</li>
-</ol>
-<ul>
-<li>这个能不用则不用</li>
-<li>未声明类型的变量</li>
-<li>可以任意赋值,使用任意方法</li>
-<li>Object:任意赋值,只能使用对应的方法<pre class="line-numbers language-none"><code class="language-none">let myIsAny:any&#x3D;6
-myIsAny&#x3D;&quot;text&quot; &#x2F;&#x2F; no problem
-myIsAny&#x3D;[1] &#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<ol start="4">
-<li><p>对象注解</p>
-<pre class="line-numbers language-none"><code class="language-none">let obj:&#123;
-	num:string,
-	toString:()&#x3D;&gt;void &#x2F;&#x2F;无返回值
-&#125;&#x3D;&#123;
-	num:&quot;12&quot;,
-	toString:()&#x3D;&gt;&#123;&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>interface接口关键字使用</p>
-<blockquote>
-<p>为了方便多次使用,定义对象类型的形状<br>定义后的变量默认不可多不可少,需要?:可有可无,[propName:string]:any;任意属性,任意类型<br><code>使用接口定义对象形状</code></p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">interface Obj&#123;
-	num:string,
-	toString:()&#x3D;&gt;void
-&#125;
-let obj:Obj&#x3D;&#123;
-	num:&quot;12&quot;,
-	toString:()&#x3D;&gt;&#123;&#125;
-&#125;
-console.log(obj) &#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>属性可多可少/任意属性</code></p>
-<pre class="line-numbers language-none"><code class="language-none">interface Person&#123;
-	num:number,
-	age?:number,&#x2F;&#x2F;这个属性可有可无
-	[propName:string]:any, &#x2F;&#x2F;可以添加其它的任意属性
-&#125;
-let obj: Person &#x3D; &#123;
-  num: 12,
-  age: 12,
-  others:&quot;12&quot;&#x2F;&#x2F;no problem
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>只读属性</code></p>
-<pre class="line-numbers language-none"><code class="language-none">interface Person&#123;
-	readonly id:number
-&#125;
-let obj:Person&#123;
-	id:12
-&#125;
-obj.id&#x3D;1212 &#x2F;&#x2F;at question Because:只读不可更改的属性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>null &amp; undefined</p>
-</li>
-</ol>
-<ul>
-<li>null跟undefined是所有类型的子类型</li>
-<li>但是如果给某类型赋值 null 跟 undefined 需要配置 strictNullChecks 为false</li>
-</ul>
-<ol start="7">
-<li>联合类型使用</li>
-</ol>
-<ul>
-<li>注意:<pre class="line-numbers language-none"><code class="language-none">function test(a: number | string)&#123;
-	return a.toString() &#x2F;&#x2F;no problem:共有方法
-	or
-	return a.split() &#x2F;&#x2F;at question:number没有这个方法
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<ol start="8">
-<li>数组的注解</li>
-</ol>
-<ul>
-<li>方式<blockquote>
-<ol>
-<li>类型[]&#x2F;&#x2F;numer[] 2.Array[类型] &#x2F;&#x2F;Array[number] 3.interface 方式;<br>Array<number>等效 定义一个接口<br><code>联合类型的写法</code></li>
-</ol>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">let test_array: (number | string)[] &#x3D; [112, &#39;text&#39;]
-test_array.push(&#123;&#125;) &#x2F;&#x2F;at question Because:只能填入相关类型
-test_array.push(&#39;text&#39;)&#x2F;&#x2F;no problem
-test_array.push(12)&#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>等效Array&lt;number&gt;的Test接口</code></p>
-<pre class="line-numbers language-none"><code class="language-none">let test_array: Array&lt;number&gt; &#x3D; [1, 32, 324] &#x2F;&#x2F;Array内置对象
-
-interface Test &#123;
-  [index: number]: number | string &#x2F;&#x2F;任意数字类型键,值为数字类型
-&#125;
-
-&#x2F;&#x2F; let result_array: Test &#x3D; &#123;
-&#x2F;&#x2F;    name:12 &#x2F;&#x2F;at question Because 键必须是string类型
-&#x2F;&#x2F; &#125;
-
-&#x2F;&#x2F; let result_array:Test &#x3D;[1,23,32,&#123;&#125;] &#x2F;&#x2F;at question Because 值必须是 number 跟 string 类型
-
-let result_array: Test &#x3D; [12, 23, 342] &#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>函数里面的arguments类数组</code></p>
-<pre class="line-numbers language-none"><code class="language-none">function fn() &#123;
-  let a: IArguments &#x3D; arguments &#x2F;&#x2F;任意类型的 arguments, IArguments 内置对象
-&#125;
-
-fn()&#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<ol start="9">
-<li>函数注解</li>
-</ol>
-<ul>
-<li>1.函数声明 <blockquote>
-<p>函数声明:普通的给参数和返回值注解<br>如果函数抛出错误,返回值需要赋值never类型<br><code>这样注解参数多传少传不报错</code><br><code>表达式注解并且函数内部抛出错误</code></p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">let fn: (a: number, b: string) &#x3D;&gt; never &#x3D; (a, b) &#x3D;&gt; &#123; 
-  throw new Error()
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><code>参数可有可无</code></p>
-<pre class="line-numbers language-none"><code class="language-none">function fn(a: number, b &#x3D; &#39;text&#39;) &#123;&#125; &#x2F;&#x2F;same as b?:string
-fn(1,&quot;1&quot;,2) &#x2F;&#x2F; at question Because 参数不能更多
-fn(1,&quot;1&quot;)&#x2F;&#x2F;no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><code>可以有更多的参数</code></p>
-<pre class="line-numbers language-none"><code class="language-none">function fn(a: number, b?: number, ...others: any[]): void &#123; &#125;
-
-fn(1, 2, &quot;3&quot;, 23, &#123;&#125;, [])&#x2F;&#x2F; no problem<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><code>函数的重载</code></p>
-<blockquote>
-<p>当参数是字符或数字类型,返回值就必须是相对应类型时</p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">function fn(arg: string): string
-function fn(arg: number): number
-function fn(arg: string | number) &#123;
-  if (typeof arg &#x3D;&#x3D;&#x3D; &#39;string&#39;) &#123;
-    return arg &#x2F;&#x2F;no problem
-    &#x2F;&#x2F; return Number(arg) &#x2F;&#x2F;at question Because 返回值必须字符类型
-    &#x2F;&#x2F; return &quot;string&quot; &#x2F;&#x2F;at question Because 不能直接返回固定值
-  &#125;
-  if (typeof arg &#x3D;&#x3D;&#x3D; &#39;number&#39;) &#123;
-    return Number(arg)
-  &#125;
-&#125;
-console.log(fn(12))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<ol start="10">
-<li>类的注解<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
- * @Tip: 类的注解
- * 类的属性如果声明,不初始化或者使用是会报错的,需要配置strictPropertyInitialization为false
- *&#x2F;
-;(function () &#123;
-  class Father &#123;
-    &#x2F;* 属性 *&#x2F;
-    name: string
-    &#x2F;* 构造函数本身 *&#x2F;
-    constructor(name: string) &#123;
-      this.name &#x3D; name
-      console.log(&#96;这是我的名字:$&#123;this.name&#125;&#96;)
-    &#125;
-    &#x2F;* 方法 *&#x2F;
-    hobby(name: string) &#123;
-      console.log(this.name)
-    &#125;
-  &#125;
-  class Son extends Father &#123;
-    constructor(father_name: string) &#123;
-      &#x2F;* 在子类构造中可以通过super调用父类的构造,并且继承后super必须调用一次 *&#x2F;
-      super(father_name)
-    &#125;
-    hobby(name: string): void &#123;
-      super.hobby(&#39;&#39;)
-      &#x2F;* 子类构造外部可以通过super调用父类的一些属性 *&#x2F;
-      &#x2F;* Tip:super.name为undefined,父级原属性不能被调用,只能通过super调用父类方法,或者直接使用this调用 *&#x2F;
-      console.log(&#96;my name is $&#123;name&#125;,and father is $&#123;super.name&#125;&#96;)
-    &#125;
-  &#125;
-  let new_obj &#x3D; new Son(&#39;张三&#39;)
-  new_obj.hobby(&#39;阿三&#39;)
-  console.log(new_obj.name) &#x2F;&#x2F;no problem
-&#125;)()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<code>一种简写</code><pre class="line-numbers language-none"><code class="language-none">&#x2F;* Tip:另一种简写 *&#x2F;
-class Father &#123;
-  constructor(public name: string, public age: number &#x3D; 12) &#123;
-    this.name &#x3D; name
-    this.age &#x3D; age
-  &#125;
-  show_attribute() &#123;
-    console.log(this.name)
-    console.log(this.age)
-  &#125;
-&#125;
-let new_father &#x3D; new Father(&#39;张三&#39;)
-&#x2F;* no problem *&#x2F;
-new_father.show_attribute() &#x2F;&#x2F;张三 12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-<h3 id="新语法特性"><a href="#新语法特性" class="headerlink" title="新语法特性"></a>新语法特性</h3><ol>
-<li>as 断言</li>
-<li>class(oop 面向对象三大特性):封装,继承,多态<blockquote>
-<p>封装:比如修饰符<br>继承:比如类的 extends 继承父类<br>多态:多种生态,相同的方法实现不同的功能,比如不同子类可以使用相同父类的方法</p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li>修饰符的使用<blockquote>
-<p>public 公共的:自身调用,子类可以调用,实例调用<br>private 仅自身调用<br>protected 自身调用,子类调用,实例不能调用<br>readonly 只读不可写,必须写在其它修饰符后面,并且只能出现在属性中<br>abstract 抽象类，声明之后必须使用<br>get  set:获取属性会调用get,修改赋值会执行set,get set最好同时出现<br>类中使用接口 implements(实现), 接口继承接口，类实现接口</p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">class Top &#123;
-  public name: string
-  private age: number
-  constructor() &#123;
-    this.name &#x3D; &#39;张三&#39;
-    this.age &#x3D; 12
-  &#125;
-  protected move() &#123;
-    console.log(&#39;methods!&#39;)
-  &#125;
-&#125;
-class Bottom extends Top &#123;
-  constructor() &#123;
-    super()
-  &#125;
-  bottom_move() &#123;
-    &#x2F;* no problem *&#x2F;
-    this.name
-    &#x2F;* At Question Because: age 是private私有属性不能调用 *&#x2F;
-    &#x2F;&#x2F; this.age
-    &#x2F;* no problem *&#x2F;
-    this.move()
-  &#125;
-&#125;
-let new_obj &#x3D; new Bottom()
-&#x2F;* At Question Because: 父类方法 move 是受保护,只有子类跟自身可以调用 *&#x2F;
-&#x2F;&#x2F; new_obj.move()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><ul>
-<li>常用的断言，在给初始值时使用<blockquote>
-<p>let new_obj&#x3D;{} as 类型接口;</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
-<li>泛型2种用法:fn<T>(arg:T):T{}<blockquote>
-<p>1.fn(1)&#x2F;&#x2F;传什么类型就是什么类型，推荐的写法<br>2.fn<number>(1)&#x2F;&#x2F;固定是number类型 </p>
-</blockquote>
-</li>
-<li>泛型的约束<blockquote>
-<p>泛型约束:fn&lt;T extends 接口&gt;()T，这样T就会包含接口的类型</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h3><blockquote>
-<p>let price:[string,…number[]]<br>fn(…arg[number,string])</p>
-</blockquote>
-<h3 id="库"><a href="#库" class="headerlink" title="库"></a>库</h3><blockquote>
-<p>库的分类:全局库:暴露一个全局变量，除此就是模块化库<br>模块化库:在某环境中运行的库 UMD模块:模块化+全局</p>
-</blockquote>
-<h3 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h3><ul>
-<li>全局变量<blockquote>
-<p>index.d.ts  定义全局变量declare let num<br>namespase命名空间</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
-<li>生成配置文件<br><code>如果爆红,则是配置出错</code></li>
-</ol>
-<ul>
-<li>tsc –init</li>
-<li>路径都是基于config.json文件位置等同于.&#x2F;<pre class="line-numbers language-none"><code class="language-none">&#123;
-  &lt;!-- 将编译后的js文件放入dist文件夹下 --&gt;
-	&quot;outDir&quot;:&quot;.&#x2F;dist&quot;,
-  &lt;!-- ts文件所在位置 --&gt;
-	&quot;rootDir&quot;:&quot;.&#x2F;src&quot;,
-  &lt;!-- 允许赋值为 null 跟 undefined,不建议关闭 --&gt;
-	&quot;strictNullChecks&quot;:true,
-  &lt;!-- 全局声明文件所在路径 --&gt;
-  &quot;baseUrl&quot;: &quot;.&#x2F;&quot;, 
-  &lt;!-- 支持commonJs方式导入 --&gt;
-  &quot;esmoduleinterop&quot;:ture
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ts/" rel="tag">ts</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Ts/ts常用bug解决方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/25/Ts/ts%E5%B8%B8%E7%94%A8bug%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">Ts 常用bug解决方法</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-24T16:00:00.000Z" itemprop="datePublished">2022年03月25日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/ts/">ts</a>
-  </div>
-
-      
-      
-<a href="/2022/03/25/Ts/ts%E5%B8%B8%E7%94%A8bug%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="引入图片报错"><a href="#引入图片报错" class="headerlink" title="引入图片报错"></a>引入图片报错</h3><pre class="line-numbers language-none"><code class="language-none">declare module &#39;*.svg&#39;
-declare module &#39;*.png&#39;
-declare module &#39;*.jpg&#39;
-declare module &#39;*.jpeg&#39;
-declare module &#39;*.gif&#39;
-declare module &#39;*.bmp&#39;
-declare module &#39;*.tiff&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ts/" rel="tag">ts</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Node/node搭建服务" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/18/Node/node%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/">node如何搭建服务</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-17T16:00:00.000Z" itemprop="datePublished">2022年03月18日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/node/">node</a>
-  </div>
-
-      
-      
-<a href="/2022/03/18/Node/node%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h3><p>操作文件<br>fs.readFile(path[,options],callback(err,dataStr)) 读取指定文件的内容<br>fs.writeFile(file,data[,options],callback(err)) 向指定文件写入内容</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
- * 读取text.txt 文件的内容
- * 读取成功err 为null
- * 读取失败 err &#x3D;&gt; 错误对象   dataStr &#x3D;&gt;  undefined
- *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><p>路径模块<br>path.join() 将多个路径拼接成一个字符串<br>path.basename(path[,ext]) 获取路径中的文件名</p>
-<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>web 服务<br>http.createServer()<br>server.on(‘request’,(req,res)&#x3D;&gt;{}) 为服务器实例绑定 request 事件,监听客户端发送过来的请求<br>server.listen(port,callback()) 启动服务器</p>
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a>express</h3><p>极简框架(创建 web 服务器)</p>
-<pre class="line-numbers language-none"><code class="language-none">yarn add express@4.17.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>use</p>
-<pre class="line-numbers language-none"><code class="language-none">const express&#x3D;require(&#39;express&#39;) &#x2F;&#x2F; 导包
-const app&#x3D;express() &#x2F;&#x2F; 创建实例
-app.listen(888,()&#x3D;&gt;&#123; &#x2F;&#x2F; 启动服务
-  console.log(&#39;server ok!&#39;)
-&#125;)
-app.post(url,callback(req,res)) &#x2F;&#x2F; 监听不同url的post请求
-app.get(url,callback(req,res)) &#x2F;&#x2F;监听不同url的get请求
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<blockquote>
-<p>req.query 获取客户端发送的查询参数<br>req.params 获取客户端发送的 params 参数</p>
-</blockquote>
-<ul>
-<li>中间件</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 全局中间件
-const mw&#x3D;function(req,res,next)&#123;next()&#125;
-const err&#x3D;function(err,req,res,next)&#123;res.send(err.message)&#125;
-app.use(mw)
-app.use(err) &#x2F;&#x2F;错误级必须在最后<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>&#x2F;&#x2F; 第三方中间件<br><code>yarn add body-parser@1.19.0</code></p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;防止跨域
-app.all(&#39;*&#39;, function (req, res, next) &#123;
-  console.log(&#39;处理中...&#39;)
-  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
-  res.header(&quot;Content-Type&quot;, &quot;application&#x2F;json;charset&#x3D;utf-8&quot;);
-  res.header(&quot;Content-Type&quot;, &quot;application&#x2F;x-www-form-urlencoded;charset&#x3D;utf-8&quot;);
-  res.header(&#39;Access-Control-Allow-Methods&#39;, &#39;PUT, POST, GET, DELETE, OPTIONS&#39;);
-  res.header(&#39;Access-Control-Allow-Headers&#39;, &#39;Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild&#39;);
-  if (req.method.toLowerCase() &#x3D;&#x3D; &#39;options&#39;) &#123;
-    res.send(200); &#x2F;&#x2F;让options尝试请求快速结束
-  &#125; else &#123;
-    next();
-  &#125;
-&#125;);
-app.use(bodyParser.urlencoded(&#123;
-  extended: false
-&#125;))
-app.use(bodyParser.json())
-app.use(testRouter)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>express.static()<br>静态资源托管</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">app.use(express.static(&#39;public&#39;))&#x2F;&#x2F;开发public目录下的资源
-&#x2F;&#x2F; 现public下有img文件夹
-***&#x2F;img&#x2F;*.png  &#x2F;&#x2F;访问静态文件
-app.use(&#39;&#x2F;img&#39;,express.static(&#39;.&#x2F;img&#39;)) &#x2F;&#x2F;前缀,只放问当前目录
-***&#x2F;img&#x2F;*.png  &#x2F;&#x2F;访问静态文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>express.Router()<br>路由实例</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
- * 路由模块
- *&#x2F;
-const express &#x3D; require(&#39;express&#39;);
-const testRouter &#x3D; express.Router()
-
-testRouter.get(&#39;&#x2F;test&#39;, (req, res) &#x3D;&gt; &#123;
-  console.log(&#39;有请求&#39;);
-  res.send(JSON.stringify(&#123;
-    name: &#39;还给你&#39;
-  &#125;))
-&#125;)
-
-module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/" rel="tag">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
 
     <nav id="page-nav">
 
@@ -1845,23 +1694,23 @@ module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-row
       <ul>
         
           <li>
-            <a href="/2022/07/05/Vscode/hbuilderX%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%85%8D%E7%BD%AE/">hbuilderX eslint格式化配置</a>
+            <a href="/2022/07/28/Ts/ts%E9%85%8D%E7%BD%AE%E7%BF%BB%E8%AF%91/">Ts 配置翻译</a>
           </li>
         
           <li>
-            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/Mqtt%E5%8D%8F%E8%AE%AE/">mqtt 协议</a>
+            <a href="/2022/07/28/UniApp/app%E5%8A%9F%E8%83%BD%E7%82%B9/">app开发功能点</a>
           </li>
         
           <li>
-            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/chimee%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/">chimee曲米播放控件的使用</a>
+            <a href="/2022/07/28/UniApp/app%E5%8A%9F%E8%83%BD%E7%82%B9%E8%B7%9F%E4%BC%98%E5%8C%96/">app开发功能点</a>
           </li>
         
           <li>
-            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/%E5%9B%BE%E7%89%87%E5%85%A8%E5%B1%8F%E9%A2%84%E8%A7%88/">图片满屏预览</a>
+            <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E5%88%86%E7%A6%BB%E7%89%88%E4%BD%BF%E7%94%A8/">若依框架分离版使用</a>
           </li>
         
           <li>
-            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+            <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E6%A1%86%E6%9E%B6/">若依框架 学习</a>
           </li>
         
       </ul>
@@ -1874,7 +1723,7 @@ module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-row
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chimee/" style="font-size: 10px;">chimee</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hbuilderX/" style="font-size: 10px;">hbuilderX</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/img/" style="font-size: 10px;">img</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chimee/" style="font-size: 10px;">chimee</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hbuilderX/" style="font-size: 10px;">hbuilderX</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/img/" style="font-size: 10px;">img</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/moment/" style="font-size: 10px;">moment</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 16.67px;">ts</a> <a href="/tags/uniapp/" style="font-size: 16.67px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 13.33px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E8%8B%A5%E4%BE%9D/" style="font-size: 13.33px;">若依</a>
     </div>
   </div>
 
@@ -1883,7 +1732,7 @@ module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-row
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1893,7 +1742,7 @@ module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-row
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">52</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">59</span></li></ul>
     </div>
   </div>
 
@@ -1903,7 +1752,7 @@ module.exports &#x3D; testRouter<span aria-hidden="true" class="line-numbers-row
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chimee/" rel="tag">chimee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilderX/" rel="tag">hbuilderX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/img/" rel="tag">img</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chimee/" rel="tag">chimee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilderX/" rel="tag">hbuilderX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/img/" rel="tag">img</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/moment/" rel="tag">moment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%A5%E4%BE%9D/" rel="tag">若依</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 

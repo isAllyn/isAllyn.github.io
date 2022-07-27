@@ -81,6 +81,929 @@
 
       <div class="outer">
         <section id="main">
+  <article id="post-插件库/图片全屏预览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/%E5%9B%BE%E7%89%87%E5%85%A8%E5%B1%8F%E9%A2%84%E8%A7%88/">图片满屏预览</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-07-04T16:00:00.000Z" itemprop="datePublished">2022年07月05日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+      
+<a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/%E5%9B%BE%E7%89%87%E5%85%A8%E5%B1%8F%E9%A2%84%E8%A7%88/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="图片满屏预览"><a href="#图片满屏预览" class="headerlink" title="图片满屏预览"></a>图片满屏预览</h3><pre class="line-numbers language-none"><code class="language-none">npm install vue-directive-image-previewer -D
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">import VueDirectiveImagePreviewer from &#39;vue-directive-image-previewer&#39;
+import &#39;vue-directive-image-previewer&#x2F;dist&#x2F;assets&#x2F;style.css&#39;
+Vue.use(VueDirectiveImagePreviewer) 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&lt;img v-image-preview src&#x3D;&quot;picture-url&quot;&#x2F;&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/img/" rel="tag">img</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-Node/node安装包时常见报错" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-28T16:00:00.000Z" itemprop="datePublished">2022年06月29日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </div>
+
+      
+      
+<a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="找不到-npm-cli-js"><a href="#找不到-npm-cli-js" class="headerlink" title="找不到 npm-cli.js"></a>找不到 npm-cli.js</h3><p><code>bug</code></p>
+<pre class="line-numbers language-none"><code class="language-none">Cannot find module ‘D:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js‘
+
+在这个路径的node_module包中找不到 npm的依赖包<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>解决</code><br>电脑环境变量顺序导致的,因为先去找的nodejs&#x2F;下的node_module,但是npm包在global环境文件下</p>
+<pre class="line-numbers language-none"><code class="language-none">环境变量顺序换一下就行了<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>[相关文章]<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55333190/article/details/125458197">https://blog.csdn.net/weixin_55333190/article/details/125458197</a></p>
+<h3 id="D-Program-不是内部命令…"><a href="#D-Program-不是内部命令…" class="headerlink" title="D:Program 不是内部命令…"></a>D:Program 不是内部命令…</h3><p><code>bug</code></p>
+<pre class="line-numbers language-none"><code class="language-none">yarn create vite 报错 ‘D:\Program‘ 不是内部或外部命令,也不是可运行的程序 或批处理文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>解决</code></p>
+<pre class="line-numbers language-none"><code class="language-none">原因是“D:\Program Files”中有空格的问题
+
+将npm的node文件不要放在 Program Files文件夹中,这样就不会找这个文件夹了
+
+环境变量也要改正确
+
+.npmrc 文件也要改 .yarnrc 也要改<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-UI库/按需引入AntDesign" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/">按需引入AntDesign(vue2 跟 vue3)</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-28T16:00:00.000Z" itemprop="datePublished">2022年06月29日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/UI%E5%BA%93/">UI库</a>
+  </div>
+
+      
+      
+<a href="/2022/06/29/UI%E5%BA%93/%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5AntDesign/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Vue3+vite</p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add ant-design-vue<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">yarn add -D unplugin-vue-components<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="vite-config"><a href="#vite-config" class="headerlink" title="vite.config"></a>vite.config</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;*
+ * @Author: BORING GHOST
+ * @Date: 2022-06-27 19:04:47
+ * @LastEditTime: 2022-06-27 19:40:18
+ * @Description:
+ *&#x2F;
+import &#123; defineConfig &#125; from &quot;vite&quot;;
+import vue from &quot;@vitejs&#x2F;plugin-vue&quot;;
+
+&#x2F;&#x2F; ant 按需引入
+import Components from &quot;unplugin-vue-components&#x2F;vite&quot;;
+import &#123; AntDesignVueResolver &#125; from &quot;unplugin-vue-components&#x2F;resolvers&quot;;
+
+&#x2F;&#x2F; https:&#x2F;&#x2F;vitejs.dev&#x2F;config&#x2F;
+export default defineConfig(&#123;
+    plugins: [
+        vue(),
+        Components(&#123;
+            resolvers: [AntDesignVueResolver()]
+        &#125;)
+    ]
+&#125;);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">import &#123; message &#125; from &quot;ant-design-vue&quot;;
+import &quot;ant-design-vue&#x2F;es&#x2F;message&#x2F;style&#x2F;css&quot;;
+import &#123; App &#125; from &quot;vue&quot;;
+
+export default &#123;
+    install: function (Vue: App) &#123;
+        Vue.config.globalProperties.$message &#x3D; message;
+    &#125;
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="vue2-webpack"><a href="#vue2-webpack" class="headerlink" title="vue2+webpack"></a>vue2+webpack</h3><pre class="line-numbers language-none"><code class="language-none">yarn add ant-design-vue@1.7.8
+yarn add -D babel-plugin-import@1.13.5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-babel.config.js" data-language="babel.config.js"><code class="language-babel.config.js">module.exports &#x3D; &#123;
+    presets: [&quot;@vue&#x2F;cli-plugin-babel&#x2F;preset&quot;],
+    plugins: [
+        [
+            &quot;import&quot;,
+            &#123;
+                libraryName: &quot;ant-design-vue&quot;,
+                libraryDirectory: &quot;es&quot;,
+                style: &quot;css&quot; &#x2F;&#x2F; &#96;style: true&#96; 会加载 less 文件
+            &#125;
+        ]
+    ]
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-main.js" data-language="main.js"><code class="language-main.js">import &#123; Button &#125; from &quot;ant-design-vue&quot;;
+Vue.component(Button.name, Button);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>图标<br>需要查看1.7.8版本的组件<pre class="line-numbers language-none"><code class="language-none">&lt;a-icon type&#x3D;&quot;star&quot; theme&#x3D;&quot;filled&quot; &#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/Git一些常见错误" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">Git的一些常见错误</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-28T16:00:00.000Z" itemprop="datePublished">2022年06月29日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+      
+      
+<a href="/2022/06/29/%E5%85%B6%E4%BB%96/Git%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="添加远程仓库时报错"><a href="#添加远程仓库时报错" class="headerlink" title="添加远程仓库时报错"></a>添加远程仓库时报错</h3><p><code>bug</code></p>
+<pre class="line-numbers language-none"><code class="language-none">$ git remote add origin git@gitee.com:***.git
+fatal: unsafe repository (&#39;D:&#x2F;D-Desktop&#x2F;Ts学习&#x2F;ts-vanilla&#39; is owned by someone else)
+To add an exception for this directory, call:
+  git config --global --add safe.directory &#39;D:&#x2F;D-Desktop&#x2F;Ts学习&#x2F;ts-vanilla&#39;
+ windows更新系统后，git报错unsafe repository xxx is owned by someone else<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>解决</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;C:\Users\XXX.gitconfig&quot;
+
+打开这个文件，新增
+
+[safe]
+directory &#x3D; *<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-其他/vue.config的一些配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">vue.config.js的一些配置</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-28T16:00:00.000Z" itemprop="datePublished">2022年06月29日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
+  </div>
+
+      
+      
+<a href="/2022/06/29/%E5%85%B6%E4%BB%96/vue.config%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="修改页面title"><a href="#修改页面title" class="headerlink" title="修改页面title"></a>修改页面title</h3><pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
+  chainWebpack: (config) &#x3D;&gt; &#123;
+    config.plugin(&#39;html&#39;).tap((args) &#x3D;&gt; &#123;
+      args[0].title &#x3D; &#39;sadfsdaf&#39;
+      return args
+    &#125;)
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="修改快捷符号"><a href="#修改快捷符号" class="headerlink" title="修改快捷符号 @"></a>修改快捷符号 @</h3><pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
+ configureWebpack: &#123;
+      &#x2F;&#x2F; provide the app&#39;s title in webpack&#39;s name field, so that
+      &#x2F;&#x2F; it can be accessed in index.html to inject the correct title.
+      resolve: &#123;
+          alias: &#123;
+              &quot;@&quot;: resolve(&quot;src&quot;)
+          &#125;
+      &#125;
+  &#125;,
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-插件库/pdfmake-Pdf生成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/">pdfmake pdf自动生成</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-28T16:00:00.000Z" itemprop="datePublished">2022年06月29日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a>
+  </div>
+
+      
+      
+<a href="/2022/06/29/%E6%8F%92%E4%BB%B6%E5%BA%93/pdfmake-Pdf%E7%94%9F%E6%88%90/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p><code>&quot;pdfmake&quot;: &quot;^0.2.5&quot;,</code></p>
+<pre class="line-numbers language-none"><code class="language-none">yarn add pdfmake<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="use"><a href="#use" class="headerlink" title="use"></a>use</h3><pre class="line-numbers language-none"><code class="language-none">const pdfmake &#x3D; require(&quot;pdfmake&#x2F;build&#x2F;pdfmake&quot;);
+const pdf_fonts &#x3D; require(&quot;pdfmake&#x2F;build&#x2F;vfs_fonts&quot;);
+pdfmake.vfs &#x3D; pdf_fonts.pdfMake.vfs;
+ var docDefinition &#x3D; &#123;
+     content: &quot;This is an sample PDF printed with pdfMake&quot;
+ &#125;;
+ this.$pdfmake.createPdf(docDefinition).download(&quot;test.pdf&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><p>[简书中文文档]<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/129554713e23">https://www.jianshu.com/p/129554713e23</a><br>[官方文档]<a target="_blank" rel="noopener" href="https://pdfmake.github.io/docs/0.3/getting-started/client-side/methods/">https://pdfmake.github.io/docs/0.3/getting-started/client-side/methods/</a></p>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123; content: &#39;This is an sample PDF printed with pdfMake&#39; &#125;;
+
+pdfMake.createPdf(docDefinition).download(); &#x2F;&#x2F; 下载
+
+pdfMake.createPdf(docDefinition).open(); &#x2F;&#x2F; 新窗口打开
+
+pdfMake.createPdf(docDefinition).print(); &#x2F;&#x2F; 打印
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="doc"><a href="#doc" class="headerlink" title="doc"></a>doc</h3><h4 id="content"><a href="#content" class="headerlink" title="content"></a>content</h4><pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content:string | array&lt;string|object&gt; &#x2F;&#x2F; 为数组时,一个索引为一个断落,索引为对象时可以设置更复杂的样式,可参考官方文档
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="styles"><a href="#styles" class="headerlink" title="styles"></a>styles</h4><ol>
+<li>等同于 style 标签</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content:[&#123;text:&#39;test text!!!!&#39;,style:&#39;testStyle&#39;&#125;],
+  defaultStyle:&#123; &#x2F;&#x2F; 默认样式
+    fontSize:15,
+  &#125;,
+  styles:&#123;  &#x2F;&#x2F; 重新定义样式
+    testStyle:&#123;
+      fontSize:22,
+      color:red
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>样式属性<br>查看文档</li>
+</ol>
+<h3 id="列的间隙"><a href="#列的间隙" class="headerlink" title="列的间隙"></a>列的间隙</h3><pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content:[
+    &#39;This paragraph fills full width, as there are no columns. Next paragraph however consists of three columns&#39;,
+    &#123;
+      columns:[
+        &#123;
+          width: &#39;auto&#39;, &#x2F;&#x2F; 会自动从下一行开始
+          text: &#39;First column&#39;
+        &#125;
+        ...
+      ]
+    &#125;
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><pre class="line-numbers language-none"><code class="language-none">let docDefinition&#x3D;&#123;
+  content: [
+    &#123;
+      layout: &#39;lightHorizontalLines&#39;, &#x2F;&#x2F; optional
+      table: &#123;
+        &#x2F;&#x2F; headers are automatically repeated if the table spans over multiple pages
+        &#x2F;&#x2F; you can declare how many rows should be treated as headers
+        headerRows: 1,
+        widths: [ &#39;*&#39;, &#39;auto&#39;, 100, &#39;*&#39; ],
+
+        body: [ &#x2F;&#x2F; body数组中每一个索引就是一行, 索引的值为一个数组, 数组中的每一个索引都是相对应的列,跟导出excel表格的数据结构一样
+          [ &#39;First&#39;, &#39;Second&#39;, &#39;Third&#39;, &#39;The last one&#39; ],
+          [ &#39;Value 1&#39;, &#39;Value 2&#39;, &#39;Value 3&#39;, &#39;Value 4&#39; ],
+          [ &#123; text: &#39;Bold value&#39;, bold: true &#125;, &#39;Val 2&#39;, &#39;Val 3&#39;, &#39;Val 4&#39; ]
+        ]
+      &#125;
+    &#125;
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="有序列表和无序列表"><a href="#有序列表和无序列表" class="headerlink" title="有序列表和无序列表"></a>有序列表和无序列表</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  content: [
+    &#39;无需列表: ul&#39;,
+    &#123;
+      &#x2F;&#x2F; to treat a paragraph as a bulleted list, set an array of items under the ul key
+      ul: [
+        &#39;Item 1&#39;,
+        &#39;Item 2&#39;,
+        &#39;Item 3&#39;,
+        &#123; text: &#39;Item 4&#39;, bold: true &#125;, &#x2F;&#x2F; 依然可以设置样式
+      ]
+    &#125;,
+
+    &#39;有序列表 : ol&#39;,
+    &#123;
+      &#x2F;&#x2F; for numbered lists set the ol key
+      ol: [
+        &#39;Item 1&#39;,
+        &#39;Item 2&#39;,
+        &#39;Item 3&#39;
+      ]
+    &#125;
+  ]
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="页眉页脚"><a href="#页眉页脚" class="headerlink" title="页眉页脚"></a>页眉页脚</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: new Array(120).fill(&quot;asdasdasdasd&quot;),
+    header: function (currentPage, pageCount, pageSize) &#123;
+        &#x2F;&#x2F; you can apply any logic and return any valid pdfmake element
+        &#x2F;&#x2F; currentPage:当前页 pageCount:页数 和 pageSize:页面大小
+        return [
+            &#123; text: &quot;simple text&quot;, alignment: currentPage % 2 ? &quot;left&quot; : &quot;right&quot; &#125;,
+            &#123; canvas: [&#123; type: &quot;rect&quot;, x: 170, y: 32, w: pageSize.width - 170, h: 40 &#125;] &#125;
+        ];
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="背景层"><a href="#背景层" class="headerlink" title="背景层"></a>背景层</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: new Array(120).fill(&quot;asdasdasdasd&quot;),
+    header: function (currentPage) &#123;
+        return [&#123; text: &quot;simple text &quot; + currentPage &#125;];
+    &#125;,
+    &#x2F;&#x2F; 设置背景
+    background: function (currentPage, pageSize) &#123;
+        return &#96;page $&#123;currentPage&#125; with size $&#123;pageSize.width&#125; x $&#123;pageSize.height&#125;&#96;;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="边距"><a href="#边距" class="headerlink" title="边距"></a>边距</h3><p>pdfMake 中的任何元素都可以有边距：</p>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: new Array(120).fill(&quot;asdasdasdasd&quot;),
+    header: function (currentPage) &#123;
+        return [&#123; text: &quot;simple text &quot; + currentPage &#125;];
+    &#125;,
+    background: function (currentPage, pageSize) &#123;
+        return [
+            &#123;
+                text: &#96;page $&#123;currentPage&#125; with size $&#123;pageSize.width&#125; x $&#123;pageSize.height&#125;&#96;,
+                margin: [120, 100, 100, 100] &#x2F;&#x2F; 设置一个边距
+            &#125;
+        ];
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="列中的段落"><a href="#列中的段落" class="headerlink" title="列中的段落"></a>列中的段落</h3><p>更详细的查看文档</p>
+<pre class="line-numbers language-none"><code class="language-none"> var docDefinition &#x3D; &#123;
+    content: [
+        &quot;paragraph 1&quot;,
+        &quot;paragraph 2&quot;,
+        &#123;   &#x2F;&#x2F; 第三段开始设置列
+            columns: [
+                &quot;first column is a simple text&quot;,
+                &#x2F;&#x2F; 第二列开始设置段落
+                [
+                    &#x2F;&#x2F; second column consists of paragraphs
+                    &quot;paragraph A&quot;,
+                    &quot;paragraph B&quot;,
+                    &quot;these paragraphs will be rendered one below another inside the column&quot;
+                ]
+            ]
+        &#125;
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>这很简单。只需使用{ image: ‘…’ }节点类型。<br>支持 JPEG 和 PNG 格式。</p>
+<ul>
+<li>dataUrl || pdfmake 提供的虚拟文件系统 || url 从图像中的名称引用加载图像</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#x2F;&#x2F; &#123;
+        &#x2F;&#x2F;     &#x2F;&#x2F; you&#39;ll most often use dataURI images on the browser side
+        &#x2F;&#x2F;     &#x2F;&#x2F; if no width&#x2F;height&#x2F;fit is provided, the original size will be used
+        &#x2F;&#x2F;     image: &quot;data:image&#x2F;jpeg;base64,...encodedContent...&quot; &#x2F;&#x2F; 不配置宽高会使用原始宽高
+        &#x2F;&#x2F; &#125;,
+        &#123;
+            &#x2F;&#x2F; is supported loading images via url from reference by name in images
+            image: &quot;snow&quot;
+        &#125;,
+        &#123;
+            image: &quot;test&quot;
+        &#125;
+    ],
+    background: function () &#123;
+        return [
+            &#123;
+                image: &quot;bg&quot;
+            &#125;
+        ];
+    &#125;,
+    images: &#123;
+        &#x2F;&#x2F; is supported loading images via url (https or http protocol)
+        snow: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;seed&#x2F;picsum&#x2F;500&#x2F;700&quot;,
+        test: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;seed&#x2F;picsum&#x2F;600&#x2F;900&quot;,
+        bg: &#123;
+            url: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;id&#x2F;1080&#x2F;367&#x2F;267&quot;,
+            headers: &#123;
+                myheader: &quot;123&quot;,
+                myotherheader: &quot;abc&quot;
+            &#125;
+        &#125;,
+        &#x2F;&#x2F; is supported loading images via url with custom headers
+        strawberries: &#123;
+            url: &quot;https:&#x2F;&#x2F;picsum.photos&#x2F;id&#x2F;1080&#x2F;367&#x2F;267&quot;,
+            headers: &#123;
+                myheader: &quot;123&quot;,
+                myotherheader: &quot;abc&quot;
+            &#125;
+        &#125;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="svg-图像"><a href="#svg-图像" class="headerlink" title="svg 图像"></a>svg 图像</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  content: [
+    &#123;
+      &#x2F;&#x2F; If no width&#x2F;height&#x2F;fit is used, then dimensions from the svg element is used.
+      svg: &#39;&lt;svg width&#x3D;&quot;300&quot; height&#x3D;&quot;200&quot; viewBox&#x3D;&quot;0 0 300 200&quot;&gt;...&lt;&#x2F;svg&gt;&#39;
+    &#125;
+  ]
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#123; text: &quot;google&quot;, link: &quot;http:&#x2F;&#x2F;google.com&quot; &#125;, &#x2F;&#x2F; 链接外部站点
+        &#123; text: &quot;Go to page 2&quot;, linkToPage: 2 &#125;, &#x2F;&#x2F; 链接到2页码处
+        &#123; text: &quot;Go to Header&quot;, linkToDestination: &quot;header&quot; &#125;, &#x2F;&#x2F; 链接到 id为header的锚点处
+        &#123; text: &quot;Header content&quot;, id: &quot;header&quot; &#125; &#x2F;&#x2F; 当前id 为 header
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#x2F;&#x2F; basic usage 二维码中的内容
+        &#123; qr: &quot;text in QR&quot; &#125;,
+
+        &#x2F;&#x2F; colored QR  前景色跟背景色
+        &#123; qr: &quot;text in QR&quot;, foreground: &quot;red&quot;, background: &quot;yellow&quot; &#125;
+
+        &#x2F;&#x2F; 其它配置查看文档
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    content: [
+        &#123;
+            toc: &#123;
+                id: &quot;mainToc&quot;, &#x2F;&#x2F; 目录,跳转到 tocItem 为 mainToc 的内容处
+                title: &#123; text: &quot;INDEX&quot;, style: &quot;header&quot; &#125;
+            &#125;
+        &#125;,
+        &#123;
+            text: &quot;This is a header&quot;,
+            style: &quot;header&quot;,
+            tocItem: &quot;mainToc&quot;
+        &#125;
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="水印"><a href="#水印" class="headerlink" title="水印"></a>水印</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    watermark: &quot;test watermark&quot;,
+    content: [
+        ....
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其它配置查看文档</p>
+<h3 id="纸张大小"><a href="#纸张大小" class="headerlink" title="纸张大小"></a>纸张大小</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  &#x2F;&#x2F; a string or &#123; width: number, height: number &#125;
+    pageSize: &quot;A5&quot;, &#x2F;&#x2F; 这里可以设置相应值, 文档中有说明
+    content: [
+        ....
+    ]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h3><p>就是这个 pdf 属性当中能够查看到的一些信息</p>
+<pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    info: &#123;
+        title: &quot;awesome Document&quot;,
+        author: &quot;john doe&quot;,
+        subject: &quot;subject of document&quot;,
+        keywords: &quot;keywords for document&quot;
+    &#125;,
+    content: &quot;This is an sample PDF printed with pdfMake&quot;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+  compress: false,
+
+  content: (...)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="加密和访问权限"><a href="#加密和访问权限" class="headerlink" title="加密和访问权限"></a>加密和访问权限</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+    userPassword: &quot;123&quot;, &#x2F;&#x2F; 用户密码 用于解密文件
+    &#x2F;&#x2F; ownerPassword: &quot;123456&quot;, &#x2F;&#x2F;权限密码,解密后拥有以下权限,默认无任何权限
+    permissions: &#123;
+        printing: &quot;highResolution&quot;, &#x2F;&#x2F;是否允许打印。指定&quot;lowResolution&quot;允许降级打印，或&quot;highResolution&quot;允许以高分辨率打印
+        modifying: true, &#x2F;&#x2F;是否允许修改文件。指定true允许修改文档内容
+        copying: false, &#x2F;&#x2F;是否允许复制文本或图形。指定true允许复制
+        annotating: true, &#x2F;&#x2F;是否允许注释、填表。指定true允许注释和表单填写
+        fillingForms: true, &#x2F;&#x2F;是否允许填表和签名。指定true允许填写表单域和签名
+        contentAccessibility: false, &#x2F;&#x2F;是否允许复制可访问性文本。指定true以允许复制以实现可访问性
+        documentAssembly: true &#x2F;&#x2F;是否允许组装文件。指定true允许文档组装
+    &#125;,
+    content: [&quot;...&quot;]
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="嵌入附件"><a href="#嵌入附件" class="headerlink" title="嵌入附件"></a>嵌入附件</h3><p>查看文档</p>
+<h2 id="使用经验"><a href="#使用经验" class="headerlink" title="使用经验"></a>使用经验</h2><h3 id="目录用法"><a href="#目录用法" class="headerlink" title="目录用法"></a>目录用法</h3><pre class="line-numbers language-none"><code class="language-none">var docDefinition &#x3D; &#123;
+      content: [
+          &#123;
+              toc: &#123;
+                  title: &#123; text: &quot;INDEX&quot; &#125;
+              &#125;
+          &#125;,
+          &#123;
+              text: &quot;Introduction&quot;,
+              tocItem: true,
+              tocStyle: &#123; bold: true &#125;,
+              pageBreak: &quot;before&quot;
+          &#125;,
+          &quot;Lorem ipsum dolor sit amet...&quot;,
+
+          &#123;
+              text: &quot;Background&quot;,
+              tocItem: true,
+              tocMargin: [20, 0, 0, 0],
+              pageBreak: &quot;before&quot;
+          &#125;,
+          &quot;Lorem ipsum dolor sit amet...&quot;,
+
+          &#123;
+              text: &quot;About the project&quot;,
+              tocItem: true,
+              tocMargin: [20, 0, 0, 0],
+              pageBreak: &quot;before&quot;
+          &#125;,
+          &quot;Lorem ipsum dolor sit amet...&quot;,
+
+          &#123;
+              text: &quot;About the authors&quot;,
+              tocItem: true,
+              tocMargin: [20, 0, 0, 0],
+              pageBreak: &quot;before&quot;
+          &#125;,
+          &quot;Lorem ipsum dolor sit amet...&quot;,
+
+          &#123;
+              text: &quot;Abstract&quot;,
+              tocItem: true,
+              tocStyle: &#123; bold: true &#125;,
+              pageBreak: &quot;before&quot;
+          &#125;
+      ]
+  &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h3><pre class="line-numbers language-none"><code class="language-none">git clone git@github.com:bpampuch&#x2F;pdfmake.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li><p>npm install -g gulp</p>
+</li>
+<li><p>查看环境变量:npm config get prefix</p>
+</li>
+<li><p>在github，pafmake地址下载安装包pdfmake-master，打开这个工程，在package.json中devDependencies下添加一项<br><a target="_blank" rel="noopener" href="https://github.com/bpampuch/pdfmake">https://github.com/bpampuch/pdfmake</a></p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;gulp&quot;: &quot;^3.9.1&quot;, &#x2F;&#x2F; 跟全局版本最好一致<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>npm install</p>
+</li>
+<li><p>找一个微软雅黑的ttf文件<br><a target="_blank" rel="noopener" href="http://m.diyiziti.com/Download/537/">http://m.diyiziti.com/Download/537/</a></p>
+</li>
+<li><p>将pdfmake&#x2F;fonts下腾空并放入微软雅黑.ttf文件</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://gitee.com/talianshe/pafmake-fonts-build">https://gitee.com/talianshe/pafmake-fonts-build</a></p>
+</li>
+<li><p>生成vfs_fonts.js文件</p>
+</li>
+<li><p>文件改成export default 方式导出</p>
+</li>
+<li><pre class="line-numbers language-none"><code class="language-none">import vfs from &quot;.&#x2F;vfs_fonts&quot;;
+const pdfmake &#x3D; require(&quot;pdfmake&#x2F;build&#x2F;pdfmake&quot;);
+
+pdfmake.vfs &#x3D; vfs;
+pdfmake.fonts &#x3D; &#123;
+    wryh: &#123;
+        normal: &quot;微软雅黑.ttf&quot;,
+        bold: &quot;微软雅黑.ttf&quot;,
+        italics: &quot;微软雅黑.ttf&quot;,
+        bolditalics: &quot;微软雅黑.ttf&quot;
+    &#125;
+&#125;;
+
+         let docDefinition &#x3D; &#123;
+                content: [],
+                defaultStyle: &#123;
+                    font: &quot;wryh&quot;
+                &#125;
+            &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
   <article id="post-UniApp/nvue开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
@@ -358,6 +1281,97 @@ https:&#x2F;&#x2F;ask.dcloud.net.cn&#x2F;article&#x2F;36010<span aria-hidden="tr
 </article>
 
 
+  <article id="post-资料库/前端工具" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/22/%E8%B5%84%E6%96%99%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/">前端开发工具</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-06-21T16:00:00.000Z" itemprop="datePublished">2022年06月22日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a>
+  </div>
+
+      
+      
+<a href="/2022/06/22/%E8%B5%84%E6%96%99%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="学习网址"><a href="#学习网址" class="headerlink" title="学习网址"></a>学习网址</h2><h3 id="typescript资料"><a href="#typescript资料" class="headerlink" title="typescript资料"></a>typescript资料</h3><pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;github.com&#x2F;joye61&#x2F;typescript-tutorial<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h3><pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;www.codejiaonang.com&#x2F;#&#x2F;course&#x2F;regex_chapter1&#x2F;0&#x2F;0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="一些资料"><a href="#一些资料" class="headerlink" title="一些资料"></a>一些资料</h3><pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;github.com&#x2F;FrontEndGitHub&#x2F;FrontEndGitHub&#x2F;issues&#x2F;37?mode&#x3D;light<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="插件库"><a href="#插件库" class="headerlink" title="插件库"></a>插件库</h2><h3 id="node-插件"><a href="#node-插件" class="headerlink" title="node 插件"></a>node 插件</h3><ol>
+<li>文件处理<pre class="line-numbers language-none"><code class="language-none">multer<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<h3 id="其它插件"><a href="#其它插件" class="headerlink" title="其它插件"></a>其它插件</h3><ol>
+<li><p>图片点击全屏预览插件</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install vue-directive-image-previewer -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>css字体库</p>
+</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;fonts.googleapis.com&#x2F;css<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>视频播放器</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">MuiPlayer<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cdn/" rel="tag">cdn</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
   <article id="post-UniApp/uview封装一个http" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
@@ -475,1044 +1489,6 @@ export default &#123;
 </article>
 
 
-  <article id="post-UniApp/uview的安装和功能" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/21/UniApp/uview%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E5%8A%9F%E8%83%BD/">uview的安装和功能</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-06-20T16:00:00.000Z" itemprop="datePublished">2022年06月21日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/uniapp/">uniapp</a>
-  </div>
-
-      
-      
-<a href="/2022/06/21/UniApp/uview%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E5%8A%9F%E8%83%BD/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="组件-内置样式"><a href="#组件-内置样式" class="headerlink" title="组件-内置样式"></a>组件-内置样式</h3><h3 id="组件-下载方式安装"><a href="#组件-下载方式安装" class="headerlink" title="组件-下载方式安装"></a>组件-下载方式安装</h3><ol>
-<li>下载 uview-ui 目录</li>
-<li>引入</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; main.js
-import uView from &quot;uview-ui&quot;;
-Vue.use(uView);
-
-&#x2F;* uni.scss *&#x2F;
-@import &#39;uview-ui&#x2F;theme.scss&#39;;
-
-&#x2F;* App.vue *&#x2F;
-&lt;style lang&#x3D;&quot;scss&quot;&gt;
-	&#x2F;* 注意要写在第一行，同时给style标签加入lang&#x3D;&quot;scss&quot;属性 *&#x2F;
-	@import &quot;uview-ui&#x2F;index.scss&quot;;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li>配置 easycom 组件模式</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; pages.json
-&#123;
-	&quot;easycom&quot;: &#123;
-		&quot;^u-(.*)&quot;: &quot;@&#x2F;uview-ui&#x2F;components&#x2F;u-$1&#x2F;u-$1.vue&quot;
-	&#125;,
-
-	&#x2F;&#x2F; 此为本身已有的内容
-	&quot;pages&quot;: [
-		&#x2F;&#x2F; ......
-	]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="4">
-<li>vue.config</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
-	&#x2F;&#x2F; 配置路径别名
-	configureWebpack: &#123;
-		devServer: &#123;
-			disableHostCheck: true
-		&#125;
-	&#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="组件-内置样式-1"><a href="#组件-内置样式-1" class="headerlink" title="组件-内置样式"></a>组件-内置样式</h3><ul>
-<li>文字省略</li>
-<li>重置按钮样式</li>
-<li>断点形式</li>
-<li>边框(具有 ios 兼容)<br>u-border</li>
-</ul>
-<h3 id="组件-注意事项"><a href="#组件-注意事项" class="headerlink" title="组件-注意事项"></a>组件-注意事项</h3><ul>
-<li><p>背景色问题</p>
-</li>
-<li><p>赋值设备信息的陷阱<br>设备高度问题</p>
-</li>
-<li><p>小程序主包太大无法预览和发布</p>
-</li>
-<li><p>::v-deep 写法问题</p>
-</li>
-</ul>
-<h3 id="Uview-js-工具"><a href="#Uview-js-工具" class="headerlink" title="Uview js 工具"></a>Uview js 工具</h3><ul>
-<li>toast() 提示工具</li>
-<li>os() 返回平台信息 andriod or ios</li>
-<li>sys() 设备信息</li>
-<li>http 请求封装教程</li>
-<li>api 集中管理</li>
-<li>button 节流效果</li>
-<li>对象深度克隆</li>
-<li>对象深度合并</li>
-<li>时间格式化</li>
-<li>路由封装</li>
-<li>数组乱序</li>
-<li>生成全局唯一标识</li>
-<li>颜色转换</li>
-<li>颜色值</li>
-<li>对象转 url 参数</li>
-<li>规则校验</li>
-<li>MD5 加密</li>
-<li>随机数值</li>
-<li>去除空格</li>
-<li>获取 dom 节点,改变滚动条位置</li>
-<li>小程序分享</li>
-</ul>
-<h3 id="丰富的模板"><a href="#丰富的模板" class="headerlink" title="丰富的模板"></a>丰富的模板</h3><h3 id="指南"><a href="#指南" class="headerlink" title="指南"></a>指南</h3><ul>
-<li>扩展图标 iconfont</li>
-<li>自定义主题</li>
-<li>全局变量<br>globalData<br>vuex</li>
-</ul>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uview/" rel="tag">uview</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Hexo/Hexo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/20/Hexo/Hexo/">Hexo配置和使用</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-06-19T16:00:00.000Z" itemprop="datePublished">2022年06月20日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a>
-  </div>
-
-      
-      
-<a href="/2022/06/20/Hexo/Hexo/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>安装脚手架</li>
-</ol>
-<ul>
-<li>脚手架</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">npm install hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="2">
-<li>生成文件</li>
-</ol>
-<ul>
-<li>init</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">hexo init blog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>安装依赖</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">cd blog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">npm install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="3">
-<li>生成网站</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>过后会生成 public 目录</p>
-<ul>
-<li>启动网站</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="4">
-<li>命令</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">hexo new &quot;text title&quot;  &#x2F;&#x2F; 生成md文章
-hexo new draft &quot;&quot; &#x2F;&#x2F; 草稿文章
-hexo new page &quot;&quot;  &#x2F;&#x2F;纯页面-  存入scaffolds中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<ol start="5">
-<li>配置</li>
-</ol>
-<ul>
-<li>Front Matter</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">---
-title: &quot;&quot;
-category: &#x2F;&#x2F;分类
-	- 1
-	- 2
-conmment: on &#x2F;&#x2F; 是否启用评论
----
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="6">
-<li>上传到 github</li>
-</ol>
-<ul>
-<li><p>搭建仓库 username.github.io 命名<br>username 必须跟 github 用户名一致</p>
-</li>
-<li><p>安装依赖</p>
-</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">yarn add hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>_config.yml 配置</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none"># Deployment
-## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment
-deploy:
-  type: git
-  repo: git@github.com:isAllyn&#x2F;xiaolblog.github.io.git
-  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ul>
-<li>代码高亮</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none"># 代码高亮配置文件
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace: &#39;&#39;
-  wrap: true
-  hljs: false
-prismjs:
-  enable: false
-  preprocess: true
-  line_number: true
-  tab_replace: &#39;&#39;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="7">
-<li>置顶<br>置顶的文章的 Front-matter 中加上 top: true 即可</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">---
-title: BlueLake博客主题的详细配置
-tags: [hexo,BlueLake]
-categories: Hexo博客
-top: true
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="8">
-<li>相关配置资料</li>
-</ol>
-<p>[hexo 详细配置]<a target="_blank" rel="noopener" href="https://chaoo.gitee.io/2016/12/29/bluelake.html">https://chaoo.gitee.io/2016/12/29/bluelake.html</a><br>[front-matter 配置]<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE">https://hexo.io/zh-cn/docs/front-matter#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE</a></p>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Hexo/Hexo的一些错误" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/20/Hexo/Hexo%E7%9A%84%E4%B8%80%E4%BA%9B%E9%94%99%E8%AF%AF/">Hexo的一些错误</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-06-19T16:00:00.000Z" itemprop="datePublished">2022年06月20日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a>
-  </div>
-
-      
-      
-<a href="/2022/06/20/Hexo/Hexo%E7%9A%84%E4%B8%80%E4%BA%9B%E9%94%99%E8%AF%AF/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Error-Nunjucks-Error-html-error"><a href="#Error-Nunjucks-Error-html-error" class="headerlink" title="Error [Nunjucks Error] + html error"></a>Error [Nunjucks Error] + html error</h3><pre class="line-numbers language-none"><code class="language-none">找到这个地方将一些特殊字符改掉<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Tem/Button组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/16/Tem/Button%E7%BB%84%E4%BB%B6/">vue2 Button 组件</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-15T16:00:00.000Z" itemprop="datePublished">2022年04月16日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a>
-  </div>
-
-      
-      
-<a href="/2022/04/16/Tem/Button%E7%BB%84%E4%BB%B6/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <pre class="line-numbers language-none"><code class="language-none">&lt;!--
- * @Author: BORING GHOST
- * @Date: 2022-04-16 11:09:52
- * @LastEditTime: 2022-04-16 16:27:19
- * @Description: 按钮组件
---&gt;
-&lt;template&gt;
-  &lt;div class&#x3D;&quot;ButtonTem__&quot;&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;add-btn btn-position icon-theme&quot;
-         v-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;add&#39;&quot;&gt;
-      &lt;i class&#x3D;&quot;icon-i iconfontBtn icon-jia&quot;&gt;&lt;&#x2F;i&gt;
-      &lt;div class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;div&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;del-btn btn-position icon-theme&quot;
-         v-else-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;del&#39;&quot;&gt;
-      &lt;i class&#x3D;&quot;icon-i iconfontBtn icon-guanbi&quot;&gt;&lt;&#x2F;i&gt;
-      &lt;span class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;export-btn btn-position icon-theme&quot;
-         v-else-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;export&#39;&quot;&gt;
-      &lt;span class&#x3D;&quot;icon-i iconfontBtn icon-daochu&quot;&gt;&lt;&#x2F;span&gt;
-      &lt;span class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;search-btn btn-position icon-theme&quot;
-         v-else-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;search&#39;&quot;&gt;
-      &lt;span class&#x3D;&quot;icon-i iconfontBtn icon-sousuo&quot;&gt;&lt;&#x2F;span&gt;
-      &lt;span class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;refresh-btn btn-position icon-theme&quot;
-         v-else-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;refresh&#39;&quot;&gt;
-      &lt;span class&#x3D;&quot;icon-i iconfontBtn icon-shuaxin&quot;&gt;&lt;&#x2F;span&gt;
-      &lt;span class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;update-btn btn-position icon-theme&quot;
-         v-else-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;update&#39;&quot;&gt;
-      &lt;span class&#x3D;&quot;icon-i iconfontBtn icon-xiugai&quot;&gt;&lt;&#x2F;span&gt;
-      &lt;span class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot;reset-btn btn-position icon-theme&quot;
-         v-else-if&#x3D;&quot; typeStr&#x3D;&#x3D;&#x3D;&#39;reset&#39;&quot;&gt;
-      &lt;span class&#x3D;&quot;icon-i&quot; :class&#x3D;&quot;reset_icon&quot;&gt;&lt;&#x2F;span&gt;
-      &lt;span class&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-    &lt;div @click&#x3D;&quot;btnEventClick&quot; class&#x3D;&quot; default-btn btn-position btn-theme&quot;
-         v-else&gt;
-      &#123;&#123;text&#125;&#125;
-    &lt;&#x2F;div&gt;
-  &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-export default &#123;
-  name: &#39;ButtonTem&#39;,
-  props: &#123;
-    typeStr: &#123;
-      type: String,
-      default: () &#x3D;&gt; &#39;default&#39;
-    &#125;,
-    text: &#123;
-      type: String,
-      default: () &#x3D;&gt; &#39;Button&#39;
-    &#125;,
-    reset_icon: &#123;
-      type: String,
-      default: () &#x3D;&gt; &#39;iconfontBtn icon-zhongzhi&#39;
-    &#125;
-  &#125;,
-  methods: &#123;
-    &#x2F;**
-     * @event: 点击
-     *&#x2F;
-    btnEventClick() &#123;
-      this.$emit(&#39;click&#39;)
-    &#125;
-  &#125;,
-&#125;;
-&lt;&#x2F;script&gt;
-
-&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;
-.ButtonTem__ &#123;
-  .default-btn &#123;
-    padding: 8px;
-    border: 2px solid rgba(28, 132, 198, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(28, 132, 198, 1);
-    &amp;:hover &#123;
-      background-color: rgba(23, 100, 148, 1);
-      border-color: rgba(28, 132, 198, 1);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(28, 132, 198, 1);
-      border-color: rgba(23, 100, 148, 1);
-    &#125;
-  &#125;
-  .add-btn &#123;
-    border: 2px solid rgba(28, 132, 198, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(28, 132, 198, 1);
-    &amp;:hover &#123;
-      background-color: rgba(23, 100, 148, 1);
-      border-color: rgba(28, 132, 198, 1);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(28, 132, 198, 1);
-      border-color: rgba(23, 100, 148, 1);
-    &#125;
-  &#125;
-  .del-btn &#123;
-    border: 2px solid rgba(237, 85, 101, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(237, 85, 101, 1);
-    &amp;:hover &#123;
-      background-color: rgba(245, 157, 166, 1);
-      border-color: rgba(237, 85, 101, 0.7);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(237, 85, 101, 1);
-      border-color: rgba(245, 157, 166, 1);
-    &#125;
-  &#125;
-  .export-btn &#123;
-    border: 2px solid rgba(248, 172, 89, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(248, 172, 89, 1);
-    &amp;:hover &#123;
-      background-color: rgba(212, 146, 75, 1);
-      border-color: rgba(248, 172, 89, 1);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(248, 172, 89, 1);
-      border-color: rgba(212, 146, 75, 1);
-    &#125;
-  &#125;
-  .search-btn &#123;
-    border: 2px solid rgba(64, 158, 255, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(64, 158, 255, 1);
-    &amp;:hover &#123;
-      background-color: rgba(102, 177, 255, 1);
-      border-color: rgba(64, 158, 255, 1);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(64, 158, 255, 1);
-      border-color: rgba(102, 177, 255, 1);
-    &#125;
-  &#125;
-  .refresh-btn &#123;
-    border: 2px solid rgba(39, 208, 216, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(39, 208, 216, 1);
-    &amp;:hover &#123;
-      background-color: rgba(39, 208, 216, 1);
-      border-color: rgb(31, 178, 185);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(31, 178, 185, 1);
-      border-color: rgba(39, 208, 216, 1);
-    &#125;
-  &#125;
-  .update-btn &#123;
-    border: 2px solid rgba(142, 175, 212, 1);
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(142, 175, 212, 1);
-    &amp;:hover &#123;
-      background-color: rgba(142, 175, 212, 1);
-      border-color: rgb(107, 141, 180);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(107, 141, 180, 1);
-      border-color: rgba(142, 175, 212, 1);
-    &#125;
-  &#125;
-  .reset-btn &#123;
-    border: 2px solid gray;
-    color: rgba(255, 255, 255, 1);
-    background-color: gray;
-    &amp;:hover &#123;
-      background-color: gray;
-      border-color: rgb(128, 128, 128, 0.5);
-    &#125;
-    &amp;:active &#123;
-      background-color: rgba(128, 128, 128, 0.5);
-      border-color: gray;
-    &#125;
-  &#125;
-  &#x2F;* modules *&#x2F;
-  .btn-position &#123;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 33px;
-  &#125;
-  .btn-theme &#123;
-    border-radius: 5px;
-    user-select: none;
-    overflow: hidden;
-  &#125;
-  .icon-theme &#123;
-    padding: 8px;
-    border-radius: 5px;
-    user-select: none;
-    overflow: hidden;
-    .icon-i &#123;
-      padding: 0 5px 0 3px;
-      font-size: 16px;
-    &#125;
-    .text &#123;
-      transform: translateY(10%);
-    &#125;
-  &#125;
-&#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tem/" rel="tag">tem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue2/" rel="tag">vue2</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Tem/HeaderSearch组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/16/Tem/HeaderSearch%E7%BB%84%E4%BB%B6/">vue2 头部自适应header组件</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-15T16:00:00.000Z" itemprop="datePublished">2022年04月16日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a>
-  </div>
-
-      
-      
-<a href="/2022/04/16/Tem/HeaderSearch%E7%BB%84%E4%BB%B6/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <pre class="line-numbers language-none"><code class="language-none">&lt;!--
- * @Author: BORING GHOST
- * @Date: 2022-04-15 15:56:47
- * @LastEditTime: 2022-04-16 13:57:18
- * @Description: 头部搜索框封装
---&gt;
-&lt;template&gt;
-  &lt;el-card class&#x3D;&quot;card-container_&quot; shadow&#x3D;&quot;hover&quot;&gt;
-    &lt;div class&#x3D;&quot;HearderSearchInput__&quot;&gt;
-      &lt;template v-for&#x3D;&quot;num in item_num&quot;&gt;
-        &lt;div class&#x3D;&quot;InputItem&quot; :key&#x3D;&quot;num&quot;&gt;
-          &lt;slot :name&#x3D;&quot;&#96;item$&#123;num&#125;&#96;&quot;&gt;&lt;&#x2F;slot&gt;
-        &lt;&#x2F;div&gt;
-      &lt;&#x2F;template&gt;
-    &lt;&#x2F;div&gt;
-  &lt;&#x2F;el-card&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-export default &#123;
-  name: &#39;HearderSearchInput&#39;,
-  props: &#123;
-    num: &#123;
-      type: Number,
-      default: () &#x3D;&gt; 8
-    &#125;
-  &#125;,
-  created() &#123;
-    let ar &#x3D; []
-    for (let k &#x3D; 1; k &lt;&#x3D; this.num; k++) &#123;
-      ar[k - 1] &#x3D; k
-    &#125;
-    this.item_num &#x3D; ar
-  &#125;,
-  data() &#123;
-    return &#123;
-      item_num: []
-    &#125;;
-  &#125;,
-&#125;;
-&lt;&#x2F;script&gt;
-
-&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;
-.HearderSearchInput__ &#123;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  .InputItem &#123;
-    margin: 6px;
-  &#125;
-&#125;
-.card-container_ &#123;
-  ::v-deep .el-card__body &#123;
-    padding: 10px 5px 10px 5px;
-  &#125;
-&#125;
-&lt;&#x2F;style&gt;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tem/" rel="tag">tem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue2/" rel="tag">vue2</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Tem/InputItem组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/16/Tem/InputItem%E7%BB%84%E4%BB%B6/">vue2 复合型input框封装</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-15T16:00:00.000Z" itemprop="datePublished">2022年04月16日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a>
-  </div>
-
-      
-      
-<a href="/2022/04/16/Tem/InputItem%E7%BB%84%E4%BB%B6/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <pre class="line-numbers language-none"><code class="language-none">&lt;!--
- * @Author: BORIN GHOST
- * @Date: 2022-04-15 16:53:15
- * @LastEditTime: 2022-04-16 17:45:31
- * @Description: 复合型input框封装
---&gt;
-&lt;template&gt;
-  &lt;div class&#x3D;&quot;InputItem__&quot;&gt;
-    &lt;div v-show&#x3D;&quot;label?true:false&quot; class&#x3D;&quot;label&quot;&gt;&#123;&#123;label&#125;&#125;&lt;&#x2F;div&gt;
-    &lt;div class&#x3D;&quot;input-content&quot;&gt;
-      &lt;slot&gt;&lt;&#x2F;slot&gt;
-    &lt;&#x2F;div&gt;
-  &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-export default &#123;
-  name: &#39;InputItem&#39;,
-  props: &#123;
-    label: &#123;
-      type: String,
-      default: () &#x3D;&gt; &#39;&#39;
-    &#125;
-  &#125;,
-&#125;;
-&lt;&#x2F;script&gt;
-
-&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;
-.InputItem__ &#123;
-  background-color: rgba(245, 247, 250, 1);
-  border: 1px solid rgba(192, 196, 214, 1);
-  display: flex;
-  border-radius: 3px;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 15px;
-  overflow: hidden;
-  .label &#123;
-    padding: 5px;
-  &#125;
-  ::v-deep .el-input__inner &#123;
-    border-radius: 0;
-    padding: 5px;
-    border-color: rgba(24, 144, 255, 0);
-    font-size: 15px;
-    &amp;.el-date-editor--daterange,
-    &amp;.el-date-editor--datetimerange &#123;
-      padding: 3px;
-    &#125;
-  &#125;
-  &#x2F;* 聚焦下边框颜色 *&#x2F;
-  ::v-deep .el-input__inner:focus &#123;
-    border-color: rgba(24, 144, 255, 1);
-  &#125;
-  ::v-deep .is-focus .el-input__inner &#123;
-    border-color: rgba(24, 144, 255, 1);
-  &#125;
-&#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tem/" rel="tag">tem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue2/" rel="tag">vue2</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-其他/vue-router@4学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/16/%E5%85%B6%E4%BB%96/vue-router@4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">vue-router@4学习笔记</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-04-15T16:00:00.000Z" itemprop="datePublished">2022年04月16日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
-  </div>
-
-      
-      
-<a href="/2022/04/16/%E5%85%B6%E4%BB%96/vue-router@4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p><code>npm i -S vue-router@4</code></p>
-<h3 id="use"><a href="#use" class="headerlink" title="use"></a>use</h3><pre class="line-numbers language-none"><code class="language-none">import &#123;createRouter,createWebHistory,RouteRecordRaw&#125; from &#39;vue-router&#39;
-import Layout from &#39;.&#x2F;component.vue&#39;
-
-const staticRoutes:Array&lt;RouteRecordRaw&gt;&#x3D;[
-  &#123;
-    path:&#39;&#x2F;&#39;,
-    name:&#39;home&#39;,
-    component:Layout
-  &#125;
-]
-
-const router&#x3D;createRouter(&#123;
-  history:createWebHistory(),
-  routes:staticRoutes
-&#125;)
-
-export default router<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">mian.ts
-import router form &#39;@&#x2F;router&#x2F;index&#39;
-app.use(router)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h3><pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
-  &lt;!-- vue3.0配置 --&gt;
-  &lt;router-view v-slot&#x3D;&quot;&#123; Component &#125;&quot;&gt;
-    &lt;keep-alive&gt;
-      &lt;component :is&#x3D;&quot;Component&quot; :key&#x3D;&quot;$route.name&quot;  v-if&#x3D;&quot;$route.meta.keepAlive&quot;&#x2F;&gt;
-    &lt;&#x2F;keep-alive&gt;
-    &lt;component :is&#x3D;&quot;Component&quot; :key&#x3D;&quot;$route.name&quot;  v-if&#x3D;&quot;!$route.meta.keepAlive&quot;&#x2F;&gt;
-  &lt;&#x2F;router-view&gt;
-&lt;&#x2F;template&gt;
-&lt;!-- add+ --&gt;
-    meta: &#123;
-      keepAlive: true
-    &#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
 
     <nav id="page-nav">
 
@@ -1531,23 +1507,23 @@ app.use(router)<span aria-hidden="true" class="line-numbers-rows"><span></span><
       <ul>
         
           <li>
-            <a href="/2022/07/05/Vscode/hbuilderX%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%85%8D%E7%BD%AE/">hbuilderX eslint格式化配置</a>
+            <a href="/2022/07/28/Ts/ts%E9%85%8D%E7%BD%AE%E7%BF%BB%E8%AF%91/">Ts 配置翻译</a>
           </li>
         
           <li>
-            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/Mqtt%E5%8D%8F%E8%AE%AE/">mqtt 协议</a>
+            <a href="/2022/07/28/UniApp/app%E5%8A%9F%E8%83%BD%E7%82%B9/">app开发功能点</a>
           </li>
         
           <li>
-            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/chimee%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/">chimee曲米播放控件的使用</a>
+            <a href="/2022/07/28/UniApp/app%E5%8A%9F%E8%83%BD%E7%82%B9%E8%B7%9F%E4%BC%98%E5%8C%96/">app开发功能点</a>
           </li>
         
           <li>
-            <a href="/2022/07/05/%E6%8F%92%E4%BB%B6%E5%BA%93/%E5%9B%BE%E7%89%87%E5%85%A8%E5%B1%8F%E9%A2%84%E8%A7%88/">图片满屏预览</a>
+            <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E5%88%86%E7%A6%BB%E7%89%88%E4%BD%BF%E7%94%A8/">若依框架分离版使用</a>
           </li>
         
           <li>
-            <a href="/2022/06/29/Node/node%E5%AE%89%E8%A3%85%E5%8C%85%E6%97%B6%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/">node 安装包时常见报错</a>
+            <a href="/2022/07/28/Vue/%E8%8B%A5%E4%BE%9D%E6%A1%86%E6%9E%B6/">若依框架 学习</a>
           </li>
         
       </ul>
@@ -1560,7 +1536,7 @@ app.use(router)<span aria-hidden="true" class="line-numbers-rows"><span></span><
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chimee/" style="font-size: 10px;">chimee</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hbuilderX/" style="font-size: 10px;">hbuilderX</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/img/" style="font-size: 10px;">img</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 13.33px;">ts</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a>
+      <a href="/tags/AntDesign/" style="font-size: 10px;">AntDesign</a> <a href="/tags/BMap/" style="font-size: 10px;">BMap</a> <a href="/tags/BlueLake/" style="font-size: 10px;">BlueLake</a> <a href="/tags/cdn/" style="font-size: 10px;">cdn</a> <a href="/tags/chimee/" style="font-size: 10px;">chimee</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/flexible/" style="font-size: 13.33px;">flexible</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hbuilder/" style="font-size: 10px;">hbuilder</a> <a href="/tags/hbuilderX/" style="font-size: 10px;">hbuilderX</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/i18n/" style="font-size: 13.33px;">i18n</a> <a href="/tags/img/" style="font-size: 10px;">img</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/moment/" style="font-size: 10px;">moment</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/node/" style="font-size: 16.67px;">node</a> <a href="/tags/npm/" style="font-size: 16.67px;">npm</a> <a href="/tags/nvue/" style="font-size: 10px;">nvue</a> <a href="/tags/openlayer/" style="font-size: 13.33px;">openlayer</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/pinia/" style="font-size: 13.33px;">pinia</a> <a href="/tags/tabbar/" style="font-size: 10px;">tabbar</a> <a href="/tags/tem/" style="font-size: 16.67px;">tem</a> <a href="/tags/ts/" style="font-size: 16.67px;">ts</a> <a href="/tags/uniapp/" style="font-size: 16.67px;">uniapp</a> <a href="/tags/uview/" style="font-size: 13.33px;">uview</a> <a href="/tags/vite/" style="font-size: 13.33px;">vite</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/vue-config/" style="font-size: 10px;">vue.config</a> <a href="/tags/vue2/" style="font-size: 16.67px;">vue2</a> <a href="/tags/vue3/" style="font-size: 10px;">vue3</a> <a href="/tags/webpack4/" style="font-size: 13.33px;">webpack4</a> <a href="/tags/window/" style="font-size: 13.33px;">window</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E8%8B%A5%E4%BE%9D/" style="font-size: 13.33px;">若依</a>
     </div>
   </div>
 
@@ -1569,7 +1545,7 @@ app.use(router)<span aria-hidden="true" class="line-numbers-rows"><span></span><
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UI%E5%BA%93/">UI库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ts/">ts</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uniapp/">uniapp</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vite/">vite</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vscode/">vscode</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%9F%E7%94%9F/">原生</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9C%B0%E5%9B%BE/">地图</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6%E5%BA%93/">插件库</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99%E5%BA%93/">资料库</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1579,7 +1555,7 @@ app.use(router)<span aria-hidden="true" class="line-numbers-rows"><span></span><
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">52</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">59</span></li></ul>
     </div>
   </div>
 
@@ -1589,7 +1565,7 @@ app.use(router)<span aria-hidden="true" class="line-numbers-rows"><span></span><
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chimee/" rel="tag">chimee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilderX/" rel="tag">hbuilderX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/img/" rel="tag">img</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AntDesign/" rel="tag">AntDesign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BMap/" rel="tag">BMap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BlueLake/" rel="tag">BlueLake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cdn/" rel="tag">cdn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chimee/" rel="tag">chimee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/" rel="tag">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexible/" rel="tag">flexible</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilder/" rel="tag">hbuilder</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbuilderX/" rel="tag">hbuilderX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/img/" rel="tag">img</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/moment/" rel="tag">moment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvue/" rel="tag">nvue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayer/" rel="tag">openlayer</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinia/" rel="tag">pinia</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tabbar/" rel="tag">tabbar</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tem/" rel="tag">tem</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/" rel="tag">ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uview/" rel="tag">uview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-config/" rel="tag">vue.config</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue2/" rel="tag">vue2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3/" rel="tag">vue3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack4/" rel="tag">webpack4</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%A5%E4%BE%9D/" rel="tag">若依</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
